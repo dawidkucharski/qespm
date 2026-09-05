@@ -1,56 +1,57 @@
-# Single Trapped Ion Surface Topography Reconstruction
+# Quantum Limits of Surface Metrology: Spatial Information Extraction by a Single Trapped Ion
 
-**A PhD-level research proposal in quantum metrology and surface science.**
+Repository accompanying the manuscript
 
----
+> **Quantum Limits of Surface Metrology: Spatial Information Extraction by a
+> Single Trapped Ion**
+> D. Kucharski, Poznan University of Technology
+> (submitted to *Surface Topography: Metrology and Properties*, IOP)
 
-## Project Structure
+## What this project does
+
+The work develops and validates a new non-contact surface-characterisation
+modality, QESPM, in which a single trapped atomic ion acts as an electrostatic
+probe of the conducting surface beneath it:
+
+- derives the instrument transfer function H_x(k; h) ∝ k_x² e^(−kh) from
+  boundary-perturbation theory, and analyses its band-pass structure;
+- establishes the irreversible spatial-information cutoff imposed by e^(−kh),
+  the effective-rank scaling r_eff ∝ 1/h, and the theorem that multi-height
+  scanning alone cannot separate surface topography from surface charge;
+- builds the complete metrological framework: GUM-compliant uncertainty
+  budget, SI-traceable calibration chain, ISO 25178 classification pathway,
+  Bayesian and adaptive scanning strategies, and five quantitative falsifiable
+  experimental predictions;
+- validates the framework against an exact Rayleigh–Floquet solver, independent
+  boundary-element and finite-difference solvers, Monte Carlo uncertainty
+  propagation, and published AFM data of a stainless-steel surface
+  (reconstruction correlation r = 0.62 → 0.76 as the ion height decreases from
+  40 µm to 5 µm).
+
+The experimental demonstration is future work, specified in a costed
+four-phase roadmap (Supplementary Material, Sec. S9).
+
+## Repository contents
 
 ```
-ion_surface_sensor/
-├── README.md                       # This file
-├── proposal.md                     # Comprehensive research proposal (all 6 tasks)
-├── appendix_mathematical.tex       # Detailed mathematical derivations (LaTeX)
-├── forward_model.py                # Numerical forward model & Tikhonov inversion
-├── manuscript/                     # LaTeX manuscript directory (to be populated)
-│   ├── main.tex                    # Main manuscript template
-│   └── figures/                    # PDF vector graphics only
-├── simulations/                    # Numerical experiment outputs
-│   └── .gitkeep
-└── literature/                     # Bibliography and notes
-    └── .gitkeep
+manuscript/          main.tex, supplementary.tex, references.bib (LaTeX sources)
+*.py                 scripts generating all figures and numerical analyses
+manuscript_audit_*.md    referee-style audit records (verification history)
+cover_letter_surfacetopography.md   submission cover letter
 ```
 
-## Key Documents
+## Data sources (not included in this repository)
 
-| File | Contents |
-|------|----------|
-| `proposal.md` | Full 10-section proposal covering: literature review, mathematical model, inverse problem analysis, comparison with AFM/STM, experimental design, publication strategy, risk assessment, and timeline. |
-| `appendix_mathematical.tex` | LaTeX document with complete derivations: Mathieu equations, boundary perturbation theory, Tikhonov regularisation, Bayesian hierarchical model, and quantum sensitivity limits. |
-| `forward_model.py` | Python implementation of the forward model (topography → observables) using FFT-based Poisson kernel propagation, with Tikhonov inversion demonstration. |
+- AFM images and processing routine, Camargo Jr. (2019), Mendeley Data,
+  CC BY 4.0 — doi:10.17632/6dzmrjngcg.3
+- Surface-Topography Challenge benchmark dataset — doi:10.5281/zenodo.15341939
 
-## Quick Start: Forward Model Simulation
+## Environment
 
-```bash
-# Install dependencies
-pip install numpy scipy matplotlib
+Python 3 with numpy, scipy and matplotlib. LaTeX (pdflatex + bibtex) for the
+manuscript.
 
-# Run simulation
-python forward_model.py
-```
+## License
 
-This generates:
-- `forward_model_output.pdf` — surface topography, charge, and all motional observables
-- `tikhonov_inversion_demo.pdf` — comparison of true vs. reconstructed surface potential
-
-## Manuscript Preparation
-
-All manuscripts use **LaTeX** with **PDF vector graphics only** (no raster formats for scientific figures). Figures should be generated as standalone `.pdf` files via matplotlib (`pdf` backend), TikZ/PGFPlots, or exported from vector-capable analysis tools.
-
-## Key References
-
-See `proposal.md` §10 for the core bibliography. The full `.bib` file will be maintained in `manuscript/references.bib`.
-
-## Contact
-
-Research proposal — internal working draft.
+MIT — see the code package (`qespm_code_v1.0.zip`) for LICENSE and a detailed
+README.
