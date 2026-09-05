@@ -1,0 +1,837 @@
+% ===================================================================
+%  QESPM Supplementary Material
+%  Supporting figures for the main manuscript
+%  Compile with: pdflatex supplementary
+% ===================================================================
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+\title{Supplementary Material:\\
+       Quantum Electrostatic Scanning Probe Microscopy\\
+       with a Single Trapped Ion}
+
+\author{Dawid Kucharski\\
+        Poznan University of Technology, Pozna\'n, Poland}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Sections S2--S8 contain the full derivations and validation details that
+support the main manuscript; all material is cross-referenced therein as
+Fig.~S1--S14 and Table~S1.
+
+% ===================================================================
+\section{Supplementary Figures}
+% ===================================================================
+
+% ---- Figure S1: Scanning geometry ----
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figS2_scan.pdf}
+\caption{\textbf{Scanning geometry.}
+Schematic of the QESPM scanning protocol.  The trapped ion is translated
+laterally above the surface while the secular frequency shift
+$\Delta\omega_x(x,y)$ is recorded at each position.  The ion--surface
+separation $h$ is maintained by adjusting the trap-electrode voltages.
+The scan range is limited by the field of view of the ion trap
+($64\,\mu\text{m}$ in the simulation).}
+\label{fig:S_scan}
+\end{figure}
+
+% ---- Figure S2: Signal map ----
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figS4_signal_map.pdf}
+\caption{\textbf{Simulated ion signal map.}
+Peak signal amplitude $|\Delta\omega_x|/2\pi$ for a sinusoidal surface of
+amplitude $A = 100$\,nm as a function of surface wavelength $\lambda$ and
+ion height $h$, computed from the analytical ITF.  White--magenta contours
+mark the 5\,Hz--50\,kHz signal levels (the 5\,Hz contour is the SNR$=1$
+limit for the conservative noise floor).  The white dashed line is the
+optimal wavelength $\lambda_{\rm opt} = \pi h$; the star marks the nominal
+operating point ($\lambda = 40\,\mu\text{m}$, $h = 40\,\mu\text{m}$).}
+\label{fig:S_signal}
+\end{figure}
+
+% ---- Figure S3: Micromotion analysis ----
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{fig8_micromotion.pdf}
+\caption{\textbf{Micromotion as a complementary observable.}
+Comparison of the two surface-sensing channels at $h = 40\,\mu\text{m}$.
+(a) Normalised ITF magnitude for the secular channel
+$\Delta\omega_x$ ($\propto k^2 e^{-kh}$, curvature response) and the
+excess-micromotion channel $\beta_x$ ($\propto |k| e^{-kh}$, gradient
+response).  The micromotion channel peaks at $k = 1/h$
+($\lambda = 2\pi h$) and is relatively more sensitive at lower spatial
+frequencies than the secular channel, which peaks at $k = 2/h$.
+(b) Complementary spatial-frequency coverage of the two channels: the
+gradient and curvature responses together span the full accessible
+$k$-band.  Because the two channels scale differently with $h$ and $k$,
+their ratio provides an independent diagnostic (see the main text).}
+\label{fig:S_micromotion}
+\end{figure}
+
+% ---- Figure S4: Degeneracy theorem ----
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{fig9_degeneracy.pdf}
+\caption{\textbf{Topography--charge identifiability limit --- numerical illustration.}
+Ratio of the frequency-shift vectors at two ion heights,
+$\Delta\omega(h_1)/\Delta\omega(h_2) = e^{-k(h_1-h_2)}$ for
+$h_1 = 20\,\mu\text{m}$ and $h_2 = 80\,\mu\text{m}$.  The ratio depends
+only on $k$ and the heights --- not on the $(z_s, \sigma)$ mixture ---
+because both the topographic and the charge contributions propagate
+identically as $e^{-kh}$.  The two-height forward matrix is therefore
+rank~1, and \textbf{no finite number of heights}, without independent
+information, can separate the two contributions (Theorem in the main
+text).  Resolution strategies are indicated:
+in-situ charge elimination, a known reference scan, or an independent
+material-contrast channel such as the motional heating rate.}
+\label{fig:S_degeneracy}
+\end{figure}
+
+% ---- Figure S5: AFM input data ----
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figV1_afm_input.pdf}
+\caption{\textbf{AFM input topography --- stainless steel.}
+Input surface topography used for the real-data validation
+(Sec.~4.2 of the main text).  The data are from
+Camargo~Jr.\ (2019, Mendeley Data,
+\url{https://doi.org/10.17632/6dzmrjngcg.3},
+CC~BY~4.0).  (a) The $20 \times 20\,\mu\text{m}^2$ AFM scan of
+stainless steel.  (b) Power spectral density (PSD) showing roughness
+power concentrated at wavelengths $\lambda \sim 2$--$20\,\mu\text{m}$,
+which overlap with the QESPM ITF passband for $h \lesssim 10\,\mu\text{m}$.}
+\label{fig:S_afm_input}
+\end{figure}
+
+% ---- Figure S6: Ion signal from AFM data ----
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figV2_afm_ion_signal.pdf}
+\caption{\textbf{Simulated ion signal from AFM topography.}
+Forward-model prediction of $\Delta\omega_x(x,y)$ computed from the
+AFM-measured stainless steel topography at four ion heights:
+$h = 2, 5, 10, 40\,\mu\text{m}$.  The signal amplitude grows by
+$\approx 2.8\times10^5$ from $h = 40\,\mu\text{m}$ to $h = 2\,\mu\text{m}$,
+consistent with the $e^{-kh}$ height scaling of the ITF.  At
+$h \lesssim 5\,\mu\text{m}$ the predicted shifts reach $|\Delta\omega_x|/2\pi
+\sim 10^{14}$--$10^{15}$\,Hz, comparable to or exceeding $\omega_x$ itself:
+these panels illustrate the asymptotic ITF behaviour outside the
+perturbative regime, not an experimentally realisable configuration
+(cf.~the heating-rate caveat in the main text).  Note the progressive
+emergence of fine spatial features as $h$ decreases.}
+\label{fig:S_afm_signal}
+\end{figure}
+
+% ---- Figure S7: AFM reconstruction ----
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figV3_afm_reconstruction.pdf}
+\caption{\textbf{QESPM reconstruction from AFM data.}
+Tikhonov-regularised reconstruction of the stainless steel surface from
+the simulated ion signal at $h = 40, 10, 5, 2\,\mu\text{m}$.  (a)--(d) Reconstructed topography.  (e)--(h) Residual
+(reconstruction $-$ true AFM topography).  The Pearson correlation
+improves from $r = 0.62$ at $h = 40\,\mu\text{m}$ to $r = 0.78$ at
+$h = 2\,\mu\text{m}$, confirming the predicted height dependence of the
+reconstruction quality.}
+\label{fig:S_afm_recon}
+\end{figure}
+
+% ===================================================================
+\section{Floquet analysis: beyond the pseudopotential approximation}
+% ===================================================================
+
+The pseudopotential approximation used in the main text is valid for
+$|a|, q^2 \ll 1$.  This section verifies that the full Floquet solution of
+the Mathieu equation reproduces the pseudopotential result to
+$\mathcal{O}(q^2)$ and computes the leading correction.
+
+The exact 1D equation of motion for an ion in a Paul trap with a static
+surface perturbation $F_s(x) = -e\,\partial\Phi/\partial x$ is, in
+dimensionless form ($\tau = \Omega t/2$, $u = x/R_{\rm rf}$, where
+$R_{\rm rf}$ is the characteristic trap dimension --- the distance
+from the trap centre to the nearest rf electrode):
+\begin{equation}
+\frac{d^2 u}{d\tau^2} + [a - 2q\cos(2\tau)]u
+    = -\frac{4e}{m\Omega^2 R_{\rm rf}}
+       \left.\frac{\partial\Phi}{\partial x}\right|_{x = R_{\rm rf}u}.
+\label{eq:mathieu_perturbed}
+\end{equation}
+For a sinusoidal surface with $|A| \ll h$, the perturbation is
+$F_s \propto \cos(k_s x)$, which couples the secular motion to the rf drive
+through the position dependence of the force.  Expanding about the ion's
+equilibrium position $u_0$ and retaining only the linear term (valid for
+small oscillation amplitudes), Eq.~(\ref{eq:mathieu_perturbed}) takes the
+form of a perturbed Mathieu equation:
+\begin{equation}
+\frac{d^2\delta u}{d\tau^2} + [a + \delta a - 2q\cos(2\tau)]\delta u = 0,
+\label{eq:mathieu_pert_linear}
+\end{equation}
+with the \textbf{effective Mathieu parameter shift}
+\begin{equation}
+\delta a = \frac{8e}{m\Omega^2 R_{\rm rf}^2}
+        \left.\frac{\partial^2\Phi}{\partial x^2}\right|_{x_0}
+      = -\frac{8e E_{\rm bg}}{m\Omega^2 R_{\rm rf}^2}\,
+        A\,k_s^2\,\sin(k_s x_0)\,e^{-k_s h}.
+\label{eq:delta_a}
+\end{equation}
+
+The Floquet characteristic exponent $\mu(a,q)$ for the unperturbed Mathieu
+equation satisfies $\cosh[\mu(a,q)] = 1 - 2\Delta(a,q)$, where $\Delta(a,q)$
+is the Hill determinant.  For $|a|, q^2 \ll 1$, the expansion
+$\mu(a,q) \approx i\sqrt{a + q^2/2} + \mathcal{O}(a^2, q^4)$ recovers the
+pseudopotential secular frequency $\omega_{\rm sec} = (\Omega/2)\,{\rm
+Im}[\mu]$.  The surface perturbation shifts $a \to a + \delta a$, and the
+frequency shift to first order in $\delta a$ is
+\begin{equation}
+\Delta\omega_x^{\rm(Floquet)} = \frac{\Omega}{2}\,
+    \left.\frac{\partial\,{\rm Im}[\mu]}{\partial a}\right|_{a,q}\delta a
+    = \frac{e}{2m\omega_x}\,
+       \left.\frac{\partial^2\Phi}{\partial x^2}\right|_{x_0}
+       \left[1 + \mathcal{O}(q^2)\right].
+\label{eq:floquet_result}
+\end{equation}
+
+The $\mathcal{O}(q^2)$ correction can be evaluated numerically from the
+power-series expansion of the Mathieu characteristic exponent
+$\beta(a,q)$ (McLachlan 1947).  For $q = 0.3$, the exact Floquet
+result differs from the pseudopotential by $\approx 3\%$; for $q = 0.5$, the
+difference reaches $\approx 11\%$.  Table~\ref{tab:floquet} summarises the
+correction, computed from the Mathieu characteristic exponent via the Hill
+determinant (equivalently, the monodromy matrix of the Mathieu equation
+over one rf period, $\beta=(1/\pi)\arccos(\operatorname{tr} M/2)$).  The
+pseudopotential formula of the main text is therefore accurate to better
+than $11\%$ for all practical trap configurations, and the exact Floquet
+result can be substituted when higher precision is required.  Throughout
+the main text, the pseudopotential expressions are used with the
+understanding that the $\mathcal{O}(q^2)$ correction is a known systematic
+that can be calibrated out.
+
+\begin{table}[htb]
+\centering
+\caption{Exact Floquet versus pseudopotential response: relative excess of
+the exact frequency-response derivative $\partial\,\mathrm{Im}\,\mu/\partial a$
+over its pseudopotential value, evaluated at $a=0$ for the $\pi$-periodic
+Mathieu equation $u''+[a-2q\cos(2\tau)]u=0$.  The text figures of
+${\approx}3\%$ at $q=0.3$ and ${\approx}11\%$ at $q=0.5$ are reproduced.}
+\label{tab:floquet}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\hline
+$q$ & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 \\
+\hline
+correction & $0.31\%$ & $1.28\%$ & $3.07\%$ & $6.00\%$ & $10.74\%$ & $18.71\%$ & $33.68\%$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Micromotion coupling to surface topography.}
+Even in a well-compensated trap, the ion executes driven micromotion
+$x_\mu(t) = -(q/2)x_{\rm sec}\cos(\Omega t)$, where $x_{\rm sec}$ is the
+secular displacement.  The surface force $F_s(x_0 + x_\mu(t))$ sampled at
+the rf frequency produces sidebands in the motional spectrum at
+$\omega_x \pm \Omega$.  Expanding $F_s$ to first order in $x_\mu$:
+\begin{equation}
+F_s(x_0 + x_\mu) = F_s(x_0) - \frac{q}{2}x_{\rm sec}
+    \left.\frac{\partial F_s}{\partial x}\right|_{x_0}\!\cos(\Omega t)
+    + \mathcal{O}(x_\mu^2).
+\end{equation}
+The sideband amplitude relative to the carrier is
+$|S_{\pm}|/|S_0| \approx (q/2)(x_{\rm sec}/\lambda_{\rm feature})$,
+where $\lambda_{\rm feature} \sim 2\pi/k$ is the surface feature scale.
+For $q = 0.3$, $x_{\rm sec} \sim 10\,\textup{nm}$ (ground-state-cooled ion),
+and $\lambda_{\rm feature} \sim 30\,\mu\textup{m}$, the sideband ratio is
+${\sim}5 \times 10^{-7}$, below the measurement noise floor.  However,
+for warmer ions ($\bar{n} \sim 10^3$, $x_{\rm sec} \sim 300\,\textup{nm}$)
+or at small $h$ where $\lambda_{\rm feature}$ is smaller, the sidebands
+become detectable and provide an independent diagnostic channel.
+
+\textbf{Sideband-channel transfer function.}
+The sideband channel carries the gradient transfer function
+$H_{\rm mm}(k;h)\propto k_x e^{-kh}$, whose magnitude peaks at $k=1/h$
+($\lambda=2\pi h$) --- one octave below the curvature channel's peak at
+$k=2/h$ --- so the two channels jointly span the accessible band
+(Fig.~S3).  Because $H_{\rm mm}$ is a linear functional of
+the same scalar field $\varphi_s$ of the topography--charge degeneracy
+corollary of the main text, the sideband channel cannot break the
+topography--charge degeneracy; its role is as an independent consistency
+check on $\varphi_s$ and as coverage of the low-$k$ wing of the band,
+where the curvature channel is insensitive.
+
+\textbf{Carrier (rf-averaged) correction.}
+The secular frequency is measured on the rf-time-averaged orbit, so the
+carrier shift samples the curvature convoluted with the micromotion
+distribution.  Taylor-expanding
+$\partial_x^2\Phi(x_0+x_\mu(t))$ and averaging over the rf cycle,
+$\langle x_\mu^2\rangle = q^2x_{\rm sec}^2/8$, gives
+\begin{equation}
+\Delta\omega_x^{\rm(carrier)} = \Delta\omega_x
+    \Bigl[1 + \frac{q^2\pi^2}{4}\Bigl(\frac{x_{\rm sec}}{\lambda_{\rm
+feature}}\Bigr)^{2} + \ldots\Bigr],
+\end{equation}
+since $\partial_x^4\Phi/\partial_x^2\Phi = (2\pi/\lambda_{\rm feature})^2$
+for a sinusoidal feature.  For $q=0.3$ and a cold ion
+($x_{\rm sec}\sim10$\,nm) at $\lambda_{\rm feature}\sim30$\,\textmu m
+the correction is ${\sim}2\times10^{-8}$ --- negligible --- but for a warm
+ion ($x_{\rm sec}\sim300$\,nm) at micrometre-scale features it reaches
+${\sim}2\%$, and must be entered into the Type-B uncertainty budget as a
+bounded systematic with a known analytic form.
+
+\textbf{Anharmonic corrections.}
+The surface perturbation contributes terms beyond quadratic in the ion
+displacement:
+$\Phi^{(1)}(x) = \Phi^{(1)}(x_0) + \partial_x\Phi^{(1)}x
++ \tfrac{1}{2}\partial_x^2\Phi^{(1)}x^2
++ \tfrac{1}{6}\partial_x^3\Phi^{(1)}x^3
++ \tfrac{1}{24}\partial_x^4\Phi^{(1)}x^4 + \cdots$.
+The quartic term shifts the secular frequency at $\mathcal{O}(x_{\rm zp}^2)$
+via first-order perturbation theory in the anharmonicity: normal-ordering
+$(a+a^\dagger)^4 = 6(a^\dagger a)^2 + 6a^\dagger a + 3$ makes the
+$|n\rangle\to|n{+}1\rangle$ level spacing shift by
+$(e/4m\omega_x)\,\partial_x^4\Phi^{(1)}\,x_{\rm zp}^2$, i.e.
+\begin{equation}
+\delta\omega_x^{\rm(anh)} = \frac{e}{4m\omega_x}\,
+    \left.\frac{\partial^4\Phi^{(1)}}{\partial x^4}\right|_{x_0}\!
+    x_{\rm zp}^2,
+\end{equation}
+(the odd cubic term $\partial_x^3\Phi^{(1)}x^3/6$ produces no first-order
+frequency shift).  Here $x_{\rm zp} = \sqrt{\hbar/2m\omega_x} \approx
+13\,\textup{nm}$ for ${}^{40}$Ca$^+$ at $\omega_x/2\pi = 1\,\textup{MHz}$.
+For a sinusoidal surface, $\partial_x^4\Phi^{(1)} \propto k^4\Phi^{(1)}$,
+giving
+$\delta\omega_x^{\rm(anh)}/\Delta\omega_x \sim \tfrac12 x_{\rm zp}^2 k^2$.
+At $h = 40\,\mu\textup{m}$ and $k = 2 \times 10^5\,\textup{rad/m}$,
+this ratio is ${\sim}3 \times 10^{-6}$ --- completely negligible.
+At $h = 5\,\mu\textup{m}$ the band edge $kh = 13$ gives
+${\sim}6 \times 10^{-4}$, still below the $5\,\textup{Hz}$ noise floor for
+the nominal surface amplitude.  Anharmonicity becomes the dominant
+correction only for $h \lesssim 1\,\mu\textup{m}$, where Casimir--Polder
+forces already invalidate the purely electrostatic model.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figS1_trajectory.pdf}
+\caption{Direct numerical integration of the ion's secular equation of
+motion near a sinusoidal surface ($A = 200$\,nm, $\lambda = 40$\,\textmu m,
+$h = 40$\,\textmu m, trap centre at $x_{\rm scan} = \lambda/4$).
+(a) Trajectory over $5$\,ms integration.
+(b) Zoom on $15$ secular periods with surface (blue) and without
+(red dashed).  (c) Power spectral density with the ITF-predicted
+secular peak (red dashed) compared to the unperturbed reference (grey
+dotted).  (d) Zoom on the secular peak: the ITF predicts
+$|\Delta f| \approx 2.8$\,kHz ($\Delta\omega/\omega \approx 0.28\%$),
+consistent with the analytical model.  The ion motion remains stable
+and harmonic, validating the perturbative treatment.}
+\label{fig:trajectory}
+\end{figure}
+
+Direct numerical integration confirms that the ion's secular motion
+remains stable and well-described by the linear perturbation theory for
+topographic amplitudes up to $200$\,nm, providing numerical validation of
+the analytical ITF.
+
+% ===================================================================
+\section{Exact (Rayleigh--Floquet) cross-validation}
+% ===================================================================
+
+To validate the first-order boundary perturbation expansion against an exact
+electrostatic solution, the Laplace equation with the corrugated Dirichlet
+boundary is solved exactly by the Rayleigh (Floquet) mode expansion
+$\Phi(x,z) = -E_{\rm bg}z + \sum_n c_n \sin(nkx)e^{-nkz}$, with the
+coefficients $c_n$ determined by the exact boundary condition
+$\Phi(x, A\sin(kx)) = 0$.
+Figure~\ref{fig:bem}(a) compares the secular frequency shift computed
+exactly and via the linear ITF for a sinusoidal surface of period
+$\lambda = 40$\,\textmu m as a function of amplitude $A$.
+The ITF reproduces the exact result at small $A/h$ (relative error
+$0.01\%$ at $A = 100$\,nm), with deviations growing systematically as
+$0.14\,(kA)^2$ at larger amplitudes
+($1.4\%$ at $A = 2$\,\textmu m) as the nonlinear terms
+$\mathcal{O}(z_s^2)$ become significant (Fig.~\ref{fig:bem}b).
+\textbf{Convergence of the exact solver.}
+The Rayleigh (Floquet) expansion is known to converge for grating
+amplitudes $kA \lesssim 0.448$ (Petit 1966; Millar 1973);
+the entire amplitude range of Fig.~\ref{fig:bem} ($kA \le 0.31$) lies
+within this domain.  With the complete basis ($N=60$ sin and cos
+harmonics each), the relative boundary
+residual $\max_x|\Phi(x,A\sin kx)|/|E_{\rm bg}A|$ is
+$7.9\times10^{-4}$ at $A=10$\,nm, $7.9\times10^{-3}$ at $A=100$\,nm and
+$0.15$ at $A=2$\,\textmu m (the residual is carried by high harmonics
+that decay as $e^{-nkh}$ toward the ion); the frequency-shift observable
+is converged far more rapidly: $|\Delta\omega_x(N{=}120)-
+\Delta\omega_x(N{=}60)|/|\Delta\omega_x|<10^{-8}$ at all plotted
+amplitudes, so the quoted exact-vs-ITF errors are unaffected by
+truncation at the $10^{-4}$ level.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV7_rayleigh_validation.pdf}
+\caption{Exact (Rayleigh) validation of the linear ITF.
+(a) Frequency shift vs.\ surface amplitude: exact (Rayleigh) and ITF (linear).
+(b) Relative error as a function of amplitude, scaling as $(kA)^2$.
+(c) Relative error vs.\ $A/h$ ratio, showing increasing deviation
+at larger amplitudes.}
+\label{fig:bem}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{figO6_bem.pdf}
+\caption{Boundary-element cross-check (single-layer collocation with the
+periodic Green's function).  (a) Secular frequency shift at the crest from
+the BEM solution, the linear ITF, and the exact (complete-basis) Rayleigh
+solution, vs.\ surface amplitude.  (b) Relative errors of the BEM and of
+the linear ITF against the exact solution: the BEM agrees to $\le0.6\%$
+across the amplitude range, independently confirming the ITF at the
+$1\%$ level without any use of the ITF itself.}
+\label{fig:bem_cross}
+\end{figure}
+
+As a further cross-check from an independent discretisation family, the
+Laplace equation is also solved by finite differences (FD) on the
+corrugated domain with a grounded boundary (Fig.~\ref{fig:fd}): the crest
+frequency shift ($A = 100$\,nm, $h = 40$\,\textmu m) converges with the
+number of vertical grid points $N_v = 60$--$200$ toward the ITF
+prediction, confirming the first-order boundary-perturbation result with
+three mutually independent solvers (exact Rayleigh, BEM, FD).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figI14_fem.pdf}
+\caption{Finite-difference cross-check of the linear ITF.
+(a) Convergence of the crest frequency shift ($A = 100$\,nm,
+$h = 40$\,\textmu m) with the number of vertical grid points $N_v$
+($60$--$200$), approaching the ITF prediction (relative error vs.\ ITF).
+(b) The corrugated computational domain with grounded boundary, showing
+the ion plane at $h = 40$\,\textmu m.}
+\label{fig:fd}
+\end{figure}
+
+% ===================================================================
+\section{Robustness to model violation}
+% ===================================================================
+
+Three key model assumptions are systematically violated to map the
+breakdown of the reconstruction (Fig.~\ref{fig:violation}):
+(i)~\textbf{Non-perfect conductor}: a $d=2$\,\textmu m dielectric overlayer
+($\varepsilon_r = 2$--$10$) on the conducting surface modifies the surface
+potential by the exact three-layer factor
+$F(k)=\varepsilon_r e^{kd}/[\varepsilon_r\cosh(kd)+\sinh(kd)]$
+(derived in the main text), which
+enhances the apparent heights by $+9\%$ to $+40\%$ across the passband;
+(ii)~\textbf{non-uniform $E_{\rm bg}$}: a gradient
+across the field of view; (iii)~\textbf{large surface slope}: violating
+the $Ak \ll 1$ condition.  For each scenario, data are generated with the violated model and inverted assuming the
+nominal (un-violated) model.  The reconstruction error is shown in
+Fig.~\ref{fig:violation} versus the violation parameter for each
+scenario: the amplitude error $|1 - R_q^{\rm rec}/R_q|$ for the
+dielectric overlayer, which primarily rescales the reconstructed
+heights (to $R_q^{\rm rec}>R_q$, since $F>1$), and the correlation loss $1-r$ for the field-gradient and
+large-slope violations, which distort the reconstructed shape.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV5_model_violation.pdf}
+\caption{Robustness of the reconstruction to model violations.
+(a) Dielectric overlayer ($d=2$\,\textmu m): amplitude error
+$|1 - R_q^{\rm rec}/R_q|$ vs.\ $\varepsilon_r$, computed with the exact
+three-layer factor $F(k)$ (which takes values $1.09$--$1.40$ across the
+passband for $\varepsilon_r=2$--$10$).
+(b) Non-uniform $E_{\rm bg}$: correlation loss $1-r$ vs.\ gradient amplitude.
+(c) Large-slope breakdown: correlation loss $1-r$ vs.\ $Ak$ parameter.}
+\label{fig:violation}
+\end{figure}
+
+% ===================================================================
+\section{Monte Carlo uncertainty propagation}
+% ===================================================================
+
+The GUM-compliant budget of the main text is a single-point
+evaluation.  Here, a full Monte Carlo propagation (JCGM 101:2008,
+Supplement~1) is performed: $N_{\rm MC} = 5 \times 10^3$ realisations
+of the forward + inversion chain are computed, sampling all six input
+quantities from their uncertainty distributions.
+Figure~\ref{fig:mc}(a) shows the reconstructed cross-section with the
+95\% coverage interval for a sinusoidal grating
+($A = 100$\,nm, $\lambda = 31.4$\,\textmu m, i.e.~$k = 2\times 10^5$
+rad/m, the GUM evaluation point) at $h = 40$\,\textmu m.
+
+The combined standard uncertainty reaches $u_c(z) \approx 300$\,nm at the
+grating crest (Fig.~\ref{fig:mc}b), reproducing the GUM single-point
+budget ($319$\,nm); the field-averaged value is ${\sim}200$\,nm because
+the charge sensitivity is modulated sinusoidally across the field of view.
+The distribution at the crest (Fig.~\ref{fig:mc}c) is approximately
+Gaussian, confirming that the uncertainty propagation is well-behaved
+despite the nonlinearity of the inversion.  The Monte Carlo result is thus
+consistent with the GUM budget, the agreement confirming that the two
+approaches (single-point linearisation and full nonlinear propagation)
+describe the same dominant surface-charge uncertainty.  An explicit
+coverage check closes the metrological loop: over $2\times10^{4}$ Monte
+Carlo realisations at the crest, the fraction of true heights falling
+inside the propagated $95\%$ interval ($\pm1.96\,u_c$ with
+$u_c=319$\,nm) is $95.1\%$, with an estimate bias of $0.7$\,nm --- the
+interval is correctly calibrated.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV6_monte_carlo.pdf}
+\caption{Monte Carlo uncertainty propagation.
+(a) Reconstructed cross-section with 95\% coverage interval.
+(b) Spatial map of combined standard uncertainty $u_c(z)$.
+(c) Distribution of reconstructed height at the signal peak,
+with 95\% coverage interval.}
+\label{fig:mc}
+\end{figure}
+
+% ===================================================================
+\section{Analytical benchmark: step-edge response}
+% ===================================================================
+
+As an independent check of the numerical implementation, the frequency
+shift for a surface step edge ($\Delta z = 200$\,nm at $x = 0$) is
+computed in closed form from the Poisson integral.  For
+$z_s(x) = \Delta z\,\Theta(x)$ (Heaviside step), the second derivative
+of the propagated potential yields:
+\begin{equation}
+\Delta\omega_x(x) = -\frac{e E_{\rm bg}\Delta z}{2m\omega_x}\,
+    \frac{2}{\pi}\,\frac{x h}{(x^2 + h^2)^2},
+\label{eq:step_solution}
+\end{equation}
+with extrema at $x = \pm h/\sqrt{3}$ and a full width at half maximum of
+${\approx}0.34h$.
+
+\textbf{Point spread function.}
+The PSF is the derivative of the edge spread function,
+$\mathrm{PSF}(x) = d\,\mathrm{ESF}/dx$, and follows in closed form:
+\begin{equation}
+\mathrm{PSF}(x) = -\frac{e E_{\rm bg}\Delta z}{2m\omega_x}\,
+    \frac{2h}{\pi}\,\frac{h^2 - 3x^2}{(x^2+h^2)^3},
+\label{eq:psf}
+\end{equation}
+with first zero at $x = h/\sqrt{3}$ (the ESF extremum), negative sidelobes
+of relative amplitude ${\approx}0.09$, and asymptotic decay
+$\mathrm{PSF}\sim 3x^{-4}$ --- the direct electrostatic analogue of an
+optical PSF.  A Rayleigh-style resolution criterion based on the first
+zero gives $\Delta x_{\rm res}=2h/\sqrt3\approx1.15h$, consistent with the
+$50\%$ MTF cutoff $\lambda_{\min}\approx1.51h$ and the ESF FWHM
+$0.34h$; Eq.~(\ref{eq:psf}) was verified against numerical
+differentiation of the ESF to $4\times10^{-5}$ relative accuracy.
+
+\textbf{Gaussian-ridge benchmark (fully closed form).}
+For a 1D Gaussian ridge $z_s(x)=A\exp(-x^2/2\sigma^2)$, the half-space
+Poisson integral evaluates in closed form:
+\begin{equation}
+\Phi^{(1)}(x,h) = E_{\rm bg}A\,
+    \operatorname{Re}\bigl[e^{u^2}\operatorname{erfc}(u)\bigr],
+\qquad
+u = \frac{h - ix}{\sqrt{2}\,\sigma},
+\label{eq:gauss_ridge}
+\end{equation}
+(the product $e^{u^2}\operatorname{erfc}(u)$, the scaled complementary
+error function, is computed stably as $\operatorname{erfcx}(u)$), and
+$\Delta\omega_x = -(e/2m\omega_x)\,\partial_x^2\Phi^{(1)}$ follows by
+differentiating the recurrence
+$d[e^{u^2}\operatorname{erfc}(u)]/du = 2u\,e^{u^2}\operatorname{erfc}(u)
+-2/\sqrt\pi$.  For $A=100$\,nm, $\sigma=5$\,\textmu m, $h=40$\,\textmu m
+the peak shift is $|\Delta\omega_x|/2\pi = 3488.2$\,Hz;
+Eq.~(\ref{eq:gauss_ridge}) agrees with direct quadrature of the Poisson
+integral to $10^{-15}$ relative accuracy and with the FFT forward model
+to $6\times10^{-6}$ (peak-to-peak), providing an independent,
+implementation-free check of the 2D code in the ridge limit.
+
+Figure~\ref{fig:step} compares the analytical result
+to the FFT-based numerical computation; the two agree to relative RMS
+error $2.3\times10^{-3}$ (maximum $3.9\times10^{-3}$) over the edge
+region $h/\sqrt3<|x|<3h$, the band $|x|<h/\sqrt3$ being excluded because
+the analytic signal crosses zero there and the relative metric diverges;
+the residual is the discretisation of the discontinuity and the periodic-wrap
+baseline of the FFT domain.  Equation~(\ref{eq:step_solution}) provides the
+\textbf{edge spread function} of the ion probe, confirming that the
+lateral resolution is fundamentally limited to ${\sim}h$.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV8_step_edge.pdf}
+\caption{Analytical step-edge benchmark.
+(a) Full step-edge response: $\Delta\omega_x(x)$ for a 200\,nm step.
+The extrema occur at $x = \pm h/\sqrt{3}$, with FWHM ${\approx}0.34h$.
+(b) Zoom at the edge, with key features annotated.
+(c) Relative error on the masked domain $h/\sqrt3<|x|<3h$; the
+zero-crossing band (shaded) is excluded.}
+\label{fig:step}
+\end{figure}
+
+\textbf{3D analytical benchmark: Gaussian bump.}
+As a fully three-dimensional test of the ITF, consider a Gaussian surface
+bump $z_s(x,y) = A\exp[-(x^2+y^2)/2\sigma^2]$.  The frequency shift can be
+evaluated semi-analytically.  In Fourier space,
+$\tilde{z}_s(k) = 2\pi A\sigma^2 e^{-\sigma^2 k^2/2}$.  The propagated
+signal is $\Delta\tilde{\omega}_x = H_x \tilde{z}_s$, and the real-space
+$\Delta\omega_x(x,y)$ is obtained by inverse FFT.  For $A = 100\,\textup{nm}$,
+$\sigma = 5\,\mu\textup{m}$, $h = 40\,\mu\textup{m}$, the peak frequency shift
+is $|\Delta\omega_x|/2\pi \approx 12\,\textup{Hz}$ --- detectable above the
+$5\,\textup{Hz}$ noise floor with $N_{\rm rep} \sim 10$ repetitions.
+This benchmark confirms that the ITF correctly handles fully 2D surface
+features with azimuthal curvature, complementing the 1D step-edge test
+and the exact Rayleigh cross-validation.  The FFT-based forward model reproduces
+the semi-analytical result to within $10^{-12}$ relative error.
+
+\textbf{Grid-convergence study.}
+The numerical forward model uses a $128 \times 128$ grid with
+$\Delta x = 0.5\,\mu\textup{m}$ (field of view $L = 64\,\mu\textup{m}$).
+The smallest resolved wavelength at $h = 40\,\mu\textup{m}$ is
+$\lambda_{\min} \approx 60\,\mu\textup{m}$, corresponding to
+$\sim 120$ grid points per wavelength --- well within the Nyquist
+criterion and far above the minimum ${\sim}10$ points per wavelength
+required for $<1\%$ FFT error.  Varying $N$ from $64$ to $512$ changes
+the reconstructed Pearson correlation by $<0.1\%$ for the synthetic test
+case, confirming convergence.  The dominant numerical error source is not
+the grid resolution but the periodic boundary condition implicit in the
+FFT, which introduces $\mathcal{O}(e^{-L/h})$ edge effects from the
+wrap-around of the $e^{-kh}$ filter.  For $L = 64\,\mu\textup{m}$ and
+$h = 40\,\mu\textup{m}$, this error is ${\sim}2 \times 10^{-3}$ of the
+peak signal, negligible for the present analysis.  A third independent
+numerical validation is provided by a boundary-element (single-layer
+collocation) solver with the periodic Green's function, which solves the
+corrugated-boundary problem without any use of the ITF and reproduces the
+exact Rayleigh result to ${\leq}0.6\%$ across the amplitude range
+(Fig.~\ref{fig:bem_cross}).
+
+% ===================================================================
+\section{Calibration and traceability considerations}
+% ===================================================================
+
+A five-step calibration procedure establishes SI traceability:
+(1)~trap field characterisation by measuring secular frequencies versus
+applied dc voltages to extract $E_{\rm bg}$;
+(2)~height calibration via electrical capacitance measurement and stage
+interferometry;
+(3)~ITF calibration using a PTB/NIST-certified sinusoidal grating with known
+$A_{\rm ref}$, $\lambda_{\rm ref}$, fitting the measured $|\Delta\omega_x|$
+to the ITF of the main text;
+(4)~charge background characterisation by a reference scan at
+$h_{\rm ref} \gg h_{\rm meas}$ where the topographic signal is negligible;
+and (5)~verification against a certified step-height standard.
+Traceability is to the SI metre (calibrated grating), SI second
+(GPS-disciplined clock), and SI volt (Josephson voltage standard).
+
+The traceability chain is:
+\[
+\textup{SI metre} \to \textup{laser interferometer} \to \textup{certified grating}
+\to \textup{ITF calibration} \to z_s(x,y),
+\]
+\[
+\textup{SI second} \to \textup{GPS-disciplined Rb clock} \to
+\textup{rf source} \to \omega_x \to \Delta\omega_x,
+\]
+\[
+\textup{SI volt} \to \textup{Josephson array} \to \textup{dc voltage source}
+\to E_{\rm bg} \to \textup{surface potential scale}.
+\]
+The calibration uncertainty budget at each step is:
+step~(1), $u(E_{\rm bg})/E_{\rm bg} \sim 10^{-3}$ (limited by dc voltage
+source stability); step~(2), $u(h) \sim 100\,\textup{nm}$ (laser interferometry
++ capacitance); step~(3), $u(H_x)/H_x \sim 10^{-2}$ (grating certification
++ frequency measurement); step~(4), $u(\phi_{\rm charge}) \sim 1\,\textup{mV}$
+(residual after UV cleaning); step~(5), $u(z_{\rm ref}) \sim 1\,\textup{nm}$
+(certified step height).
+The combined calibration uncertainty propagates into the measurement
+uncertainty budget of the main text through the sensitivity
+coefficients $c_i = |\partial z/\partial x_i|$.
+
+% ===================================================================
+\section{Symbols and constants}
+% ===================================================================
+
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\hline
+Symbol & Meaning & Value (nominal) \\
+\hline
+$m$ & ion mass (${}^{40}$Ca$^+$) & $40$\,amu \\
+$e$ & elementary charge & $1.602\times10^{-19}$\,C \\
+$\omega_x,\omega_y$ & secular frequencies & $2\pi\times1$\,MHz \\
+$E_{\rm bg}$ & background surface field & $10^4$\,V/m \\
+$h$ & ion--surface standoff & $5$--$200\,\mu\textup{m}$ \\
+$z_s(x,y)$ & surface height profile & \\
+$\Phi^{(1)}$ & first-order boundary perturbation of the potential & \\
+$\sigma(x,y)$ & surface charge density & $\lesssim10^{-3}$\,C/m$^2$ \\
+$C = eE_{\rm bg}/2m\omega_x$ & ITF prefactor & $1.92\times10^3$\,m/s \\
+$H_x(k_x,k_y;h)$ & instrument transfer function & $-Ck_x^2e^{-kh}$ \\
+$\eta(k,h)$ & self-image correction & $\le0.15\%$ at $h=40\,\mu\textup{m}$ \\
+$F(k)$ & dielectric-film factor & $1+kd(\varepsilon_r-1)/\varepsilon_r$ \\
+$k_{\rm opt},\lambda_{\rm opt}$ & ITF peak & $2/h,\;\pi h$ \\
+$\lambda_{\min}^{\rm(MTF)}$ & 50\% MTF short-wavelength cutoff & $1.51h$ \\
+$\Delta k_{\rm FWHM}$ & ITF bandwidth & $3.395/h$ \\
+$Q$ & passband quality factor & $0.589$ \\
+$\delta\omega/2\pi$ & frequency noise floor & $5$\,Hz (conservative) \\
+$\delta\omega_{\rm QPN}/2\pi$ & quantum projection noise floor & $0.7$\,Hz \\
+$T_2$ & motional coherence time & $10$\,ms \\
+$x_{\rm zp}$ & zero-point motion & $13$\,nm \\
+$N,L,\Delta x$ & grid size, FOV, pixel & $128$, $64\,\mu\textup{m}$, $0.5\,\mu\textup{m}$ \\
+$\sigma_n$ & singular values & main text \\
+$r_{\rm eff}$ & effective rank & main text \\
+$u_c(z), U$ & combined and expanded uncertainty & $319$\,nm,\;$638$\,nm \\
+\hline
+\end{tabular}
+\end{center}
+
+% ===================================================================
+\section{Experimental roadmap}
+% ===================================================================
+
+The proposed implementation can be constructed from established
+trapped-ion, precision-positioning and surface-characterisation
+technologies, although their integration at the required ion--surface
+separation presents significant experimental challenges.  The following
+phased roadmap assumes existing surface-electrode Paul trap
+infrastructure (cf.\ S{\"a}gesser et al., 2026):
+
+\begin{enumerate}
+\item \textbf{Phase~1 --- Static demonstration (0--12 months):}
+      Position a ground-state-cooled ${}^{40}$Ca$^+$ at fixed height
+      $h \approx 40\,\mu\textup{m}$ above a certified sinusoidal grating
+      ($A = 50$\,nm, $\lambda = 20\,\mu\textup{m}$).  Measure
+      $\Delta\omega_x$ via Ramsey interferometry with $\tau = 1$\,ms
+      probe time, $N_{\rm rep} = 10^3$ repetitions.  Confirm the
+      $k^2 e^{-kh}$ scaling by varying $h$ through the dc electrode
+      voltages.  \textit{Expected signal:} the ITF predicts
+      $|\Delta\omega_x|/2\pi = 5.3$\,Hz at $h=40$\,\textmu m --- at the
+      conservative 5\,Hz floor, so the scaling test should start at
+      $h\le30$\,\textmu m ($122$\,Hz at $h=30$\,\textmu m;
+      $2.8$\,kHz at $h=20$\,\textmu m; $65$\,kHz at $h=10$\,\textmu m),
+      where the single-pixel SNR exceeds $10$ for $N_{\rm rep}\sim10^2$.
+      \textit{Key risk:} rf stability at the $10^{-6}$ level;
+      \textit{mitigation:} stabilise rf source with a GPS-disciplined
+      oscillator.
+
+\item \textbf{Phase~2 --- 1D scanning (12--24 months):}
+      Scan the ion along one axis ($x$) above a structured test surface
+      with known topography.  Reconstruct the 1D profile via Tikhonov
+      deconvolution and compare with AFM reference.  \textit{Key risk:}
+      micromotion-induced position dependence of $\Delta\omega_x$;
+      \textit{mitigation:} map micromotion via rf--photon correlation at
+      each scan position and subtract the systematic.
+
+\item \textbf{Phase~3 --- 2D scanning and full inversion (24--36 months):}
+      Perform a full $128 \times 128$ pixel scan, apply 2D Tikhonov
+      inversion, and compare the reconstructed $z_s(x,y)$ with AFM.
+      Demonstrate the resolution--height trade-off (vary $h$ from
+      $5$\,\textmu m to $100$\,\textmu m).  \textit{Key risk:}
+      scan duration ($\sim 4.5$\,hours at 1\,s/pixel);
+      \textit{mitigation:} implement real-time Bayesian adaptive scanning.
+
+\item \textbf{Phase~4 --- Inter-laboratory comparison (36--60 months):}
+      Two independent laboratories repeat the measurement on the same
+      certified test surface.  Compare reconstructed $z_s(x,y)$ maps
+      and uncertainty budgets.  Submit results to ISO/TC~213 as the
+      basis for a new ISO~25178-6 subclass.  \textit{Key risk:}
+      reproducibility of surface charge conditions; \textit{mitigation:}
+      standardised UV-cleaning protocol before each measurement.
+\end{enumerate}
+
+\begin{table}[htb]
+\centering
+\caption{Phase-by-phase feasibility summary under the consistent noise model
+of Sec.~3 of the main text ($\dot{\bar n}=10^2\,(h/40\,\mu\textup{m})^{-3.7}$
+quanta/s): measurement duration, single-pixel signal-to-noise ratio
+against the $5$\,Hz floor, and the dominant noise branch.  The heating
+coherence times $T_2=1/\dot{\bar n}$ are $10$\,ms ($40$\,\textmu m),
+$3.4$\,ms ($30$\,\textmu m), $0.77$\,ms ($20$\,\textmu m) and
+$0.06$\,ms ($10$\,\textmu m).}
+\label{tab:roadmap}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lp{3.6cm}cp{2.4cm}p{3.0cm}@{}}
+\hline
+Phase & Measurement & Duration & SNR (5\,Hz floor) & Dominant noise \\
+\hline
+1 & 1 point, $N_{\rm rep}=10^3$, $\tau=1$\,ms & 1\,s & 24 (122\,Hz at $h=30$\,\textmu m) & technical \\
+2 & 1D scan, ${\sim}10^2$ points & ${\sim}10^2$\,s & $5.6\times10^{2}$ at $h=20$\,\textmu m & technical \\
+3 & $128\times128$ at 1\,s/pixel & 4.55\,h & --- & technical ($h\ge40$\,\textmu m); heating ($h\lesssim5$\,\textmu m) \\
+\hline
+\end{tabular}
+\end{table}
+
+The total cost of the required apparatus (existing ion trap, laser
+systems, and vacuum chamber) is dominated by the UHV system
+(${\sim}\$200$\,k) and the laser setup (${\sim}\$150$\,k); the trap
+chip and electronics add ${\sim}\$30$\,k.  This is comparable to a
+research-grade AFM and substantially less than a cryogenic STM.
+
+% ===================================================================
+\section{Forward-model derivations}
+% ===================================================================
+
+\subsection{Second-order boundary perturbation}
+
+$\Phi^{(2)}$ solves $\nabla^2\Phi^{(2)}=0$ in $z>0$ with Dirichlet datum
+$\Phi^{(2)}(x,y,0)=-z_s\,\partial_z\Phi^{(1)}|_{z=0}$ (the quadratic
+Taylor term of $\Phi^{(0)}$ vanishes because the background field is
+uniform, $\partial_{zz}^2\Phi^{(0)}=0$).  From
+$\widetilde{\partial_z\Phi^{(1)}}(\mathbf{k},0)
+=-|\mathbf{k}|\,E_{\rm bg}\,\tilde z_s(\mathbf{k})$ and the convolution
+theorem, the datum transform is
+\begin{equation*}
+\widetilde{\Phi^{(2)}}(\mathbf{k},0)=E_{\rm bg}\int\tilde
+z_s(\mathbf{k}')|\mathbf{k}-\mathbf{k}'|\tilde
+z_s(\mathbf{k}-\mathbf{k}')d^2\mathbf{k}'/(2\pi)^2,
+\end{equation*}
+and Poisson propagation multiplies by $e^{-kz}$.  The result was verified
+against direct quadrature of the product $-z_s\,\partial_z\Phi^{(1)}|_{z=0}$
+to machine precision, and its second harmonic at the ion reproduces the
+$c_2$ coefficient of the exact Rayleigh expansion.
+
+\subsection{Geometric majorant for the perturbation series}
+
+Each normal derivative $\partial_z^{n+1-m}\Phi^{(m)}|_{z=0}$ acts as
+multiplication by at most $k_{\max}^{n+1-m}$ in Fourier space, so the
+recursion of the main text yields the majorant sequence
+\begin{equation*}
+a_{n+1}=\sum_{m=1}^{n}(z_{\max}k_{\max})^{n+1-m}\frac{a_m}{(n+1-m)!}
+\end{equation*}
+with $a_1=\|\Phi^{(1)}(\cdot,0)\|_{L^\infty}$.  Its generating function
+$A(x)=\sum_{n\ge1}a_nx^n$ satisfies
+\begin{equation*}
+A(x)=a_1x+A(x)(e^{z_{\max}k_{\max}x}-1),
+\end{equation*}
+hence $A(x)=a_1x/(2-e^{z_{\max}k_{\max}x})$, whose radius of convergence
+is the geometric bound $(\ln 2)/(z_{\max}k_{\max})$.
+
+\subsection{Self-image (ion-induced) correction}
+
+Applying the boundary perturbation of the main text to the charge--image
+pair potential $\Phi_{\rm pair}=(e/4\pi\varepsilon_0)(r_1^{-1}-r_2^{-1})$,
+whose normal derivative at the mean plane is
+$\partial_z\Phi_{\rm pair}|_{z=0}=(e h/2\pi\varepsilon_0)(\rho^2+h^2)^{-3/2}$
+with $\rho=|\mathbf{r}-\mathbf{r}_0|$, gives the induced boundary datum
+$\psi=-z_s\,\partial_z\Phi_{\rm pair}|_{z=0}
+= -z_s\,(e h/2\pi\varepsilon_0)(\rho^2+h^2)^{-3/2}$.  Its Fourier transform
+follows from the Hankel transform
+$\mathcal{F}[(\rho^2+h^2)^{-3/2}](q)=2\pi e^{-qh}/h$ as the convolution
+\begin{equation*}
+\tilde{\psi}(k)=-(e/4\pi^2\varepsilon_0)\int\tilde{z}_s(k')e^{-|k-k'|h}\,d^2k',
+\end{equation*}
+and Poisson propagation to the ion multiplies by $e^{-kh}$.  Evaluating
+this convolution at the ion for a Fourier-mode surface and summing the
+Hankel series yields the closed local form of the self-image lemma in the
+main text.
+
+\end{document}

@@ -1,0 +1,32 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Data and binaries
+data/
+*.zip
+*.npy
+*.nc
+
+# Build outputs
+*.pdf
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.toc
+*.lof
+*.lot
+*.dvi
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# OS / editor
+.DS_Store
+.vscode/
+
+# Archives
+qespm_code_v1.0.zip

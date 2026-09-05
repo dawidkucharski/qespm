@@ -1,0 +1,279 @@
+% ===================================================================
+%  THEORY-ONLY PAPER STRATEGY
+%  How to publish a simulation/theory paper without experimental data
+%  Target: Physical Review A / Physical Review Research / New J. Phys.
+% ===================================================================
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\begin{document}
+
+\title{\bfseries Theory-Only Publication Strategy\\
+       for QESPM Without Experimental Data}
+\date{14 July 2026}
+\maketitle
+
+\section{The Core Problem}
+
+The current manuscript reads like an experimental proposal: calibration
+procedures, ISO standards, five-step protocols, equipment lists.  Without
+experimental data, this framing is weak --- reviewers will ask ``where is
+the experiment?''  The manuscript must be \textbf{repositioned as a
+theoretical contribution} that stands on its own mathematical and conceptual
+merits.
+
+\section{What Makes a Theory-Only Paper Publishable}
+
+Strong theory papers without experiments share these characteristics:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{A rigorous mathematical result} --- a theorem, a closed-form
+          solution, or an analytical bound that was not previously known.
+    \item \textbf{A counter-intuitive physical insight} --- something that
+          changes how researchers think about the problem.
+    \item \textbf{Comprehensive parameter-space exploration} --- phase
+          diagrams, scaling laws, and regime maps derived analytically
+          and verified numerically.
+    \item \textbf{Clear, falsifiable experimental predictions} --- specific
+          numbers that an experimental group can test within 1--2 years.
+    \item \textbf{Connection to known puzzles} --- the theory explains or
+          illuminates an existing experimental anomaly.
+\end{enumerate}
+
+\section{Specific Improvements for This Project}
+
+\subsection{1. Analytical scaling laws (replace numerical spot-checks)}
+
+Instead of ``at $h = 40$\,\textmu m, SNR = 80,'' derive \textbf{universal
+scaling relations}:
+
+\begin{itemize}
+    \item \textbf{Signal scaling:}
+    $|\Delta\omega_x| \propto A \cdot k^2 e^{-kh} \cdot (eE_{\rm bg}/2m\omega_x)$
+    \item \textbf{Optimal wavenumber:}
+    $k_{\rm opt} = 2/h$ (derived from $d/dk[k^2 e^{-kh}] = 0$)
+    \item \textbf{Peak signal:}
+    $|\Delta\omega_x|_{\rm max} = (eE_{\rm bg}/2m\omega_x) \cdot (4A/h^2)e^{-2}$
+    \item \textbf{Resolution--height trade-off:}
+    $\delta x_{\rm lat} \cdot \delta z_{\rm vert} \propto h$ (derived analytically)
+    \item \textbf{Effective rank scaling:}
+    $r_{\rm eff} \propto 1/h$ (from SVD analysis, fitted numerically with
+    analytical justification)
+\end{itemize}
+
+These scaling laws are \textbf{the primary deliverable} of a theory paper.
+They allow any experimentalist to compute the expected signal for their
+specific parameters without re-running the simulation.
+
+\subsection{2. Rigorous Floquet analysis (beyond pseudopotential)}
+
+The current derivation uses the pseudopotential approximation
+($\omega_{\rm sec} \approx (\Omega/2)\sqrt{a + q^2/2}$).  For a theory
+paper, derive the \textbf{exact Floquet exponent} for the Mathieu equation
+with a sinusoidal surface perturbation:
+
+\begin{equation}
+\ddot{x} + [a - 2q\cos(2\tau) + \varepsilon\sin(\kappa\tau)]x = 0,
+\end{equation}
+
+where $\varepsilon \propto A k^2 e^{-kh}$ is the surface perturbation and
+$\kappa = 2k v_{\rm scan}/\Omega$ is the Doppler-shifted spatial frequency
+experienced by the moving ion.  Compute the Floquet exponent
+$\mu(a,q,\varepsilon,\kappa)$ perturbatively and identify the resonance
+conditions where $\mu$ becomes imaginary (parametric instability).
+
+\textbf{This is publishable in itself} --- the Floquet analysis of a Paul
+trap with a spatially periodic surface perturbation is, to my knowledge,
+a new problem in the Mathieu equation literature.
+
+\subsection{3. Phase diagram in $(h, k, A, {\rm SNR})$ space}
+
+Replace isolated numerical examples with a comprehensive phase diagram:
+
+\begin{itemize}
+    \item \textbf{Detectability boundary:} ${\rm SNR}(h,k,A) = 1$ surface
+          in $(h,k,A)$ space.
+    \item \textbf{Perturbation validity boundary:}
+          $|\Delta\omega_x|/\omega_x = 0.05$ surface.
+    \item \textbf{Lamb-Dicke validity boundary:}
+          $\Delta x_{\rm ion}/\lambda_{\rm feature} = 0.1$ surface.
+    \item \textbf{Heating-limited boundary:}
+          $\dot{\bar{n}} \cdot \tau_{\rm coh} = 1$ surface.
+\end{itemize}
+
+The intersection of these boundaries defines the \textbf{operational regime}
+where QESPM is both feasible and well-described by the theory.  Plot this
+as a 2D projection (e.g.\ $(h, \lambda)$ plane for fixed $A$) with shaded
+regions.
+
+\subsection{4. Falsifiable predictions}
+
+A theory paper must give experimentalists something to test.  Five specific,
+falsifiable predictions:
+
+\begin{enumerate}[label=P\arabic*., leftmargin=*]
+    \item \textbf{Scaling law test:} For a sinusoidal grating with
+          $A = 50$\,nm, $\lambda = 20$\,\textmu m, measure
+          $|\Delta\omega_x|$ as a function of $h$ from 10--100\,\textmu m
+          and verify the $h^{-2}e^{-2\pi h/\lambda}$ scaling.  Deviation
+          from this scaling at small $h$ indicates the onset of Casimir--Polder
+          forces or boundary perturbation breakdown.
+    
+    \item \textbf{Band-pass signature:} Scan the ion across a surface with
+          broadband roughness (not a single sinusoid).  The power spectrum
+          of $\Delta\omega_x(x)$ should show the characteristic
+          $k^4 e^{-2kh}$ shape, peaking at $k = 2/h$.  This is a
+          \textbf{smoking-gun signature} of the ion-probe ITF.
+    
+    \item \textbf{Charge elimination test:} Measure $\Delta\omega_x$ before
+          and after in-situ UV irradiation.  The difference isolates the
+          removable charge contribution.  The residual should correlate
+          with AFM-measured topography.
+    
+    \item \textbf{Micromotion cross-validation:} Simultaneously measure
+          $\Delta\omega_x$ (curvature) and $\beta_x$ (gradient).  For a
+          Gaussian surface feature, the ratio
+          $\beta_x / (\partial\Delta\omega_x/\partial x)$ should be
+          constant --- a self-consistency check.
+    
+    \item \textbf{Quantum projection noise floor:} With the ion cooled to
+          $\bar{n} < 0.1$, the Allan deviation of repeated frequency
+          measurements should follow $\sigma_\omega(\tau) \propto 1/\sqrt{\tau}$
+          down to the quantum projection noise limit, below which it should
+          plateau.  The plateau level is predicted by Eq.~(xx).
+\end{enumerate}
+
+\subsection{5. Connection to known experimental anomalies}
+
+Link the theory to existing puzzles in the trapped-ion literature:
+
+\begin{itemize}
+    \item \textbf{Anomalous heating:} The $h^{-4}$ scaling of heating rates
+          was empirically observed by Turchette et al.\ (2000) and
+          Deslauriers et al.\ (2006) but the microscopic mechanism remains
+          debated.  The QESPM framework provides a \textbf{spatially resolved}
+          probe of the noise source distribution --- if heating-rate maps
+          correlate with surface topography, the noise mechanism is geometric
+          (patch potentials); if they are uniform, it is intrinsic (Johnson
+          noise).
+    
+    \item \textbf{Patch potential correlation length:} The spatial
+          correlation length $\ell_c$ of patch potentials is unknown but
+          crucial for ion-trap design.  QESPM can measure $\ell_c$ directly
+          by scanning the ion and computing the autocorrelation of
+          $\Delta\omega_x(x,y)$.  This is a measurement that \textbf{no
+          existing technique can perform}.
+\end{itemize}
+
+\section{Recommended Manuscript Restructuring}
+
+\begin{center}
+\begin{tabular}{@{}p{3.5cm}ll@{}}
+\toprule
+Current section & Problem & Repositioned as \\
+\midrule
+``I propose a novel surface metrology modality...'' & Reads as experimental proposal &
+``I develop a theoretical framework for surface potential sensing with a single trapped ion...'' \\
+Calibration procedure (5 steps) & Too applied for theory paper & Move to Appendix / SI \\
+ISO 25178 classification & Premature without data & Move to Discussion as ``future metrological application'' \\
+Numerical spot-checks at specific $(h,k,A)$ & Not systematic &
+Universal scaling laws + phase diagrams \\
+Two-height ``separation'' claim & Now proven impossible &
+\textbf{Theorem:} two-height scanning cannot separate topography from charge (rank-1 proof) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Proposed New Structure}
+
+\begin{enumerate}
+    \item \textbf{Introduction} (1.5 pages) --- reframe as theoretical
+          contribution: ``I develop the theoretical framework for a new
+          class of quantum sensor...''
+    \item \textbf{Forward model and instrument transfer function} (2 pages)
+          --- boundary perturbation theory + ITF derivation (already done)
+    \item \textbf{Structure of the inverse problem} (2 pages)
+          \begin{itemize}
+              \item SVD analysis: effective rank, information content
+              \item Resolution matrix and spatially-resolved resolution
+              \item \textbf{Theorem:} two-height degeneracy (rank-1 proof)
+          \end{itemize}
+    \item \textbf{Scaling laws and operational regime} (2 pages)
+          \begin{itemize}
+              \item Analytical scaling relations derived
+              \item Phase diagram in $(h, \lambda, A)$ space
+              \item Detectability, validity, and heating boundaries
+          \end{itemize}
+    \item \textbf{Quantum-limited sensitivity} (1.5 pages)
+          \begin{itemize}
+              \item QFI for coherent, squeezed, and NOON states
+              \item Quantum advantage vs.\ spatial frequency
+          \end{itemize}
+    \item \textbf{Predictions for experiment} (1.5 pages)
+          \begin{itemize}
+              \item Five falsifiable predictions (P1--P5 above)
+              \item Connection to anomalous heating puzzle
+              \item Patch potential correlation length measurement
+          \end{itemize}
+    \item \textbf{Discussion and outlook} (1 page)
+    \item \textbf{Appendix:} Calibration considerations, ISO alignment,
+          numerical methods
+\end{enumerate}
+
+\section{Journal Targeting}
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Journal & Theory-friendly? & Impact & Fit \\
+\midrule
+\textbf{Physical Review A} & Yes --- strong theory tradition & IF $\sim 2.9$ & \textbf{Best fit}: atomic physics + rigorous theory \\
+\textbf{Physical Review Research} & Yes --- fully open access & New, growing & Good fit: interdisciplinary \\
+\textbf{New Journal of Physics} & Yes --- open access & IF $\sim 3.5$ & Good fit: quantum + surface science \\
+\textbf{Quantum Sci. Technol.} & Accepts theory & IF $\sim 5.5$ & Requires stronger quantum advantage angle \\
+\textbf{Phys. Rev. Applied} & Prefers experimental validation & IF $\sim 4.8$ & Only if predictions are very specific \\
+\textbf{Phys. Rev. Letters} & Requires major breakthrough & IF $\sim 8.0$ & Only if Floquet theorem is the main result \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Recommendation:} Target \textbf{Physical Review A} with the
+restructured theory paper.  The Floquet analysis of a Mathieu equation
+with periodic surface perturbation is a natural fit for PRA's atomic
+physics readership.  The quantum Fisher information analysis adds the
+quantum metrology angle.  If the two-height degeneracy proof is developed
+into a full theorem, consider submitting the core mathematical result as
+a \textbf{Physical Review Letters} or rapid communication.
+
+\section{Immediate Implementation Plan}
+
+\begin{enumerate}[label=\textbf{Step \arabic*}, leftmargin=*]
+    \item \textbf{Add SVD analysis section} --- already computed
+          (figQ2\_svd.pdf), needs text in manuscript.
+    \item \textbf{Add QFI section} --- already computed (figQ1\_qfi.pdf),
+          needs text.
+    \item \textbf{Add two-height degeneracy theorem} --- already proven
+          (figQ4\_two\_height\_proof.pdf), needs formal statement.
+    \item \textbf{Derive analytical scaling laws} --- extract from existing
+          equations and present as numbered scaling relations.
+    \item \textbf{Remove calibration procedure from main text} --- move to
+          Appendix.
+    \item \textbf{Remove ISO 25178 from main text} --- condense to one
+          sentence in Discussion.
+    \item \textbf{Add ``Predictions for experiment'' section} --- with five
+          falsifiable predictions.
+    \item \textbf{Reposition abstract and introduction} --- ``theoretical
+          framework'' not ``new measurement technique.''
+    \item \textbf{Add Floquet analysis} --- if time permits; this is the
+          strongest theoretical addition but requires significant new
+          derivation.  Can be noted as ``in preparation'' if not ready.
+\end{enumerate}
+
+\end{document}

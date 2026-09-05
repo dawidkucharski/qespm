@@ -1,0 +1,553 @@
+% ===================================================================
+%  MATHEMATICAL APPENDIX
+%  Single Trapped Ion Surface Topography Reconstruction
+%  LaTeX source — figures to be generated as PDF vector graphics
+% ===================================================================
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\title{Mathematical Appendix:\\ Forward and Inverse Models for Single-Ion Surface Topography Reconstruction}
+\date{\today}
+\author{}
+
+\begin{document}
+\maketitle
+
+% ===================================================================
+\section{Paul Trap Dynamics — Full Derivation}
+% ===================================================================
+
+\subsection{Time-dependent potential}
+
+Consider a linear Paul trap with four rod electrodes arranged symmetrically about
+the $z$-axis. The rf potential is applied between opposing electrode pairs:
+
+\begin{equation}
+V_{\text{rf}}(x,y,t) = \frac{V_0}{2}\cos(\Omega t)\,\frac{x^2 - y^2}{R^2}
+\label{eq:rf_potential}
+\end{equation}
+
+where $V_0$ is the rf amplitude (zero-to-peak), $\Omega = 2\pi f_{\text{rf}}$ is the
+angular drive frequency, and $R$ is the distance from the trap axis to each electrode.
+
+The static (dc) potential provides axial confinement:
+
+\begin{equation}
+V_{\text{dc}}(x,y,z) = \frac{\kappa U_0}{2}\,\frac{2z^2 - x^2 - y^2}{d^2}
+\label{eq:dc_potential}
+\end{equation}
+
+where $U_0$ is the endcap voltage, $d$ is the effective endcap spacing, and
+$\kappa \lesssim 1$ is a geometric efficiency factor.
+
+\subsection{Equations of motion}
+
+For an ion of mass $m$ and charge $+e$, Newton's equations give:
+
+\begin{equation}
+m\ddot{x} = -e\frac{\partial}{\partial x}[V_{\text{rf}} + V_{\text{dc}}]
+           = -\frac{e}{R^2}\left[V_0\cos(\Omega t) - \kappa U_0\frac{R^2}{d^2}\right]x
+\label{eq:eom_x}
+\end{equation}
+
+\begin{equation}
+m\ddot{y} = -e\frac{\partial}{\partial y}[V_{\text{rf}} + V_{\text{dc}}]
+           = +\frac{e}{R^2}\left[V_0\cos(\Omega t) + \kappa U_0\frac{R^2}{d^2}\right]y
+\label{eq:eom_y}
+\end{equation}
+
+\begin{equation}
+m\ddot{z} = -e\frac{\partial}{\partial z}[V_{\text{dc}}]
+           = -\frac{2e\kappa U_0}{d^2}z
+\label{eq:eom_z}
+\end{equation}
+
+\subsection{Mathieu equation}
+
+Introducing the dimensionless time $\tau = \Omega t/2$, the radial equations
+take the standard Mathieu form:
+
+\begin{equation}
+\frac{d^2 u}{d\tau^2} + \left[a_u - 2q_u\cos(2\tau)\right]u = 0, \qquad u \in \{x,y\}
+\label{eq:mathieu}
+\end{equation}
+
+with Mathieu parameters:
+
+\begin{align}
+a_x &= -a_y = \frac{8e\kappa U_0}{m\Omega^2 d^2} \\
+q_x &= -q_y = \frac{4eV_0}{m\Omega^2 R^2}
+\label{eq:mathieu_params}
+\end{align}
+
+The axial ($z$) motion is pure harmonic with frequency $\omega_z = \sqrt{2e\kappa U_0/(md^2)}$.
+
+\subsection{Pseudopotential approximation}
+
+In the regime $|a_u| \ll q_u^2 \ll 1$ (typical for ion traps), the Floquet
+solution to (\ref{eq:mathieu}) is approximately:
+
+\begin{equation}
+u(t) \approx u_0\cos(\omega_u t + \phi_u)\left[1 + \frac{q_u}{2}\cos(\Omega t)\right]
+\label{eq:pseudopotential}
+\end{equation}
+
+where the secular frequency is:
+
+\begin{equation}
+\omega_u = \frac{\Omega}{2}\sqrt{a_u + \frac{q_u^2}{2}}
+\label{eq:secular_freq}
+\end{equation}
+
+The term proportional to $\cos(\Omega t)$ in (\ref{eq:pseudopotential}) is the
+\emph{intrinsic micromotion} — driven motion at the rf frequency, in phase with
+the rf drive, with amplitude proportional to the instantaneous secular displacement.
+
+\subsection{Effective harmonic oscillator}
+
+To leading order, the ion behaves as a three-dimensional harmonic oscillator:
+
+\begin{equation}
+H_0 = \sum_{u\in\{x,y,z\}} \left(\frac{p_u^2}{2m} + \frac{1}{2}m\omega_u^2 u^2\right)
+\label{eq:HO_hamiltonian}
+\end{equation}
+
+with quantised motional states $|n_x, n_y, n_z\rangle$.
+
+% ===================================================================
+\section{Surface Potential and Perturbation Theory}
+% ===================================================================
+
+\subsection{Electrostatic potential above a structured surface}
+
+The surface is described by:
+\begin{itemize}
+    \item Height profile $z_s(x,y)$ relative to a reference plane $z = 0$.
+    \item Surface potential $\phi_s(x,y) = \Phi(x,y,z_s(x,y))$.
+    \item For a conductor in equilibrium, $\phi_s$ is constant (set to zero by grounding);
+    variations arise from patch potentials, work-function inhomogeneity, or trapped charge.
+\end{itemize}
+
+The electrostatic potential $\Phi_s(x,y,z)$ in the half-space $z > z_s(x,y)$
+satisfies Laplace's equation:
+
+\begin{equation}
+\nabla^2\Phi_s(x,y,z) = 0, \qquad z > z_s(x,y)
+\label{eq:laplace}
+\end{equation}
+
+with Dirichlet boundary condition $\Phi_s(x,y,z_s(x,y)) = \phi_s(x,y)$ and
+$\Phi_s \to 0$ as $z \to \infty$.
+
+\subsection{Planar surface Green's function}
+
+For a planar conducting surface at $z = 0$, the solution is the Poisson integral:
+
+\begin{equation}
+\Phi_s^{(0)}(x,y,z) = \frac{z}{2\pi}
+    \iint_{-\infty}^{\infty} \frac{\phi_s(x',y')}
+    {[(x-x')^2 + (y-y')^2 + z^2]^{3/2}}\,dx'\,dy'
+\label{eq:poisson_kernel}
+\end{equation}
+
+In Fourier space ($\mathbf{k} = (k_x, k_y)$):
+
+\begin{equation}
+\tilde{\Phi}_s^{(0)}(\mathbf{k}, z) = \tilde{\phi}_s(\mathbf{k})\,e^{-kz},
+\qquad k = \sqrt{k_x^2 + k_y^2}
+\label{eq:fourier_poisson}
+\end{equation}
+
+This is the key result: the surface potential is \textbf{low-pass filtered} by
+the factor $e^{-kz}$. Spatial frequencies $k \gg 1/z$ are exponentially suppressed
+at height $z$, setting the fundamental resolution limit.
+
+\subsection{Boundary perturbation theory — non-planar surface}
+
+For small surface height variations $|z_s| \ll h$, we expand the boundary
+condition. Writing $\Phi_s = \Phi_s^{(0)} + \Phi_s^{(1)} + \cdots$, the
+first-order correction satisfies:
+
+\begin{align}
+\nabla^2\Phi_s^{(1)} &= 0, \quad z > 0 \\
+\Phi_s^{(1)}(x,y,0) &= -z_s(x,y)\left.\frac{\partial\Phi_s^{(0)}}{\partial z}\right|_{z=0}
+                    = z_s(x,y)E_z^{(0)}(x,y,0)
+\label{eq:perturbation_bc}
+\end{align}
+
+The solution is:
+
+\begin{equation}
+\Phi_s^{(1)}(x,y,z) = \frac{z}{2\pi}\iint
+    \frac{z_s(x',y')\,E_z^{(0)}(x',y',0)}
+    {[(x-x')^2 + (y-y')^2 + z^2]^{3/2}}\,dx'\,dy'
+\label{eq:first_order}
+\end{equation}
+
+\subsection{Perturbation of the trapping potential}
+
+The ion at position $\mathbf{r}_0 = (x_0, y_0, h)$ experiences the total potential:
+
+\begin{equation}
+V_{\text{tot}}(\mathbf{r}) = V_{\text{trap}}(\mathbf{r}) + \frac{e}{m}\Phi_s(\mathbf{r})
+\label{eq:total_potential}
+\end{equation}
+
+Expanding about the equilibrium position $\mathbf{r}_0 + \delta\mathbf{r}$:
+
+\begin{equation}
+V_{\text{tot}} \approx V_{\text{trap}}(\mathbf{r}_0) + \frac{e}{m}\Phi_s(\mathbf{r}_0)
+    + \sum_u \delta r_u \frac{e}{m}\frac{\partial\Phi_s}{\partial u}\bigg|_{\mathbf{r}_0}
+    + \frac{1}{2}\sum_{u,v} \delta r_u \delta r_v
+        \left[m\omega_u^2\delta_{uv} + \frac{e}{m}\frac{\partial^2\Phi_s}{\partial u\partial v}\bigg|_{\mathbf{r}_0}\right]
+\label{eq:taylor}
+\end{equation}
+
+The linear term shifts the equilibrium position by:
+
+\begin{equation}
+\Delta r_u = -\frac{e}{m\omega_u^2}\frac{\partial\Phi_s}{\partial u}\bigg|_{\mathbf{r}_0}
+\label{eq:equilibrium_shift}
+\end{equation}
+
+The quadratic term modifies the effective spring constant, shifting the secular frequency:
+
+\begin{equation}
+\Delta\omega_u = \frac{e}{2m\omega_u}\frac{\partial^2\Phi_s}{\partial u^2}\bigg|_{\mathbf{r}_0}
+    - \frac{e^2}{2m^2\omega_u^3}\sum_v
+        \left(\frac{\partial^2\Phi_s}{\partial u\partial v}\bigg|_{\mathbf{r}_0}\right)^2
+    + \mathcal{O}(\Phi_s^3)
+\label{eq:frequency_shift_full}
+\end{equation}
+
+For a well-compensated trap where the ion sits at the rf null,
+the cross-derivative terms vanish and:
+
+\begin{equation}
+\boxed{\Delta\omega_u(x_0,y_0) = \frac{e}{2m\omega_u}
+    \frac{\partial^2\Phi_s}{\partial u^2}\bigg|_{(x_0,y_0,h)}}
+\label{eq:freq_shift_simple}
+\end{equation}
+
+\subsection{Relating frequency shift to surface topography}
+
+Combining (\ref{eq:poisson_kernel}) and (\ref{eq:freq_shift_simple}):
+
+\begin{equation}
+\Delta\omega_u(x,y) = \frac{e}{2m\omega_u}
+    \frac{\partial^2}{\partial u^2}\left[
+        \frac{h}{2\pi}\iint
+        \frac{\phi_s(x',y')}{[(x-x')^2 + (y-y')^2 + h^2]^{3/2}}\,dx'\,dy'
+    \right]
+\label{eq:forward_map}
+\end{equation}
+
+For small topographic perturbations, substituting $\phi_s \approx E_z^{(0)} z_s$:
+
+\begin{equation}
+\Delta\omega_u(x,y) \approx \frac{e E_z^{(0)}}{2m\omega_u}
+    \frac{\partial^2}{\partial u^2}\left[
+        \frac{h}{2\pi}\iint
+        \frac{z_s(x',y')}{[(x-x')^2 + (y-y')^2 + h^2]^{3/2}}\,dx'\,dy'
+    \right]
+\label{eq:forward_map_topo}
+\end{equation}
+
+This is a \textbf{linear integral equation of the first kind} — a Fredholm equation
+of convolution type (in the planar approximation) — mapping $z_s(x,y)$ to
+$\Delta\omega_u(x,y)$.
+
+% ===================================================================
+\section{Micromotion Observables}
+% ===================================================================
+
+\subsection{Excess micromotion}
+
+When the ion equilibrium is displaced from the rf null by a static field
+$\mathbf{E}_s = -\nabla\Phi_s$, the displacement $\Delta\mathbf{r}$ from
+(\ref{eq:equilibrium_shift}) couples to the rf drive, producing
+\emph{excess micromotion}:
+
+\begin{equation}
+u_\mu(t) = \Delta r_u \cdot \frac{q_u}{2}\cos(\Omega t + \varphi_u)
+\label{eq:excess_micromotion}
+\end{equation}
+
+The modulation index (relative to the secular amplitude $u_0$) is:
+
+\begin{equation}
+\beta_u = \frac{q_u}{2}\frac{|\Delta r_u|}{u_0}
+         \approx \frac{q_u e}{2m\omega_u^2 u_0}\left|\frac{\partial\Phi_s}{\partial u}\right|
+\label{eq:modulation_index}
+\end{equation}
+
+\subsection{Micromotion phase}
+
+The phase of the excess micromotion relative to the rf drive encodes the
+\emph{direction} of the surface field:
+
+\begin{equation}
+\phi_\mu = \arg\left(\frac{\partial\Phi_s}{\partial x} + i\frac{\partial\Phi_s}{\partial y}\right)
+\label{eq:micromotion_phase}
+\end{equation}
+
+Measuring $\phi_\mu(x,y)$ provides the \textbf{gradient direction} of the surface
+potential, which is orthogonal information to the scalar frequency shift.
+
+\subsection{rf–photon correlation measurement}
+
+In practice, micromotion is detected by correlating the ion's fluorescence
+(which is modulated at $\Omega$ due to the first-order Doppler shift from
+micromotion) with the rf drive:
+
+\begin{equation}
+g^{(2)}_{\text{rf-ph}}(\tau) = \langle I_{\text{fluor}}(t)\,V_{\text{rf}}(t+\tau)\rangle
+\label{eq:rf_photon_correlation}
+\end{equation}
+
+The amplitude and phase of this correlation yield $\beta$ and $\phi_\mu$.
+
+% ===================================================================
+\section{Motional Heating Rate}
+% ===================================================================
+
+\subsection{Fluctuation-dissipation framework}
+
+The heating rate from the motional ground state is:
+
+\begin{equation}
+\dot{\bar{n}}_u = \frac{e^2}{4m\hbar\omega_u}S_E(\omega_u)
+\label{eq:heating_rate}
+\end{equation}
+
+where $S_E(\omega)$ is the spectral density of electric-field fluctuations
+at the ion position, evaluated at the secular frequency.
+
+\subsection{Noise sources near a surface}
+
+For a conducting surface at temperature $T$, the dominant contributions are:
+
+\textbf{1. Johnson noise} (thermal fluctuations of currents in the conductor):
+
+\begin{equation}
+S_E^{\text{J}}(\omega, h) = \frac{k_B T}{\pi\varepsilon_0\omega}\,
+    \frac{1}{h^3}\,\operatorname{Re}\left[\frac{1}{\varepsilon(\omega)+1}\right]
+\label{eq:johnson_noise}
+\end{equation}
+
+For a good conductor ($|\varepsilon| \gg 1$), this simplifies to:
+
+\begin{equation}
+S_E^{\text{J}} \approx \frac{k_B T\rho}{\pi\varepsilon_0\omega h^3}
+\label{eq:johnson_simple}
+\end{equation}
+
+where $\rho$ is the surface resistivity. Note the $h^{-3}$ scaling.
+
+\textbf{2. Patch-potential fluctuations} (adsorbate diffusion, charge trap dynamics):
+
+\begin{equation}
+S_E^{\text{patch}}(\omega, h) \propto \frac{1}{h^4}\,
+    \frac{\ell_c^2}{(1 + (h/\ell_c)^2)^2}
+\label{eq:patch_noise}
+\end{equation}
+
+where $\ell_c$ is the characteristic patch correlation length. For $h \gg \ell_c$,
+this gives the well-known $h^{-4}$ scaling.
+
+\subsection{Material contrast via heating rate}
+
+For a surface with spatially varying material properties (different metals,
+dielectrics, oxide thicknesses), $\dot{\bar{n}}(x,y)$ varies with position:
+
+\begin{equation}
+\dot{\bar{n}}(x,y) \propto \frac{\rho(x,y)}{h(x,y)^3}
+    + \frac{\sigma_{\text{patch}}^2(x,y)}{h(x,y)^4}
+\label{eq:heating_contrast}
+\end{equation}
+
+The resistivity $\rho(x,y)$ and patch-potential variance
+$\sigma_{\text{patch}}^2(x,y)$ are material-specific, providing a
+\textbf{material-contrast channel} that is quasi-independent of topography.
+
+% ===================================================================
+\section{Quantum State Transition Shifts}
+% ===================================================================
+
+\subsection{Sideband spectroscopy}
+
+For a two-level ion with carrier Rabi frequency $\Omega_0$ and Lamb-Dicke
+parameter $\eta = k\sqrt{\hbar/(2m\omega)}$, the Rabi frequency for the
+$n \to n+1$ blue-sideband transition is:
+
+\begin{equation}
+\Omega_{n\to n+1} = \eta\sqrt{n+1}\,\Omega_0
+\label{eq:sideband_rabi}
+\end{equation}
+
+A shift $\Delta\omega$ in the secular frequency modifies the detuning of the
+sideband laser and produces an effective shift in $\Omega_{n\to n+1}$:
+
+\begin{equation}
+\Delta\Omega_{n\to n+1} \approx \eta\sqrt{n+1}\,\Omega_0\,
+    \frac{\Delta\omega}{2\omega}\,\frac{\Omega_0}{\sqrt{\Omega_0^2 + \Delta\omega^2}}
+\label{eq:sideband_shift}
+\end{equation}
+
+The quantum projection-noise-limited sensitivity in estimating $\Delta\omega$
+from sideband spectroscopy is:
+
+\begin{equation}
+\delta(\Delta\omega)_{\text{QPN}} = \frac{1}{2\eta\sqrt{N\tau T_2}}
+\label{eq:qpn_sensitivity}
+\end{equation}
+
+where $N$ is the number of repetitions, $\tau$ is the probe time, and $T_2$
+is the coherence time.
+
+% ===================================================================
+\section{Inverse Problem: Formal Analysis}
+% ===================================================================
+
+\subsection{Forward operator in Fourier space}
+
+For a planar conducting surface at $z = 0$ with potential $\phi_s(x,y)$,
+the frequency shift in the $x$-direction is:
+
+\begin{equation}
+\Delta\tilde{\omega}_x(k_x, k_y) = -\frac{e}{2m\omega_x}\,
+    k_x^2\,e^{-kh}\,\tilde{\phi}_s(k_x, k_y)
+\label{eq:forward_fourier}
+\end{equation}
+
+The inverse in Fourier space would be:
+
+\begin{equation}
+\tilde{\phi}_s(k_x, k_y) = -\frac{2m\omega_x}{e}\,
+    \frac{e^{kh}}{k_x^2}\,\Delta\tilde{\omega}_x(k_x, k_y)
+\label{eq:inverse_fourier_naive}
+\end{equation}
+
+which is catastrophically ill-conditioned: the factor $e^{kh}/k_x^2$ amplifies
+high-frequency noise exponentially and diverges at $k_x = 0$.
+
+\subsection{Tikhonov regularisation}
+
+The regularised inverse is:
+
+\begin{equation}
+\tilde{\phi}_s^{\lambda}(k_x, k_y) = -\frac{2m\omega_x}{e}\,
+    \frac{k_x^2 e^{-kh}}{k_x^4 e^{-2kh} + \lambda^2}\,
+    \Delta\tilde{\omega}_x(k_x, k_y)
+\label{eq:tikhonov_fourier}
+\end{equation}
+
+where $\lambda$ is the regularisation parameter, chosen by L-curve analysis
+or generalised cross-validation.
+
+\subsection{Resolution kernel}
+
+The resolution kernel (Backus–Gilbert) for the regularised inverse is:
+
+\begin{equation}
+R(\mathbf{r}; \mathbf{r}') = \frac{\delta\tilde{\phi}_s^{\lambda}(\mathbf{r})}
+    {\delta\phi_s^{\text{true}}(\mathbf{r}')}
+\label{eq:resolution_kernel}
+\end{equation}
+
+In Fourier space:
+
+\begin{equation}
+\tilde{R}(k) = \frac{k^4 e^{-2kh}}{k^4 e^{-2kh} + \lambda^2}
+\label{eq:resolution_fourier}
+\end{equation}
+
+The effective spatial resolution (FWHM of $R$) is $\delta x \approx \max(h, 1/k_{\text{max}})$
+where $k_{\text{max}}$ is set by the noise floor.
+
+% ===================================================================
+\section{Bayesian Inference Framework}
+% ===================================================================
+
+\subsection{Hierarchical model}
+
+The full Bayesian model for joint topography–charge reconstruction:
+
+\begin{align}
+\text{Likelihood:}&\quad
+    \mathbf{d} \mid \mathbf{z}_s, \boldsymbol{\sigma}, \boldsymbol{\theta}
+    \sim \mathcal{N}(\mathcal{F}(\mathbf{z}_s, \boldsymbol{\sigma}), \mathbf{C}_d) \\
+\text{Priors:}&\quad
+    \mathbf{z}_s \sim \mathcal{GP}(0, K_{\text{Matérn}}(\ell_z, \nu=3/2)) \\
+    &\quad \boldsymbol{\sigma} \sim \text{HS}(\tau) \quad
+        \text{(horseshoe prior for sparse charge patches)} \\
+    &\quad \ell_z \sim \text{InvGamma}(2, 2) \\
+    &\quad \tau \sim \text{Cauchy}^+(0, 1)
+\label{eq:bayesian_model}
+\end{align}
+
+where $\mathcal{F}$ is the forward model, $\mathbf{C}_d$ is the data covariance
+matrix, $K_{\text{Matérn}}$ is the Matérn-3/2 kernel, and HS denotes the
+horseshoe (global-local shrinkage) prior.
+
+\subsection{Posterior sampling}
+
+Hamiltonian Monte Carlo (HMC) with the No-U-Turn Sampler (NUTS) is used for
+posterior exploration in moderate dimensions ($\lesssim 10^4$ parameters).
+For larger problems, mean-field variational inference (ADVI) with a
+Gaussian approximating family provides a scalable alternative.
+
+% ===================================================================
+\section{Sensitivity and Quantum Limits}
+% ===================================================================
+
+\subsection{Classical sensitivity limit}
+
+For a measurement of secular frequency with precision $\delta\omega$ over
+integration time $\tau$, the minimum detectable surface potential variation is:
+
+\begin{equation}
+\delta\Phi_s^{\text{min}} = \frac{2m\omega}{e}\,
+    \frac{\delta\omega}{\omega}\,h^2
+\label{eq:sensitivity_classical}
+\end{equation}
+
+For $\omega = 2\pi \times 1$ MHz, $\delta\omega/\omega = 10^{-6}$,
+$m = 40$ amu, $h = 40$ µm:
+$\delta\Phi_s^{\text{min}} \approx 10^{-6}$ V.
+
+\subsection{Quantum limit}
+
+The quantum Cramér–Rao bound for estimating $\omega$ from a coherent state
+$|\alpha\rangle$ evolving for time $\tau$ is:
+
+\begin{equation}
+\delta\omega_{\text{QCRB}} = \frac{1}{2|\alpha|\tau}
+\label{eq:qcrb}
+\end{equation}
+
+For $|\alpha| = 10$ (moderate coherent state) and $\tau = 1$ ms:
+$\delta\omega_{\text{QCRB}} \approx 2\pi \times 8$ Hz.
+
+Squeezing the motional state ($\xi = 0.1$, 10 dB squeezing) improves this by
+$e^{-\xi} \approx 0.9$, approaching the Heisenberg limit with Fock states:
+
+\begin{equation}
+\delta\omega_{\text{HL}} = \frac{1}{N\tau}
+\label{eq:heisenberg_limit}
+\end{equation}
+
+for a NOON state with $N$ quanta.
+
+\end{document}
