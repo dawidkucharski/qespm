@@ -809,7 +809,7 @@ exponent reproduces the pseudopotential result to $\mathcal{O}(q^2)$, with
 a leading correction of $\approx 3\%$ at $q=0.3$ and $\approx 11\%$ at
 $q=0.5$ ($\le 11\%$ for all practical trap configurations).  Driven
 micromotion generates spectral sidebands carrying the gradient transfer
-function $H_{\rm mm}(k;h)\propto k_x e^{-kh}$ (Supplementary Fig.~S3), an
+function $H_{\rm mm}(k;h)\propto k_x e^{-kh}$ (Supplementary Fig.~S2), an
 independent consistency channel that cannot break the topography--charge
 degeneracy, and an rf-averaged carrier correction below ${\sim}2\%$ for
 warm ions at micrometre-scale features.  Anharmonic surface terms shift
@@ -821,7 +821,7 @@ invalidate the purely electrostatic model.  Throughout this work the
 pseudopotential expressions are used; the $\mathcal{O}(q^2)$ correction is
 a known systematic that can be calibrated out.  The full derivation, the
 correction table and the numerical trajectory validation are given in the
-Supplementary Material (Sec.~S2, Table~S1, Fig.~S8).
+Supplementary Material (Sec.~S2, Table~S1, Fig.~S7).
 
 \subsection{Numerical implementation}
 
@@ -847,7 +847,7 @@ permanent Zenodo repository (see Data Availability).
 Direct numerical integration of the secular equation of motion near a
 sinusoidal surface confirms that the ion motion remains stable and
 harmonic, well described by linear perturbation theory for topographic
-amplitudes up to $200$\,nm (Supplementary Fig.~S8).
+amplitudes up to $200$\,nm (Supplementary Fig.~S7).
 
 \subsection{Test surface}
 
@@ -1257,7 +1257,7 @@ condition:
           compensated to $\beta < 10^{-4}$ modulation index via standard
           rf--photon correlation techniques~\cite{berkeland1998}.  At this
           level, micromotion-induced frequency shifts are below the
-          measurement noise floor (see Supplementary Fig.~S3 for a
+          measurement noise floor (see Supplementary Fig.~S2 for a
           quantitative analysis of the micromotion contribution).
 \end{enumerate}
 
@@ -1725,7 +1725,7 @@ impossible, as formalised below.
 \label{sec:degeneracy}
 
 A numerical illustration of this identifiability limit is provided in
-Supplementary Fig.~S4.
+Supplementary Fig.~S3.
 
 \begin{theorem}[Topography--charge identifiability limit]\label{thm:degeneracy}
 Let $\Delta\omega_x(k;h)$ be the secular frequency shift
@@ -1762,7 +1762,7 @@ H_y=-(eE_{\rm bg}/2m\omega_y)\,k_y^2 e^{-kh}, \\[2pt]
 H_z=+(eE_{\rm bg}/2m\omega_z)\,k^2 e^{-kh},
 \end{equation*}
 and the micromotion channel
-$H_{\rm mm}\propto k_x e^{-kh}$ (Supplement, Fig.~S3).  Each observable is
+$H_{\rm mm}\propto k_x e^{-kh}$ (Supplement, Fig.~S2).  Each observable is
 evaluated at any finite set of heights $\{h_1,\ldots,h_n\}$.  Every such observable is a
 linear functional of the single scalar surface field
 \begin{equation}
@@ -3092,7 +3092,7 @@ $|1 - R_q^{\rm rec}/R_q|$ (dielectric overlayer, which primarily rescales
 the reconstructed heights since $F>1$) and the correlation loss $1-r$
 (field-gradient and large-slope violations, which distort the
 reconstructed shape) as functions of the violation parameter are shown in
-the Supplementary Material (Sec.~S4, Fig.~S12).
+the Supplementary Material (Sec.~S4, Fig.~S11).
 
 \subsection{Monte Carlo uncertainty propagation}
 \label{sec:montecarlo}
@@ -3109,7 +3109,7 @@ closes the metrological loop: over $2\times10^{4}$ realisations, $95.1\%$
 of true heights fall inside the propagated $95\%$ interval
 ($\pm1.96\,u_c$ with $u_c=319$\,nm), with an estimate bias of $0.7$\,nm
 --- the interval is correctly calibrated.  Full details are given in the
-Supplementary Material (Sec.~S5, Fig.~S13).
+Supplementary Material (Sec.~S5, Fig.~S12).
 
 \subsection{Analytical benchmark: step-edge response}
 \label{sec:stepedge}
@@ -3134,7 +3134,7 @@ $3.9\times10^{-3}$) over the edge region $h/\sqrt3<|x|<3h$, the
 zero-crossing band $|x|<h/\sqrt3$ being excluded (the relative metric
 diverges there).  The full
 derivation, the 3D Gaussian-bump benchmark and the grid-convergence study
-are given in the Supplementary Material (Sec.~S6, Fig.~S14).
+are given in the Supplementary Material (Sec.~S6, Fig.~S13).
 
 % ===================================================================
 \section{Discussion: quantum limits of electrostatic surface metrology}
@@ -3155,18 +3155,18 @@ in the charge-free regime; the realistic combined standard uncertainty is
 $319$\,nm (Table~\ref{tab:uncertainty}), reflecting the identifiability
 limitation rather than the sensor sensitivity.}
 \label{tab:comparison}
-\footnotesize
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.1cm}>{\raggedright\arraybackslash}p{0.9cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{1.3cm}@{}}
+\scriptsize
+\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{1.7cm}>{\raggedright\arraybackslash}p{1.7cm}>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.6cm}@{}}
 \hline
 Method & Measurand & Interaction & Standoff & Lateral res. & Vertical uncertainty & Environment & Main limitation \\
 \hline
 AFM & geometry & mechanical & nm & ${\sim}1$\,nm & sub-nm & broad & tip interaction \\
 STM & electronic, topographic & tunnelling & \AA & ${\sim}0.1$\,nm & ${\sim}0.01$\,\AA & UHV & requires conductivity \\
-Optical & geometry & optical & mm & ${\sim}0.5$\,\textmu m & ${\sim}1$\,nm & broad & diffraction-limited \\
-SEM & electron contrast & electron beam & nm & ${\sim}1$\,nm & ${\sim}1$\,nm & vacuum & beam--sample interaction \\
-KPFM/EFM & potential + topography & electrostatic & nm--\textmu m & nm--\textmu m & ${\sim}$mV (potential) & broad & potential--topography cross-talk \\
-\textbf{QESPM} & electrostatic geometry & electrostatic & $1$--$100$\,\textmu m & ${\sim}1.5h$ (MTF) & ${\sim}10^{-2}$\,nm (det.);\newline $319$\,nm (charge-limited) & UHV--cryo native & topography--charge identifiability \\
+Optical & geometry & optical & mm & ${\sim}0.5$\,\textmu m & ${\sim}1$\,nm & broad & dif\-frac\-tion-limited \\
+SEM & electron contrast & electron beam & nm & ${\sim}1$\,nm & ${\sim}1$\,nm & vacuum & beam--\allowbreak sample interaction \\
+KPFM/EFM & potential + topography & electrostatic & nm--\allowbreak\textmu m & nm--\allowbreak\textmu m & ${\sim}$mV (potential) & broad & potential--\allowbreak topography cross-talk \\
+\textbf{QESPM} & electrostatic geometry & electrostatic & $1$--\allowbreak$100$\,\textmu m & ${\sim}1.5h$ (MTF) & ${\sim}10^{-2}$\,nm (det.);\newline $319$\,nm (charge-limited) & UHV--\allowbreak cryo native & topography--\allowbreak charge identifiability \\
 \hline
 \end{tabular}
 \end{table}
@@ -3297,7 +3297,7 @@ and the motional heating rate $\dot{\bar{n}}$.  Each channel has a
 different spatial transfer function:
 $H_x \propto k_x^2 e^{-kh}$,
 $H_y \propto k_y^2 e^{-kh}$,
-$H_{\rm mm} \propto |k_x| e^{-kh}$ (Supplement, Fig.~S3),
+$H_{\rm mm} \propto |k_x| e^{-kh}$ (Supplement, Fig.~S2),
 and $\dot{\bar{n}}$ depends on local dielectric properties rather than
 geometry.  The combined measurement vector
 $\mathbf{d}(k) = [\Delta\tilde{\omega}_x, \Delta\tilde{\omega}_y,
