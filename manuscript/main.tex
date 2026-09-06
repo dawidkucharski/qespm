@@ -12,6 +12,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{amsmath,amssymb}
+\usepackage{array}
 \usepackage{graphicx}
 \usepackage{hyperref}
 
@@ -41,12 +42,16 @@
 
 % ===================================================================
 \begin{abstract}
-How much spatial information about a conducting surface can a single
-quantum probe extract?  A trapped atomic ion in a radio-frequency Paul
-trap, held at height $h$ above the surface, responds to surface
-electrostatic perturbations through shifts of its secular motional
-frequency.  The instrument transfer function (ITF), derived from
-boundary-perturbation theory, is $H_x(k;h) \propto k_x^2 e^{-kh}$ --- a
+A new non-contact surface-metrology measurement principle is proposed and
+analysed.  The measurand is the surface height $z_s(x,y)$ of a conducting
+sample relative to a mean reference plane; the physical sensor is a single
+trapped atomic ion, held at height $h$ above the surface in a
+radio-frequency Paul trap, which converts the surface electrostatic
+perturbation into a shift $\Delta\omega_x$ of its secular motional
+frequency.  The measurement operator is characterised by the instrument
+transfer function (ITF), derived from
+boundary-perturbation theory on Laplace's equation,
+$H_x(k;h) \propto k_x^2 e^{-kh}$ --- a
 height-tunable band-pass filter with no analogue among existing surface
 methods.  The $e^{-kh}$ factor imposes an irreversible spatial-information
 cutoff: quantum enhancement can maximise the precision of available signals
@@ -56,7 +61,9 @@ independent Fourier modes are recoverable, with the effective rank scaling
 as $r_{\rm eff} \propto 1/h$.  A theorem establishes a
 topography--charge identifiability limit: multi-height scanning alone
 cannot separate surface topography from surface charge, as both share the
-identical $e^{-kh}$ scaling (rank-1 joint measurement matrix).  Analytical
+identical $e^{-kh}$ scaling (rank-1 joint measurement matrix) --- surface
+charge is therefore not a noise source but an influence quantity
+structurally confounded with the measurand.  Analytical
 scaling laws cover signal amplitude, optimal wavenumber, the
 resolution--height product, and minimum detectable roughness.  Quantum
 Fisher information analysis shows that 13\,dB motional squeezing enhances
@@ -161,6 +168,51 @@ candidate for a new measurement subclass
 \section{Methods}
 \label{sec:methods}
 % ===================================================================
+\subsection{Measurand and influence quantities}
+
+The primary measurand of the proposed instrument is the surface height
+profile relative to a specified mean reference plane,
+\begin{equation}
+\boxed{\; z_s(x,y) \;=\; \text{surface height relative to the mean reference plane} \;}
+\end{equation}
+The instrument does not measure $z_s(x,y)$ directly.  It measures the
+secular frequency shift $\Delta\omega_x(x,y)$, which is related to the
+surface through the chain
+\begin{equation}
+z_s \; \longrightarrow \; \Phi \; \longrightarrow \; \Delta\omega_x,
+\end{equation}
+where $\Phi$ is the electrostatic potential produced by the surface at the
+ion position.  In the presence of surface charge $\sigma(x,y)$ the
+measurement model is the joint operator
+\begin{equation}
+\boxed{\; \Delta\omega_x \;=\; \mathcal{H}[\,z_s,\,\sigma\,] \;}
+\end{equation}
+and surface charge is therefore not simply a noise source: it is an
+\emph{influence quantity that is structurally confounded with the
+measurand} (Sec.~\ref{sec:degeneracy}).  The complete quantity hierarchy
+is:
+
+\begin{table}[htb]
+\centering
+\caption{Measurand, indication, and influence quantities of the QESPM
+measurement.}
+\label{tab:quantities}
+\small
+\begin{tabular}{@{}ll@{}}
+\hline
+Quantity & Role \\
+\hline
+$z_s(x,y)$ & measurand (primary) \\
+$\Delta\omega_x$ & indication \\
+$h$ & influence quantity / operating parameter \\
+$E_{\rm bg}$ & calibration parameter \\
+$\omega_x$ & calibration parameter \\
+$\sigma(x,y)$ & confounding influence quantity \\
+charge prior & additional information for identifiability \\
+\hline
+\end{tabular}
+\end{table}
+
 \subsection{Forward model}
 
 Consider a single ion of mass $m$ and charge $+e$ confined in a linear Paul
@@ -177,7 +229,20 @@ beneath it, the stage being arranged so that the local sample region seen
 by the ion approximates this half-space boundary (sample lateral extent
 and scan range $\gg h$, surface plane parallel to the trap plane).  All
 results below refer to this local planar geometry; the lateral translation
-of the sample leaves the local forward model unchanged.
+of the sample leaves the local forward model unchanged
+(Fig.~\ref{fig:geometry}).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.55\textwidth]{figS2_scan.pdf}
+\caption{Measurement geometry.  The ion is held stationary in a planar
+trap while the sample is translated laterally beneath it; the secular
+frequency shift $\Delta\omega_x(x,y)$ is recorded at each position and
+the ion--surface separation $h$ is maintained by the trap-electrode
+voltages.  The local surface region facing the ion approximates the
+grounded half-space of the analytical model.}
+\label{fig:geometry}
+\end{figure}
 
 \textbf{Boundary perturbation theory.}
 For a perfectly conducting surface held at zero potential, the exact boundary
@@ -1218,6 +1283,23 @@ the effective image plane is displaced toward the ion by the film, and the
 factor is \emph{identical} for the topographic and charge channels.
 \end{lemma}
 
+Figure~\ref{fig:validity} collects the validity conditions of this
+section into a single operating diagram in the $(\lambda, h)$ plane of
+surface wavelength and ion--surface separation.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.85\textwidth]{figD1_validity.pdf}
+\caption{Domain of validity of the QESPM forward model in the plane of
+surface feature wavelength $\lambda$ and ion--surface separation $h$.
+The resolvable band is bounded from below by the MTF cutoff
+$\lambda_{\min}=1.51h$ and from above by the field of view; the
+large-slope breakdown ($kA\gtrsim0.45$ for the $A=100$\,nm amplitude
+shown), the heating-limited regime at small $h$, the Casimir--Polder
+exclusion ($h<100$\,nm) and the ITF peak $\lambda=\pi h$ are indicated.}
+\label{fig:validity}
+\end{figure}
+
 % ===================================================================
 \section{Results}
 % ===================================================================
@@ -1817,18 +1899,13 @@ Parseval's theorem gives the exact variance
     |H_x(k;h)|^2\,S(k)\,dk,
 \label{eq:roughness_variance}
 \end{equation}
-where $H_x=-Ck^2 e^{-kh}$; this identity was verified numerically to
-machine precision against the FFT implementation (discrete form
-$\sigma_{\Delta\omega}^2 = L^{-1}\sum_k |H_k|^2 S_k$ with
-$S_k = |\tilde z_k|^2\,\Delta x/N$).  Because $S(k)\propto R_a^2$ for a
-fixed spectral shape, $\sigma_{\Delta\omega}\propto R_a$ \emph{exactly}
-for any such surface: the linear scaling is a mathematical identity of
-the linear model, not a numerical coincidence.  For the power-law
-spectrum $S(k)\propto(1+k^2\ell_c^2)^{-\beta}$, Eq.~(\ref{eq:roughness_variance})
-reproduces the Monte Carlo result ($68.0\pm2.5$\,Hz/nm at
-$h=40$\,\textmu m over 30 realisations, standard error
-$0.5$\,Hz/nm); in 2D the angular integral over $k_x^4$ replaces $C^2k^4$
-by $(3/4)C^2k^4$ and the radial measure gains one power of $k$.  The
+where $H_x=-Ck^2 e^{-kh}$; because $S(k)\propto R_a^2$ for a fixed
+spectral shape, $\sigma_{\Delta\omega}\propto R_a$ \emph{exactly}
+for any such surface --- the linear scaling is a mathematical identity of
+the linear model, not a numerical coincidence.  The identity was verified
+to machine precision against the FFT implementation and reproduces the
+Monte Carlo result ($68.0\pm2.5$\,Hz/nm at $h=40$\,\textmu m over 30
+realisations); the
 nonlinearity onset at $R_a\sim h/10$ is therefore the signature of the
 \emph{model} breakdown (Sec.~\ref{sec:robustness}), not of the
 statistics.
@@ -1971,37 +2048,15 @@ attains Eq.~(\ref{eq:qcrb_mode}) for $\nu$ repetitions, with the
 maximum-likelihood estimator $\hat z_k=d_k/H_x(k)$ saturating the bound
 mode by mode.
 
-\textbf{Quantum water-filling across modes.}
-Because the per-mode bound
-$\delta z_k = 1/(|H_x(k)|\sqrt{\nu\mathcal{F}_{\rm ion}})$ varies by orders
-of magnitude across the passband, a fixed quantum resource budget should
-be allocated where it buys the most information.  With a total squeezing
-budget $\sum_k r_k \le R_{\rm tot}$ and per-mode variance
-$v_k e^{-2r_k}$ ($v_k \propto 1/|H_x(k)|^2$), the constrained minimisation
-is solved by the water-filling prescription
-$r_k = \tfrac14\bigl[\ln v_k - \ln\mu\bigr]_+$ with the
-Lagrange multiplier $\mu$ fixed by $\sum_k r_k = R_{\rm tot}$ --- the
-quantum analogue of the classical channel water-filling of
-Eq.~(\ref{eq:info_closed}).  On the $h=40$\,\textmu m passband a budget
-$R_{\rm tot}=1.5$ ($13$\,dB) spent uniformly gives an average mode
-variance $0.25$ (normalised units); the water-filling allocation
-concentrates it on the two highest-$|H_x|$ modes and reduces the average
-variance to $0.056$ --- a $\times 4.5$ information gain at equal
-resources, verified numerically.
-
-\textbf{Quantum smearing of the ITF.}
-The finite extent of the ion's wave packet convolves the measurement:
-a thermal state with mean occupation $\langle n\rangle$ samples
-$\Delta\omega_x(x)$ with Gaussian weight of variance
-$\sigma_x^2 = x_{\rm zp}^2(2\langle n\rangle+1)$, so the effective
-transfer function becomes
-$H_x^{\rm(eff)}(k) = H_x(k)\,e^{-k^2\sigma_x^2/2}$ --- quantum smearing
-adds its own Gaussian low-pass factor.  For ground-state cooling
-($\sigma_x=x_{\rm zp}=13$\,nm), $k^2\sigma_x^2/2\le10^{-6}$ over the
-accessible band and the correction is negligible; for a warm ion
-($\langle n\rangle=10^3$, $\sigma_x\approx580$\,nm), the attenuation
-reaches $0.7\%$ at $k=2\times10^5$\,rad/m and $4\%$ at the band edge ---
-a systematic to be included in the error budget at elevated temperatures.
+\textbf{Quantum resource allocation and wave-packet smearing.}
+Two secondary quantum effects are treated in the Supplementary Material
+(Sec.~S11): the optimal (water-filling) allocation of a fixed squeezing
+budget across Fourier modes, which improves the average mode variance by
+$\times4.5$ on the $h=40$\,\textmu m passband at equal resources, and the
+Gaussian low-pass smearing of the ITF by the finite wave-packet extent ---
+negligible for ground-state cooling and a systematic of up to $4\%$ at the
+band edge for a warm ion ($\langle n\rangle=10^3$), to be included in the
+error budget at elevated temperatures.
 
 \begin{figure}[htb]
 \centering
@@ -2663,9 +2718,18 @@ Supplementary Material (Sec.~S7); the added ITF-calibration row is
 step~(3) (grating certification $u(H_x)/H_x\sim10^{-2}$, contributing
 $1.0$\,nm at $z=100$\,nm); step~(4) is the surface-charge row; step~(5)
 ($u(z_{\rm ref})\sim1$\,nm) is sub-dominant and absorbed in the quoted
-precision.  The traceability chain of the Appendix is therefore closed
-within this budget.
+precision.  The traceability chain of the Supplementary Material (Sec.~S7)
+is therefore closed within this budget (Fig.~\ref{fig:traceability}).
 \end{table}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{figT1_traceability.pdf}
+\caption{Measurement traceability chain of QESPM: from the SI metre and the
+SI second through the calibration steps of the Supplementary Material
+(Sec.~S7) to the reconstructed measurand $z_s(x,y)$.}
+\label{fig:traceability}
+\end{figure}
 
 Figure~\ref{fig:uncertainty} decomposes the combined uncertainty as a
 function of spatial frequency, confirming that surface charge dominates
@@ -2692,7 +2756,13 @@ including the ion's exquisite frequency sensitivity --- are at the
 sub-nanometre level and are \emph{not} the limiting factor.
 
 \textbf{Quantum measurement sensitivity is not topographic reconstruction
-uncertainty.}  The picometre-scale detection limits of Sec.~\ref{sec:qfi}
+uncertainty.}  The present budget does not represent an intrinsic limit of
+the ion readout.  It describes the uncertainty of topographic
+reconstruction when the surface charge field is treated as an unknown
+confounding quantity under the specified charge prior; the dominant
+contribution therefore reflects a fundamental identifiability limitation
+of electrostatic surface imaging rather than insufficient frequency
+sensitivity of the trapped-ion sensor.  The picometre-scale detection limits of Sec.~\ref{sec:qfi}
 quantify how precisely the frequency observable can be read; the
 $319$\,nm budget of Table~\ref{tab:uncertainty} quantifies how well the
 surface height can be \emph{identified}.  No quantum enhancement can
@@ -2905,9 +2975,9 @@ provided in Supplementary Figs.~S5--S7.
 Figure~\ref{fig:real_afm}(b) shows the central result: the Pearson
 correlation between the AFM ground truth and the QESPM reconstruction
 improves monotonically from $r = 0.62$ at $h = 40$\,\textmu m to
-$r = 0.78$ at $h = 2$\,\textmu m, directly validating the ITF height-scaling
-prediction on independently measured topography of a real engineering
-material.  At $h = 5$\,\textmu m --- the lowest height currently feasible given
+$r = 0.78$ at $h = 2$\,\textmu m, verifying the predicted height-dependent
+reconstruction behaviour using independently measured surface topography
+as input.  At $h = 5$\,\textmu m --- the lowest height currently feasible given
 motional heating constraints (Sec.~\ref{sec:noise}) --- $r = 0.76$ is
 achieved, and the dominant topographic features are visually recovered
 (Figs.~\ref{fig:real_afm}d,f).  With $512^2$ spatially independent samples
@@ -3078,24 +3148,25 @@ metrology methods and quantum sensing platforms.
 
 \begin{table}[htb]
 \centering
-\caption{Comparison of surface metrology and quantum sensing platforms.
-For QESPM the quoted vertical figure is the quantum-projection-noise
-detection sensitivity at $k_{\rm opt}=2/h$ in the charge-free regime;
-the realistic combined standard uncertainty is $319$\,nm
-(Table~\ref{tab:uncertainty}).}
+\caption{Comparison of surface metrology methods and quantum sensing
+platforms.  For QESPM the quoted vertical value is the
+quantum-projection-noise \emph{detection sensitivity} at $k_{\rm opt}=2/h$
+in the charge-free regime; the realistic combined standard uncertainty is
+$319$\,nm (Table~\ref{tab:uncertainty}), reflecting the identifiability
+limitation rather than the sensor sensitivity.}
 \label{tab:comparison}
-\small
-\begin{tabular}{@{}lcccc@{}}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.1cm}>{\raggedright\arraybackslash}p{0.9cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{1.3cm}@{}}
 \hline
-Method & Lateral res. & Vertical res. & Contact? & UHV/cryo? \\
+Method & Measurand & Interaction & Standoff & Lateral res. & Vertical uncertainty & Environment & Main limitation \\
 \hline
-AFM         & ${\sim}1$\,nm  & ${\sim}0.1$\,\AA & Yes/No & Limited \\
-STM         & ${\sim}0.1$\,nm & ${\sim}0.01$\,\AA & No & UHV only \\
-Optical     & ${\sim}0.5$\,\textmu m & ${\sim}1$\,nm & No & No \\
-SEM         & ${\sim}1$\,nm  & ${\sim}1$\,nm & No & Vacuum \\
-NV centre   & ${\sim}10$\,nm & --- (magnetic) & No & Ambient/UHV \\
-Scanning SQUID & ${\sim}1$\,\textmu m & ${\sim}1$\,nT (magnetic) & No & Cryogenic \\
-\textbf{QESPM} & ${\sim}1.5h$ (MTF) & ${\sim}10^{-2}$\,nm & No & \textbf{UHV native} \\
+AFM & geometry & mechanical & nm & ${\sim}1$\,nm & sub-nm & broad & tip interaction \\
+STM & electronic, topographic & tunnelling & \AA & ${\sim}0.1$\,nm & ${\sim}0.01$\,\AA & UHV & requires conductivity \\
+Optical & geometry & optical & mm & ${\sim}0.5$\,\textmu m & ${\sim}1$\,nm & broad & diffraction-limited \\
+SEM & electron contrast & electron beam & nm & ${\sim}1$\,nm & ${\sim}1$\,nm & vacuum & beam--sample interaction \\
+KPFM/EFM & potential + topography & electrostatic & nm--\textmu m & nm--\textmu m & ${\sim}$mV (potential) & broad & potential--topography cross-talk \\
+\textbf{QESPM} & electrostatic geometry & electrostatic & $1$--$100$\,\textmu m & ${\sim}1.5h$ (MTF) & ${\sim}10^{-2}$\,nm (det.);\newline $319$\,nm (charge-limited) & UHV--cryo native & topography--charge identifiability \\
 \hline
 \end{tabular}
 \end{table}
@@ -3157,20 +3228,28 @@ QESPM gradient channel is calibrated.
 \includegraphics[width=\textwidth]{fig4_landscape.pdf}
 \caption{Research gap landscape.  (a) Positioning of QESPM relative to
 existing quantum sensors and classical surface metrology platforms in the
-resolution--sensitivity plane.  QESPM occupies an unoccupied quadrant:
-long-range, non-contact, high vertical sensitivity.  (b) Research gap
+resolution--sensitivity plane.  QESPM targets the long-standoff,
+non-contact sector of the plane, where the vertical axis denotes
+\emph{detection sensitivity}; the realistic topographic reconstruction
+uncertainty of Table~\ref{tab:uncertainty} is shown separately.
+(b) Research gap
 maturity assessment across seven dimensions; the grey polygon shows current
 field maturity; the red polygon shows QESPM contributions.}
 \label{fig:landscape}
 \end{figure}
 
-QESPM occupies an unoccupied quadrant of the resolution--environment
-parameter space: it provides sub-nanometre vertical sensitivity (picometre
+QESPM occupies a distinctive region of the resolution--environment
+parameter space: it provides sub-nanometre vertical \emph{detection
+sensitivity} (picometre
 with motional squeezing at the quantum projection noise limit) at standoff
 distances of $1$--$100$\,\textmu m --- orders of magnitude larger than AFM or
-STM --- while operating natively in the UHV environment of the ion trap.  No existing surface metrology method
+STM --- while operating natively in the UHV environment of the ion trap.  The
+realistic topographic reconstruction uncertainty, by contrast, is
+charge-limited at ${\sim}319$\,nm
+(Table~\ref{tab:uncertainty}).  No existing surface metrology method
 combines non-contact operation, cryogenic UHV compatibility, and
-quantum-limited sensitivity.
+quantum-limited detection sensitivity; none is free of the electrostatic
+identifiability limit either.
 
 \subsection{Operating envelope}
 
@@ -3251,6 +3330,18 @@ This identifiability limit is not unique to the ion probe: Kelvin probe force mi
 resolved by two-pass scanning (mechanical topography in the first pass,
 potential measurement at a lift height in the second).  The purely non-contact
 ion probe precludes mechanical contact, demanding a different strategy.
+The relationship to KPFM/EFM is worth stating precisely.  \emph{Similarity:}
+all three techniques sense electrostatic surface information and face a
+topography--potential cross-talk.  \emph{Fundamental difference:} QESPM is
+a stationary quantum probe with no cantilever and no mechanical
+interaction; it operates at micrometre standoff, reads the surface through
+a frequency measurement of a quantum oscillator, is natively compatible
+with UHV and cryogenic environments, and its spatial response is governed
+by the analytic transfer function $k_x^2 e^{-kh}$ --- none of which applies
+to KPFM/EFM.  \emph{Shared limitation:} all three techniques inherit an
+identifiability (cross-talk) problem between geometric and electrostatic
+contrast, so the mitigation strategies of the following paragraph apply
+beyond QESPM.
 
 Three complementary approaches are identified, all of which supply the
 independent information that single-height, single-channel scanning lacks:
