@@ -44,44 +44,27 @@
 \begin{abstract}
 A new non-contact surface-metrology measurement principle is proposed and
 analysed.  The measurand is the surface height $z_s(x,y)$ of a conducting
-sample relative to a mean reference plane; the physical sensor is a single
-trapped atomic ion, held at height $h$ above the surface in a
-radio-frequency Paul trap, which converts the surface electrostatic
-perturbation into a shift $\Delta\omega_x$ of its secular motional
-frequency.  The measurement operator is characterised by the instrument
-transfer function (ITF), derived from
-boundary-perturbation theory on Laplace's equation,
-$H_x(k;h) \propto k_x^2 e^{-kh}$ --- a
-height-tunable band-pass filter with no analogue among existing surface
-methods.  The $e^{-kh}$ factor imposes an irreversible spatial-information
-cutoff: quantum enhancement can maximise the precision of available signals
-but cannot recover what the physical filter has destroyed.
-Singular-value analysis shows that at $h = 40$\,\textmu m only six
-independent Fourier modes are recoverable, with the effective rank scaling
-as $r_{\rm eff} \propto 1/h$.  A theorem establishes a
-topography--charge identifiability limit: multi-height scanning alone
-cannot separate surface topography from surface charge, as both share the
-identical $e^{-kh}$ scaling (rank-1 joint measurement matrix) --- surface
-charge is therefore not a noise source but an influence quantity
-structurally confounded with the measurand.  Analytical
-scaling laws cover signal amplitude, optimal wavenumber, the
-resolution--height product, and minimum detectable roughness.  Quantum
-Fisher information analysis shows that 13\,dB motional squeezing enhances
-amplitude sensitivity 4.5-fold, with the Heisenberg limit as the ideal
-bound under zero-decoherence conditions.  Five quantitative falsifiable
-experimental predictions are formulated.  The framework is validated
-against an exact Rayleigh (Floquet) solver and published
-atomic-force-microscopy data of stainless steel, with reconstruction
-quality improving from $r = 0.62$ to $r = 0.76$ as the height decreases
-from $40$\,\textmu m to $5$\,\textmu m; the experimental demonstration
-remains future work.  Measurement sensitivity is distinguished from
-reconstruction uncertainty: the latter is set by the topography--charge
-degeneracy, giving a combined standard uncertainty of $319$\,nm with
-$99.99\%$ of the variance from surface charge, whereas the former reaches
-nanometre and, at the quantum projection noise limit, picometre scale.  At
-a $5$\,Hz technical noise floor the minimum detectable amplitude is
-$\sim1$\,nm at $h=40$\,\textmu m, falling to $\sim0.05$\,nm at the ITF
-peak, with a path to picometre sensitivity via motional squeezing.
+sample; the sensor is a single trapped atomic ion, whose secular-frequency
+shift $\Delta\omega_x$ at height $h$ encodes the surface electrostatic
+perturbation.  The measurement operator is the instrument transfer
+function $H_x(k;h) \propto k_x^2 e^{-kh}$ --- a distinctive
+height-tunable band-pass spatial transfer function.  The $e^{-kh}$ factor
+imposes an irreversible spatial-information cutoff: quantum enhancement
+can maximise the precision of available signals but cannot recover what
+the physical filter has destroyed, and the recoverable mode rank scales as
+$r_{\rm eff} \propto 1/h$.  A theorem establishes the topography--charge
+identifiability limit: multi-height scanning alone cannot separate surface
+topography from surface charge, which share the identical $e^{-kh}$
+scaling, so surface charge is an influence quantity structurally
+confounded with the measurand.  Analytical scaling laws, a quantum Fisher
+information analysis and quantitative falsifiable predictions follow.
+The analytical model is benchmarked against an exact Rayleigh/Floquet
+solver and evaluated using published atomic-force-microscopy topography
+data; the experimental demonstration remains future work.  Measurement
+sensitivity is distinguished from reconstruction uncertainty: the latter
+is charge-limited (combined standard uncertainty $319$\,nm), whereas the
+former reaches nanometre and, at the quantum projection noise limit,
+picometre scale.
 \end{abstract}
 
 % ===================================================================
@@ -142,7 +125,8 @@ quantitative surface topography reconstruction.
 
 This work addresses this gap.  The present contribution is a
 \emph{proposed theoretical framework}: analytically derived, numerically
-validated, and tested against experimentally measured surface topography,
+benchmarked against an exact Rayleigh/Floquet solver, and tested against
+experimentally measured surface topography,
 with a defined experimental roadmap; the experimental demonstration itself
 remains future work.  The complete forward model
 linking surface height $z(x,y)$ to the ion's secular frequency shift
@@ -3180,7 +3164,8 @@ near-field fall-off dominates any cross-method rescaling.
 \centering
 \caption{Quantitative sensitivity comparison on each method's native
 observable.  Order-of-magnitude literature values: KPFM potential
-resolution ${\sim}$mV (two-pass mechanical topography); single-spin NV
+resolution ${\sim}$mV (two-pass mechanical topography)~\cite{glatzel2022kelvin};
+single-spin NV
 electrometry $\approx1.4\times10^{4}$\,V/m/$\sqrt{\rm Hz}$ at ${\sim}10$\,nm
 standoff~\cite{dolde2011nv}; single-ion electrometry
 $10$\,mV/m/$\sqrt{\rm Hz}$ at $50$--$100$\,\textmu m
@@ -3195,7 +3180,7 @@ $0.7$\,Hz (QPN) and $5$\,Hz floors (the quoted range spans the two).}
 Method & Native observable & Sensitivity (order) & Standoff \\
 \hline
 KPFM (two-pass) & contact potential & ${\sim}$mV (dc) & $<$100\,nm \\
-EFM & force gradient & ${\sim}$mV potential & $<$100\,nm \\
+EFM & force gradient & ${\sim}$mV potential~\cite{serry2000efm} & $<$100\,nm \\
 NV (single spin) & $E$-field & $1.4\times10^{4}$\,V/m/$\sqrt{\rm Hz}$ & ${\sim}10$\,nm \\
 Ion electrometry & $E$-field & $10$\,mV/m/$\sqrt{\rm Hz}$ & $50$--$100$\,\textmu m \\
 \textbf{QESPM (this work)} & $E$-field curvature & $23$--$160$\,V/m$^2$/$\sqrt{\rm Hz}$ & $40$\,\textmu m \\
@@ -3261,9 +3246,10 @@ Figure~\ref{fig:landscape}(a) shows the accessible region bounded by:
 $\lambda_{\max} = L_{\rm scan}$; (iii)~the minimum detectable amplitude
 $A_{\min}(k,h)$ from Eq.~(\ref{eq:scaling_amin}); and (iv)~the stability
 boundary $A_{\rm crit}(h)$ from Sec.~\ref{sec:stability}.
-The region where QESPM outperforms all existing techniques ---
-non-contact, $h > 1\,\mu\textup{m}$, $\delta z < 1\,\textup{nm}$ ---
-is distinctive in the metrology landscape.  Within this region, the optimal
+This region highlights a distinctive operating regime combining
+non-contact measurement, micrometre-scale standoff
+($h > 1\,\mu\textup{m}$) and high intrinsic displacement sensitivity
+($\delta z < 1\,\textup{nm}$).  Within this region, the optimal
 operating point for a given surface texture is found by maximising
 the information content $I(h)$ subject to the stability and throughput
 constraints.
