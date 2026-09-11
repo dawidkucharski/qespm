@@ -37,7 +37,7 @@ supporting the main manuscript.
 
 Sections S2--S10 contain the full derivations and validation details that
 support the main manuscript; all material is cross-referenced therein as
-Fig.~S1--S13 and Tables~S1--S2.
+Fig.~S1--S16 and Tables~S1--S2.
 
 % ===================================================================
 \section{Supplementary Figures}
@@ -883,5 +883,131 @@ $\mathcal F_A^{\rm(eff)}(k)=\mathcal F_A(k)\,e^{-k^2\sigma_x^2}$, i.e.~the
 quoted $0.7\%$ and $4\%$ attenuations reduce the QFI by $1.4\%$ and
 $8\%$, respectively --- a temperature-dependent correction that enters the
 quantum-enhancement claims verbatim.
+
+% ===================================================================
+\section{Stability and operating regime}
+% ===================================================================
+
+As the surface approaches the ion or the roughness amplitude increases, the
+surface-induced force gradient eventually overcomes the trapping potential.
+The stability criterion is $|\Delta\omega_x| < \omega_x/2$: beyond this
+threshold, the secular frequency shift exceeds half the unperturbed value;
+the secular motion then becomes unstable and the ion is ejected from
+the trap.  Figure~\ref{fig:S_stability} maps the
+stable and unstable regions in $(h, A)$ space for a sinusoidal surface with
+$\lambda = 40$\,\textmu m.  The critical amplitude scales as
+$A_{\rm crit}(h) \propto e^{+2\pi h/\lambda}$ for a surface with fixed
+spatial period $\lambda$, growing rapidly with ion height.
+(For the most-dangerous wavenumber $k = k_{\rm opt} = 2/h$,
+$A_{\rm crit} \propto h^2$ with no exponential dependence.)
+
+Three operating regimes follow: perturbation breakdown
+($h \lesssim 5$\,\textmu m, $A \gtrsim 150$\,nm, where the linear ITF
+fails), nominal sensing ($5$--$200$\,\textmu m, signal
+$10^2$--$10^5$\,Hz), and signal-limited ($h \gtrsim 200$\,\textmu m,
+below the $5$\,Hz floor).  At the nominal point ($h = 40$\,\textmu m,
+$A = 100$\,nm) the stability margin exceeds two orders of magnitude.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figR1_stability.pdf}
+\caption{Mathieu stability and QESPM operating regime.
+(a) Standard $(a,q)$ stability diagram with three representative trap
+operating points.  (b) Stability boundary in ion height--surface amplitude
+$(h,A)$ space for a sinusoidal surface with $\lambda = 40$\,\textmu m.
+The red curve marks $|\Delta\omega_x| = \omega_x/2$; the green and red
+shaded regions indicate stable and unstable operation, respectively.}
+\label{fig:S_stability}
+\end{figure}
+
+% ===================================================================
+\section{Response to broadband surface roughness}
+% ===================================================================
+
+Real surfaces possess a continuous roughness spectrum characterised by
+ISO~25178 parameters such as $R_a$.  Random profiles with controlled
+$R_a$ (power-law spectrum $S(k) \propto [1+(k\ell_c)^2]^{-\beta}$,
+$\ell_c = 5$\,\textmu m, $\beta = 1.5$) are propagated through the ITF
+and the RMS frequency shift $\sigma_{\Delta\omega}$ is computed
+(Fig.~\ref{fig:S_roughness}).
+
+The response is \textbf{linear in $R_a$} for $R_a \ll h$, with a
+roughness sensitivity of $68$\,Hz/nm at $h = 40$\,\textmu m rising to
+$4.3\times10^3$\,Hz/nm at $h = 5$\,\textmu m: QESPM acts as a
+\textbf{calibratable non-contact roughness gauge} linking the measured
+shift to standardised texture parameters.  Linearity breaks down as
+$R_a$ approaches $h/10$, where the boundary perturbation expansion fails.
+
+\textbf{Exact linearity for stationary Gaussian surfaces.}
+Let $z_s$ be a zero-mean stationary Gaussian random profile (1D scan) with
+power spectral density $S(k)$, so that
+$R_a^2 = (2/\pi)\langle z_s^2\rangle$.  Under the linear ITF,
+Parseval's theorem gives the exact variance
+\begin{equation}
+\sigma_{\Delta\omega}^2 = \frac{1}{2\pi}\int_{-\infty}^{\infty}
+    |H_x(k;h)|^2\,S(k)\,dk,
+\label{eq:roughness_variance}
+\end{equation}
+where $H_x=-Ck^2 e^{-kh}$; because $S(k)\propto R_a^2$ for a fixed
+spectral shape, $\sigma_{\Delta\omega}\propto R_a$ \emph{exactly} --- the
+linear scaling is an identity of the linear model, verified to machine
+precision against the FFT implementation and the Monte Carlo result
+($68.0\pm2.5$\,Hz/nm at $h=40$\,\textmu m).  The onset of nonlinearity at
+$R_a\sim h/10$ therefore signals \emph{model} breakdown (Sec.~S4), not
+statistics.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figR2_roughness_response.pdf}
+\caption{QESPM response to broadband surface roughness.
+(a) RMS secular frequency shift $\sigma_{\Delta\omega}/2\pi$ as a function
+of $R_a$ for ion heights $h = 5$--$80$\,\textmu m.  The linear scaling
+$\sigma_{\Delta\omega} \propto R_a$ holds for $R_a \ll h$.  (b) Normalised
+sensitivity $\sigma_{\Delta\omega}/R_a$, showing constant response in the
+linear regime.}
+\label{fig:S_roughness}
+\end{figure}
+
+% ===================================================================
+\section{Sequential and adaptive measurement strategies}
+% ===================================================================
+
+For scanning applications, adaptive protocols can improve throughput.
+A two-pass strategy is natural: (i)~a coarse scan at large $h$
+($h \sim 80$\,\textmu m, $\Delta x \sim 10$\,\textmu m) identifies
+regions of high topographic variance; (ii)~a fine scan at small $h$
+($h \sim 5$--$20$\,\textmu m) resolves those regions at high resolution.
+The Bayesian analogue updates the posterior over $z_s(x,y)$ sequentially
+as each pixel is acquired, enabling real-time decisions about where to
+scan next.  The greedy D-optimal selection is protected by a performance
+guarantee: for Gaussian-process models the expected information gain is a
+monotone submodular set function, and the greedy maximiser attains
+$(1-e^{-1})\approx0.63$ of the optimal information gain
+(Nemhauser--Wolsey-type bound; see Rasmussen and Williams, \emph{Gaussian
+Processes for Machine Learning}).  For a fixed total measurement time
+$T_{\rm tot}$, the optimal allocation between coarse and fine scans
+follows from maximising the expected information gain, which depends on
+the surface power spectrum.  A 1D demonstration with 17 partially
+resolved Gaussian sources (spacing $5$\,\textmu m, below the PSF scale
+$h=40$\,\textmu m) quantifies the gain (Fig.~\ref{fig:S_adaptive}): a
+uniform 30-point acquisition achieves amplitude error $0.071$, while
+greedy D-optimal point selection (maximising the expected information
+gain $g^T P g$ at each step) with the same coarse budget plus 60 targeted
+points achieves $0.028$ --- better than the exhaustive uniform 400-point
+scan ($0.043$) at a quarter of the time --- and the posterior covariance
+trace drops by a factor $4.6$.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV12_adaptive.pdf}
+\caption{Bayesian adaptive scanning (1D demonstration).
+(a) True signal, noisy data, and the uniform-30 and adaptive (30+60 greedy
+D-optimal) reconstructions.
+(b) Posterior predictive standard deviation and the adaptively selected
+refinement points.  Averaged over 30 noise realisations the amplitude
+error drops from $0.071$ (uniform 30) to $0.028$ (adaptive), below the
+exhaustive 400-point scan ($0.043$).}
+\label{fig:S_adaptive}
+\end{figure}
 
 \end{document}

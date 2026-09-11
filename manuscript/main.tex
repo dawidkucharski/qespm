@@ -357,15 +357,12 @@ Lemma~\ref{lem:perturbation}.  The full derivation is given in the
 Supplementary Material (Sec.~S10).
 
 \textbf{Connection to the method of images.}
-For a planar conductor ($z_s = 0$), the exact solution is the sum of the
-real charge at $(0,0,h)$ and an image charge $-e$ at $(0,0,-h)$.  For a
-corrugated surface, the boundary perturbation derived above is equivalent
-to a continuous distribution of image charges on the surface
-$z = -z_s(x,y)$, with areal density proportional to the local curvature
-of $z_s$.  This equivalence provides an alternative computational
-approach (method of surface charges) and physical intuition: the ion
-senses its own distorted image, and the frequency shift measures the
-image-force gradient.
+For a planar conductor the exact solution is the real charge plus its
+image; for a corrugated surface the boundary perturbation is equivalent to
+a continuous image-charge distribution on $z = -z_s(x,y)$ with density
+proportional to the local curvature.  The ion thus senses its own
+distorted image, and the frequency shift measures the image-force
+gradient.
 
 \textbf{Secular frequency perturbation.}
 The total potential experienced by the ion is
@@ -836,23 +833,14 @@ amplitudes up to $200$\,nm (Supplementary Fig.~S7).
 
 \subsection{Test surface}
 
-Three calibration test patterns are generated:
-\begin{itemize}
-    \item \textbf{Topography-only}: a Gaussian plateau (height 200\,nm,
-          $\sigma = 7.5\,\mu\textup{m}$), a linear ramp (100\,nm across the
-          64\,\textmu m field of view), and a fine sinusoidal grating
-          (amplitude 5\,nm, period 4\,\textmu m).
-    \item \textbf{Charge-only}: four Gaussian surface-charge patches
-          ($\sigma \sim 10^{-3}$\,C/m$^2$, $\varnothing \sim 10\,\mu\textup{m}$)
-          producing ion-height potentials of $\pm 50$--$250$\,mV (the
-          surface-level potentials $\sigma/2\varepsilon_0 k$ reach the
-          volt level and are attenuated by the $e^{-kh}$ factor).
-    \item \textbf{Mixed}: both topography and charge patches superimposed.
-\end{itemize}
-
-All simulations use parameters appropriate for ${}^{40}$Ca$^+$:
-$m = 40$\,amu, $\omega_x/2\pi = 1$\,MHz, $E_{\rm bg} = 10^4$\,V/m,
-$h = 40\,\mu\textup{m}$.
+Three calibration test patterns are generated: topography-only (a Gaussian
+plateau of height $200$\,nm and $\sigma = 7.5$\,\textmu m, a linear ramp
+of $100$\,nm, and a fine sinusoidal grating of amplitude $5$\,nm and
+period $4$\,\textmu m), charge-only (four Gaussian patches of
+$\sigma \sim 10^{-3}$\,C/m$^2$ producing $\pm 50$--$250$\,mV ion-height
+potentials), and mixed.  All simulations use ${}^{40}$Ca$^+$ parameters
+($\omega_x/2\pi = 1$\,MHz, $E_{\rm bg} = 10^4$\,V/m,
+$h = 40$\,\textmu m).
 
 \subsection{Measurement noise model}
 \label{sec:noise}
@@ -1815,101 +1803,30 @@ insensitive to purely geometric topography for a homogeneous material); and
 $z_s$, sparsity for $\sigma$).
 
 \subsection{Stability and operating regime}
-\label{sec:stability}
 
-As the surface approaches the ion or the roughness amplitude increases, the
-surface-induced force gradient eventually overcomes the trapping potential.
-The stability criterion is $|\Delta\omega_x| < \omega_x/2$: beyond this
-threshold, the secular frequency shift exceeds half the unperturbed value;
-the secular motion then becomes unstable and the ion is ejected from
-the trap.  Figure~\ref{fig:stability} maps the
-stable and unstable regions in $(h, A)$ space for a sinusoidal surface with
-$\lambda = 40$\,\textmu m.  The critical amplitude scales as
-$A_{\rm crit}(h) \propto e^{+2\pi h/\lambda}$ for a surface with fixed
-spatial period $\lambda$, growing rapidly with ion height.
-(For the most-dangerous wavenumber $k = k_{\rm opt} = 2/h$,
-$A_{\rm crit} \propto h^2$ with no exponential dependence.)
-
-Three distinct operating regimes are identified:
-(i)~\textbf{perturbation breakdown} ($h \lesssim 5$\,\textmu m,
-$A \gtrsim 150$\,nm), where $|\Delta\omega_x|/\omega_x > 10\%$ and the
-linear ITF is no longer valid; (ii)~\textbf{nominal sensing}
-($5$\,\textmu m $\lesssim h \lesssim 200$\,\textmu m), where the signal
-is strong ($|\Delta\omega_x|/2\pi \sim 10^2$--$10^5$\,Hz) and the linear
-theory applies; and (iii)~\textbf{signal-limited} ($h \gtrsim 200$\,\textmu m),
-where $|\Delta\omega_x|$ falls below the $5$\,Hz measurement noise floor
-and averaging times become impractically long.  For the nominal operating
-point ($h = 40$\,\textmu m, $A = 100$\,nm), the stability margin exceeds
-two orders of magnitude in $A$.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=\textwidth]{figR1_stability.pdf}
-\caption{Mathieu stability and QESPM operating regime.
-(a) Standard $(a,q)$ stability diagram with three representative trap
-operating points.  (b) Stability boundary in ion height--surface amplitude
-$(h,A)$ space for a sinusoidal surface with $\lambda = 40$\,\textmu m.
-The red curve marks $|\Delta\omega_x| = \omega_x/2$; the green and red
-shaded regions indicate stable and unstable operation, respectively.}
-\label{fig:stability}
-\end{figure}
+The surface-induced force gradient must remain below the trapping
+potential: the stability criterion is $|\Delta\omega_x| < \omega_x/2$,
+beyond which the secular motion becomes unstable and the ion is ejected.
+The critical amplitude grows rapidly with height
+($A_{\rm crit}(h) \propto e^{+2\pi h/\lambda}$ at fixed $\lambda$), so
+the linear ITF applies over a wide nominal regime
+($h \approx 5$--$200$\,\textmu m), with perturbation breakdown at small
+$h$ and a signal-limited regime beyond $h\approx200$\,\textmu m; at the
+nominal point ($h = 40$\,\textmu m, $A = 100$\,nm) the stability margin
+exceeds two orders of magnitude.  The $(h,A)$ stability diagram and the
+full regime analysis are given in the Supplementary Material (Sec.~S12).
 
 \subsection{Response to broadband surface roughness}
 
-Real surfaces are not pure sinusoids; they possess a continuous roughness
-spectrum characterised by ISO~25178 parameters such as the arithmetic mean
-deviation $R_a$.  To quantify the QESPM response to broadband roughness,
-random profiles with controlled $R_a$ are generated using a power-law
-spectrum $S(k) \propto [1 + (k\ell_c)^2]^{-\beta}$ with correlation length
-$\ell_c = 5$\,\textmu m and spectral exponent $\beta = 1.5$, representative
-of machined metal surfaces.  The profiles are propagated through the ITF and
-the RMS frequency shift $\sigma_{\Delta\omega}$ is computed
-(Fig.~\ref{fig:roughness}).
-
-The response is \textbf{linear in $R_a$} for $R_a \ll h$, with sensitivity
-decreasing with ion height: $\sigma_{\Delta\omega}/2\pi \approx 6.8$\,kHz at
-$h = 40$\,\textmu m for $R_a = 100$\,nm, corresponding to a roughness
-sensitivity of $68$\,Hz/nm.  At $h = 5$\,\textmu m, the sensitivity
-reaches $4.3 \times 10^3$\,Hz/nm.  The linear relationship
-$\sigma_{\Delta\omega} \propto R_a$ establishes QESPM as a
-\textbf{calibratable non-contact roughness gauge}, directly linking the
-measured frequency shift to standardised surface texture parameters.
-Deviations from linearity occur when $R_a$ approaches $h/10$, where the
-boundary perturbation expansion begins to break down.
-
-\begin{proposition}[Exact linearity for stationary Gaussian surfaces]
-Let $z_s$ be a zero-mean stationary Gaussian random profile (1D scan) with
-power spectral density $S(k)$, so that
-$R_a^2 = (2/\pi)\langle z_s^2\rangle$.  Under the linear ITF,
-Parseval's theorem gives the exact variance
-\begin{equation}
-\sigma_{\Delta\omega}^2 = \frac{1}{2\pi}\int_{-\infty}^{\infty}
-    |H_x(k;h)|^2\,S(k)\,dk,
-\label{eq:roughness_variance}
-\end{equation}
-where $H_x=-Ck^2 e^{-kh}$; because $S(k)\propto R_a^2$ for a fixed
-spectral shape, $\sigma_{\Delta\omega}\propto R_a$ \emph{exactly}
-for any such surface --- the linear scaling is a mathematical identity of
-the linear model, not a numerical coincidence.  The identity was verified
-to machine precision against the FFT implementation and reproduces the
-Monte Carlo result ($68.0\pm2.5$\,Hz/nm at $h=40$\,\textmu m over 30
-realisations); the
-nonlinearity onset at $R_a\sim h/10$ is therefore the signature of the
-\emph{model} breakdown (Sec.~\ref{sec:robustness}), not of the
-statistics.
-\end{proposition}
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=\textwidth]{figR2_roughness_response.pdf}
-\caption{QESPM response to broadband surface roughness.
-(a) RMS secular frequency shift $\sigma_{\Delta\omega}/2\pi$ as a function
-of $R_a$ for ion heights $h = 5$--$80$\,\textmu m.  The linear scaling
-$\sigma_{\Delta\omega} \propto R_a$ holds for $R_a \ll h$.  (b) Normalised
-sensitivity $\sigma_{\Delta\omega}/R_a$, showing constant response in the
-linear regime.}
-\label{fig:roughness}
-\end{figure}
+For broadband roughness characterised by the ISO~25178 parameter $R_a$,
+the RMS secular shift is \textbf{linear in $R_a$} for $R_a \ll h$, with a
+roughness sensitivity of $68$\,Hz/nm at $h = 40$\,\textmu m rising to
+$4.3\times10^3$\,Hz/nm at $h = 5$\,\textmu m: QESPM acts as a
+calibratable non-contact roughness gauge linking the measured shift to
+standardised texture parameters, and linearity fails only when $R_a$
+approaches $h/10$.  A Parseval identity makes the linear scaling exact
+for stationary Gaussian surfaces; the full analysis is given in the
+Supplementary Material (Sec.~S13).
 
 \subsection{Quantum-limited sensitivity}
 \label{sec:qfi}
@@ -1946,17 +1863,12 @@ enhancement can maximise the precision with which an available signal is
 measured, but it cannot recover spatial information that has already been
 exponentially attenuated by the physical transfer function.}
 
-Heisenberg scaling holds only in the absence of decoherence and
-state-preparation overhead, and trapped-ion motional NOON states are not an
-experimentally routine probe state.  Under independent per-quantum
-dephasing at rate $\gamma$, Fock coherences $\langle n|\rho|m\rangle$
-decay as $e^{-\gamma|n-m|\tau}$: a squeezed state's phase signal is
-carried by coherences up to $\Delta n\sim e^{r}\sqrt{N}$, so squeezing is
-moderately more fragile than the coherent reference, while the NOON state
-dephases at the $N$-amplified rate $N\gamma$, negating the Heisenberg
-advantage whenever $N\gamma$ approaches $1/\tau_{\rm opt}$ --- the reason
-the coherent-state protocol with $\tau\sim T_2/2$ is the robust near-term
-target.
+Heisenberg scaling holds only without decoherence or state-preparation
+overhead.  Under per-quantum dephasing at rate $\gamma$, the NOON state
+dephases at the $N$-amplified rate $N\gamma$, negating its advantage
+whenever $N\gamma$ approaches $1/\tau_{\rm opt}$; squeezed states are
+moderately more fragile than the coherent reference.  The coherent-state
+protocol with $\tau \sim T_2/2$ is therefore the robust near-term target.
 
 Formally, the \textbf{quantum Fisher information per spatial mode} factorises as
 \begin{equation}
@@ -1983,23 +1895,14 @@ are larger by a factor of ${\sim}7$.  True picometre sensitivity
 $\times 4.5$) combined with the QPN limit at $k_{\rm opt}$.
 
 \textbf{Optimal measurement and decoherence.}
-The bound is attained by the projective Fock-basis measurement
-implemented by resolved-sideband shelving (repeated red-sideband pulses
-mapping each occupied Fock level onto the internal state, followed by
-fluorescence readout); for the NOON state the optimal measurement is the
-parity measurement $\Pi=(-1)^{a^\dagger a}$.  For dephasing (dominant in
-ion traps), the channel QFI after time $\tau$ is
-$\mathcal{F}_A^{\rm(deph)}(\tau) = 4|\alpha|^2\tau^2
-(\partial\Delta\omega_x/\partial A)^2 e^{-2\gamma\tau}$, and the relevant
-figure of merit for scanning is the information per unit time,
-$\mathcal{F}_A/\tau$, maximised at
-$\tau_{\rm opt} = 1/(2\gamma) = T_2/2 = 5$\,ms.  The resulting fixed
-dephasing penalty at the optimal interrogation time is $\sqrt{e}\approx1.65$ ---
-not a function of the dwell time --- and a $1$\,s pixel is therefore built
-from $N_{\rm rep}=200$ independent $5$\,ms Ramsey cycles, with the standard
-repetition scaling $\delta A_{\min}\propto1/\sqrt{N_{\rm rep}}$.
-The coherent-state sensitivity with $\tau\sim T_2/2$ represents the most
-robust near-term target.
+The bound is attained by projective Fock-basis readout
+(resolved-sideband shelving), and by the parity measurement for the NOON
+state.  Under dephasing, the channel QFI decays as $e^{-2\gamma\tau}$ and
+the information per unit time is maximised at
+$\tau_{\rm opt} = 1/(2\gamma) = T_2/2 = 5$\,ms, giving a fixed penalty of
+$\sqrt{e}\approx1.65$ per pixel and the standard repetition scaling
+$\delta A_{\min}\propto1/\sqrt{N_{\rm rep}}$ ($N_{\rm rep}=200$ Ramsey
+cycles per $1$\,s pixel).
 
 \textbf{Multiparameter quantum Cram\'er--Rao bound.}
 The full measurement estimates the vector of surface Fourier coefficients
@@ -2476,7 +2379,7 @@ monotone (verified numerically for $10^{-5}\le kA\le0.448$), so the
 amplitude inversion is unique there.  Iterative nonlinear schemes
 (Landweber, CGLS, or Gauss--Newton) are therefore the appropriate
 inversion tool in the large-slope regime, extending the operating
-envelope of Fig.~\ref{fig:stability} beyond the linear band.
+envelope beyond the linear band (Supplementary Sec.~S12).
 
 \textbf{Resolution--variance trade-off.}
 For a metrological instrument, the fundamental question is: ``Given a
@@ -2644,13 +2547,11 @@ effective rank of Fig.~\ref{fig:svd}; the $128$-point numerical grid is
 therefore over-sampled by $\sim24\times$ relative
 to the information content, and the true scan can be a sparse
 ${\sim}5$-point acquisition at 1\,s per pixel instead of a
-$128$-point grid.  The optimal placement of these sparse points is the
-noise-aware (D-optimal) design: the information per sample at wavenumber
-$k$ is proportional to $|H_x(k)|^2/S_{\delta\omega}(k)$, so the
-acquisition grid should concentrate samples where the ITF-weighted
-signal-to-noise is largest --- i.e.\ denser near $k_{\rm opt}=2/h$ and
-sparser in the low- and high-$k$ wings --- which the Bayesian adaptive
-protocol of Sec.~\ref{sec:discussion} implements automatically.  The scan
+$128$-point grid.  The optimal sparse placement is the noise-aware D-optimal design,
+concentrating samples where the ITF-weighted signal-to-noise
+$|H_x(k)|^2/S_{\delta\omega}(k)$ is largest (near $k_{\rm opt}=2/h$),
+which the Bayesian adaptive protocol of Sec.~\ref{sec:discussion}
+implements automatically.  The scan
 time follows
 $T_{\rm scan}=N_{\rm Sh}\tau_{\rm pix}$, with
 $\tau_{\rm pix}=N_{\rm rep}\tau$ the per-pixel dwell time; the throughput
@@ -2790,19 +2691,15 @@ formula, exceed 100 for the combined uncertainty, justifying the
 Gaussian coverage factor $k = 2$.
 
 \textbf{Type-A derivation.}
-The Type-A entry follows from the quantum-limited frequency-estimation
-variance for $N_{\rm rep}$ repeated coherent-state Ramsey measurements of
-duration $\tau$,
-$u_A(f) = 1/(4\pi\tau\sqrt{N_{\rm rep}\langle n\rangle})$; with
-$\tau = T_2/2 = 5$\,ms, mean motional occupation $\langle n\rangle=0.5$
-and $N_{\rm rep}=5.6\times10^3$ repetitions (28\,s of integration),
-$u_A(f) = 0.30$\,Hz --- the value used in Table~\ref{tab:uncertainty} and
-consistent with the $0.7$\,Hz quantum projection noise floor quoted in
-Sec.~\ref{sec:noise} for $N_{\rm rep}\approx10^3$ (the budget adopts the
-slower, metrologically conservative repetition count).  In practice
-$u_A(f)$ is verified against the Allan deviation of the frequency record:
-for white frequency noise $\sigma_y(\tau) = u_A(f)/f_{\rm sec}$
-normalised to the same averaging time.
+The Type-A entry is the quantum-limited frequency-estimation variance
+$u_A(f) = 1/(4\pi\tau\sqrt{N_{\rm rep}\langle n\rangle})$ for
+$N_{\rm rep}$ coherent-state Ramsey measurements; with
+$\tau = T_2/2 = 5$\,ms, $\langle n\rangle = 0.5$ and
+$N_{\rm rep}=5.6\times10^3$ (28\,s), $u_A(f) = 0.30$\,Hz --- the value in
+Table~\ref{tab:uncertainty}, consistent with the $0.7$\,Hz QPN floor of
+Sec.~\ref{sec:noise} (the budget uses the slower, conservative repetition
+count).  In practice $u_A(f)$ is verified against the Allan deviation of
+the frequency record.
 
 \textbf{Input correlations.}
 Several input quantities are correlated through the measurement model:
@@ -2814,13 +2711,10 @@ same timebase.  The full GUM propagation law with correlations is
 u_c^2(z) = \sum_i c_i^2 u^2(x_i) + 2\sum_{i<j} c_i c_j u(x_i) u(x_j) r_{ij},
 \end{equation}
 where $r_{ij}$ are the correlation coefficients.  For the dominant
-charge contribution, $r_{ij} = 0$ for all pairs (surface charge is
-independent of the trap parameters).  The largest correlation is
-$r(h, E_{\rm bg}) \approx -0.3$ (negative, because increasing electrode
-voltages increases $E_{\rm bg}$ and simultaneously shifts the ion
-equilibrium upward, increasing the calibrated $h$), which modifies
-$u_c(z)$ by $<1\%$ --- negligible in the present budget.  All other
-correlations contribute at the $<0.1\%$ level and are safely neglected.
+charge contribution, $r_{ij} = 0$ for all pairs.  The largest correlation,
+$r(h, E_{\rm bg}) \approx -0.3$ (increasing electrode voltages increases
+both $E_{\rm bg}$ and the calibrated $h$), modifies $u_c(z)$ by $<1\%$;
+all other correlations contribute at $<0.1\%$ and are neglected.
 
 \subsection{Predictions for experiment}
 
@@ -2833,81 +2727,40 @@ infrastructure:
 \begin{enumerate}
 
 \item \textbf{Scaling-law test.}
-For a sinusoidal grating with certified amplitude $A = 50$\,nm and period
-$\lambda = 20$\,\textmu m, measure $|\Delta\omega_x|$ as a function of ion
-height $h$ from $10$ to $100$\,\textmu m.  The ITF predicts
-$|\Delta\omega_x| \propto k^2 e^{-kh}$ with $k = 2\pi/\lambda$.
-A log-linear plot of $|\Delta\omega_x| h^2$ versus $h$ should yield a
-straight line with slope $-k = -2\pi/\lambda$.  \textbf{Falsification
-criterion:} a fitted slope differing from $-k$ by more than three combined
-standard uncertainties (from the frequency measurement and the grating
-certification) would reject the ITF model at the $>99$\% confidence level.
+For a certified grating ($A = 50$\,nm, $\lambda = 20$\,\textmu m), a
+log-linear plot of $|\Delta\omega_x| h^2$ versus $h$
+($10$--$100$\,\textmu m) should be a straight line of slope
+$-k = -2\pi/\lambda$; a slope differing by more than three combined
+standard uncertainties rejects the ITF model.
 
 \item \textbf{Band-pass spectral signature.}
-Scan the ion across a surface with broadband roughness (e.g.\ a lapped metal
-surface with $R_a \sim 50$\,nm, correlation length $\ell_c \sim 10$\,\textmu m).
-The power spectral density of the measured $\Delta\omega_x(x)$ should follow
-$S_{\Delta\omega}(k) \propto k^4 e^{-2kh} S_z(k)$, where $S_z(k)$ is the
-surface roughness spectrum independently measured by AFM.  The characteristic
-$k^4 e^{-2kh}$ shape, peaking at $k = 2/h$, is a characteristic spectral
-signature predicted for the proposed ion probe.  \textbf{Falsification
-criterion:} the absence
-of a statistically significant peak in $S_{\Delta\omega}(k)$ at
-$k = 2/h$ (or a peak at a different $k$) would reject the band-pass ITF
-model.
+Scanning over broadband roughness, the spectrum
+$S_{\Delta\omega}(k) \propto k^4 e^{-2kh} S_z(k)$ should peak at
+$k = 2/h$; the absence of a significant peak there rejects the
+band-pass model.
 
 \item \textbf{Patch-potential correlation length.}
-The spatial autocorrelation function of $\Delta\omega_x(x,y)$ over a
-homogeneous conducting surface directly yields the patch-potential correlation
-length $\ell_c$ --- a quantity that has been debated in the trapped-ion
-literature for two decades (see the review of Brownnutt et
-al.~\cite{brownnutt2015review} and the microscopic-trap heating study of
-Daniilidis et al.~\cite{daniilidis2011fabrication})
-but has never been directly measured.  Formally: model the patch potential
-as a zero-mean stationary Gaussian random field $\phi_p$ with covariance
-$C_\phi(\rho)=\sigma_\phi^2 e^{-\rho/\ell_c}$ and spectrum
-$S_\phi(k)=2\pi\sigma_\phi^2\ell_c^2(1+k^2\ell_c^2)^{-3/2}$; the measured
-frequency map is then the Gaussian process
-$\Delta\omega_x = \mathcal{H}_x\phi_p$ with covariance operator
-$\mathcal H_x S_\phi \mathcal H_x^*$, i.e.~the ACF
-$\langle\Delta\omega_x(\mathbf{r})\Delta\omega_x(0)\rangle \propto
-\int k_x^4 e^{-2kh} e^{i\mathbf{k}\cdot\mathbf{r}} S_\phi(k) d^2\mathbf{k}$
-(the $k_x^4=k^4\cos^4\theta$ weight of $|H_x|^2$; in polar form the
-angular integral is elementary and the fit uses the full kernel)
-as stated in the main text.  Fitting the measured ACF to this model
-extracts $\ell_c$ --- a measurement \textbf{inaccessible to any existing
-technique} that would resolve a long-standing puzzle in ion-trap physics.
-\textbf{Falsification criterion:} if the extracted
-$\ell_c$ from the ACF fit is consistent with zero (i.e., a white-noise
-patch-potential spectrum, $S_\phi(k) = \textup{const}$) at the 95\%
-confidence level, the spatially correlated patch-potential hypothesis
-is rejected.
+The spatial autocorrelation of $\Delta\omega_x(x,y)$ over a homogeneous
+conducting surface yields the patch-potential correlation length
+$\ell_c$ --- a quantity debated for two decades (reviewed by Brownnutt
+et al.~\cite{brownnutt2015review}; see also Daniilidis et
+al.~\cite{daniilidis2011fabrication}) and not yet directly measured.
+Fitting the measured ACF to the patch-potential model extracts
+$\ell_c$; a white-noise spectrum ($\ell_c$ consistent with zero) at the
+$95\%$ confidence level rejects the correlated-patch hypothesis.
 
 \item \textbf{Charge elimination cross-check.}
-Measure $\Delta\omega_x(x,y)$ before and after in-situ ultraviolet
-irradiation~\cite{ziomba2025uv} or ion-bombardment cleaning.  The difference
-map isolates the removable charge contribution.  The residual --- after
-charge subtraction --- should correlate with independently measured surface
-topography (AFM or SEM), validating the two-parameter forward model,
-Eq.~(\ref{eq:forward_two_param}).  \textbf{Falsification criterion:} a
-Pearson correlation $r < 0.5$ between the post-cleaning residual and the
-AFM topography (with at least 100 independent spatial samples) would
-indicate that either the forward model is incomplete or the cleaning
-protocol is insufficient.
+Maps taken before and after in-situ UV
+irradiation~\cite{ziomba2025uv} or ion-bombardment cleaning should
+isolate the removable charge contribution; a post-cleaning residual
+correlating with AFM topography ($r \ge 0.5$) validates the
+Eq.~(\ref{eq:forward_two_param}) two-parameter forward model.
 
 \item \textbf{Quantum projection noise floor.}
-With the ion cooled to the motional ground state ($\bar{n} < 0.1$) via
-resolved-sideband cooling, perform repeated frequency measurements at a
-fixed position.  The Allan deviation should follow
-$\sigma_\omega(\tau) \propto 1/\sqrt{\tau}$ down to the quantum projection
-noise floor $\delta\omega_{\rm QPN} =
-1/(4\pi\tau\sqrt{N_{\rm rep}\langle n\rangle})$ (assuming unit detection
-efficiency in the resolved-sideband readout),
-below which it should plateau.  The plateau level, predicted to be
-$\sim 0.7$\,Hz for ${}^{40}$Ca$^+$ under the conditions of
-Sec.~\ref{sec:noise}, constitutes a direct test of quantum-limited
-sensitivity.  Observation of the plateau at the predicted level confirms
-that the ion probe operates at the fundamental quantum limit.
+For a ground-state-cooled ion, the Allan deviation should follow
+$1/\sqrt{\tau}$ down to the quantum projection noise plateau
+($\sim0.7$\,Hz, Sec.~\ref{sec:noise}); observation of the plateau at the
+predicted level confirms quantum-limited sensitivity.
 
 \end{enumerate}
 
@@ -3281,7 +3134,7 @@ Figure~\ref{fig:landscape}(a) shows the accessible region bounded by:
 (lateral resolution limit); (ii)~the FOV-limited long-wavelength cutoff
 $\lambda_{\max} = L_{\rm scan}$; (iii)~the minimum detectable amplitude
 $A_{\min}(k,h)$ from Eq.~(\ref{eq:scaling_amin}); and (iv)~the stability
-boundary $A_{\rm crit}(h)$ from Sec.~\ref{sec:stability}.
+boundary $A_{\rm crit}(h)$ (Supplementary Sec.~S12).
 This region highlights a distinctive operating regime combining
 non-contact measurement, micrometre-scale standoff
 ($h > 1\,\mu\textup{m}$) and high intrinsic displacement sensitivity
@@ -3313,21 +3166,14 @@ together with proposed resolution strategies.
 \textbf{Multi-observable identifiability.}
 The preceding analysis considers a single observable ($\Delta\omega_x$).
 However, the ion provides several physically independent measurement
-channels: the $x$ and $y$ secular frequency shifts ($\Delta\omega_x$,
-$\Delta\omega_y$), the excess micromotion amplitude $\beta_{\rm mm}$,
-and the motional heating rate $\dot{\bar{n}}$.  Each channel has a
-different spatial transfer function:
-$H_x \propto k_x^2 e^{-kh}$,
-$H_y \propto k_y^2 e^{-kh}$,
-$H_{\rm mm} \propto |k_x| e^{-kh}$ (Supplement, Fig.~S2),
-and $\dot{\bar{n}}$ depends on local dielectric properties rather than
-geometry.  The combined measurement vector
-$\mathbf{d}(k) = [\Delta\tilde{\omega}_x, \Delta\tilde{\omega}_y,
-\tilde{\beta}_{\rm mm}, \tilde{\dot{\bar{n}}}]^T$ maps to surface
-parameters through a multi-channel forward matrix $\mathbf{H}_{\rm comb}$.
-The central theoretical question becomes: given this matrix, which surface
-properties are jointly identifiable?  Corollary~\ref{cor:electrostatic}
-answers this within the electrostatic sector: every electrostatic channel
+channels --- the $x$ and $y$ secular shifts, the excess micromotion
+amplitude $\beta_{\rm mm}$ (transfer functions
+$H_x \propto k_x^2 e^{-kh}$, $H_y \propto k_y^2 e^{-kh}$,
+$H_{\rm mm} \propto |k_x| e^{-kh}$; Supplement, Fig.~S2), and the motional
+heating rate $\dot{\bar{n}}$, which depends on local dielectric properties
+rather than geometry.  Corollary~\ref{cor:electrostatic}
+answers the identifiability question within the electrostatic sector: every
+electrostatic channel
 is a linear functional of the single scalar field
 $\varphi_s=\tilde{z}_s+\tilde{\sigma}/2\varepsilon_0 k E_{\rm bg}$, so the
 multi-channel forward matrix remains rank-1 per Fourier mode and no
@@ -3462,53 +3308,18 @@ surface-electrode ion-trap quantum processors~\cite{kumph2016operation}; and
 (d)~physics-informed neural network (PINN) inversion for real-time
 topography--charge separation on large grids.
 
-A Bayesian treatment of the inverse problem, in which prior information
-about surface smoothness (Gaussian process priors) and charge sparsity
-(Laplace priors) is incorporated through the posterior distribution,
-provides uncertainty quantification beyond the frequentist GUM framework.
-The Gaussian-process step of Sec.~\ref{sec:inverse} (posterior mean and
-per-mode covariance of Fig.~\ref{fig:bayesian}) is the first instalment of
-this programme; extending it to the full nonlinear joint
-topography--charge posterior with hyperparameter marginalisation is
-deferred to future work.
-
-\textbf{Sequential measurement strategies.}
-For scanning applications, adaptive protocols can improve throughput.
-A two-pass strategy is natural: (i)~a coarse scan at large $h$
-($h \sim 80\,\mu\textup{m}$, $\Delta x \sim 10\,\mu\textup{m}$) identifies
-regions of high topographic variance; (ii)~a fine scan at small $h$
-($h \sim 5$--$20\,\mu\textup{m}$) resolves those regions at high resolution.
-The Bayesian analogue updates the posterior over $z_s(x,y)$ sequentially
-as each pixel is acquired, enabling real-time decisions about where to
-scan next.  The greedy D-optimal selection is protected by a performance
-guarantee: for Gaussian-process models the expected information gain is a
-monotone submodular set function, and the greedy maximiser attains
-$(1-e^{-1})\approx0.63$ of the optimal information gain
-(Nemhauser--Wolsey-type bound, cf.~\cite{rasmussen2006gaussian}).
-For a fixed total measurement time $T_{\rm tot}$, the optimal
-allocation between coarse and fine scans follows from maximising the
-expected information gain, which depends on the surface power spectrum.
-A 1D demonstration with 17 partially resolved Gaussian sources (spacing
-$5$\,\textmu m, below the PSF scale $h=40$\,\textmu m) quantifies the
-gain (Fig.~\ref{fig:adaptive}): a uniform 30-point acquisition achieves
-amplitude error $0.071$, while greedy D-optimal point selection
-(maximising the expected information gain $g^T P g$ at each step) with the
-same coarse budget plus 60 targeted points achieves $0.028$ --- better
-than the exhaustive uniform 400-point scan ($0.043$) at a quarter of the
-time --- and the posterior covariance trace drops by a factor $4.6$.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=\textwidth]{figV12_adaptive.pdf}
-\caption{Bayesian adaptive scanning (1D demonstration).
-(a) True signal, noisy data, and the uniform-30 and adaptive (30+60 greedy
-D-optimal) reconstructions.
-(b) Posterior predictive standard deviation and the adaptively selected
-refinement points.  Averaged over 30 noise realisations the amplitude
-error drops from $0.071$ (uniform 30) to $0.028$ (adaptive), below the
-exhaustive 400-point scan ($0.043$).}
-\label{fig:adaptive}
-\end{figure}
+A Bayesian treatment of the inverse problem, with Gaussian-process
+smoothness priors for topography and sparsity priors for charge, provides
+uncertainty quantification beyond the frequentist GUM framework
+(Sec.~\ref{sec:inverse}, Fig.~\ref{fig:bayesian}); the full nonlinear
+joint posterior is deferred to future work.  Sequential measurement
+strategies (coarse scan at large $h$, fine scan at small $h$, with
+D-optimal point selection protected by the $(1-e^{-1})\approx0.63$
+submodularity guarantee) improve throughput: a 1D demonstration reduces
+the amplitude error from $0.071$ (uniform 30-point) to $0.028$
+(adaptive) at a quarter of the exhaustive-scan time.  The full
+adaptive-scanning analysis is given in the Supplementary Material
+(Sec.~S14).
 
 \subsection{Experimental roadmap}
 
@@ -3523,6 +3334,17 @@ estimate comparable to a research-grade AFM.  The expected static signal
 $50$\,nm amplitude, $20$\,\textmu m period grating) sits at the
 conservative $5$\,Hz floor, so the scaling test starts at
 $h\le30$\,\textmu m, where the predicted single-pixel SNR exceeds $10$
+for $N_{\rm rep}\sim10^2$.  To make the first demonstration concrete,
+this initial phase is specified for hardware that already exists: the
+three-dimensional scanning ion probe of S{\"a}gesser et al.~\cite{sagesser2026scanning}
+(single ${}^{40}$Ca$^+$, surface-electrode trap with motorised sample
+stage).  A certified grating is translated beneath the ion at
+$h = 10$--$30$\,\textmu m while the shift is measured by Ramsey
+interferometry, where the ITF predicts $122$\,Hz at $h=30$\,\textmu m,
+$2.8$\,kHz at $h=20$\,\textmu m and $65$\,kHz at $h=10$\,\textmu m.
+Confirming the $k^2 e^{-kh}$ height scaling to $\sim10\%$ would constitute
+the first experimental test of the framework and requires no component that
+has not been demonstrated separately in the cited platform.
 for $N_{\rm rep}\sim10^2$.
 
 % ===================================================================
@@ -3589,7 +3411,10 @@ The Surface-Topography Challenge dataset is available at Zenodo
 All Python code used to generate the figures and perform the numerical
 analyses is version-controlled in a GitHub repository
 (\url{https://github.com/dawidkucharski/qespm}) and will be made public,
-together with a permanent Zenodo deposit, upon acceptance.
+together with a permanent Zenodo deposit, upon acceptance.  A synthetic
+benchmark dataset (reference surfaces, simulated ion-signal maps and
+reference reconstructions) is released with the repository so that the
+forward/inverse chain can be reproduced independently.
 
 % ===================================================================
 \section*{Acknowledgments}

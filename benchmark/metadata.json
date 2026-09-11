@@ -1,0 +1,30 @@
+{
+  "description": "QESPM synthetic benchmark: reference surfaces, simulated ion-signal maps and reference reconstructions for the linear instrument transfer function H_x(k;h) = -C k^2 exp(-|k| h), C = 1.92e3 m/s.",
+  "units": {
+    "x": "m (centred, dx = 0.5 um)",
+    "kx": "rad/m (numpy fftfreq order)",
+    "z_*": "m",
+    "dw_*": "rad/s (secular frequency shift Delta omega_x)"
+  },
+  "parameters": {
+    "h": 4e-05,
+    "L": 6.4e-05,
+    "N": 128,
+    "C_ITF": 1920.0,
+    "noise_hz": 5.0,
+    "E_bg": 10000.0,
+    "omega_x_rad_s": 6283185.307179586
+  },
+  "surfaces": {
+    "z_grating": "sinusoid, lambda = 100 um, A = 100 nm (resolvable)",
+    "z_plateau": "Gaussian plateau, sigma = 30 um, A = 200 nm (resolvable)",
+    "z_rough": "power-law roughness, lc = 5 um, beta = 1.5, Ra = 100 nm",
+    "z_fine": "sinusoid, lambda = 4 um, A = 50 nm (below MTF cutoff 1.51h = 60.4 um)",
+    "z_ref": "sum of the four components"
+  },
+  "reference_reconstructions": {
+    "z_rec_clean": "Tikhonov, lambda = 1.0 (noise-free data)",
+    "z_rec_noisy": "Tikhonov, lambda = 5e5 (data with 5 Hz white-noise floor)"
+  },
+  "conventions": "numpy unnormalised FFT; dw = ifft(H(kx) fft(z)).real; z = ifft(conj(H)/(|H|^2 + lambda) fft(dw)).real; phase conventions follow the centred-coordinate FFT used in the manuscript."
+}
