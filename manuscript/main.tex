@@ -68,6 +68,10 @@ former reaches nanometre and, at the quantum projection noise limit,
 picometre scale.
 \end{abstract}
 
+\noindent\textbf{Keywords:} surface metrology; instrument transfer
+function; trapped ion; quantum sensing; inverse problems; measurement
+uncertainty
+
 % ===================================================================
 \section{Introduction}
 % ===================================================================
@@ -665,11 +669,8 @@ $c_h=kz$ and $c_{E_{\rm bg}}=z/E_{\rm bg}$.
 
 \textbf{Forward operator on $L^2(\mathbb{R}^2)$ --- rigorous formulation.}
 
-The operator-theoretic properties of the forward map are now established
-with
-full mathematical rigor.  Let $\mathcal{H}_h: L^2(\mathbb{R}^2) \to L^2(\mathbb{R}^2)$
-be the forward operator defined by Eq.~(\ref{eq:forward}) in Fourier space.
-In real space, $\mathcal{H}_h$ is a convolution operator:
+The operator-theoretic properties of the forward map are summarised as
+follows.  In real space $\mathcal{H}_h$ is the convolution operator
 \begin{equation}
 (\mathcal{H}_h z_s)(\mathbf{r}) = \int_{\mathbb{R}^2}
     K_h(\mathbf{r} - \mathbf{r}') \, z_s(\mathbf{r}') \, d^2\mathbf{r}',
@@ -677,82 +678,28 @@ In real space, $\mathcal{H}_h$ is a convolution operator:
 K_h(\mathbf{r}) = \mathcal{F}^{-1}[H_x].
 \label{eq:conv_op}
 \end{equation}
-
-\textbf{Operator structure.}
-The kernel has finite $L^2$ norm,
-$\|H_x\|_{L^2}^2 = \frac{45\pi}{32}\bigl(eE_{\rm bg}/2m\omega_x\bigr)^2
-h^{-6}$ (computed in polar coordinates:
-$C^2\int_0^{2\pi}\cos^4\theta\,d\theta\int_0^\infty k^5e^{-2kh}\,dk
-= \frac{45\pi}{32}C^2h^{-6}$), so $\mathcal{H}_h$ is
-Hilbert--Schmidt and compact~\cite{reed1980functional}, with operator norm
-$\|\mathcal{H}_h\|_{\rm op} = \max_{k_x,k_y}|H_x| =
-\frac{eE_{\rm bg}}{2m\omega_x}\frac{4}{h^2}e^{-2}$
-attained at $k_{\rm opt}=2/h$.  Because the symbol decays exponentially,
-$\mathcal{H}_h$ is infinitely smoothing: it maps any Sobolev space $H^s$
-into any $H^{s'}$, and its inverse on the range is unbounded --- the
-precise functional-analytic statement of severe ill-posedness.
-
-The adjoint operator is obtained in closed form:
-\begin{equation}
-(\mathcal{H}_h^* g)(\mathbf{r}) = \int_{\mathbb{R}^2}
-    K_h^*(\mathbf{r}' - \mathbf{r}) \, g(\mathbf{r}') \, d^2\mathbf{r}',
-\quad
-K_h^*(\mathbf{r}) = \mathcal{F}^{-1}[\overline{H_x}] = K_h(\mathbf{r}),
-\end{equation}
-where the last equality follows because $H_x$ is real-valued
-($\overline{H_x} = H_x$).  The normal operator
-$\mathcal{H}_h^*\mathcal{H}_h$ is the convolution with kernel
-$\mathcal{F}^{-1}[|H_x|^2]$, which is also infinitely smoothing.
-
-\begin{proposition}[Spectrum and non-Fredholm character]\label{prop:spectrum}
-The forward operator is unitarily equivalent (via the Fourier transform)
-to the multiplication operator $g\mapsto H_x\,g$ on $L^2(\mathbb{R}^2)$.
-Its spectrum is therefore the closure of the essential range of the
-continuous symbol,
-\begin{equation}
-\sigma(\mathcal{H}_h) = \overline{\operatorname{ran} H_x} = [-M, 0],
-\qquad
-M = \frac{eE_{\rm bg}}{2m\omega_x}\,\frac{4}{h^2}e^{-2},
-\label{eq:spectrum}
-\end{equation}
-with empty point spectrum: $\mathcal{H}_h$ has no $L^2$ eigenfunctions
-(its kernel contains, e.g., every profile with Fourier support on the
-line $k_x=0$).  In particular $\mathcal{H}_h$ is not semi-Fredholm, its
-range is non-closed, and the Moore--Penrose (least-squares) inverse is
-densely defined but unbounded.
-\end{proposition}
-
-\textit{Proof.}  The symbol $H_x=-Ck_x^2e^{-kh}$ is real, continuous, and
-takes every value in $[-M,0]$ along the line $k_y=0$
-($k_x\in[0,\infty)$) --- each interior value twice, at the two roots
-$x_{\rm lo},\,x_{\rm hi}$ of Corollary~\ref{cor:qfactor} --- so the
-essential range is the whole interval
-(verified numerically on the discretised operator: the grid eigenvalues
-reproduce $[-M,0]$).  A multiplication operator has eigenvalues only if
-the symbol is constant on a set of positive measure, which fails here.
-The infinite-dimensional kernel rules out the semi-Fredholm property, and
-compactness with non-closed range rules out a bounded inverse.
-
-\textbf{Singular functions.}
-For the continuous operator on a bounded domain $[-L/2, L/2]$, the
-singular functions $u_n(x)$ satisfy
-$\mathcal{H}_h^*\mathcal{H}_h u_n = \sigma_n^2 u_n$.  Because
-$\mathcal{H}_h^*\mathcal{H}_h$ is a convolution operator, its
-eigenfunctions on a finite interval are of prolate-spheroidal
-type~\cite{slepian1978prolate}: the leading singular functions are broad
-modes concentrated at the domain centre, the higher ones oscillate rapidly
-near the boundaries.  On the periodic DFT lattice used throughout, the
-operator is exactly diagonal and the singular functions are exactly the
-Fourier modes (Fig.~\ref{fig:singular}); the two pictures agree to within
-boundary-concentration effects, justifying the Fourier-based analysis of
-this work.  The discrepancy is small in the precise sense of the prolate
-eigenvalues: discretising the aperiodic kernel
-$\sin[k_{\rm hi}(x-x')]/\pi(x-x')$ with the noise-limited bandlimit
-$k_{\rm hi}=13.4/h$ on the $L=64$\,\textmu m interval gives the leading
-prolate eigenvalues $1.0000,\,1.0000,\,1.0000,\,0.9994,\,0.9910,\,0.9211,\,
-0.6424,\ldots$ --- the first five Fourier modes are concentrated to better
-than $1\%$, the sixth to $8\%$, and the loss accelerates beyond, matching
-the effective rank $r_{\rm eff}=6$ of the SVD analysis.
+Its symbol is real, continuous and exponentially decaying, so
+$\mathcal{H}_h$ is Hilbert--Schmidt, compact and infinitely smoothing:
+the spectrum is $\sigma(\mathcal{H}_h) = \overline{\operatorname{ran}H_x}
+= [-M,0]$ with
+$M=(eE_{\rm bg}/2m\omega_x)(4/h^2)e^{-2}$ attained at
+$k_{\rm opt}=2/h$, it has no $L^2$ eigenfunctions, its range is
+non-closed, and the Moore--Penrose inverse is densely defined but
+unbounded --- the functional-analytic statement of severe ill-posedness.
+The kernel of the single $x$-channel consists exactly of the profiles
+whose Fourier transform is supported on $k_x=0$; the joint operator
+$\mathcal{H}_x\oplus\mathcal{H}_y$ is injective on the zero-mean
+subspace (Proposition~\ref{prop:joint}).  On the periodic DFT lattice
+$\mathcal{H}_h$ is exactly diagonal and its singular functions are the
+Fourier modes (Fig.~\ref{fig:singular}); on a bounded interval the
+continuous analogue has prolate-spheroidal singular
+functions~\cite{slepian1978prolate}, whose leading eigenvalues
+($1.0000,\,1.0000,\,1.0000,\,0.9994,\,0.9910,\,0.9211,\,0.6424,\ldots$
+at the noise-limited bandlimit $k_{\rm hi}=13.4/h$,
+$L=64$\,\textmu m) concentrate the first five Fourier modes to better
+than $1\%$ and the sixth to $8\%$, matching the effective rank
+$r_{\rm eff}=6$.  Full derivations are given in the Supplementary
+Material (Sec.~S10).
 
 \begin{figure}[htb]
 \centering
@@ -766,44 +713,19 @@ concentration structure.}
 \label{fig:singular}
 \end{figure}
 
-\begin{lemma}[Null space and injectivity]\label{lem:nullspace}
-For the single $x$-channel, $\ker\mathcal{H}_h$ consists exactly of the
-profiles whose Fourier transform is supported on the line $k_x=0$ ---
-profiles that depend only on $y$.  The joint operator
-$\mathcal{H}_x\oplus\mathcal{H}_y$ has kernel consisting exactly of the
-constant functions, and is therefore injective on the subspace of
-zero-mean functions.
-\end{lemma}
-
-\textit{Proof.}  The symbol $H_x=-Ck_x^2e^{-kh}$ vanishes precisely on
-$\{k_x=0\}$, so a profile is annihilated iff its transform is supported
-there.  For the joint operator the intersection of the two null spaces is
-$\{k_x=0\}\cap\{k_y=0\}=\{(0,0)\}$, i.e.\ the constant mode; removing the
-constant completes the proof (the injectivity statement is
-Proposition~\ref{prop:joint} restated in symbol form).
-
 \subsection{Floquet analysis: beyond the pseudopotential approximation}
 
-The derivation of the pseudopotential frequency shift is verified against
-the full Floquet solution of the Mathieu
-equation~\cite{mclachlan1947mathieu}: the exact characteristic
-exponent reproduces the pseudopotential result to $\mathcal{O}(q^2)$, with
-a leading correction of $\approx 3\%$ at $q=0.3$ and $\approx 11\%$ at
-$q=0.5$ ($\le 11\%$ for all practical trap configurations).  Driven
-micromotion generates spectral sidebands carrying the gradient transfer
-function $H_{\rm mm}(k;h)\propto k_x e^{-kh}$ (Supplementary Fig.~S2), an
+The pseudopotential shift is verified against the full Floquet solution
+of the Mathieu equation~\cite{mclachlan1947mathieu}: the exact
+characteristic exponent reproduces the pseudopotential result to
+$\mathcal{O}(q^2)$, with leading corrections $\approx 3\%$ at $q=0.3$
+and $\approx 11\%$ at $q=0.5$.  Driven micromotion carries the gradient
+channel $H_{\rm mm}\propto k_x e^{-kh}$ (Supplementary Fig.~S2) --- an
 independent consistency channel that cannot break the topography--charge
-degeneracy, and an rf-averaged carrier correction below ${\sim}2\%$ for
-warm ions at micrometre-scale features.  Anharmonic surface terms shift
-the secular frequency by
-$\delta\omega_x^{\rm(anh)}/\Delta\omega_x \sim \tfrac12 x_{\rm zp}^2 k^2$
-(${\sim}3\times10^{-6}$ at $h=40\,\mu\textup{m}$), becoming dominant only
-for $h \lesssim 1\,\mu\textup{m}$, where Casimir--Polder forces already
-invalidate the purely electrostatic model.  Throughout this work the
-pseudopotential expressions are used; the $\mathcal{O}(q^2)$ correction is
-a known systematic that can be calibrated out.  The full derivation, the
-correction table and the numerical trajectory validation are given in the
-Supplementary Material (Sec.~S2, Table~S1, Fig.~S7).
+degeneracy --- and anharmonic surface terms remain negligible above
+$h\gtrsim1$\,\textmu m.  The full derivation, the correction table and
+the trajectory validation are given in the Supplementary Material
+(Sec.~S2, Table~S1, Fig.~S7).
 
 \subsection{Numerical implementation}
 
@@ -2061,55 +1983,20 @@ $i > r_{\rm eff}$, where the noise dominates.  This connects the effective
 rank directly to the Picard condition.
 
 \textbf{Regularisation parameter selection.}
-Setting $\lambda$ empirically is insufficient for a metrological instrument.
-Three principled methods are applicable:
-
-\begin{enumerate}
-\item \textbf{Morozov discrepancy principle:} Choose $\lambda$ such that
-      $\|\mathbf{H}\mathbf{z}_\lambda - \mathbf{d}^\delta\| = \tau\delta$,
-      where $\delta$ is the estimated noise level and $\tau \approx 1.01$
-      is a safety factor.  For the present problem,
-      $\delta \approx \sqrt{N_{\rm pix}}\,\delta\omega$, yielding
-      $\lambda_{\rm DP} \approx 3 \times 10^{-5}\max|H_x|$ for the
-      synthetic test case (the 1D cross-section; the full 2D value of
-      Fig.~\ref{fig:picard} below is larger by the pixel-number factor,
-      $\lambda_{\rm DP}^{\rm(2D)}\approx9\times10^{-3}\max|H_x|$) ---
-      consistent with the empirical choice
-      $\lambda = 10^{-4}\max|H_x|$ to within a factor of 3.
-
-\item \textbf{L-curve criterion:} The log-log plot of residual norm
-      $\|\mathbf{H}\mathbf{z}_\lambda - \mathbf{d}^\delta\|$ vs.\ solution
-      norm $\|\mathbf{z}_\lambda\|$ exhibits a characteristic L-shape;
-      the corner corresponds to the optimal trade-off between data fit
-      and regularisation.  For the $h = 40\,\mu\textup{m}$ test case, the
-      L-curve corner occurs at $\lambda_{\rm L} \approx 5.1 \times
-      10^{-5}\max|H_x|$ (2D surface of Fig.~\ref{fig:picard}).
-
-\item \textbf{Generalised cross-validation (GCV):} The GCV function
-      $G(\lambda) = \|\mathbf{H}\mathbf{z}_\lambda - \mathbf{d}^\delta\|^2
-      / [\operatorname{tr}(I - \mathbf{H}\mathbf{H}_\lambda^\dagger)]^2$
-      achieves its minimum near $\lambda_{\rm GCV} \approx
-      5 \times 10^{-5}\max|H_x|$.
-\end{enumerate}
-All three methods are evaluated on the 2D test surface of
-Sec.~\ref{sec:methods} at $h=40$\,\textmu m with the $5$\,Hz noise floor
-(Fig.~\ref{fig:picard}): the discrete Picard plot (a) shows the noise-free
-coefficients decaying faster than the singular values while the noisy ones
-saturate at the noise floor --- the quantitative signature of the effective
-rank of Fig.~\ref{fig:svd}; the discrepancy principle (Morozov, $\tau=1.01$)
-gives $\lambda_{\rm DP} \approx 9.0\times10^{-3}\max|H_x|$ (the
-$3\times10^{-5}\max|H_x|$ quoted above refers to the 1D cross-section,
-the $\sqrt{N_{\rm pix}}$ noise-norm factor separating the two); the L-curve
-corner (maximum curvature) lies at
+Three principled methods are evaluated on the 2D test surface at
+$h=40$\,\textmu m with the $5$\,Hz noise floor (Fig.~\ref{fig:picard}):
+the Morozov discrepancy principle gives
+$\lambda_{\rm DP} \approx 9.0\times10^{-3}\max|H_x|$ (the 1D
+cross-section value $3\times10^{-5}\max|H_x|$ differs by the
+$\sqrt{N_{\rm pix}}$ noise-norm factor); the L-curve corner lies at
 $\lambda_{\rm L} \approx 5.1\times10^{-5}\max|H_x|$; and generalised
 cross-validation minimises at
 $\lambda_{\rm GCV} \approx 9.3\times10^{-4}\max|H_x|$.  The empirical
-$\lambda = 10^{-4}\max|H_x|$ used throughout lies between the L-curve and
-GCV values, with the three principled choices ordered
-$\lambda_{\rm L}<\lambda<\lambda_{\rm GCV}<\lambda_{\rm DP}$ --- the spread
-expected for a severely ill-posed problem whose data residual is
-noise-dominated for every practical regularisation --- providing a
-post-hoc justification for the choice used throughout.
+$\lambda = 10^{-4}\max|H_x|$ used throughout lies between the L-curve
+and GCV values, with the three choices ordered
+$\lambda_{\rm L}<\lambda<\lambda_{\rm GCV}<\lambda_{\rm DP}$ --- the
+spread expected when the data residual is noise-dominated for every
+practical regularisation.
 
 \begin{figure}[htb]
 \centering
