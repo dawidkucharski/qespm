@@ -1010,4 +1010,57 @@ exhaustive 400-point scan ($0.043$).}
 \label{fig:S_adaptive}
 \end{figure}
 
+% ===================================================================
+\section{Johnson--Nyquist noise: derivation details}
+% ===================================================================
+
+In the quasistatic limit ($\omega\ll c/d$, skin depth $\delta_s\gg d$), the
+fluctuation--dissipation theorem applied to the reflected Green's function
+of a dipole at height $d$ above a half-space of resistivity $\rho$, as
+formulated for interfaces by Wylie and Sipe and applied to trapped ions by
+Henkel et al., gives the $zz$-channel Green's function of the reflected
+potential $G_\Phi(k;\omega)=(1/2\varepsilon_0 k)r_p(k,\omega)e^{-2kd}$ with
+$\operatorname{Im} r_p = 2\varepsilon_0\omega/\sigma$ ($\sigma=1/\rho$,
+Drude metal in the $\sigma\gg\varepsilon_0\omega$ limit), from which the
+potential spectral density follows as
+$S_\Phi(k;\omega;d)=(2k_BT/\omega)\operatorname{Im}G_\Phi
+=2k_BT\rho\,k^{-1}e^{-2kd}$, and the field spectral density as
+$S_E(k;\omega;d)=k^2S_\Phi=2k_BT\rho\,k\,e^{-2kd}$.  Integrating over $k$,
+$S_E(\omega;d)=\int(k\,dk/2\pi)S_E(k)=k_BT\rho/(4\pi d^3)$, in agreement
+with the FDT result $S_F=4k_BT\gamma$ for the Ohmic image drag
+$\gamma=q^2\rho/(16\pi d^3)$ on a charge oscillating normally to the
+surface.  The gradient observable is the $k_x^2$-weighted integral,
+$S_{\partial E_x/\partial x}(\omega;d)=\int(k\,dk/2\pi)(k^2/2)S_E(k)
+=3k_BT\rho/(8\pi d^5)$, giving the frequency-shift noise
+$\delta\omega_J/2\pi=(e/4\pi m\omega_x)\sqrt{3k_BT\rho/(8\pi d^5\tau)}$
+for a measurement of bandwidth $1/\tau$.
+
+% ===================================================================
+\section{Regularisation-theory proofs}
+% ===================================================================
+
+\textbf{Proof of the conditional (logarithmic) stability theorem.}
+Split the frequency axis at the passband $B(\theta)=\{k:|H(k)|\ge\theta\}$.
+On the passband, Parseval gives
+$\|\widehat{z_1-z_2}\|_{L^2(B)}^2\le\delta^2/\theta^2$; on the complement,
+the low-$k$ part is bounded through the embedding
+$\|z\|_{L^\infty}\le C_s\|z\|_{H^s}$ and the high-$k$ part directly from
+the source condition.  Combining the three pieces and balancing at
+$\theta=\delta^{2/3}$ gives the announced bounds.
+
+\textbf{Noise--bias decomposition of the Tikhonov estimate.}
+The estimate obeys
+$\|z_\lambda^\delta-z_s^\dagger\|_{L^2}\le\delta/(2\lambda)+
+C_3E(\lambda/C)^{1/4}+Eh^s(\ln(Ch^2/\lambda))^{-s}(1+o(1))$: the first
+term is the propagated noise (the Tikhonov filter satisfies
+$\sup_k|H|/(|H|^2+\lambda^2)=1/(2\lambda)$) and the last two are the
+regularisation bias from the two sides of the source set.
+
+\textbf{Proof of the minimax lower bound.}
+Two-hypothesis argument: the data of $z_\pm=\pm\varepsilon\cos(kx)$ differ
+by $2\varepsilon|H(k)|$ and are indistinguishable from noise when
+$\varepsilon\le\delta/|H(k)|$, while the source constraint requires
+$\varepsilon(1+k^2)^{s/2}\le E$; balancing at
+$k\approx h^{-1}\ln(1/\delta)$ gives the lower bound.
+
 \end{document}

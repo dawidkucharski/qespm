@@ -90,7 +90,7 @@ amorphous dielectrics~\cite{muller2019quantum} all demand surface metrology
 that does not require breaking vacuum or warming the sample.
 
 Trapped atomic ions are among the most sensitive detectors of electric fields
-ever realised.  A single ion confined in a radio-frequency (rf) Paul trap
+realised to date~\cite{keller2015electrometry}.  A single ion confined in a radio-frequency (rf) Paul trap
 responds to stray electrostatic potentials through shifts of its secular
 motional frequencies and excess micromotion amplitude~\cite{leibfried2003review},
 and through the motional heating rate first measured by Turchette et
@@ -115,8 +115,10 @@ fibres~\cite{ong2020probing} and on nearby
 dielectrics~\cite{harlander2010trapped}, and to perform spatial
 thermometry with millikelvin resolution~\cite{norton2011millikelvin}.
 
-Despite these advances, \textbf{no work has formulated the inverse problem of
-reconstructing surface topography $z(x,y)$ from ion motional observables}.
+Despite these advances, the quantitative inverse problem --- reconstructing
+surface topography $z(x,y)$ from ion motional observables with a defined
+instrument transfer function, regularised inversion and an uncertainty
+budget --- has not, to the present knowledge, been formulated.
 The ion has been used as a qualitative electrometer --- detecting the
 \emph{presence} of surface fields --- but never as a \emph{quantitative
 topographic imaging tool} with a defined instrument transfer function,
@@ -125,8 +127,10 @@ particularly striking given the parallel development of quantum sensors for
 nanoscale imaging: nitrogen-vacancy (NV) centres in diamond have been
 extensively applied to magnetic surface imaging, reviewed by Rondin et
 al.~\cite{rondin2014magnetometry}, and to electric-field sensing at the
-single-spin level~\cite{dolde2011nv}; yet no electric-field quantum sensor has been proposed specifically for
-quantitative surface topography reconstruction.
+single-spin level~\cite{dolde2011nv}; the extension of electric-field
+quantum sensing to quantitative surface topography reconstruction with
+explicit instrument characterisation has likewise not, to the present
+knowledge, been presented.
 
 This work addresses this gap.  The present contribution is a
 \emph{proposed theoretical framework}: analytically derived, numerically
@@ -438,17 +442,13 @@ $k=\sqrt{k_x^2+k_y^2}$.
 \end{lemma}
 
 \textit{Proof sketch.}  Boundary perturbation of the charge--image pair
-potential gives the datum $\psi=-z_s\,(e h/2\pi\varepsilon_0)(\rho^2+h^2)^{-3/2}$;
-Fourier transforming via the Hankel transform of $(\rho^2+h^2)^{-3/2}$,
-convolving, and Poisson-propagating to the ion yields
-Eq.~(\ref{eq:phi_selfimage}); the identity reproduces the adiabatic limit
+potential, Hankel-transformed and Poisson-propagated to the ion, yields
+Eq.~(\ref{eq:phi_selfimage}); the adiabatic limit
 $\tilde{\Phi}^{(1)}_{\rm im}\to-(e/8\pi\varepsilon_0h^2)\tilde{z}_s$ as
-$kh\to0$ (the image follows the locally flat surface).  It was verified
-against direct quadrature of the Poisson integral to $10^{-15}$ relative
-accuracy and against the full two-dimensional spectral chain to within
-$3\%$ across $kh\in[0.5,8]$ at both $h=40$\,\textmu m and
-$h=5$\,\textmu m (full derivation in the Supplementary Material,
-Sec.~S10).  The complete instrument transfer function is therefore
+$kh\to0$ follows.  The identity was verified against direct quadrature of
+the Poisson integral to $10^{-15}$ relative accuracy and against the
+spectral chain to within $3\%$ across $kh\in[0.5,8]$ (full derivation:
+Supplementary Material, Sec.~S10).  The complete instrument transfer function is therefore
 \begin{equation}
 H_x^{\rm(tot)}(k_x,k_y;h) = H_x(k_x,k_y;h)\,
     \bigl[1 - \eta(k,h)\bigr],
@@ -860,7 +860,10 @@ intersection of the two dominant branches.
 The motional-heating rate
 $\dot{\bar n}(h)=\dot{\bar n}_0\,(h/h_0)^{-\alpha}$ with
 $\dot{\bar n}_0=10^{2}$\,quanta/s at $h_0=40$\,\textmu m and
-$\alpha=3.7$ (within the published $3.5$--$4$ range) caps the
+$\alpha=3.7$ --- a representative anchor adopted from the published
+$3.5$--$4$ scaling range for surface-electrode traps, as reviewed by
+Brownnutt et al.~\cite{brownnutt2015review}; the heating-limited optimum
+$h_{\rm opt}=\alpha/k$ is independent of the anchor magnitude --- caps the
 interrogation time at $T_2^{\rm(heat)}=\dot{\bar n}^{-1}$ and hence sets a
 height-dependent frequency resolution $\delta\omega(h) \approx
 \dot{\bar n}(h)/(2\sqrt{N_{\rm rep}\langle n\rangle})$.
@@ -891,8 +894,15 @@ For the nominal $h = 40$\,\textmu m, a realistic frequency resolution is
 $\delta\omega/2\pi \approx 1$--$5$\,Hz, limited by rf stability rather
 than quantum projection noise (which is ${\sim}7\times$ lower at ${\sim}0.7$\,Hz).  At closer approach ($h < 10$\,\textmu m),
 heating dominates and the resolution degrades as $h^{-4}$ (Fig.~\ref{fig:noise_budget}).  In this work SNR
-values are quoted using $\delta\omega/2\pi = 5$\,Hz (conservative) unless otherwise
-noted, and the $h$-dependence is discussed explicitly.
+values are quoted using $\delta\omega/2\pi = 5$\,Hz unless otherwise
+noted.  This floor is a stated engineering assumption, not a measured
+value: it deliberately exceeds by orders of magnitude the stability of the
+frequency standards themselves (GPS-disciplined oscillators) and absorbs
+residual technical drifts (rf amplitude noise, uncompensated micromotion,
+ambient effects).  All SNR-dependent results scale linearly with
+$\delta\omega$ ($A_{\min}\propto\delta\omega$), while the
+identifiability-limited budget of Sec.~\ref{sec:uncertainty} is
+independent of it, and the $h$-dependence is discussed explicitly.
 
 \begin{figure}[htb]
 \centering
@@ -915,36 +925,21 @@ A conducting surface at temperature $T$ produces thermally fluctuating
 surface currents, whose near field fluctuates at the ion position.  The
 QESPM observable is the \emph{field-gradient} noise
 $\partial E_x/\partial x$, not the field noise itself, so the spectral
-density must be derived for the gradient.  In the quasistatic limit
-($\omega \ll c/d$, skin depth $\delta_s \gg d$), the fluctuation-
-dissipation theorem applied to the reflected Green's function of a
-dipole at height $d$ above a half-space of resistivity
-$\rho$, as formulated for interfaces by Wylie and
-Sipe~\cite{wylie1984quantum} and applied to trapped ions by Henkel et
-al.~\cite{henkel1999loss}, gives the $zz$-channel
-Green's function of the reflected \emph{potential},
-$G_\Phi(k;\omega)=(1/2\varepsilon_0 k)\,r_p(k,\omega)\,e^{-2kd}$ with
-$\operatorname{Im} r_p = 2\varepsilon_0\omega/\sigma$
-($\sigma=1/\rho$, Drude metal in the $\sigma \gg \varepsilon_0\omega$
-limit), from which the potential spectral density follows as
-$S_\Phi(k;\omega;d) = (2k_BT/\omega)\operatorname{Im} G_\Phi
-= 2k_B T\rho\,k^{-1}e^{-2kd}$, and the field spectral density as
-\begin{gather}
-S_{E}(k;\omega;d) = k^2 S_\Phi(k;\omega;d)
-    = 2k_B T\rho\,k\,e^{-2kd}, \nonumber\\
-S_E(\omega;d) = \int \frac{k\,dk}{2\pi}S_{E}(k) \nonumber\\
-    = \frac{k_B T\rho}{4\pi d^3},
-\label{eq:johnson_field}
-\end{gather}
-in agreement with the FDT result $S_F = 4k_BT\gamma$ for the Ohmic image
-drag $\gamma = q^2\rho/(16\pi d^3)$ on a charge oscillating normally to
-the surface.  The gradient observable is the $k_x^2$-weighted integral,
+density must be derived for the gradient.  In the quasistatic limit ($\omega \ll c/d$, skin depth
+$\delta_s \gg d$), the fluctuation--dissipation theorem in the interfacial
+Green's-function formulation of Wylie and Sipe~\cite{wylie1984quantum}
+(applied to trapped ions by Henkel et al.~\cite{henkel1999loss}) gives
+the field spectral density of a half-space of resistivity $\rho$
 \begin{equation}
-S_{\partial E_x/\partial x}(\omega;d) = \int \frac{k\,dk}{2\pi}\,
-    \frac{k^2}{2}\, S_E(k) = \frac{3\,k_B T\rho}{8\pi d^5},
-\label{eq:johnson_grad}
+S_E(\omega;d) = \frac{k_B T\rho}{4\pi d^3},
+\label{eq:johnson_field}
 \end{equation}
-and the resulting frequency-shift noise, for a measurement of bandwidth
+in agreement with the FDT result for the Ohmic image drag on a charge
+oscillating normally to the surface (full derivation: Supplementary
+Material, Sec.~S15).  The gradient observable is the $k_x^2$-weighted
+integral,
+$S_{\partial E_x/\partial x}(\omega;d) = 3k_B T\rho/(8\pi d^5)$, and the
+resulting frequency-shift noise, for a measurement of bandwidth
 $1/\tau$,
 \begin{equation}
 \frac{\delta\omega_J}{2\pi} = \frac{e}{4\pi m\omega_x}\,
@@ -1208,10 +1203,14 @@ the central object of the theory.
 
 The ITF, Eq.~(\ref{eq:itf}), is the product of a high-pass factor $k_x^2$ and
 a low-pass factor $e^{-kh}$.  The resulting band-pass character is a
-\textbf{distinguishing feature of the ion probe} --- a distinctive
-height-dependent band-pass transfer function not found in other surface
-metrology instruments, whose ITFs are typically low-pass (optical
-instruments) or mechanically cut-off (stylus instruments).
+\textbf{distinguishing feature of the ion probe}.  Band-pass spatial
+filtering is, of course, a routine post-processing step in surface
+metrology --- the ISO~16610 Gaussian profile filters~\cite{iso16610}
+separate long- and short-wave profile components by design --- but for
+QESPM the band-pass response is the \emph{native, continuous,
+height-tunable physical transfer function of the sensor itself}, with
+sub-unity quality factor $Q=0.589$ (Corollary~\ref{cor:qfactor}), rather
+than a filter applied to already measured data.
 
 The ITF magnitude is $|H_x| \propto k^2 e^{-kh}$ (for the case $k_x=k$, $k_y=0$).
 Maximising $f(k)=k^2 e^{-kh}$ via $f'(k)=k e^{-kh}(2-hk)=0$ gives
@@ -2051,37 +2050,30 @@ the balanced threshold $\theta=\delta^{2/3}$ this gives
 \end{equation}
 \end{theorem}
 
-\textit{Proof sketch.}  Split the frequency axis at the passband
-$B(\theta)=\{k:|H(k)|\ge\theta\}$.  On the passband, Parseval gives
-$\|\widehat{z_1-z_2}\|_{L^2(B)}^2 \le \delta^2/\theta^2$; on the
-complement, the low-$k$ part is bounded through the embedding
-$\|z\|_{L^\infty}\le C_s\|z\|_{H^s}$ and the high-$k$ part directly
-from the source condition.  Combining the three pieces and balancing at
+\textit{Proof sketch.}  The frequency axis is split at the passband
+$B(\theta)=\{k:|H(k)|\ge\theta\}$: on the passband Parseval bounds the
+difference by $\delta/\theta$, and on the complement the low-$k$ part is
+bounded through the embedding $\|z\|_{L^\infty}\le C_s\|z\|_{H^s}$ and
+the high-$k$ part from the source condition; balancing at
 $\theta=\delta^{2/3}$ gives Eqs.~(\ref{eq:cond_stability})--
-(\ref{eq:cond_stability_rate}).
+(\ref{eq:cond_stability_rate}) (full proof: Supplementary Material,
+Sec.~S16).
 
 
 \textbf{Convergence of the regularised solution.}
-For $z_s^\dagger \in X_s(E)$ with Fourier support inside the MTF band and
-noisy data of level $\delta$, the Tikhonov solution of
-Eq.~(\ref{eq:tikhonov}) obeys the noise--bias decomposition
-$\|z_{\lambda}^\delta - z_s^\dagger\|_{L^2} \le \delta/(2\lambda) +
-C_3 E\,(\lambda/C)^{1/4} + E\,h^{s}\bigl(\ln(C h^2/\lambda)\bigr)^{-s}
-\bigl(1+o(1)\bigr)$: the first term is the propagated noise (the Tikhonov
-filter satisfies $\sup_k|H|/(|H|^2+\lambda^2)=1/(2\lambda)$) and the last
-two are the regularisation bias from the two sides of the source set
-(decomposed exactly as in the proof of Theorem~\ref{thm:stability}).  With
-any choice $\lambda(\delta)\to0$, $\delta/\lambda(\delta)\to0$ (as for
-the discrepancy principle), the estimate converges to $z_s^\dagger$ in
-$L^2$, and the balanced choice $\lambda(\delta)=c\,\delta^{4/5}$ gives
-the rate $\mathcal{O}(\delta^{1/5}) +
-E\,h^s\bigl(\ln(1/\delta)\bigr)^{-s}\bigl(1+o(1)\bigr)$: the logarithmic
-term dominates as $\delta\to0$ --- the quantitative signature of severe
+For $z_s^\dagger\in X_s(E)$ with Fourier support inside the MTF band and
+noisy data of level $\delta$, the Tikhonov estimate obeys the noise--bias
+decomposition with propagated noise $\delta/(2\lambda)$ and regularisation
+bias bounded as in Theorem~\ref{thm:stability}; any choice
+$\lambda(\delta)\to0$ with $\delta/\lambda(\delta)\to0$ converges in
+$L^2$, and the balanced choice $\lambda(\delta)=c\,\delta^{4/5}$ gives the
+rate $\mathcal{O}(\delta^{1/5}) +
+E\,h^s\bigl(\ln(1/\delta)\bigr)^{-s}\bigl(1+o(1)\bigr)$ --- the logarithmic
+term dominating as $\delta\to0$ is the quantitative signature of severe
 ill-posedness.  The discrepancy principle attains this rate
-($\lambda_{\rm DP}(\delta)\asymp\delta^{4/5}$; verified numerically:
-$\lambda_{\rm DP}/|H|_{\max}$ scales as $\delta^{0.86}$ over a factor-16
-noise range, against the asymptotic $4/5$, with $\lambda_{\rm GCV}$ within
-the same factor-$\sim$3 window).
+($\lambda_{\rm DP}(\delta)\asymp\delta^{4/5}$, verified numerically as
+$\lambda_{\rm DP}/|H|_{\max}\propto\delta^{0.86}$ over a factor-16 noise
+range).  Full details: Supplementary Material (Sec.~S16).
 
 
 \begin{theorem}[Minimax lower bound --- order optimality]\label{thm:minimax}
@@ -2101,33 +2093,27 @@ imposed by the $e^{-kh}$ transfer function~\cite{hohage2000regularization}.
 \end{theorem}
 
 \textit{Proof sketch.}  Two-hypothesis argument: the data of
-$z_\pm = \pm\varepsilon\,\cos(kx)$ differ by $2\varepsilon|H(k)|$ and are
+$z_\pm=\pm\varepsilon\cos(kx)$ differ by $2\varepsilon|H(k)|$ and are
 indistinguishable from noise when $\varepsilon\le\delta/|H(k)|$, while the
 source constraint requires $\varepsilon(1+k^2)^{s/2}\le E$; balancing at
-$k\approx h^{-1}\ln(1/\delta)$ gives Eq.~(\ref{eq:minimax}).
+$k\approx h^{-1}\ln(1/\delta)$ gives Eq.~(\ref{eq:minimax}) (full proof:
+Supplementary Material, Sec.~S16).
 
 
-The logarithmic convergence rate has an important physical implication:
-halving the measurement noise (e.g., from $5\,\textup{Hz}$ to $2.5\,\textup{Hz}$)
-improves the reconstruction error by only a \emph{fixed additive constant}
-in the exponent, not by a multiplicative factor.  This is a direct
-consequence of the severe ill-posedness and means that practical resolution
-improvements come primarily from \emph{reducing $h$} (which shifts the
-entire singular value spectrum) rather than from reducing the noise floor.
+The logarithmic rate has an important physical implication: halving the
+measurement noise (e.g., from $5\,\textup{Hz}$ to $2.5\,\textup{Hz}$)
+improves the reconstruction error only by a fixed additive constant in
+the exponent.  Practical resolution gains therefore come primarily from
+\emph{reducing $h$} --- which shifts the entire singular-value
+spectrum --- rather than from reducing the noise floor.
 
 \textbf{Alternative regularisation strategies.}
-Tikhonov regularisation is not unique.  Truncated SVD (TSVD) --- setting
-$\tilde{z}_{\rm TSVD}(k) = H_x^{-1}(k)\tilde{d}(k)$ for $k < k_{\rm max}$
-and zero otherwise --- is equivalent to a sharp low-pass filter at the
-MTF cutoff $\lambda_{\min} \approx 1.51h$.  For the test case, TSVD yields
-$r = 0.979$ vs.\ $0.981$ for Tikhonov --- essentially identical
-performance.  The advantage of TSVD is conceptual clarity (it is simply
-the MTF cutoff); the advantage of Tikhonov is smoother reconstructions
-without Gibbs ringing at the cutoff.  Iterative methods (Landweber,
-conjugate gradient for the normal equation) converge to the same solution
-with early stopping playing the role of regularisation; they offer no
-advantage for the present linear, Fourier-diagonal problem but would be
-necessary for nonlinear inversions.
+Truncated SVD is equivalent to a sharp low-pass filter at the MTF cutoff
+and gives $r=0.979$ versus $0.981$ for Tikhonov on the test case;
+Tikhonov is preferred for smoothness (no Gibbs ringing at the cutoff).
+Iterative methods (Landweber, CGLS) offer no advantage for the present
+linear, Fourier-diagonal problem but would be necessary for nonlinear
+inversions.
 
 \textbf{Bayesian inversion: the Gaussian-process prior.}
 The Tikhonov filter is the posterior mean of a Bayesian model, and the
@@ -2563,9 +2549,15 @@ uncertainty.
 \textbf{Type~B uncertainty justifications.}
 Each input uncertainty in Table~\ref{tab:uncertainty} requires explicit
 documentation: $u(\sigma) = 1.13 \times 10^{-8}\,\textup{C/m}^2$ is the
-residual charge density after UV cleaning, estimated from published
-surface-potential maps~\cite{ziomba2025uv} (rectangular distribution,
-half-width $2 \times 10^{-8}\,\textup{C/m}^2$); $u(h) = 100\,\textup{nm}$
+residual charge density after UV cleaning, obtained from published
+surface-potential maps~\cite{ziomba2025uv} through the
+Dirichlet-to-Neumann map of Eq.~(\ref{eq:patch_mapping}): a residual
+patch potential of $3.2$\,mV at the budget wavenumber
+$k=2\times10^5$\,rad/m corresponds to
+$\sigma = 2\varepsilon_0 k \phi_s = 1.13\times10^{-8}$\,C/m$^2$, adopted
+as a rectangular distribution of half-width
+$2 \times 10^{-8}\,\textup{C/m}^2$; the combined uncertainty scales
+linearly with this prior. $u(h) = 100\,\textup{nm}$
 combines laser interferometry ($50\,\textup{nm}$, Gaussian) and capacitance
 measurement ($87\,\textup{nm}$, rectangular), added in quadrature;
 $u(E_{\rm bg}) = 10\,\textup{V/m}$ is from dc voltage source calibration
@@ -3296,12 +3288,12 @@ The AFM topography data used for validation are from Camargo~Jr.
 The Surface-Topography Challenge dataset is available at Zenodo
 (\url{https://doi.org/10.5281/zenodo.15341939}).
 All Python code used to generate the figures and perform the numerical
-analyses is version-controlled in a GitHub repository
-(\url{https://github.com/dawidkucharski/qespm}) and will be made public,
-together with a permanent Zenodo deposit, upon acceptance.  A synthetic
-benchmark dataset (reference surfaces, simulated ion-signal maps and
-reference reconstructions) is released with the repository so that the
-forward/inverse chain can be reproduced independently.
+analyses, together with a synthetic benchmark dataset (reference surfaces,
+simulated ion-signal maps and reference reconstructions), is available in a
+GitHub repository (\url{https://github.com/dawidkucharski/qespm}) with a
+permanent Zenodo deposit; the repository is available to the editor and
+reviewers upon request during peer review and will be made publicly
+accessible at acceptance at the latest.
 
 % ===================================================================
 \section*{Acknowledgments}
