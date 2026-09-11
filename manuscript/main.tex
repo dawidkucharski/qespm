@@ -58,9 +58,10 @@ topography from surface charge, which share the identical $e^{-kh}$
 scaling, so surface charge is an influence quantity structurally
 confounded with the measurand.  Analytical scaling laws, a quantum Fisher
 information analysis and quantitative falsifiable predictions follow.
-The analytical model is benchmarked against an exact Rayleigh/Floquet
-solver and evaluated using published atomic-force-microscopy topography
-data; the experimental demonstration remains future work.  Measurement
+The analytical transfer function is independently cross-checked
+against exact Rayleigh/Floquet, boundary-element and finite-difference
+electrostatic solvers, and evaluated using published atomic-force-microscopy
+topography data; the experimental demonstration remains future work.  Measurement
 sensitivity is distinguished from reconstruction uncertainty: the latter
 is charge-limited (combined standard uncertainty $319$\,nm), whereas the
 former reaches nanometre and, at the quantum projection noise limit,
@@ -115,7 +116,7 @@ reconstructing surface topography $z(x,y)$ from ion motional observables}.
 The ion has been used as a qualitative electrometer --- detecting the
 \emph{presence} of surface fields --- but never as a \emph{quantitative
 topographic imaging tool} with a defined instrument transfer function,
-traceable calibration, and GUM-compliant uncertainty budget~\cite{gum2008}.  This gap is
+traceable calibration, and a GUM-based uncertainty budget~\cite{gum2008}.  This gap is
 particularly striking given the parallel development of quantum sensors for
 nanoscale imaging: nitrogen-vacancy (NV) centres in diamond have been
 extensively applied to magnetic surface imaging, reviewed by Rondin et
@@ -137,7 +138,7 @@ transfer function $H_x(k;h)$ is derived and its band-pass nature
 characterised
 (Sec.~\ref{sec:itf}).  The inverse problem is formulated and solved via
 Tikhonov-regularised Fourier deconvolution, and the reconstruction
-conditions are analysed (Sec.~\ref{sec:inverse}).  A GUM-compliant uncertainty
+conditions are analysed (Sec.~\ref{sec:inverse}).  A GUM-based uncertainty
 budget is constructed (Sec.~\ref{sec:uncertainty}) and a five-step calibration
 procedure establishing traceability to the SI metre, second, and volt
 is proposed (Supplementary Material, Sec.~S7).  The method is compared
@@ -1340,7 +1341,7 @@ carefully distinguished:
           \emph{Quantum enhancement directly improves this quantity.}
 
     \item \textbf{Height reconstruction uncertainty} $u_c(z)$ --- the
-          GUM-compliant combined standard uncertainty of a reconstructed
+          GUM-based combined standard uncertainty of a reconstructed
           height value.  Dominated by systematic effects (surface charge)
           rather than measurement noise.  \emph{Quantum enhancement does
           not reduce systematic uncertainties.}
@@ -1773,8 +1774,9 @@ $(z_s,\sigma)$ only through the single mode combination
 $\varphi_s(k)=\tilde z_s(k)+\tilde\sigma(k)/2\varepsilon_0 k E_{\rm bg}$.
 Consequently the quantum Fisher information matrix of the pair
 $(z_s,\sigma)$ is singular (rank~1 per mode) for every probe state and
-measurement, and the quantum Cram\'er--Rao bound diverges in the charge
-direction for any unbiased estimator: quantum enhancement cannot reduce
+measurement, and the quantum Cram\'er--Rao bound diverges along the
+null direction --- the joint topography--charge combination that leaves
+$\varphi_s$ unchanged --- for any unbiased estimator: quantum enhancement cannot reduce
 the identifiability limit of Theorem~\ref{thm:degeneracy}.  Finite
 uncertainty for the topography--charge pair can be restored only by
 (i)~prior information (Eq.~\ref{eq:joint_post_var}) or (ii)~a
@@ -1789,7 +1791,9 @@ J=\partial\varphi_s/\partial(\tilde z_s,\tilde\sigma)
 =(1,\;1/2\varepsilon_0kE_{\rm bg})
 \end{equation*}
 has rank at most one; its null
-direction is the charge direction, and the scalar quantum Cram\'er--Rao
+direction corresponds to the joint topography--charge combination
+$(-\alpha,\,1)$ with $\alpha = 1/(2\varepsilon_0 k E_{\rm bg})$, which
+leaves $\varphi_s$ unchanged, and the scalar quantum Cram\'er--Rao
 bound $\mathrm{Var}\,\hat\theta\ge 1/\nu\mathcal F_\theta$ diverges for
 any unbiased functional of that direction.
 
@@ -2656,8 +2660,8 @@ $h=5$\,\textmu m: $\Delta x_{\rm pix}\le3.8$\,\textmu m,
 $N_{\rm Sh}\approx42$ --- the finer, slower scan that
 the resolution--heating trade-off of Sec.~\ref{sec:noise} demands.  The
 two-pass strategy of Sec.~\ref{sec:discussion} (coarse scan at large $h$,
-targeted fine scan at small $h$) is the throughput-optimal implementation
-of this sampling theorem.
+targeted fine scan at small $h$) is an information-efficient implementation
+of this sampling theorem, near-optimal under the stated model.
 
 \subsection{Uncertainty budget}
 \label{sec:uncertainty}
@@ -2673,7 +2677,7 @@ Eq.~(\ref{eq:scaling_signal}).
 
 \begin{table}[htb]
 \centering
-\caption{GUM-compliant uncertainty budget for QESPM height measurement.
+\caption{GUM-based uncertainty budget for QESPM height measurement.
          $u(x_i)$: standard uncertainty of input quantity;
          $c_i = |\partial z/\partial x_i|$: absolute sensitivity coefficient;
          $u_i(z)$: uncertainty contribution to $z$.
@@ -2722,7 +2726,7 @@ at all accessible $k$.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{fig5_uncertainty.pdf}
-\caption{GUM-compliant uncertainty budget decomposition as a function of
+\caption{GUM-based uncertainty budget decomposition as a function of
 spatial frequency $k$.  The combined standard uncertainty $u_c(z)$ (solid
 black) is dominated by the surface charge contribution (dashed) across the
 entire accessible $k$ range.  Type~A frequency measurement uncertainty (dotted)
@@ -2753,15 +2757,20 @@ surface height can be \emph{identified}.  No quantum enhancement can
 reduce the charge row of the budget, because that uncertainty is set by
 the identifiability limit of Theorem~\ref{thm:degeneracy}, not by
 measurement noise: the quantum sensor is not the fundamental limitation,
-electrostatic identifiability is.
+electrostatic identifiability is.  The quoted $319$\,nm value should
+therefore not be interpreted as the achievable topographic accuracy after
+charge mitigation: it is the conservative charge-limited baseline under
+the stated residual-charge prior of Table~\ref{tab:uncertainty}.
 
 Mitigation strategies --- in-situ surface cleaning, auxiliary heating-rate
 contrast, and Bayesian joint inversion --- can reduce the charge contribution
-by an estimated factor of 10--100, bringing the combined uncertainty below
-10\,nm (factor 10) to 3\,nm (factor 100).  (These factors are aspirational targets; achieving a factor of
-10 has been demonstrated for UV-cleaned surfaces~\cite{ziomba2025uv},
-while a factor of 100 represents the limit where the charge contribution
-drops below the Type~A frequency measurement uncertainty.)
+by an estimated factor of 10--100, bringing the combined uncertainty to
+${\approx}32$\,nm (factor 10) or ${\approx}3.2$\,nm (factor 100).
+These charge-controlled scenarios are estimates, not demonstrated
+capability: a factor of 10 is consistent with UV-cleaned surfaces
+~\cite{ziomba2025uv}, while a factor of 100 represents the limit where
+the charge contribution drops below the Type~A frequency measurement
+uncertainty.
 
 \textbf{Type~B uncertainty justifications.}
 Each input uncertainty in Table~\ref{tab:uncertainty} requires explicit
@@ -3028,7 +3037,7 @@ the S{\"a}gesser et al.~\cite{sagesser2026scanning} 3D scanning platform
 (${}^{40}$Ca$^+$, $E_{\rm bg} \sim 10^4$\,V/m).  At $h = 10$\,\textmu m,
 $|\Delta\omega_x|/2\pi \sim 65$\,kHz is predicted; at $h = 100$\,\textmu m,
 the signal drops below the 5\,Hz noise floor.  Figure~\ref{fig:published}(c)
-positions QESPM in the resolution--standoff plane, highlighting the
+positions QESPM in the sensitivity--standoff plane, highlighting the
 distinctive combination of sub-nanometre vertical sensitivity at micrometre
 standoff distances.
 
@@ -3058,6 +3067,24 @@ boundary-element (single-layer collocation) solver reproduces the exact
 Rayleigh result to $\le 0.6\%$ across the amplitude range without using
 the ITF.  Convergence and implementation details are given in the
 Supplementary Material (Sec.~S3, Figs.~S9--S10).
+
+Figure~\ref{fig:bem_panel} summarises the solver hierarchy: the ITF error
+against the exact solution follows the quadratic law $0.14\,(kA)^2$ over
+the tested range, while the independent boundary-element solution
+reproduces the exact Rayleigh result to $\le 0.6\%$ without using the ITF.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.62\textwidth]{figB1_bem_panel.pdf}
+\caption{Independent solver cross-checks of the linear ITF
+($\lambda = 40$\,\textmu m, $h = 40$\,\textmu m).  Relative error of the
+linear ITF (red circles) against the exact Rayleigh--Floquet solution as a
+function of the perturbation parameter $kA$, following the quadratic law
+$0.14\,(kA)^2$ (dashed); blue squares show the relative difference of the
+independent boundary-element solution against the same exact result,
+bounded by $0.6\%$ across the range.}
+\label{fig:bem_panel}
+\end{figure}
 
 \subsection{Robustness to model violation}
 \label{sec:robustness}
@@ -3103,12 +3130,19 @@ edge ($\Delta z = 200$\,nm at $x = 0$) is computed in closed form from the
 Poisson integral, giving the edge spread function
 $\Delta\omega_x(x) = -\frac{e E_{\rm bg}\Delta z}{2m\omega_x}\,\frac{2}{\pi}\,\frac{x h}{(x^2+h^2)^2}$
 with extrema at $x = \pm h/\sqrt{3}$ and full width at half maximum
-${\approx}0.34h$; the corresponding point spread function has its first
+${\approx}0.34h$ --- a characteristic width of the ESF, not a resolution
+by itself.  The corresponding point spread function has its first
 zero at $x = h/\sqrt{3}$, negative sidelobes of relative amplitude
-${\approx}0.09$ and asymptotic decay ${\sim}3x^{-4}$, so the lateral
-resolution is fundamentally limited to ${\sim}h$ --- a Rayleigh-style
-criterion gives $\Delta x_{\rm res} = 2h/\sqrt3 \approx 1.15h$,
-consistent with the $50\%$ MTF cutoff $\lambda_{\min} \approx 1.51h$.
+${\approx}0.09$ and asymptotic decay ${\sim}3x^{-4}$.  Three distinct
+lateral metrics follow from this single edge response and are used
+consistently throughout: (i)~the PSF first zero $x_0 = h/\sqrt{3}$, which
+sets the central-lobe scale; (ii)~the Rayleigh-style two-point criterion
+(peak separation equal to the first-zero separation)
+$\Delta x_{\rm res} = 2h/\sqrt3 \approx 1.15h$; and (iii)~the $50\%$
+MTF cutoff $\lambda_{\min}^{\rm(MTF)} \approx 1.51h$.  These are three
+different quantities --- an ESF shape parameter, a two-point separation
+criterion and a spatial-frequency cutoff --- and each scales linearly
+with $h$.
 For a 1D Gaussian ridge the half-space Poisson integral evaluates in
 closed form via the scaled complementary error function, agreeing with
 direct quadrature to $10^{-15}$ relative accuracy and with the FFT
@@ -3190,7 +3224,7 @@ Ion electrometry & $E$-field & $10$\,mV/m/$\sqrt{\rm Hz}$ & $50$--$100$\,\textmu
 
 The positioning of QESPM in the broader metrology landscape is summarised
 in Fig.~\ref{fig:landscape}, which places the technique in the
-resolution--sensitivity plane relative to established methods.
+sensitivity--standoff plane relative to established methods.
 
 \textbf{Relation to single-ion electrometry.}
 The closest physical predecessors are single-ion electric-field sensors:
@@ -3212,11 +3246,13 @@ QESPM gradient channel is calibrated.
 \centering
 \includegraphics[width=\textwidth]{fig4_landscape.pdf}
 \caption{Research gap landscape.  (a) Positioning of QESPM relative to
-existing quantum sensors and classical surface metrology platforms in the
-resolution--sensitivity plane.  QESPM targets the long-standoff,
-non-contact sector of the plane, where the vertical axis denotes
-\emph{detection sensitivity}; the realistic topographic reconstruction
-uncertainty of Table~\ref{tab:uncertainty} is shown separately.
+existing quantum sensors and classical surface metrology platforms; the
+vertical axis is the \emph{intrinsic vertical detection sensitivity} of
+each technique, and QESPM targets the long-standoff, non-contact sector
+of the plane.  The charge-limited topographic reconstruction uncertainty
+of Table~\ref{tab:uncertainty} ($319$\,nm) is shown separately (open
+symbol connected to the QESPM sensitivity marker) and is not part of the
+sensitivity scale.
 (b) Research gap
 maturity assessment across seven dimensions; the grey polygon shows current
 field maturity; the red polygon shows QESPM contributions.}
@@ -3269,8 +3305,8 @@ that the ion can be positioned and scanned with high fidelity.  The present work
 frequency-shift data into surface height through a regularised inversion of
 a severely ill-posed inverse problem;
 (ii)~the \emph{metrological framework} (uncertainty budget, calibration
-procedure, traceability chain) required for the method to be accepted as a
-measurement standard; and (iii)~the explicit identification and analysis of
+procedure, traceability chain) that provides elements required for a
+future metrological evaluation of the method; and (iii)~the explicit identification and analysis of
 the \emph{topography--charge degeneracy} as the central fundamental obstacle,
 together with proposed resolution strategies.
 
@@ -3356,8 +3392,8 @@ decades ago, with the current status reviewed by Brownnutt et
 al.~\cite{brownnutt2015review}.  The two
 leading hypotheses --- fluctuating patch potentials on the electrode
 surface and adsorbate diffusion --- predict different spatial correlations
-of the noise source.  However, \textbf{no experiment has spatially resolved
-the noise source distribution}: heating-rate measurements integrate over
+of the noise source.  However, \textbf{the noise-source distribution has not, to date, been
+spatially resolved experimentally}: heating-rate measurements integrate over
 the entire electrode area facing the ion.
 
 QESPM offers a direct solution.  The motional heating rate
@@ -3367,7 +3403,7 @@ spatial autocorrelation of $\dot{\bar{n}}(x,y)$ yields the patch-potential
 correlation length $\ell_c$, a parameter that appears in microscopic
 trap-heating studies~\cite{daniilidis2011fabrication} and in
 adsorbate-diffusion models of the noise~\cite{kim2017noise}
-but has never been measured.  A measurement of $\ell_c \sim 10$--$100$\,nm
+but has not, to date, been spatially resolved experimentally.  A measurement of $\ell_c \sim 10$--$100$\,nm
 would support the patch-potential model; a measurement of
 $\ell_c \sim 1$--$10$\,\textmu m would point toward adsorbate diffusion on
 contaminated surfaces.  Furthermore, comparing $\dot{\bar{n}}$ maps before
@@ -3392,7 +3428,7 @@ consideration as a distinct physical-principle subclass:
           calibratable.
     \item \textbf{Traceable calibration}: five-step procedure
           (Supplementary Material, Sec.~S7) with SI traceability.
-    \item \textbf{Quantified uncertainty}: GUM-compliant budget
+    \item \textbf{Quantified uncertainty}: GUM-based budget
           (Sec.~\ref{sec:uncertainty}).
 \end{itemize}
 
@@ -3404,15 +3440,17 @@ within 3--4 years of the first experimental demonstration.
 
 \subsection{Limitations and outlook}
 
-The principal limitations of QESPM are: (i)~lateral two-point resolution
-fundamentally limited to the MTF cutoff
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$ (Rayleigh-style two-point
-criterion $\approx1.15h$), restricting nanometre-scale lateral feature
-detection
+The principal limitations of QESPM are: (i)~lateral two-point resolution limited by the MTF cutoff
+$\lambda_{\min}^{\rm(MTF)}\approx1.51h$, with the corresponding
+Rayleigh-style two-point criterion $\approx1.15h$, restricting
+nanometre-scale lateral feature detection
 unless the ion can be brought to sub-micrometre heights (where Casimir--Polder
 forces and catastrophic heating become problematic); (ii)~the UHV requirement
-restricts sample types; (iii)~scan throughput is low (${\sim}10^{-2}$\,\textmu m$^2$/s vs.\
-${\sim}10^{4}$\,\textmu m$^2$/s for optical profilometry); and
+restricts sample types; (iii)~scan throughput is low --- an order-of-magnitude estimate of
+${\sim}10^{-2}$\,\textmu m$^2$/s under the stated dwell-time assumptions,
+versus ${\sim}10^{4}$\,\textmu m$^2$/s for commercial optical
+profilometry, an illustrative comparison rather than a universal
+instrument benchmark; and
 (iv)~a conducting surface (or thin dielectric on a conductor) is required.
 
 Future directions include: (a)~quantum-enhanced sensitivity via spin-squeezed
@@ -3560,7 +3598,18 @@ The author thanks the Surface-Topography Challenge Consortium for making
 their benchmark dataset publicly available, and the Mendeley Data repository
 for hosting the stainless steel AFM data under an open-access licence.
 
-% ===================================================================
+% ======================================================================
+\section*{Funding}
+% ==================================================================
+
+Funding information has been removed for anonymous review and will
+be provided upon acceptance.
+% Original (reinsert after acceptance):
+% The authors gratefully acknowledge the support of Poznan University of Technology, Poland. This work was funded by grant 0614/SBAD/1603.
+
+% ==================================================================
+% Bibliography
+% ==================================================================
 \bibliographystyle{unsrt}
 \bibliography{references}
 % ===================================================================

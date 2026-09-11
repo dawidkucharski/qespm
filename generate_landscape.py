@@ -58,12 +58,12 @@ for name, m in methods.items():
 
 ax1.set_xscale('log'); ax1.set_yscale('log')
 ax1.set_xlabel('Standoff distance [nm]', fontsize=11)
-ax1.set_ylabel('Vertical resolution [nm]', fontsize=11)
-ax1.set_title('(a) Resolution--standoff landscape', fontsize=12, fontweight='bold')
+ax1.set_ylabel('Intrinsic vertical detection sensitivity [nm]', fontsize=11)
+ax1.set_title('(a) Detection sensitivity--standoff landscape', fontsize=12, fontweight='bold')
 
-# Wide enough to show all techniques
+# Wide enough to show all techniques and the reconstruction-uncertainty marker
 ax1.set_xlim(0.08, 3e5)
-ax1.set_ylim(0.0003, 30)
+ax1.set_ylim(0.0003, 1200)
 ax1.grid(True, alpha=0.25, which='both')
 
 # Shade QESPM quadrant
@@ -71,6 +71,16 @@ ax1.axvspan(500, 5e4, alpha=0.06, color='red')
 ax1.axhspan(0.0003, 0.1, alpha=0.06, color='red')
 ax1.annotate('QESPM\nniche', xy=(3000, 0.002), fontsize=10, color='darkred',
              fontweight='bold', fontstyle='italic')
+
+# Reconstruction uncertainty shown SEPARATELY: it is not part of the
+# sensitivity scale (charge-limited, Table: uncertainty budget)
+ax1.plot([1e4, 1e4], [0.01, 319], ls='--', color='#C62828', lw=1.1, alpha=0.6)
+ax1.scatter(1e4, 319, marker='o', facecolors='none', edgecolors='#C62828',
+            s=170, zorder=10, linewidths=1.7)
+ax1.annotate('QESPM reconstruction uncertainty\n(charge-limited, $u_c(z)$ = 319 nm)',
+             xy=(1e4, 319), xytext=(9e3, 12),
+             fontsize=8, color='#C62828',
+             arrowprops=dict(arrowstyle='->', color='#C62828', lw=0.9))
 
 # ============================================================
 # Panel (b): Radar/spider chart — capability dimensions
