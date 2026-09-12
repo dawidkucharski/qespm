@@ -354,15 +354,14 @@ for a constant $C$, and the expansion $\Phi=\sum_n\Phi^{(n)}$ converges
 uniformly in $z\ge0$.
 \end{proposition}
 
-\textit{Proof sketch.}  Each normal derivative acts as multiplication by
-at most $k_{\max}^{n+1-m}$ in Fourier space, giving the majorant sequence
+\textit{Proof sketch.}  Each normal derivative acts as Fourier
+multiplication by at most $k_{\max}^{n+1-m}$, giving the majorant sequence
 $a_{n+1}=\sum_{m=1}^{n}(z_{\max}k_{\max})^{n+1-m}a_m/(n+1-m)!$ with
-generating function $A(x)=a_1x/(2-e^{z_{\max}k_{\max}x})$; its radius of
-convergence is the announced geometric bound $(\ln 2)/(z_{\max}k_{\max})$
---- for the sinusoidal case, $kA<\ln 2=0.693$, consistent with --- and
-weaker than --- the sharp Rayleigh criterion $kA\lesssim0.448$ of
-Lemma~\ref{lem:perturbation}.  The full derivation is given in the
-Supplementary Material (Sec.~S10).
+generating function $A(x)=a_1x/(2-e^{z_{\max}k_{\max}x})$ and convergence
+radius $(\ln 2)/(z_{\max}k_{\max})$ --- consistent with, and weaker than,
+the sharp Rayleigh criterion $kA\lesssim0.448$ of
+Lemma~\ref{lem:perturbation} (full derivation: Supplementary Material,
+Sec.~S10).
 
 \textbf{Connection to the method of images.}
 For a planar conductor the exact solution is the real charge plus its
@@ -388,22 +387,16 @@ ion's wave-packet extent $\Delta x_{\rm ion} \approx \sqrt{\hbar/(2m\omega_x)}$
 is small compared with the scale of potential variation (Lamb-Dicke regime).
 
 \textbf{Equilibrium position shift.}
-The surface field gradient $\mathbf{E}_s = -\nabla\Phi^{(1)}$ displaces the
-ion equilibrium by $\Delta\mathbf{r} = -(e/m\omega_{\rm sec}^2)
-\nabla\Phi^{(1)}$.  For the nominal parameters
-($h = 40$\,\textmu m, $|\Phi^{(1)}| \sim 100$\,\textmu V, feature scale
-$\sim 30$\,\textmu m), the gradient scale is
-$|\nabla\Phi^{(1)}| \sim 2\pi|\Phi^{(1)}|/\lambda_{\rm feature} \approx
-21$\,V/m and $e/m\omega_x^2 = 6.1\times10^{-8}$\,m/(V/m), giving
-$|\Delta\mathbf{r}| \approx 1.3\times10^{-6}$\,m and
-$|\Delta\mathbf{r}|/\lambda_{\rm feature} \approx 4\times10^{-2}$.
-The resulting correction to $\Delta\omega_x$ from sampling at a shifted
-position and from rf pseudopotential curvature at the new equilibrium is
-$\mathcal{O}(|\Delta\mathbf{r}|^2/\lambda_{\rm feature}^2) \sim 2\times
-10^{-3}$ relative --- small, but not negligible at the stated precision,
-and therefore treated as a bounded Type-B systematic with a known analytic
-form, evaluated at the shifted equilibrium $\mathbf{r}_0+\Delta\mathbf{r}$
-whenever the $0.1\%$ level matters.  Throughout this work
+The surface field gradient displaces the ion equilibrium by
+$\Delta\mathbf{r} = -(e/m\omega_{\rm sec}^2)\nabla\Phi^{(1)}$; for the
+nominal parameters ($h=40$\,\textmu m, $|\Phi^{(1)}|\sim100$\,\textmu V,
+feature scale $\sim30$\,\textmu m) this gives
+$|\Delta\mathbf{r}|\approx1.3\times10^{-6}$\,m, i.e.\ $\approx4\times10^{-2}$
+of the feature scale, and the resulting frequency correction is
+$\mathcal{O}(|\Delta\mathbf{r}|^2/\lambda_{\rm feature}^2)\sim
+2\times10^{-3}$ relative --- a bounded Type-B systematic with known
+analytic form, evaluated at the shifted equilibrium whenever the
+$0.1\%$ level matters.  Throughout this work
 Eq.~(\ref{eq:dw}) is evaluated at the unperturbed equilibrium
 $\mathbf{r}_0 = (0,0,h)$, with the ${\sim}10^{-3}$ relative error absorbed
 into the systematic budget.
@@ -1223,13 +1216,11 @@ $k_{\rm opt}=2/h$ ($\lambda_{\rm opt}=\pi h$) with maximum value
 $|H_x|_{\rm max} = (eE_{\rm bg}/2m\omega_x)\,(4/h^2)e^{-2}$.
 The 50\% MTF cut-offs, defined by $|H_x|/|H_x|_{\rm max}=0.5$, are obtained
 numerically from $k^2 e^{-kh} = 2e^{-2}/h^2$:
-\begin{align}
-\lambda_{\rm min} &\approx 1.51\,h
-    \quad \textup{(short-wavelength, 50\% MTF)}, \\
-\lambda_{\rm max} &\approx 8.26\,h
-    \quad \textup{(long-wavelength, 50\% MTF)}.
-\end{align}
-In practice, the long-wavelength cutoff is set by the scan range (FOV).
+\begin{equation}
+\lambda_{\rm min} \approx 1.51\,h
+    \qquad \textup{(short-wavelength, 50\% MTF)},
+\end{equation}
+the long-wavelength cutoff being set in practice by the scan range (FOV).
 
 \begin{figure}[htb]
 \centering
@@ -2625,7 +2616,8 @@ $-k = -2\pi/\lambda$; a slope differing by more than three combined
 standard uncertainties rejects the ITF model.
 
 \item \textbf{Band-pass spectral signature.}
-Scanning over broadband roughness, the spectrum
+Scanning over the broadband roughness of a metallic surface compatible
+with the perfect-conductor assumption, the spectrum
 $S_{\Delta\omega}(k) \propto k^4 e^{-2kh} S_z(k)$ should peak at
 $k = 2/h$; the absence of a significant peak there rejects the
 band-pass model.
@@ -2698,7 +2690,8 @@ To test the technique on surface data that originate entirely independently
 of the theoretical model, a published atomic force microscopy measurement of
 stainless steel~\cite{camargo2019afm} --- a conducting surface directly
 compatible with the perfect-conductor assumption of the forward model --- is
-propagated through the ITF.  \textbf{This is a self-consistency and
+propagated through the ITF, with the $5$\,Hz white-noise floor of
+Sec.~\ref{sec:noise} added to the simulated ion-signal maps.  \textbf{This is a self-consistency and
 resolution-scaling verification, not an independent validation of the ITF:}
 the ion signal is simulated using the same forward model that is subsequently
 inverted, so the correlation improvement with decreasing $h$ is a
@@ -2723,13 +2716,17 @@ achieved, and the dominant topographic features are visually recovered
 SNR-feasible despite the heating limit: at $h = 5$\,\textmu m the RMS
 shift for $R_a = 100$\,nm reaches $\sigma_{\Delta\omega}/2\pi \approx
 4.3\times10^{5}$\,Hz (Sec.~3.9), far above the heating-limited frequency
-resolution of ${\sim}0.8$\,kHz (Sec.~\ref{sec:noise}).  With $512^2$
-spatially independent samples
-the standard error of a Pearson coefficient is $(1-r^2)/\sqrt{N-2}
-\approx 1.2\times10^{-3}$, so the quoted correlations carry 95\%
-confidence intervals of $\pm 0.003$ and the monotonic improvement from
-$r=0.617\pm0.003$ ($h=40$\,\textmu m) to $r=0.776\pm0.003$
-($h=2$\,\textmu m) is statistically significant at every step.  \textbf{The $h = 2$\,\textmu m data point
+resolution of ${\sim}0.8$\,kHz (Sec.~\ref{sec:noise}).  The pixel-level
+correlations are dominated by the resolvable surface features; because
+the surface is spatially correlated (correlation length of order
+$\ell_c\sim5$\,\textmu m, so the $20\times20$\,\textmu m field
+contains only $\sim(20/\ell_c)^2\approx16$ effectively independent
+patches), pixel-count standard errors are not meaningful and are not
+quoted.  The monotonic improvement of $r$ with decreasing $h$ is the
+model-predicted consequence of the $e^{-kh}$ filter (Sec.~\ref{sec:itf});
+this benchmark is therefore a demonstration of consistency between the
+reconstruction chain and the predicted height dependence, not a
+significance test.  \textbf{The $h = 2$\,\textmu m data point
 is a theoretical extrapolation beyond current experimental feasibility:}
 at this height, the heating rate reaches $\dot{\bar{n}} \sim 5 \times
 10^6$\,quanta/s ($T_2^{\rm(heat)} \sim 0.2\,\mu\textup{s}$), making
@@ -3029,8 +3026,8 @@ realistic topographic reconstruction uncertainty, by contrast, is
 charge-limited at ${\sim}319$\,nm
 (Table~\ref{tab:uncertainty}).  No existing surface metrology method
 combines non-contact operation, cryogenic UHV compatibility, and
-quantum-limited detection sensitivity; none is free of the electrostatic
-identifiability limit either.
+projected quantum-limited detection sensitivity; none is free of the
+electrostatic identifiability limit either.
 
 \subsection{Operating envelope}
 
