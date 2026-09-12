@@ -81,13 +81,19 @@ fabrication.  The dominant techniques --- atomic force microscopy (AFM),
 scanning tunnelling microscopy (STM), optical profilometry, and scanning
 electron microscopy (SEM) --- each occupy a well-defined niche in the
 resolution--environment parameter space~\cite{iso25178}.  However, a
-persistent and growing need exists for \emph{in-situ}, non-contact surface
-characterisation in ultra-high vacuum (UHV) and at cryogenic temperatures,
-driven by the quantum-device community: superconducting qubit electrode
+persistent and growing need exists for \emph{non-contact} surface
+characterisation at micrometre standoff in ultra-high vacuum (UHV) and at
+cryogenic temperatures, driven by the quantum-device community:
+superconducting qubit electrode
 degradation~\cite{oliver2013materials}, ion-trap chip surface
 contamination~\cite{brownnutt2015review}, and two-level-system losses in
-amorphous dielectrics~\cite{muller2019quantum} all demand surface metrology
-that does not require breaking vacuum or warming the sample.
+amorphous dielectrics~\cite{muller2019quantum}.  Although AFM and STM
+already operate \emph{in situ} in UHV and at cryogenic temperatures, they
+probe the surface in mechanical contact or tunnelling proximity and can
+perturb the very surface fields that matter for qubit performance; a
+technique that reads the surface electrostatically from micrometre
+standoff, without mechanical contact and natively inside the trap, would
+close this gap.
 
 Trapped atomic ions are among the most sensitive detectors of electric fields
 realised to date~\cite{keller2015electrometry}.  A single ion confined in a radio-frequency (rf) Paul trap
@@ -388,18 +394,26 @@ is small compared with the scale of potential variation (Lamb-Dicke regime).
 
 \textbf{Equilibrium position shift.}
 The surface field gradient displaces the ion equilibrium by
-$\Delta\mathbf{r} = -(e/m\omega_{\rm sec}^2)\nabla\Phi^{(1)}$; for the
-nominal parameters ($h=40$\,\textmu m, $|\Phi^{(1)}|\sim100$\,\textmu V,
-feature scale $\sim30$\,\textmu m) this gives
-$|\Delta\mathbf{r}|\approx1.3\times10^{-6}$\,m, i.e.\ $\approx4\times10^{-2}$
-of the feature scale, and the resulting frequency correction is
-$\mathcal{O}(|\Delta\mathbf{r}|^2/\lambda_{\rm feature}^2)\sim
-2\times10^{-3}$ relative --- a bounded Type-B systematic with known
-analytic form, evaluated at the shifted equilibrium whenever the
+$\Delta\mathbf{r} = -(e/m\omega_{\rm sec}^2)\nabla\Phi^{(1)}$.  The
+leading correction to the frequency shift is \emph{linear} in the
+displacement: evaluating Eq.~(\ref{eq:dw}) at the shifted equilibrium
+gives
+$\Delta\omega_x(\mathbf{r}_0+\Delta\mathbf{r}) =
+\Delta\omega_x(\mathbf{r}_0)\,[1+\mathcal{O}(k|\Delta\mathbf{r}|)]$,
+where $k$ is the surface wavenumber.  For the nominal grating
+($A=100$\,nm, $\lambda=30$\,\textmu m, $h=40$\,\textmu m)
+$k|\Delta\mathbf{r}|\approx6\times10^{-4}$, while for the strongest
+test signal of this work (the Gaussian plateau,
+$|\Phi^{(1)}|\sim100$\,\textmu V over a feature scale
+$\sim15$\,\textmu m) it reaches $\mathcal{O}(10^{-1})$.  The correction
+has a known analytic form ($\Delta\mathbf{r}\propto\nabla\Phi^{(1)}$),
+so it can be applied as a bounded Type-B systematic wherever the
 $0.1\%$ level matters.  Throughout this work
 Eq.~(\ref{eq:dw}) is evaluated at the unperturbed equilibrium
-$\mathbf{r}_0 = (0,0,h)$, with the ${\sim}10^{-3}$ relative error absorbed
-into the systematic budget.
+$\mathbf{r}_0 = (0,0,h)$: for the nominal grating this approximation is
+accurate to ${\sim}10^{-3}$ relative, while for the plateau test case
+the equilibrium-shift correction is of order $10^{-1}$ and must be
+included whenever that test case is used for quantitative conclusions.
 
 \textbf{Instrument transfer function.}
 Combining Eqs.~(\ref{eq:poisson}) and (\ref{eq:dw}) and using
@@ -1064,9 +1078,10 @@ condition:
           wavelength.
     \item \textbf{Uniform background field}: $E_{\rm bg}$ is constant across
           the field of view.  In a surface-electrode Paul trap, the
-          pseudopotential gradient varies by $\lesssim 1$\% over
-          $100$\,\textmu m near the trap centre; this variation is absorbed
-          into the calibration uncertainty.
+          pseudopotential gradient varies slowly near the trap centre; its
+          spatial structure is characterised in calibration step (1) of the
+          Supplementary Material (Sec.~S7), and the residual variation is
+          absorbed into the calibration uncertainty.
     \item \textbf{Perfect conductor}: The surface is an ideal grounded
           conductor.  For a dielectric layer of thickness $d$ and
           permittivity $\varepsilon_r$ on a grounded conductor, the exact
@@ -1896,16 +1911,19 @@ $\delta A_{\min}$ linearly with $\delta\omega$, while $r_{\rm eff}$ and
 the geometric MTF cutoff $\lambda_{\min}^{\rm(MTF)}=1.51h$ are governed
 solely by the $e^{-kh}$ physical transfer function and the noise-limited
 cutoff improves only logarithmically (Lemma~\ref{lem:noise_cutoff}).  The
-first row shows that surface charge, not quantum noise, is the dominant
-bottleneck: eliminating charge improves sensitivity by $\sim 300\times$,
-whereas quantum enhancement provides a further factor of $\sim 10$--$50$.}
+first row (marked $^{*}$) quotes the charge-limited
+\emph{reconstruction uncertainty} $u_c(z)=319$\,nm of
+Table~\ref{tab:uncertainty}, not a detection sensitivity: eliminating
+charge replaces it with the detection sensitivity of the second row --- a
+reduction by a factor of ${\sim}2.7\times10^2$ --- whereas quantum
+enhancement provides a further factor of $\sim 10$--$50$.}
 \label{tab:regimes}
 \small
 \begin{tabular}{@{}lccccc@{}}
 \hline
 Regime & $\delta\omega/2\pi$ & Charge & $\delta A_{\min}$ [nm] & $\lambda_{\min}$ [$\mu$m] & $r_{\rm eff}$ \\
 \hline
-Technical, charge-present            & 5\,Hz   & present & 320  & 18.7 & 6 \\
+Technical, charge-present            & 5\,Hz   & present & 320$^{*}$  & 18.7 & 6 \\
 Technical, charge-free               & 5\,Hz   & absent  & 1.2  & 18.7 & 6 \\
 QPN (coherent), charge-free          & 0.7\,Hz & absent  & 0.17 & 16.0 & 6 \\
 Squeezed ($\times 4.5$), charge-free & 0.16\,Hz& absent  & 0.04 & 14.4 & 6 \\
@@ -1934,9 +1952,12 @@ evaluation point $k=2\times10^5$\,rad/m, $h=40$\,\textmu m:
 =5.2\times10^{-4}\,\delta\omega\,e^{8}/4\times10^{10},
 \end{equation*}
 with $\delta\omega$
-in rad/s, reproducing $320$\,nm ($5$\,Hz, charge present at the
-$u_c(z)$-level), $1.2$\,nm ($5$\,Hz), $0.17$\,nm ($0.7$\,Hz),
-$0.04$\,nm ($0.16$\,Hz) and $0.02$\,nm ($0.07$\,Hz); the $\lambda_{\min}$
+in rad/s, reproducing the charge-free entries $1.2$\,nm ($5$\,Hz),
+$0.17$\,nm ($0.7$\,Hz), $0.04$\,nm ($0.16$\,Hz) and $0.02$\,nm
+($0.07$\,Hz); the charge-present entry of the first row
+($320^{*}$\,nm) is not a value of Eq.~(\ref{eq:scaling_amin}) but the
+charge-limited reconstruction uncertainty $u_c(z)=319$\,nm of
+Table~\ref{tab:uncertainty}, quoted for contrast; the $\lambda_{\min}$
 column follows from Lemma~\ref{lem:noise_cutoff}.
 
 The key result is that $r_{\rm eff}$ and the geometric MTF cutoff are
@@ -1944,7 +1965,9 @@ The key result is that $r_{\rm eff}$ and the geometric MTF cutoff are
 cutoff $\lambda_{\min}$ improves only \emph{logarithmically} with
 $\delta\omega$ ($18.7\to13.7$\,\textmu m over $70\times$); quantum
 enhancement buys sensitivity, not spatial information.  At the same time,
-\textbf{charge elimination provides a $\sim 300\times$ improvement} --- far
+\textbf{charge elimination provides a ${\sim}2.7\times10^2\times$
+improvement} (the reconstruction-uncertainty floor of the first row
+replaced by the $1.2$\,nm detection sensitivity of the second) --- far
 larger than any quantum enhancement.
 This establishes the central practical conclusion: the dominant bottleneck
 is electrostatic identifiability, not measurement precision.
@@ -2546,11 +2569,12 @@ uncertainty.
 
 \textbf{Type~B uncertainty justifications.}
 Each input uncertainty in Table~\ref{tab:uncertainty} requires explicit
-documentation: $u(\sigma) = 1.13 \times 10^{-8}\,\textup{C/m}^2$ is the
-residual charge density after UV cleaning, obtained from published
-surface-potential maps~\cite{ziomba2025uv} through the
-Dirichlet-to-Neumann map of Eq.~(\ref{eq:patch_mapping}): a residual
-patch potential of $3.2$\,mV at the budget wavenumber
+documentation: $u(\sigma) = 1.13 \times 10^{-8}\,\textup{C/m}^2$ is a
+representative residual charge density after UV cleaning, adopted from
+the post-UV surface-potential maps of~\cite{ziomba2025uv} (residual
+patch potentials of order a few mV) through the
+Dirichlet-to-Neumann map of Eq.~(\ref{eq:patch_mapping}): a representative
+residual patch potential of $3.2$\,mV at the budget wavenumber
 $k=2\times10^5$\,rad/m corresponds to
 $\sigma = 2\varepsilon_0 k \phi_s = 1.13\times10^{-8}$\,C/m$^2$, adopted
 as a rectangular distribution of half-width
@@ -2619,7 +2643,10 @@ standard uncertainties rejects the ITF model.
 Scanning over the broadband roughness of a metallic surface compatible
 with the perfect-conductor assumption, the spectrum
 $S_{\Delta\omega}(k) \propto k^4 e^{-2kh} S_z(k)$ should peak at
-$k = 2/h$; the absence of a significant peak there rejects the
+$k = (4-\beta)/(2h)$ for a power-law roughness spectrum
+$S_z(k)\propto k^{-\beta}$ (reducing to $k=2/h$ only for a white
+roughness spectrum); the absence of the predicted peak at the value
+appropriate to the measured roughness exponent $\beta$ rejects the
 band-pass model.
 
 \item \textbf{Patch-potential correlation length.}
@@ -3025,9 +3052,9 @@ STM --- while operating natively in the UHV environment of the ion trap.  The
 realistic topographic reconstruction uncertainty, by contrast, is
 charge-limited at ${\sim}319$\,nm
 (Table~\ref{tab:uncertainty}).  No existing surface metrology method
-combines non-contact operation, cryogenic UHV compatibility, and
-projected quantum-limited detection sensitivity; none is free of the
-electrostatic identifiability limit either.
+combines micrometre-standoff non-contact operation, cryogenic UHV
+compatibility, and projected quantum-limited detection sensitivity; none
+is free of the electrostatic identifiability limit either.
 
 \subsection{Operating envelope}
 
@@ -3292,9 +3319,10 @@ The practical path forward is clear: motional squeezing ($\times 4.5$)
 provides the most robust near-term quantum enhancement, while in-situ
 charge elimination (UV cleaning, factor $\sim 10$--$100$) addresses the
 dominant systematic uncertainty.  Combined, these bring the height
-resolution from ${\sim}300$\,nm to the nanometre scale --- competitive
-with, and in UHV/cryogenic environments superior to, existing non-contact
-techniques.
+resolution from ${\sim}300$\,nm toward the nanometre scale ---
+competitive with existing non-contact techniques and a potential
+complement to them in UHV/cryogenic environments, subject to
+experimental validation of the estimated charge-mitigation scenarios.
 
 Beyond its immediate application as a surface metrology tool, QESPM
 establishes a broader principle: \textbf{quantum sensors are ultimately

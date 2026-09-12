@@ -592,8 +592,9 @@ $\tilde{z}_s(k) = 2\pi A\sigma^2 e^{-\sigma^2 k^2/2}$.  The propagated
 signal is $\Delta\tilde{\omega}_x = H_x \tilde{z}_s$, and the real-space
 $\Delta\omega_x(x,y)$ is obtained by inverse FFT.  For $A = 100\,\textup{nm}$,
 $\sigma = 5\,\mu\textup{m}$, $h = 40\,\mu\textup{m}$, the peak frequency shift
-is $|\Delta\omega_x|/2\pi \approx 12\,\textup{Hz}$ --- detectable above the
-$5\,\textup{Hz}$ noise floor with $N_{\rm rep} \sim 10$ repetitions.
+is $|\Delta\omega_x|/2\pi \approx 0.8\,\textup{kHz}$ --- readily detectable
+above the $5\,\textup{Hz}$ noise floor (single-pixel
+$\mathrm{SNR}\approx1.6\times10^{2}$ at $N_{\rm rep}=1$).
 This benchmark confirms that the ITF correctly handles fully 2D surface
 features with azimuthal curvature, complementing the 1D step-edge test
 and the exact Rayleigh cross-validation.  The FFT-based forward model reproduces
@@ -632,8 +633,11 @@ interferometry;
 (3)~ITF calibration using a PTB/NIST-certified sinusoidal grating with known
 $A_{\rm ref}$, $\lambda_{\rm ref}$, fitting the measured $|\Delta\omega_x|$
 to the ITF of the main text;
-(4)~charge background characterisation by a reference scan at
-$h_{\rm ref} \gg h_{\rm meas}$ where the topographic signal is negligible;
+(4)~charge background characterisation by scanning a certified flat
+reference region at the measurement height (known topography
+$\approx0$), or by differencing maps taken before and after in-situ UV
+cleaning, which isolates the charge channel without relying on height
+separation;
 and (5)~verification against a certified step-height standard.
 Traceability is to the SI metre (calibrated grating), SI second
 (GPS-disciplined clock), and SI volt (Josephson voltage standard).
