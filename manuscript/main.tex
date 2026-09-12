@@ -1140,8 +1140,11 @@ condition:
           \varepsilon_0 \approx 9\times10^{-49}$\,J\,m$^3$ for
           ${}^{40}$Ca$^+$ near gold ($\alpha(0)\approx75$\,a.u.,
           $\omega_a\approx2\pi\times5\times10^{14}$\,Hz,
-          Lifshitz\,\cite{lifshitz1956theory}) and features at $k\sim h^{-1}$,
-          the crossover is $h^*\approx30$\,nm --- the $100$\,nm exclusion
+          Lifshitz\,\cite{lifshitz1956theory}); the crossover height
+          $h^*(k)$ solves $3C_3 = eE_{\rm bg}\,h^4e^{-kh}$, and for
+          features of wavelength comparable to the ion height
+          ($kh = 2\pi$, i.e.\ $\lambda \approx h$) the crossover is
+          $h^*\approx30$\,nm --- the $100$\,nm exclusion
           of the present analysis is conservative by $\sim3\times$ and the
           C--P channel may provide an independent short-range topographic
           observable in future work.
@@ -1762,7 +1765,9 @@ quadratic term, shifting the secular frequency by $\Delta\omega_x$
 $A$ is encoded in $\Delta\omega_x$ through the ITF:
 $\partial\Delta\omega_x/\partial A = H_x(k;h)/A$ for a sinusoidal surface.
 A frequency measurement of duration $\tau$ has fundamental precision limited
-by the quantum Cram\'er--Rao bound, saturated by Ramsey interferometry on
+by the quantum Cram\'er--Rao bound (see the reviews of Giovannetti et
+al.~\cite{giovannetti2011advances} and Degen et al.~\cite{degen2017quantum}),
+saturated by Ramsey interferometry on
 the motional state.  The quantum
 Fisher information (QFI) for three probe states is:
 $\mathcal{F}_A^{\rm coh} = 4|\alpha|^2\tau^2 (\partial\Delta\omega_x/\partial A)^2$
@@ -2568,8 +2573,9 @@ $u(\omega_x) = 2\pi \times 10\,\textup{Hz}$ is the secular frequency
 calibration uncertainty, dominated by the rf source stability;
 $u(m) < 10^{-9}\,m$ reflects the atomic mass uncertainty of ${}^{40}$Ca$^+$.
 The effective degrees of freedom, computed via the Welch--Satterthwaite
-formula, exceed 100 for the combined uncertainty, justifying the
-Gaussian coverage factor $k = 2$.
+formula from the component-wise degrees of freedom of the Supplementary
+Material (Sec.~S7, Table~S3), exceed 100 for the combined uncertainty,
+justifying the Gaussian coverage factor $k = 2$.
 
 \textbf{Type-A derivation.}
 The Type-A entry is the quantum-limited frequency-estimation variance
@@ -2592,10 +2598,14 @@ same timebase.  The full GUM propagation law with correlations is
 u_c^2(z) = \sum_i c_i^2 u^2(x_i) + 2\sum_{i<j} c_i c_j u(x_i) u(x_j) r_{ij},
 \end{equation}
 where $r_{ij}$ are the correlation coefficients.  For the dominant
-charge contribution, $r_{ij} = 0$ for all pairs.  The largest correlation,
-$r(h, E_{\rm bg}) \approx -0.3$ (increasing electrode voltages increases
-both $E_{\rm bg}$ and the calibrated $h$), modifies $u_c(z)$ by $<1\%$;
-all other correlations contribute at $<0.1\%$ and are neglected.
+charge contribution, $r_{ij} = 0$ for all pairs.  The largest correlation
+is $r(h, E_{\rm bg}) < 0$ (increasing electrode voltages increases both
+$E_{\rm bg}$ and the calibrated $h$); its exact value is immaterial to the
+budget, because even perfect anticorrelation ($r=-1$) contributes
+$2\,u_h(z)\,u_E(z) = 2\times2.0\times0.10 = 0.40$\,nm$^2$ --- below
+$0.001\%$ of the combined variance
+$u_c^2(z) \approx (319\,\textup{nm})^2$.  All correlations are therefore
+neglected, with an error below $0.001\%$ of the variance.
 
 \subsection{Predictions for experiment}
 
@@ -2626,9 +2636,11 @@ conducting surface yields the patch-potential correlation length
 $\ell_c$ --- a quantity debated for two decades (reviewed by Brownnutt
 et al.~\cite{brownnutt2015review}; see also Daniilidis et
 al.~\cite{daniilidis2011fabrication}) and not yet directly measured.
-Fitting the measured ACF to the patch-potential model extracts
-$\ell_c$; a white-noise spectrum ($\ell_c$ consistent with zero) at the
-$95\%$ confidence level rejects the correlated-patch hypothesis.
+Fitting the measured ACF to the patch-potential model by nonlinear
+least squares extracts $\ell_c$ with standard error
+$\mathrm{SE}(\ell_c)$; a fitted value
+$\ell_c < 1.96\,\mathrm{SE}(\ell_c)$ (one-sided $95\%$ level) indicates
+a white-noise spectrum and rejects the correlated-patch hypothesis.
 
 \item \textbf{Charge elimination cross-check.}
 Maps taken before and after in-situ UV
@@ -2707,7 +2719,12 @@ reconstruction behaviour using independently measured surface topography
 as input.  At $h = 5$\,\textmu m --- the lowest height currently feasible given
 motional heating constraints (Sec.~\ref{sec:noise}) --- $r = 0.76$ is
 achieved, and the dominant topographic features are visually recovered
-(Figs.~\ref{fig:real_afm}d,f).  With $512^2$ spatially independent samples
+(Figs.~\ref{fig:real_afm}d,f).  This lowest-height point remains
+SNR-feasible despite the heating limit: at $h = 5$\,\textmu m the RMS
+shift for $R_a = 100$\,nm reaches $\sigma_{\Delta\omega}/2\pi \approx
+4.3\times10^{5}$\,Hz (Sec.~3.9), far above the heating-limited frequency
+resolution of ${\sim}0.8$\,kHz (Sec.~\ref{sec:noise}).  With $512^2$
+spatially independent samples
 the standard error of a Pearson coefficient is $(1-r^2)/\sqrt{N-2}
 \approx 1.2\times10^{-3}$, so the quoted correlations carry 95\%
 confidence intervals of $\pm 0.003$ and the monotonic improvement from
@@ -2853,7 +2870,13 @@ well-behaved despite the nonlinearity of the inversion.  A coverage check
 closes the metrological loop: over $2\times10^{4}$ realisations, $95.1\%$
 of true heights fall inside the propagated $95\%$ interval
 ($\pm1.96\,u_c$ with $u_c=319$\,nm), with an estimate bias of $0.7$\,nm
---- the interval is correctly calibrated.  Full details are given in the
+--- the interval is correctly calibrated.  The coverage statement is
+conditional on the stated priors: because the charge row contributes
+$99.99\%$ of the variance and $u_c(z)$ is linear in $u(\sigma)$ (the
+sensitivity coefficient is fixed by the physics), scaling the charge prior
+by a factor $\gamma$ rescales $u_c(z)$ by approximately $\gamma$, so the
+charge-controlled scenarios of Sec.~\ref{sec:uncertainty} bound the
+consequence of prior uncertainty.  Full details are given in the
 Supplementary Material (Sec.~S5, Fig.~S12).
 
 \subsection{Analytical benchmark: step-edge response}
@@ -2905,7 +2928,10 @@ platforms.  For QESPM the quoted vertical value is the
 quantum-projection-noise \emph{detection sensitivity} at $k_{\rm opt}=2/h$
 in the charge-free regime; the realistic combined standard uncertainty is
 $319$\,nm (Table~\ref{tab:uncertainty}), reflecting the identifiability
-limitation rather than the sensor sensitivity.}
+limitation rather than the sensor sensitivity.  Non-QESPM entries are
+order-of-magnitude values representative of commercial instruments and
+published reviews rather than certified specifications; the KPFM/EFM
+entries follow the sources cited in Table~\ref{tab:sensitivity}.}
 \label{tab:comparison}
 \scriptsize
 \setlength{\tabcolsep}{1.5pt}

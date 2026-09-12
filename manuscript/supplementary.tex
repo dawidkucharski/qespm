@@ -662,6 +662,32 @@ The combined calibration uncertainty propagates into the measurement
 uncertainty budget of the main text through the sensitivity
 coefficients $c_i = |\partial z/\partial x_i|$.
 
+\begin{table}[htb]
+\centering
+\caption{Component-wise degrees of freedom for the Welch--Satterthwaite
+calculation of Sec.~3.14 of the main text.}
+\label{tab:nu}
+\small
+\begin{tabular}{@{}lrr@{}r@{}}
+\hline
+Source & $u_i(z)$ [nm] & $\nu_i$ \\
+\hline
+Surface charge $\sigma$ & 319 & $\infty$ (rectangular) \\
+ITF calibration (grating certificate) & 1.0 & 10 \\
+Ion height $h$ & 2.0 & 30 (combined measurements) \\
+Background field $E_{\rm bg}$ & 0.10 & 50 (calibration series) \\
+Type A (frequency measurement) & 0.07 & $2(N_{\rm rep}-1)\approx1.1\times10^4$ \\
+Secular frequency $\omega_x$ & $<10^{-3}$ & 20 \\
+Ion mass $m$ & $<10^{-6}$ & $\infty$ (physical constant) \\
+\hline
+\end{tabular}
+\end{table}
+
+With $u_c = 319$\,nm, the Welch--Satterthwaite formula gives
+$\nu_{\rm eff} = u_c^4\,/\sum_i u_i^4/\nu_i \approx 1.6\times10^{10}$,
+dominated by the finite-$\nu$ entries of the table --- the Gaussian
+coverage factor $k=2$ of the main text is fully justified.
+
 % ===================================================================
 \section{Symbols and constants}
 % ===================================================================
