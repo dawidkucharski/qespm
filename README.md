@@ -7,6 +7,8 @@ Repository accompanying the manuscript
 > D. Kucharski, Poznan University of Technology
 > (submitted to *Surface Topography: Metrology and Properties*, IOP)
 
+Release: v1.0.0 · Zenodo DOI: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721000.svg)](https://doi.org/10.5281/zenodo.22721000)
+
 ## What this project does
 
 The work develops and validates a new non-contact surface-characterisation

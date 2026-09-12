@@ -20,7 +20,10 @@ import urllib.parse
 
 TOKEN = os.environ.get("ZENODO_TOKEN") or os.environ.get("ZENODO_ACCESS_TOKEN")
 if not TOKEN:
-    sys.exit("Set ZENODO_TOKEN in the environment and retry.")
+    import getpass
+    TOKEN = getpass.getpass("Zenodo token (input hidden, used once, never saved): ").strip()
+if not TOKEN:
+    sys.exit("No token provided; cannot create a Zenodo deposit.")
 
 ARCHIVE = sys.argv[1] if len(sys.argv) > 1 else "/tmp/qespm_v1.0.0.zip"
 BASE = "https://zenodo.org/api"
