@@ -1,19 +1,12 @@
 #!/usr/bin/env python3
-"""
-Generate QESPM positioning figure: resolution--sensitivity--standoff landscape.
-Clean, non-overlapping labels, all data visible within axes.
-"""
+"""Generate the quantitative QESPM sensitivity--standoff landscape."""
 
-import numpy as np
 import matplotlib
 matplotlib.use('PDF')
 import matplotlib.pyplot as plt
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 7))
+fig, ax1 = plt.subplots(figsize=(8.6, 6.0))
 
-# ============================================================
-# Panel (a): Resolution--standoff landscape
-# ============================================================
 methods = {
     'AFM (contact)':        {'lateral': 1.0,     'vertical': 0.01,   'standoff': 0.3,    'color': '#607D8B', 'marker': 's'},
     'AFM (tapping)':        {'lateral': 5.0,     'vertical': 0.05,   'standoff': 5.0,    'color': '#78909C', 'marker': 's'},
@@ -59,7 +52,7 @@ for name, m in methods.items():
 ax1.set_xscale('log'); ax1.set_yscale('log')
 ax1.set_xlabel('Standoff distance [nm]', fontsize=11)
 ax1.set_ylabel('Intrinsic vertical detection sensitivity [nm]', fontsize=11)
-ax1.set_title('(a) Detection sensitivity--standoff landscape', fontsize=12, fontweight='bold')
+ax1.set_title('Detection sensitivity--standoff landscape', fontsize=12, fontweight='bold')
 
 # Wide enough to show all techniques and the reconstruction-uncertainty marker
 ax1.set_xlim(0.08, 3e5)
@@ -81,37 +74,6 @@ ax1.annotate('QESPM reconstruction uncertainty\n(charge-limited, $u_c(z)$ = 319 
              xy=(1e4, 319), xytext=(9e3, 12),
              fontsize=8, color='#C62828',
              arrowprops=dict(arrowstyle='->', color='#C62828', lw=0.9))
-
-# ============================================================
-# Panel (b): Radar/spider chart — capability dimensions
-# ============================================================
-categories = ['Vertical\nsensitivity', 'Lateral\nresolution', 'Standoff\nrange',
-              'UHV\ncompatibility', 'Cryogenic\noperation', 'Non-contact', 'Traceable\ncalibration']
-N = len(categories)
-angles = np.linspace(0, 2*np.pi, N, endpoint=False).tolist()
-angles += angles[:1]
-
-# Current state-of-the-art (grey)
-sota = [4, 5, 2, 1, 1, 3, 5]
-sota += sota[:1]
-
-# QESPM (red)
-qespm = [5, 2, 5, 5, 5, 5, 4]
-qespm += qespm[:1]
-
-ax2 = plt.subplot(122, polar=True)
-ax2.fill(angles, sota, alpha=0.2, color='grey', label='State of the art')
-ax2.plot(angles, sota, 'o-', color='grey', lw=2, markersize=6)
-ax2.fill(angles, qespm, alpha=0.25, color='red', label='QESPM')
-ax2.plot(angles, qespm, 'o-', color='red', lw=2.5, markersize=8)
-
-ax2.set_xticks(angles[:-1])
-ax2.set_xticklabels(categories, fontsize=9)
-ax2.set_ylim(0, 5.5)
-ax2.set_yticks([1, 2, 3, 4, 5])
-ax2.set_yticklabels(['1', '2', '3', '4', '5'], fontsize=7)
-ax2.set_title('(b) Capability profile (1–5 scale)', fontsize=12, fontweight='bold', pad=20)
-ax2.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1), fontsize=9)
 
 plt.tight_layout()
 plt.savefig('manuscript/fig4_landscape.pdf', dpi=150, bbox_inches='tight')

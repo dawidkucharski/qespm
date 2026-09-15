@@ -52,7 +52,7 @@ height-tunable band-pass spatial transfer function.  The $e^{-kh}$ factor
 imposes an irreversible spatial-information cutoff: quantum enhancement
 can maximise the precision of available signals but cannot recover what
 the physical filter has destroyed, and the recoverable mode rank scales as
-$r_{\rm eff} \propto 1/h$.  A theorem establishes the topography--charge
+$r_{\rm eff} \propto 1/h$ on the analysed 1D cross-section.  A theorem establishes the topography--charge
 identifiability limit: multi-height scanning alone cannot separate surface
 topography from surface charge, which share the identical $e^{-kh}$
 scaling, so surface charge is an influence quantity structurally
@@ -1357,7 +1357,7 @@ $h$ [\textmu m] & Effective rank $r_{\rm eff}$ & Shannon information $I$ [nats] 
 \par\smallskip{\footnotesize $1\,\textup{nat} = \log_2 e\,\textup{bits}$}
 \end{center}
 
-The effective rank scales as $r_{\rm eff} \propto 1/h$, and the Shannon
+On the analysed 1D cross-section, the effective rank scales as $r_{\rm eff} \propto 1/h$, and the Shannon
 information content $I(h) = \frac{1}{2}\sum_i \log\bigl(1 +
 \sigma_i^2/\lambda^2\bigr)$ --- computed using the physically motivated
 regularisation parameter $\lambda = \lambda_{\rm DP}$ from the discrepancy
@@ -1368,9 +1368,9 @@ set at the $10^{-3}\sigma_1$ rank-defining threshold, $I(h)$ and $r_{\rm eff}$
 become definitionally coupled; the discrepancy-principle $\lambda$ avoids
 this circularity.)
 This \textbf{quantifies the
-fundamental resolution limit} of the ion probe: at $h = 40$\,\textmu m,
-only six parameters describing the surface can be independently determined
-from a single $\Delta\omega_x$ scan.  The information content drops by a
+fundamental resolution limit} of the ion probe: on the analysed 1D
+single-channel cross-section at $h = 40$\,\textmu m, only six Fourier-mode
+coefficients lie above the stated rank threshold.  The information content drops by a
 factor of $\approx15$ from $h = 5$\,\textmu m to $h = 80$\,\textmu m, directly
 reflecting the $e^{-kh}$ low-pass filtering.  Varying the $10^{-3}$ threshold
 from $10^{-2}$ to $10^{-4}$ changes the fitted effective-rank exponent from
@@ -2439,9 +2439,9 @@ At $h=40$\,\textmu m with $L=64$\,\textmu m: $\Delta x_{\rm pix}\le30$
 \,\textmu m and $N_{\rm Sh}\approx5.3$---consistent with the
 effective rank of Fig.~\ref{fig:svd}; the $128$-point numerical grid is
 therefore over-sampled by $\sim24\times$ relative
-to the information content, and the true scan can be a sparse
-${\sim}5$-point acquisition at 1\,s per pixel instead of a
-$128$-point grid.  The optimal sparse placement is the noise-aware D-optimal design,
+to the 1D information content, suggesting that a practical scan can be
+substantially sparser than a uniform $128$-point acquisition when the
+sampling design is optimised.  The optimal sparse placement is the noise-aware D-optimal design,
 concentrating samples where the ITF-weighted signal-to-noise
 $|H_x(k)|^2/S_{\delta\omega}(k)$ is largest (near $k_{\rm opt}=2/h$),
 which the Bayesian adaptive protocol of Sec.~\ref{sec:discussion}
@@ -2656,10 +2656,10 @@ $\ell_c$ --- a quantity debated for two decades (reviewed by Brownnutt
 et al.~\cite{brownnutt2015review}; see also Daniilidis et
 al.~\cite{daniilidis2011fabrication}) and not yet directly measured.
 Fitting the measured ACF to the patch-potential model by nonlinear
-least squares extracts $\ell_c$ with standard error
-$\mathrm{SE}(\ell_c)$; a fitted value
-$\ell_c < 1.96\,\mathrm{SE}(\ell_c)$ (one-sided $95\%$ level) indicates
-a white-noise spectrum and rejects the correlated-patch hypothesis.
+least squares or likelihood-based model comparison extracts $\ell_c$;
+if a confidence interval consistent with $\ell_c=0$ is obtained and the
+white-noise model is not disfavoured against the correlated-patch model,
+the correlated-patch hypothesis is rejected.
 
 \item \textbf{Charge elimination cross-check.}
 Maps taken before and after in-situ UV
@@ -3029,17 +3029,14 @@ QESPM gradient channel is calibrated.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{fig4_landscape.pdf}
-\caption{Research gap landscape.  (a) Positioning of QESPM relative to
+\caption{Sensitivity--standoff landscape for QESPM relative to
 existing quantum sensors and classical surface metrology platforms; the
 vertical axis is the \emph{intrinsic vertical detection sensitivity} of
 each technique, and QESPM targets the long-standoff, non-contact sector
 of the plane.  The charge-limited topographic reconstruction uncertainty
 of Table~\ref{tab:uncertainty} ($319$\,nm) is shown separately (open
 symbol connected to the QESPM sensitivity marker) and is not part of the
-sensitivity scale.
-(b) Research gap
-maturity assessment across seven dimensions; the grey polygon shows current
-field maturity; the red polygon shows QESPM contributions.}
+sensitivity scale.}
 \label{fig:landscape}
 \end{figure}
 
@@ -3224,7 +3221,8 @@ nanometre-scale lateral feature detection
 unless the ion can be brought to sub-micrometre heights (where Casimir--Polder
 forces and catastrophic heating become problematic); (ii)~the UHV requirement
 restricts sample types; (iii)~scan throughput is low --- an order-of-magnitude estimate of
-${\sim}10^{-2}$\,\textmu m$^2$/s under the stated dwell-time assumptions,
+${\sim}2.5\times10^{-1}$\,\textmu m$^2$/s for a $64\times64$\,\textmu m$^2$
+field sampled on a $128\times128$ grid at $1$\,s/pixel,
 versus ${\sim}10^{4}$\,\textmu m$^2$/s for commercial optical
 profilometry, an illustrative comparison rather than a universal
 instrument benchmark; and
@@ -3276,7 +3274,6 @@ $2.8$\,kHz at $h=20$\,\textmu m and $65$\,kHz at $h=10$\,\textmu m.
 Confirming the $k^2 e^{-kh}$ height scaling to $\sim10\%$ would constitute
 the first experimental test of the framework and requires no component that
 has not been demonstrated separately in the cited platform.
-for $N_{\rm rep}\sim10^2$.
 
 % ===================================================================
 \section{Conclusion}
@@ -3300,7 +3297,7 @@ Three key results support this conclusion:
           transfer limit.  As $kh \to \infty$, $\mathcal{F}_A \to 0$
           regardless of how large $\mathcal{F}_{\rm ion}$ becomes.
 
-    \item \textbf{The four-regime comparison} (Table~\ref{tab:regimes})
+    \item \textbf{The five-row regime comparison} (Table~\ref{tab:regimes})
           demonstrates numerically that the effective rank $r_{\rm eff}$
           and the geometric MTF cutoff are identical across classical,
           QPN, squeezed, and Heisenberg-limited measurement, while the
