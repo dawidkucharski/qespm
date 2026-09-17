@@ -81,14 +81,14 @@ fabrication.  The dominant techniques --- atomic force microscopy (AFM),
 scanning tunnelling microscopy (STM), optical profilometry, and scanning
 electron microscopy (SEM) --- each occupy a well-defined niche in the
 resolution--environment parameter space~\cite{iso25178}.  However, a
-persistent and growing need exists for \emph{non-contact} surface
+persistent and growing need exists for non-contact surface
 characterisation at micrometre standoff in ultra-high vacuum (UHV) and at
 cryogenic temperatures, driven by the quantum-device community:
 superconducting qubit electrode
 degradation~\cite{oliver2013materials}, ion-trap chip surface
 contamination~\cite{brownnutt2015review}, and two-level-system losses in
 amorphous dielectrics~\cite{muller2019quantum}.  Although AFM and STM
-already operate \emph{in situ} in UHV and at cryogenic temperatures, they
+already operate in situ in UHV and at cryogenic temperatures, they
 probe the surface in mechanical contact or tunnelling proximity and can
 perturb the very surface fields that matter for qubit performance; a
 technique that reads the surface electrostatically from micrometre
@@ -101,7 +101,7 @@ responds to stray electrostatic potentials through shifts of its secular
 motional frequencies and excess micromotion amplitude~\cite{leibfried2003review},
 and through the motional heating rate first measured by Turchette et
 al.~\cite{turchette2000heating}.  The trapped-ion
-community has invested two decades in \emph{characterising and eliminating}
+community has invested two decades in characterising and eliminating
 these surface-induced perturbations as a noise source limiting quantum
 coherence: the phenomenology is reviewed by Brownnutt et
 al.~\cite{brownnutt2015review}, microscopic-trap heating
@@ -110,7 +110,7 @@ studies~\cite{daniilidis2011fabrication}, in-situ ion-beam cleaning with a
 models and experiments~\cite{kim2017noise}, and heating measurements with
 exchangeable surface materials~\cite{hite2017exchangeable} trace the
 dominant mechanisms.  The idea of
-deliberately using an ion to \emph{probe} a surface was pioneered by Maiwald
+deliberately using an ion to probe a surface was pioneered by Maiwald
 et al.~\cite{maiwald2009stylus}, who demonstrated electric-field sensing
 with a single ion positioned above a structured electrode.  Recent work by
 S{\"a}gesser et al.~\cite{sagesser2026scanning} has extended this to
@@ -126,8 +126,8 @@ surface topography $z(x,y)$ from ion motional observables with a defined
 instrument transfer function, regularised inversion and an uncertainty
 budget --- has not, to the present knowledge, been formulated.
 The ion has been used as a qualitative electrometer --- detecting the
-\emph{presence} of surface fields --- but never as a \emph{quantitative
-topographic imaging tool} with a defined instrument transfer function,
+presence of surface fields --- but never as a quantitative
+topographic imaging tool with a defined instrument transfer function,
 traceable calibration, and a GUM-based uncertainty budget~\cite{gum2008}.  This gap is
 particularly striking given the parallel development of quantum sensors for
 nanoscale imaging: nitrogen-vacancy (NV) centres in diamond have been
@@ -139,7 +139,7 @@ explicit instrument characterisation has likewise not, to the present
 knowledge, been presented.
 
 This work addresses this gap.  The present contribution is a
-\emph{proposed theoretical framework}: analytically derived, numerically
+proposed theoretical framework: analytically derived, numerically
 benchmarked against an exact Rayleigh/Floquet solver, and tested against
 experimentally measured surface topography,
 with a defined experimental roadmap; the experimental demonstration itself
@@ -187,8 +187,8 @@ measurement model is the joint operator
 \boxed{\; \Delta\omega_x \;=\; \mathcal{H}[\,z_s,\,\sigma\,] \;}
 \end{equation}
 and surface charge is therefore not simply a noise source: it is an
-\emph{influence quantity that is structurally confounded with the
-measurand} (Sec.~\ref{sec:degeneracy}).  The complete quantity hierarchy
+influence quantity that is structurally confounded with the
+measurand (Sec.~\ref{sec:degeneracy}).  The complete quantity hierarchy
 is:
 
 \begin{table}[htb]
@@ -395,7 +395,7 @@ is small compared with the scale of potential variation (Lamb-Dicke regime).
 \textbf{Equilibrium position shift.}
 The surface field gradient displaces the ion equilibrium by
 $\Delta\mathbf{r} = -(e/m\omega_{\rm sec}^2)\nabla\Phi^{(1)}$.  The
-leading correction to the frequency shift is \emph{linear} in the
+leading correction to the frequency shift is linear in the
 displacement: evaluating Eq.~(\ref{eq:dw}) at the shifted equilibrium
 gives
 $\Delta\omega_x(\mathbf{r}_0+\Delta\mathbf{r}) =
@@ -433,7 +433,7 @@ H_x(k_x,k_y;h) = -\frac{e E_{\rm bg}}{2m\omega_x}\,
 
 \textbf{Self-image (ion-induced) correction.}
 The ion's own charge induces a further surface-charge distribution, whose
-field at the ion (the \emph{self-image} potential) acquires its own
+field at the ion (the self-image potential) acquires its own
 $\mathcal{O}(z_s)$ corrugation contribution, derived as follows.
 
 \begin{lemma}[Self-image correction]\label{lem:selfimage}
@@ -594,7 +594,7 @@ $f(k)\le Ck^2e^{-kh}\le 4Ce^{-2}/h^2$ everywhere.  The low-$k$ series
 through $\tfrac12 k^2h^2$ reproduces $f$ to better than $3\%$ for
 $kh\le0.5$.  The naive additive composite
 $f_{\rm comp}=Ck^2e^{-kh}+Ck^2(1-e^{-kh})(1-\tfrac12 kh)$, which
-matches each expansion at its own end, is \emph{not} uniformly valid:
+matches each expansion at its own end, is not uniformly valid:
 the two branches share no overlap region and the correction term
 overshoots by up to ${\sim}9\times10^{5}\%$ at $kh=8$
 (Fig.~\ref{fig:composite}).  Uniformity is therefore achieved by the
@@ -606,7 +606,7 @@ The passband quality factor $Q \equiv k_{\rm opt}/\Delta k_{\rm FWHM}$ is
 independent of $h$ and equals
 $Q = 2/(x_{\rm hi}-x_{\rm lo}) \approx 0.589$, where
 $x_{\rm lo}=0.7613$ and $x_{\rm hi}=4.1559$ are the two roots of
-$x^2e^{-x}=2e^{-2}$.  The ITF is a deliberately \emph{broad} band-pass
+$x^2e^{-x}=2e^{-2}$.  The ITF is a deliberately broad band-pass
 filter ($Q<1$): the slow $k^2$ rise and the slow $e^{-kh}$ decay spread
 the response over more than a decade in $k$, as reflected in the
 bandwidth $\Delta k_{\rm FWHM}=3.395/h$.
@@ -819,20 +819,20 @@ Eq.~(\ref{eq:johnson_field}), as expected for patch-potential-driven
 anomalous heating.  With short-range-correlated surface patches,
 $S_E(\omega_x;h)\propto h^{-4}$ recovers the exponent $\alpha=4$; the
 fitted $\alpha=3.7$ reflects the finite patch correlation length.  The
-heating channel is a functional of the \emph{fluctuation} spectrum
+heating channel is a functional of the fluctuation spectrum
 $S_E(\omega)$ rather than of the static field --- precisely what makes it
 the non-electrostatic channel of Corollary~\ref{cor:electrostatic}.
 
 \textbf{Laser noise.}
 The motional Ramsey measurement is implemented with a laser on a resolved
-sideband.  Two laser-noise channels enter: (i)~\emph{laser frequency
-noise} sets the Ramsey coherence time $T_2^{\rm(laser)}=1/\pi\delta\nu$;
+sideband.  Two laser-noise channels enter: (i)~laser frequency
+noise sets the Ramsey coherence time $T_2^{\rm(laser)}=1/\pi\delta\nu$;
 with a commercial $1$\,kHz-linewidth laser this is $0.32$\,ms --- shorter
 than the motional $T_2$ and therefore the binding constraint --- while a
 cavity-stabilised $10$\,Hz-linewidth system gives $32$\,ms and restores the
 motional limit (the interrogation laser linewidth must satisfy
 $\delta\nu \lesssim 1/\pi T_2^{\rm(mot)} \approx 30$\,Hz);
-(ii)~\emph{intensity noise} produces a differential ac-Stark shift
+(ii)~intensity noise produces a differential ac-Stark shift
 $\delta\omega_{\rm AC}/2\pi \approx (\Omega_R^2/4\Delta)(\delta I/I)$;
 with $\Omega_R/2\pi=100$\,kHz, $\Delta/2\pi=10$\,GHz and intensity
 stabilisation at $10^{-4}$, this contributes $\lesssim0.1$\,Hz --- at or
@@ -930,7 +930,7 @@ height; the vertical line marks the SNR optimum $h_{\rm opt}=\alpha/k$.
 \textbf{Johnson--Nyquist thermal noise: derivation for the measured observable.}
 A conducting surface at temperature $T$ produces thermally fluctuating
 surface currents, whose near field fluctuates at the ion position.  The
-QESPM observable is the \emph{field-gradient} noise
+QESPM observable is the field-gradient noise
 $\partial E_x/\partial x$, not the field noise itself, so the spectral
 density must be derived for the gradient.  In the quasistatic limit ($\omega \ll c/d$, skin depth
 $\delta_s \gg d$), the fluctuation--dissipation theorem in the interfacial
@@ -1053,7 +1053,7 @@ $\dot{\bar n}\propto h^{-4}$ law for short-range-correlated patches --- and
 half-width $0.51\,h$, so the heating channel's lateral resolution is
 $\sim h$, matching the electrostatic channel.  Under the fluctuating-patch
 model $S_{\rm patch}\propto|\sigma(\mathbf{r})|^2$ (charge-variance
-weighted), the heating channel is a \emph{quadratic} functional of the
+weighted), the heating channel is a quadratic functional of the
 charge field: it is not annihilated by the linear rank-1 degeneracy of
 Theorem~\ref{thm:degeneracy}, and it therefore provides information on
 the charge-variance field outside the linear degeneracy.  Whether that
@@ -1095,10 +1095,10 @@ condition:
                 + \mathcal{O}\bigl((kd)^2\bigr),
           \label{eq:dielectric_factor}
           \end{equation}
-          i.e.~a slight \emph{enhancement} (the effective image plane is
+          i.e.~a slight enhancement (the effective image plane is
           displaced toward the ion by the film); the limits $F\to1$ for
           $\varepsilon_r\to1$ and $d\to0$ are exact, and the factor is
-          \emph{identical} for the topographic and charge channels, so the
+          identical for the topographic and charge channels, so the
           topography--charge theorem (Theorem~\ref{thm:degeneracy}) is
           unaffected.  For a native oxide ($d=2$\,nm,
           $\varepsilon_r=3.9$) at $k=2\times10^5$\,rad/m:
@@ -1183,7 +1183,7 @@ F(k) = \frac{\varepsilon_r\,e^{kd}}{\varepsilon_r\cosh(kd)+\sinh(kd)}
 \end{equation}
 whose limits $F\to1$ for $\varepsilon_r\to1$ and $d\to0$ are exact:
 the effective image plane is displaced toward the ion by the film, and the
-factor is \emph{identical} for the topographic and charge channels.
+factor is identical for the topographic and charge channels.
 \end{lemma}
 
 Figure~\ref{fig:validity} collects the validity conditions of this
@@ -1220,8 +1220,8 @@ a low-pass factor $e^{-kh}$.  The resulting band-pass character is a
 filtering is, of course, a routine post-processing step in surface
 metrology --- the ISO~16610 Gaussian profile filters~\cite{iso16610}
 separate long- and short-wave profile components by design --- but for
-QESPM the band-pass response is the \emph{native, continuous,
-height-tunable physical transfer function of the sensor itself}, with
+QESPM the band-pass response is the native, continuous,
+height-tunable physical transfer function of the sensor itself, with
 sub-unity quality factor $Q=0.589$ (Corollary~\ref{cor:qfactor}), rather
 than a filter applied to already measured data.
 
@@ -1258,13 +1258,13 @@ carefully distinguished:
           surface amplitude detectable above the noise floor at a given
           spatial frequency.  Governed by the measurement noise
           $\delta\omega$ and the ITF magnitude $|H_x(k;h)|$.
-          \emph{Quantum enhancement directly improves this quantity.}
+          Quantum enhancement directly improves this quantity.
 
     \item \textbf{Height reconstruction uncertainty} $u_c(z)$ --- the
           GUM-based combined standard uncertainty of a reconstructed
           height value.  Dominated by systematic effects (surface charge)
-          rather than measurement noise.  \emph{Quantum enhancement does
-          not reduce systematic uncertainties.}
+          rather than measurement noise.  Quantum enhancement does
+          not reduce systematic uncertainties.
 
     \item \textbf{Lateral spatial resolution} --- the
           smallest surface wavelength that can be independently
@@ -1272,8 +1272,8 @@ carefully distinguished:
           cutoff $\lambda_{\min}^{\rm(MTF)}\approx1.51h$).  Governed by
           the $e^{-kh}$ exponential decay
           of the ITF, which imposes an irreducible information cutoff.
-          \emph{No amount of quantum enhancement can recover spatial
-          information already destroyed by the physical transfer function.}
+          No amount of quantum enhancement can recover spatial
+          information already destroyed by the physical transfer function.
 \end{enumerate}
 
 The first two items are the distinction between \emph{information
@@ -1498,7 +1498,7 @@ in the reconstructed surface.  This is the mathematical origin of the
 effective rank observed in the SVD analysis and of the $\lambda_{\min}$
 MTF cutoff: regularisation cannot recover information that has been
 exponentially attenuated below the noise floor.  The severe ill-posedness
-is a \emph{fundamental} property of the $e^{-kh}$ physics, not an artifact
+is a fundamental property of the $e^{-kh}$ physics, not an artifact
 of the reconstruction algorithm.
 
 \begin{lemma}[Singular-value asymptotics --- Weyl counting]\label{lem:weyl}
@@ -1559,7 +1559,7 @@ Because the discretised operator is exactly diagonal in the DFT basis, the
 spectral theorem applies in closed form: the singular functions are the
 Fourier modes, $\mathcal{H}_h$ admits the decomposition
 $\mathcal{H}_h z = \sum_n \sigma_n\langle z,u_n\rangle u_n$ with
-$\sigma_n$ as in Lemma~\ref{lem:weyl}, and the \emph{Shannon number}
+$\sigma_n$ as in Lemma~\ref{lem:weyl}, and the Shannon number
 $N_{\rm Sh}=\sum_n \sigma_n^2/(\sigma_n^2+\lambda^2)$ counts the
 effectively observable degrees of freedom --- to leading order the number
 of lattice modes with $|H(k)|>\lambda$.  The
@@ -1688,7 +1688,7 @@ linear functional of the boundary potential $\phi_s=E_{\rm bg}z_s+\phi_{\rm char
 [W_j(k)e^{-kh_\ell},\;W_j(k)e^{-kh_\ell}/2\varepsilon_0 k E_{\rm bg}]
 \propto[1,\;1/2\varepsilon_0 k E_{\rm bg}],
 \end{equation*}
-independent of $(j,\ell)$: all rows are collinear and the rank is~1.  Identifiability therefore requires a \emph{non-electrostatic} channel --- the motional heating rate (a functional of the surface fluctuation spectrum, not of the static field) or the short-range Casimir--Polder force (a functional of the material polarisability) --- exactly the content of strategies (i)--(iii) below.
+independent of $(j,\ell)$: all rows are collinear and the rank is~1.  Identifiability therefore requires a non-electrostatic channel --- the motional heating rate (a functional of the surface fluctuation spectrum, not of the static field) or the short-range Casimir--Polder force (a functional of the material polarisability) --- exactly the content of strategies (i)--(iii) below.
 
 \begin{corollary}[Quantum Cram\'er--Rao bound, degenerate pair]\label{cor:qcrb_degenerate}
 At a fixed height $h$, the data of any electrostatic channel depend on
@@ -1814,8 +1814,8 @@ Formally, the \textbf{quantum Fisher information per spatial mode} factorises as
 where $\mathcal{F}_{\rm ion}$ encodes the quantum sensitivity of the
 motional-state measurement (coherent, squeezed, or NOON).  As
 $kh \to \infty$, $|H_x|^2 \propto k^4 e^{-2kh} \to 0$, and
-$\mathcal{F}_A(k;h) \to 0$ \emph{regardless of how large
-$\mathcal{F}_{\rm ion}$ becomes.}  This factorisation provides a clean
+$\mathcal{F}_A(k;h) \to 0$ regardless of how large
+$\mathcal{F}_{\rm ion}$ becomes.  This factorisation provides a clean
 separation between quantum-metrological enhancement and the irreducible
 spatial-information limit imposed by electrostatics.  At the quantum projection noise limit
 ($\delta\omega_{\rm QPN}/2\pi \approx 0.7$\,Hz, Sec.~\ref{sec:noise}),
@@ -1864,8 +1864,8 @@ quantum-limited uncertainty is therefore
 \end{equation}
 which, combined with the singular-value asymptotics
 (Lemma~\ref{lem:weyl}), states the central result in estimation-theoretic
-form: \emph{the quantum bound for mode $k$ diverges as
-$e^{+kh}/k^2$ regardless of $\mathcal{F}_{\rm ion}$} --- squeezing or
+form: the quantum bound for mode $k$ diverges as
+$e^{+kh}/k^2$ regardless of $\mathcal{F}_{\rm ion}$ --- squeezing or
 Heisenberg scaling multiplies every mode equally and cannot compensate
 the exponential attenuation of $H_x$.  Equation~(\ref{eq:qcrb_mode}) also
 unifies the quantum analysis with the discrete Picard condition
@@ -1934,11 +1934,11 @@ Heisenberg ($\times 10$), charge-free& 0.07\,Hz& absent  & 0.02 & 13.7 & 6 \\
 \end{tabular}
 \end{table}
 
-(Here $\lambda_{\min}$ is the \emph{noise-limited} short-wavelength cutoff
+(Here $\lambda_{\min}$ is the noise-limited short-wavelength cutoff
 at the stated $\delta\omega$, computed from Eq.~(\ref{eq:scaling_amin}) by
 Lemma~\ref{lem:noise_cutoff}: over the $70\times$ range of $\delta\omega$
 it moves only $18.7\to13.7$\,\textmu m --- a logarithmic dependence --- so
-the \emph{geometric} resolution limit
+the geometric resolution limit
 $\lambda_{\min}^{\rm(MTF)}\approx1.51h=60.4$\,\textmu m is the binding
 constraint in every row.  The $\delta A_{\min}$ values are quoted at the
 uncertainty-budget evaluation point $k=2\times10^5$\,rad/m,
@@ -1964,7 +1964,7 @@ column follows from Lemma~\ref{lem:noise_cutoff}.
 
 The key result is that $r_{\rm eff}$ and the geometric MTF cutoff are
 \textbf{identical} across all charge-free regimes, while the noise-limited
-cutoff $\lambda_{\min}$ improves only \emph{logarithmically} with
+cutoff $\lambda_{\min}$ improves only logarithmically with
 $\delta\omega$ ($18.7\to13.7$\,\textmu m over $70\times$); quantum
 enhancement buys sensitivity, not spatial information.  At the same time,
 \textbf{charge elimination provides a ${\sim}2.7\times10^2\times$
@@ -2036,8 +2036,8 @@ maximum-curvature corner marked.
 \end{figure}
 
 \textbf{Source sets.}
-Convergence of any regularisation scheme requires an \emph{a-priori
-smoothness assumption} on the true surface~\cite{engl1996inverse}.  Throughout, the source set
+Convergence of any regularisation scheme requires an a-priori
+smoothness assumption on the true surface~\cite{engl1996inverse}.  Throughout, the source set
 is the $H^s$-ball of zero-mean surfaces
 \begin{equation}
 X_s(E) = \bigl\{ z \in H^s(\mathbb{R}^2) :\,
@@ -2110,7 +2110,7 @@ estimate) and every $\delta>0$ sufficiently small,
 \label{eq:minimax}
 \end{equation}
 where $\xi$ is white noise of norm $\le\delta$.  The logarithmic rate of
-the Tikhonov estimate is therefore \emph{order-optimal}: no
+the Tikhonov estimate is therefore order-optimal: no
 method can do better than the $\bigl(\ln(1/\delta)\bigr)^{-s}$ factor
 imposed by the $e^{-kh}$ transfer function~\cite{hohage2000regularization}.
 \end{theorem}
@@ -2127,7 +2127,7 @@ The logarithmic rate has an important physical implication: halving the
 measurement noise (e.g., from $5\,\textup{Hz}$ to $2.5\,\textup{Hz}$)
 improves the reconstruction error only by a fixed additive constant in
 the exponent.  Practical resolution gains therefore come primarily from
-\emph{reducing $h$} --- which shifts the entire singular-value
+reducing $h$ --- which shifts the entire singular-value
 spectrum --- rather than from reducing the noise floor.
 
 \textbf{Alternative regularisation strategies.}
@@ -2152,7 +2152,7 @@ Gaussian with per-mode mean
 \Delta x^2/\Sigma(k)},
 \label{eq:bayesian_post}
 \end{equation}
-i.e.\ \emph{Tikhonov with the frequency-dependent regulariser}
+i.e.\ Tikhonov with the frequency-dependent regulariser
 $\lambda^2(k) = \sigma_{\rm pix}^2\Delta x^2/\Sigma(k)$ --- the prior
 supplies $\lambda(k)$ with no free parameter.  On the topography-only
 test surface at $h=40$\,\textmu m the GP-prior reconstruction achieves
@@ -2340,14 +2340,14 @@ trend: $r = 0.838$ at $h = 5\,\mu\textup{m}$ (more high-$k$ signal but also more
 noise amplification from the $k^{-2}$ divergence at low $k$), improving to
 $r = 0.992$ at $h = 80$\,$\mu\textup{m}$ (where only the broad, smooth features
 survive the $e^{-kh}$ filter and are easily inverted).  This trend ---
-higher correlation at \emph{larger} $h$ --- is opposite to that observed
+higher correlation at larger $h$ --- is opposite to that observed
 for the real stainless steel surface (Sec.~\ref{sec:real_data}) because
 the synthetic test surface contains a broad-spectrum grating and plateau
 whose low-$k$ components are adequately sampled at all heights, whereas
 the noise amplification from unresolved high-$k$ components increases as
 $h$ decreases.  For real surfaces whose roughness power is concentrated at
 small spatial scales, the resolution improvement at lower $h$ dominates
-and $r$ \emph{increases} with decreasing $h$, as confirmed in
+and $r$ increases with decreasing $h$, as confirmed in
 Sec.~\ref{sec:real_data}.
 
 \subsection{Reconstruction conditions}
@@ -2538,7 +2538,7 @@ topography--charge degeneracy: even a residual charge density of
 ${\sim}10^{-6}$\,C/m$^2$ (a fraction of a typical patch-potential value)
 produces an equivalent height error of ${\sim}320$\,nm.  All other sources ---
 including the ion's exquisite frequency sensitivity --- are at the
-sub-nanometre level and are \emph{not} the limiting factor.
+sub-nanometre level and are not the limiting factor.
 
 \textbf{Quantum measurement sensitivity is not topographic reconstruction
 uncertainty.}  The present budget does not represent an intrinsic limit of
@@ -2550,7 +2550,7 @@ of electrostatic surface imaging rather than insufficient frequency
 sensitivity of the trapped-ion sensor.  The picometre-scale detection limits of Sec.~\ref{sec:qfi}
 quantify how precisely the frequency observable can be read; the
 $319$\,nm budget of Table~\ref{tab:uncertainty} quantifies how well the
-surface height can be \emph{identified}.  No quantum enhancement can
+surface height can be identified.  No quantum enhancement can
 reduce the charge row of the budget, because that uncertainty is set by
 the identifiability limit of Theorem~\ref{thm:degeneracy}, not by
 measurement noise: the quantum sensor is not the fundamental limitation,
@@ -2802,7 +2802,7 @@ to the observed ${\sim}10$\,kHz.  The factor of ${\sim}350$ discrepancy
 indicates that the effective surface field at the ion position in the
 stylus-trap geometry is $E_{\rm bg}^{\rm(eff)} \approx E_{\rm bg}^{\rm(applied)}/350$
 --- consistent with the strong shielding of the rf electrodes in that
-design.  The \emph{scaling} prediction --- $|\Delta\omega_x| \propto e^{-kh}$ ---
+design.  The scaling prediction --- $|\Delta\omega_x| \propto e^{-kh}$ ---
 is testable without knowledge of the absolute potential scale and does
 not depend on the $E_{\rm bg}$ prefactor.  Until a direct measurement of
 $E_{\rm bg}^{\rm(eff)}$ in the Maiwald geometry is available, this comparison
@@ -2954,7 +2954,7 @@ metrology methods and quantum sensing platforms.
 \centering
 \caption{Comparison of surface metrology methods and quantum sensing
 platforms.  For QESPM the quoted vertical value is the
-quantum-projection-noise \emph{detection sensitivity} at $k_{\rm opt}=2/h$
+quantum-projection-noise detection sensitivity at $k_{\rm opt}=2/h$
 in the charge-free regime; the realistic combined standard uncertainty is
 $319$\,nm (Table~\ref{tab:uncertainty}), reflecting the identifiability
 limitation rather than the sensor sensitivity.  Non-QESPM entries are
@@ -3021,10 +3021,10 @@ rf-photon-correlation electrometry reaches field sensitivities near
 $10$\,mV/m$/\sqrt{\rm Hz}$\,\cite{keller2015electrometry} and 2D ion-crystal
 platforms demonstrate quantum-enhanced field and displacement sensing at
 the $10$\,dB level\,\cite{gilmore2021quantum}.  QESPM differs categorically:
-(i)~it senses the \emph{field gradient} (second derivative of the
+(i)~it senses the field gradient (second derivative of the
 potential) through the secular frequency, so its observable carries
 spatial-frequency selectivity (the ITF) absent from a point field probe;
-(ii)~it reconstructs a \emph{map} through a regularised inversion of a
+(ii)~it reconstructs a map through a regularised inversion of a
 severely ill-posed operator, rather than reporting a single field value;
 and (iii)~its metrological deliverable is SI-traceable surface texture,
 not field strength.  The same ion hardware serves both modalities: the
@@ -3036,7 +3036,7 @@ QESPM gradient channel is calibrated.
 \includegraphics[width=\textwidth]{fig4_landscape.pdf}
 \caption{Sensitivity--standoff landscape for QESPM relative to
 existing quantum sensors and classical surface metrology platforms; the
-vertical axis is the \emph{intrinsic vertical detection sensitivity} of
+vertical axis is the intrinsic vertical detection sensitivity of
 each technique, and QESPM targets the long-standoff, non-contact sector
 of the plane.  The charge-limited topographic reconstruction uncertainty
 of Table~\ref{tab:uncertainty} ($319$\,nm) is shown separately (open
@@ -3046,8 +3046,8 @@ sensitivity scale.}
 \end{figure}
 
 QESPM occupies a distinctive region of the resolution--environment
-parameter space: it provides sub-nanometre vertical \emph{detection
-sensitivity} (picometre
+parameter space: it provides sub-nanometre vertical detection
+sensitivity (picometre
 with motional squeezing at the quantum projection noise limit) at standoff
 distances of $1$--$100$\,\textmu m --- orders of magnitude larger than AFM or
 STM --- while operating natively in the UHV environment of the ion trap.  The
@@ -3087,13 +3087,13 @@ conducting surfaces in UHV and cryogenic environments.
 The closest experimental precedent is the three-dimensional scanning ion
 probe of S{\"a}gesser et al.~\cite{sagesser2026scanning}, which demonstrated
 that the ion can be positioned and scanned with high fidelity.  The present work extends this demonstration in three directions:
-(i)~the \emph{quantitative forward model and ITF} that converts raw
+(i)~the quantitative forward model and ITF that converts raw
 frequency-shift data into surface height through a regularised inversion of
 a severely ill-posed inverse problem;
-(ii)~the \emph{metrological framework} (uncertainty budget, calibration
+(ii)~the metrological framework (uncertainty budget, calibration
 procedure, traceability chain) that provides elements required for a
 future metrological evaluation of the method; and (iii)~the explicit identification and analysis of
-the \emph{topography--charge degeneracy} as the central fundamental obstacle,
+the topography--charge degeneracy as the central fundamental obstacle,
 together with proposed resolution strategies.
 
 \textbf{Multi-observable identifiability.}
@@ -3111,7 +3111,7 @@ is a linear functional of the single scalar field
 $\varphi_s=\tilde{z}_s+\tilde{\sigma}/2\varepsilon_0 k E_{\rm bg}$, so the
 multi-channel forward matrix remains rank-1 per Fourier mode and no
 combination of channels or heights separates topography from charge.  The
-rank \emph{could} be restored only by a \emph{non-electrostatic} channel
+rank could be restored only by a non-electrostatic channel
 --- the heating rate (a functional of the surface fluctuation spectrum
 rather than of the static field) or the short-range Casimir--Polder force
 --- which is exactly the content of strategy (ii) above and outlook (b);
