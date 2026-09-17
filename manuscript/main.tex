@@ -1266,9 +1266,11 @@ carefully distinguished:
           rather than measurement noise.  \emph{Quantum enhancement does
           not reduce systematic uncertainties.}
 
-    \item \textbf{Lateral spatial resolution} $\lambda_{\min}$ --- the
+    \item \textbf{Lateral spatial resolution} --- the
           smallest surface wavelength that can be independently
-          reconstructed.  Governed by the $e^{-kh}$ exponential decay
+          reconstructed (quantified here by the 50\% MTF short-wavelength
+          cutoff $\lambda_{\min}^{\rm(MTF)}\approx1.51h$).  Governed by
+          the $e^{-kh}$ exponential decay
           of the ITF, which imposes an irreducible information cutoff.
           \emph{No amount of quantum enhancement can recover spatial
           information already destroyed by the physical transfer function.}
@@ -2558,8 +2560,8 @@ charge mitigation: it is the conservative charge-limited baseline under
 the stated residual-charge prior of Table~\ref{tab:uncertainty}.
 
 Mitigation strategies --- in-situ surface cleaning, auxiliary heating-rate
-contrast, and Bayesian joint inversion --- can reduce the charge contribution
-by an estimated factor of 10--100, bringing the combined uncertainty to
+contrast, and Bayesian joint inversion --- could reduce the charge contribution
+by an estimated factor of 10--100, which would bring the combined uncertainty to
 ${\approx}32$\,nm (factor 10) or ${\approx}3.2$\,nm (factor 100).
 These charge-controlled scenarios are estimates, not demonstrated
 capability: a factor of 10 is consistent with UV-cleaned surfaces
@@ -2923,7 +2925,10 @@ $\Delta x_{\rm res} = 2h/\sqrt3 \approx 1.15h$; and (iii)~the $50\%$
 MTF cutoff $\lambda_{\min}^{\rm(MTF)} \approx 1.51h$.  These are three
 different quantities --- an ESF shape parameter, a two-point separation
 criterion and a spatial-frequency cutoff --- and each scales linearly
-with $h$.
+with $h$.  Throughout this work, lateral resolution is therefore not
+represented by a single universal number: the ESF width, the PSF
+central-lobe scale, the Rayleigh-style two-point criterion and the
+50\% MTF cutoff quantify different aspects of the spatial response.
 For a 1D Gaussian ridge the half-space Poisson integral evaluates in
 closed form via the scaled complementary error function, agreeing with
 direct quadrature to $10^{-15}$ relative accuracy and with the FFT
@@ -3214,9 +3219,11 @@ within 3--4 years of the first experimental demonstration.
 
 \subsection{Limitations and outlook}
 
-The principal limitations of QESPM are: (i)~lateral two-point resolution limited by the MTF cutoff
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$, with the corresponding
-Rayleigh-style two-point criterion $\approx1.15h$, restricting
+The principal limitations of QESPM are: (i)~lateral resolution set by the
+50\% MTF short-wavelength cutoff
+$\lambda_{\min}^{\rm(MTF)}\approx1.51h$, with the Rayleigh-style
+two-point criterion $\approx1.15h$ as a separate two-point metric,
+restricting
 nanometre-scale lateral feature detection
 unless the ion can be brought to sub-micrometre heights (where Casimir--Polder
 forces and catastrophic heating become problematic); (ii)~the UHV requirement
@@ -3315,11 +3322,9 @@ Three key results support this conclusion:
 The practical path forward is clear: motional squeezing ($\times 4.5$)
 provides the most robust near-term quantum enhancement, while in-situ
 charge elimination (UV cleaning, factor $\sim 10$--$100$) addresses the
-dominant systematic uncertainty.  Combined, these bring the height
-resolution from ${\sim}300$\,nm toward the nanometre scale ---
-competitive with existing non-contact techniques and a potential
-complement to them in UHV/cryogenic environments, subject to
-experimental validation of the estimated charge-mitigation scenarios.
+dominant systematic uncertainty.  Charge mitigation could substantially
+reduce the present charge-limited reconstruction uncertainty, but the
+resulting performance remains to be established experimentally.
 
 Beyond its immediate application as a surface metrology tool, QESPM
 establishes a broader principle: \textbf{quantum sensors are ultimately
