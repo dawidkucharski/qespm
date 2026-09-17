@@ -38,8 +38,8 @@ lam_lo = np.maximum(1.51 * h, lam_slope)
 ax.fill_between(h, lam_lo, lam_hi, where=(lam_lo < lam_hi),
                 color='#c8e6c9', alpha=0.7, zorder=1)
 
-# --- Casimir-Polder exclusion strip along the bottom edge (h < 0.1 um) ---
-ax.axhspan(h.min(), h_cp, color='#b0bec5', alpha=0.85, zorder=3)
+# --- Casimir-Polder exclusion band below 100 nm (visible strip below the axis tick) ---
+ax.axhspan(0.05, h_cp, color='#b0bec5', alpha=0.9, hatch='///', zorder=3)
 
 # --- FOV limit at lambda = L ---
 ax.axvline(lam_hi, color='grey', ls=':', lw=2.0, zorder=2)
@@ -59,12 +59,12 @@ ax.text(28.0, 1.6, 'heating-limited ($h<5$ $\mu$m)',
         fontsize=10, ha='center', va='center', color='#8c1d18')
 ax.text(70.0, 60.0, 'FOV-limited\n$\\lambda>L$', fontsize=9,
         ha='center', va='center', color='#37474f', rotation=90)
-ax.text(0.13, 0.105, 'Casimir--Polder exclusion ($h<100$\,nm)',
-        fontsize=9, ha='left', va='bottom', color='#263238')
+ax.text(0.13, 0.063, 'Casimir--Polder exclusion ($h<100$\,nm)',
+        fontsize=9, ha='left', va='center', color='#263238')
 
 ax.set_xscale('log'); ax.set_yscale('log')
 ax.set_xlim(0.1, 100)
-ax.set_ylim(0.1, 100)
+ax.set_ylim(0.05, 100)
 ax.set_xlabel('surface feature wavelength $\lambda$ [$\mu$m]', fontsize=12)
 ax.set_ylabel('ion--surface separation $h$ [$\mu$m]', fontsize=12)
 ax.set_title('Domain of validity of the QESPM forward model', fontsize=13)
