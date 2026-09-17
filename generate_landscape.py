@@ -32,7 +32,7 @@ for name, m in methods.items():
         'AFM (tapping)':        (1.8, 1.8),
         'STM':                  (1.5, 2.5),
         'Optical profilometry':  (0.25, 0.5),
-        'SEM':                  (6.0, 1.2),
+        'SEM':                  (0.45, 1.6),
         r'$\mathbf{QESPM}$':    (0.5, 4.0),
     }
     mx, my = offsets.get(name, (1.5, 1.5))
