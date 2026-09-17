@@ -12,10 +12,8 @@ methods = {
     'AFM (tapping)':        {'lateral': 5.0,     'vertical': 0.05,   'standoff': 5.0,    'color': '#78909C', 'marker': 's'},
     'STM':                  {'lateral': 0.1,     'vertical': 0.001,  'standoff': 0.5,    'color': '#455A64', 'marker': 'D'},
     'Optical profilometry': {'lateral': 500.0,   'vertical': 1.0,    'standoff': 1e5,    'color': '#FF9800', 'marker': 'o'},
-    'Confocal microscopy':  {'lateral': 200.0,   'vertical': 5.0,    'standoff': 5e4,    'color': '#FFB74D', 'marker': 'o'},
-    'SEM':                  {'lateral': 2.0,     'vertical': 2.0,    'standoff': 1e4,    'color': '#9E9E9E', 'marker': '^'},
-    'NV centre (magnetic)': {'lateral': 10.0,    'vertical': None,   'standoff': 50.0,   'color': '#7B1FA2', 'marker': 'P'},
-    r'$\mathbf{QESPM}$':    {'lateral': 20.0,    'vertical': 0.01,   'standoff': 1e4,    'color': '#C62828', 'marker': '*'},
+    'SEM':                  {'lateral': 2.0,     'vertical': 1.0,    'standoff': 1e4,    'color': '#9E9E9E', 'marker': '^'},
+    r'$\mathbf{QESPM}$':    {'lateral': 20.0,    'vertical': 0.007,  'standoff': 4e4,    'color': '#C62828', 'marker': '*'},
 }
 
 for name, m in methods.items():
@@ -34,10 +32,8 @@ for name, m in methods.items():
         'AFM (tapping)':        (1.8, 1.8),
         'STM':                  (1.5, 2.5),
         'Optical profilometry':  (0.25, 0.5),
-        'Confocal microscopy':   (0.3, 0.4),
         'SEM':                  (2.5, 0.5),
-        'NV centre (magnetic)': (0.4, 2.5),
-        r'$\mathbf{QESPM}$':    (0.2, 3.0),
+        r'$\mathbf{QESPM}$':    (0.5, 4.0),
     }
     mx, my = offsets.get(name, (1.5, 1.5))
     
@@ -59,19 +55,19 @@ ax1.set_xlim(0.08, 3e5)
 ax1.set_ylim(0.0003, 1200)
 ax1.grid(True, alpha=0.25, which='both')
 
-# Shade QESPM quadrant
-ax1.axvspan(500, 5e4, alpha=0.06, color='red')
+# Shade QESPM quadrant (1--100 um standoff, per the operating envelope)
+ax1.axvspan(1e3, 1e5, alpha=0.06, color='red')
 ax1.axhspan(0.0003, 0.1, alpha=0.06, color='red')
-ax1.annotate('QESPM\nniche', xy=(3000, 0.002), fontsize=10, color='darkred',
+ax1.annotate('QESPM\nniche', xy=(2e4, 0.0008), fontsize=10, color='darkred',
              fontweight='bold', fontstyle='italic')
 
 # Reconstruction uncertainty shown SEPARATELY: it is not part of the
-# sensitivity scale (charge-limited, Table: uncertainty budget)
-ax1.plot([1e4, 1e4], [0.01, 319], ls='--', color='#C62828', lw=1.1, alpha=0.6)
-ax1.scatter(1e4, 319, marker='o', facecolors='none', edgecolors='#C62828',
+# sensitivity scale (charge-limited, Table: uncertainty budget, h = 40 um)
+ax1.plot([4e4, 4e4], [0.007, 319], ls='--', color='#C62828', lw=1.1, alpha=0.6)
+ax1.scatter(4e4, 319, marker='o', facecolors='none', edgecolors='#C62828',
             s=170, zorder=10, linewidths=1.7)
-ax1.annotate('QESPM reconstruction uncertainty\n(charge-limited, $u_c(z)$ = 319 nm)',
-             xy=(1e4, 319), xytext=(9e3, 12),
+ax1.annotate('QESPM reconstruction uncertainty\n(charge-limited, $u_c(z)$ = 319 nm at $h$ = 40 $\mu$m)',
+             xy=(4e4, 319), xytext=(1.6e4, 30),
              fontsize=8, color='#C62828',
              arrowprops=dict(arrowstyle='->', color='#C62828', lw=0.9))
 
