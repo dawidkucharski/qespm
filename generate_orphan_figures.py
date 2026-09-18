@@ -254,12 +254,17 @@ u_ebg = z * 10 / EBG * np.ones_like(k)
 u_A = (2 * M * W / (E * EBG)) * (2 * np.pi * 0.3) * np.exp(k * H_NOM) / k**2
 u_cal = 1.0e-9 * np.ones_like(k)
 uc = np.sqrt(u_sigma**2 + u_h**2 + u_ebg**2 + u_A**2 + u_cal**2)
-e1.plot(k, u_sigma * 1e9, lw=2.0, color='#1f77b4', label='surface charge $\\sigma$')
+# The combined curve is drawn first (lowest z-order) and the dominant
+# surface-charge contribution as a dashed line on top: u_sigma is within a few
+# percent of u_c across the whole band, so a solid blue line would be
+# completely hidden beneath the black combined curve.
+e1.plot(k, uc * 1e9, lw=2.6, color='k', zorder=2, label='combined $u_c(z)$')
+e1.plot(k, u_sigma * 1e9, lw=1.8, color='#1f77b4', ls='--', zorder=3,
+        label='surface charge $\\sigma$')
 e1.plot(k, u_h * 1e9, lw=1.6, color='#ff7f0e', label='ion height $h$')
 e1.plot(k, u_ebg * 1e9, lw=1.4, color='#2ca02c', label='background field $E_{\\rm bg}$')
-e1.plot(k, u_A * 1e9, lw=1.4, color='#d62728', label='Type A (frequency measurement)')
+e1.plot(k, u_A * 1e9, lw=1.6, color='#d62728', ls=':', label='Type A (frequency measurement)')
 e1.plot(k, u_cal * 1e9, lw=1.4, color='#9467bd', label='ITF calibration')
-e1.plot(k, uc * 1e9, lw=2.6, color='k', label='combined $u_c(z)$')
 e1.axvline(K_BUDGET, color='grey', ls='--', lw=1.2)
 e1.text(K_BUDGET, 0.02, '  $k=2\\times10^5$ rad/m\n  $u_c(z)=319$ nm', fontsize=9)
 e1.set_xscale('log'); e1.set_yscale('log')
@@ -279,7 +284,7 @@ e1.set_xlabel('spatial frequency $k$ [rad/m]', fontsize=11)
 e1.set_ylabel('uncertainty contribution [nm]', fontsize=11)
 e1.set_title('GUM-based uncertainty budget vs spatial frequency ($z=100$ nm, $h=40$ $\\mu$m)',
              fontsize=11)
-e1.legend(fontsize=8)
+e1.legend(fontsize=8, ncol=3, loc='upper center', framealpha=0.9)
 e1.grid(True, which='both', alpha=0.25)
 plt.tight_layout()
 plt.savefig('manuscript/fig5_uncertainty.pdf', dpi=150, bbox_inches='tight')
