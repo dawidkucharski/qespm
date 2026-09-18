@@ -64,6 +64,14 @@ separation $h$ is maintained by adjusting the trap-electrode voltages.
 The scan range is limited by the field of view of the ion trap
 ($64\,\mu\text{m}$ in the simulation).
 
+\noindent
+\textbf{Signal map.}
+Figure~\ref{fig:S_signal} maps the peak signal amplitude across the
+($\lambda$, $h$) plane, locating the nominal operating point
+($\lambda = 40$\,\textmu m, $h = 40$\,\textmu m) with respect to the
+SNR$=1$ contour and the optimal-wavelength line
+$\lambda_{\rm opt} = \pi h$.
+
 % ---- Figure S2: Signal map ----
 \begin{figure}[htbp]
 \centering
@@ -78,6 +86,13 @@ optimal wavelength $\lambda_{\rm opt} = \pi h$; the star marks the nominal
 operating point ($\lambda = 40\,\mu\text{m}$, $h = 40\,\mu\text{m}$).}
 \label{fig:S_signal}
 \end{figure}
+
+\noindent
+\textbf{Micromotion channel.}
+Figure~\ref{fig:S_micromotion} compares the secular
+($\propto k^2e^{-kh}$) and excess-micromotion ($\propto ke^{-kh}$)
+transfer channels; their complementary $k$-coverage underlies the
+independent height diagnostic discussed in the main text.
 
 % ---- Figure S3: Micromotion analysis ----
 \begin{figure}[htbp]
@@ -98,6 +113,14 @@ their ratio provides an independent diagnostic (see the main text).}
 \label{fig:S_micromotion}
 \end{figure}
 
+\noindent
+\textbf{Degeneracy theorem --- numerical illustration.}
+Figure~\ref{fig:S_degeneracy} shows the two-height signal ratio
+$\Delta\omega(h_1)/\Delta\omega(h_2) = e^{-k(h_1-h_2)}$: it depends on
+$k$ and the heights only, so multi-height scans cannot separate
+topography from charge without independent information (Theorem of the
+main text).
+
 % ---- Figure S4: Degeneracy theorem ----
 \begin{figure}[htbp]
 \centering
@@ -116,6 +139,16 @@ in-situ charge elimination, a known reference scan, or an independent
 material-contrast channel such as the motional heating rate.}
 \label{fig:S_degeneracy}
 \end{figure}
+
+\noindent
+\textbf{Real-data validation chain.}
+Figures~\ref{fig:S_afm_input}, \ref{fig:S_afm_signal} and
+\ref{fig:S_afm_recon} document the
+real-data validation of Sec.~4.2 of the main text: the input AFM
+topography, the forward-modelled ion signal at the four measurement
+heights, and the Tikhonov reconstructions whose Pearson correlation
+improves from $r = 0.62$ at $h = 40$\,\textmu m to $r = 0.78$ at
+$h = 2$\,\textmu m.
 
 % ---- Figure S5: AFM input data ----
 \begin{figure}[htbp]
@@ -354,10 +387,10 @@ and harmonic, validating the perturbative treatment.}
 \label{fig:trajectory}
 \end{figure}
 
-Direct numerical integration confirms that the ion's secular motion
-remains stable and well-described by the linear perturbation theory for
-topographic amplitudes up to $200$\,nm, providing numerical validation of
-the analytical ITF.
+Direct numerical integration (Fig.~\ref{fig:trajectory}) confirms that
+the ion's secular motion remains stable and well-described by the linear
+perturbation theory for topographic amplitudes up to $200$\,nm, providing
+numerical validation of the analytical ITF.
 
 % ===================================================================
 \section{Exact (Rayleigh--Floquet) cross-validation}
@@ -674,7 +707,9 @@ source stability); step~(2), $u(h) \sim 100\,\textup{nm}$ (laser interferometry
 (certified step height).
 The combined calibration uncertainty propagates into the measurement
 uncertainty budget of the main text through the sensitivity
-coefficients $c_i = |\partial z/\partial x_i|$.
+coefficients $c_i = |\partial z/\partial x_i|$.  Table~\ref{tab:nu}
+lists the component-wise degrees of freedom entering the
+Welch--Satterthwaite calculation of Sec.~3.14.
 
 \begin{table}[htb]
 \centering
@@ -752,7 +787,9 @@ trapped-ion, precision-positioning and surface-characterisation
 technologies, although their integration at the required ion--surface
 separation presents significant experimental challenges.  The following
 phased roadmap assumes existing surface-electrode Paul trap
-infrastructure (cf.\ S{\"a}gesser et al., 2026):
+infrastructure (cf.\ S{\"a}gesser et al., 2026).
+Table~\ref{tab:roadmap} summarises the phase-by-phase feasibility under
+the consistent noise model of Sec.~3 of the main text:
 
 \begin{enumerate}
 \item \textbf{Phase~1 --- Static demonstration (0--12 months):}
