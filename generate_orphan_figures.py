@@ -284,7 +284,7 @@ e1.set_xlabel('spatial frequency $k$ [rad/m]', fontsize=11)
 e1.set_ylabel('uncertainty contribution [nm]', fontsize=11)
 e1.set_title('GUM-based uncertainty budget vs spatial frequency ($z=100$ nm, $h=40$ $\\mu$m)',
              fontsize=11)
-e1.legend(fontsize=8, ncol=3, loc='upper center', framealpha=0.9)
+e1.legend(fontsize=8, ncol=3, loc='lower center', framealpha=0.9)
 e1.grid(True, which='both', alpha=0.25)
 plt.tight_layout()
 plt.savefig('manuscript/fig5_uncertainty.pdf', dpi=150, bbox_inches='tight')
