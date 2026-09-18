@@ -469,6 +469,24 @@ the ion plane at $h = 40$\,\textmu m.}
 \label{fig:fd}
 \end{figure}
 
+Figure~\ref{fig:S_bem_panel} summarises the solver hierarchy: the ITF
+error against the exact solution follows the quadratic law $0.14\,(kA)^2$,
+while the independent boundary-element solution reproduces the exact
+Rayleigh result to $\le0.6\%$ without using the ITF.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figB1_bem_panel.pdf}
+\caption{Independent solver cross-checks of the linear ITF
+($\lambda = 40$\,\textmu m, $h = 40$\,\textmu m).  Relative error of the
+linear ITF (red circles) against the exact Rayleigh--Floquet solution as a
+function of the perturbation parameter $kA$, following the quadratic law
+$0.14\,(kA)^2$ (dashed); blue squares show the relative difference of the
+independent boundary-element solution against the same exact result,
+bounded by $0.6\%$ across the range.}
+\label{fig:S_bem_panel}
+\end{figure}
+
 % ===================================================================
 \section{Robustness to model violation}
 % ===================================================================
@@ -502,6 +520,39 @@ passband for $\varepsilon_r=2$--$10$).
 (b) Non-uniform $E_{\rm bg}$: correlation loss $1-r$ vs.\ gradient amplitude.
 (c) Large-slope breakdown: correlation loss $1-r$ vs.\ $Ak$ parameter.}
 \label{fig:violation}
+\end{figure}
+
+\subsection{Dielectric overlayer factor and validity diagram}
+
+For a grounded conductor covered by a dielectric film $0<z<d$ of
+permittivity $\varepsilon_r$ with prescribed surface potential
+$\varphi_s(x,y)$ at the conductor, continuity of $\Phi$ and of the normal
+displacement $\varepsilon_r\partial_z\Phi$ at $z=d$ gives the exact
+three-layer factor
+$F(k)=\varepsilon_r e^{kd}/[\varepsilon_r\cosh(kd)+\sinh(kd)]
+=1+kd(\varepsilon_r-1)/\varepsilon_r+\mathcal{O}((kd)^2)$,
+with exact limits $F\to1$ for $\varepsilon_r\to1$ and $d\to0$: the
+effective image plane is displaced toward the ion by the film, and $F$ is
+identical for the topographic and charge channels.  For a native oxide
+($d=2$\,nm, $\varepsilon_r=3.9$) at $k=2\times10^5$\,rad/m:
+$F-1=+3.0\times10^{-4}$; for a $2$\,\textmu m polymer overlayer the
+enhancement reaches $+19\%$ across the passband.  A lossy film
+($\varepsilon_r\to\varepsilon_r(1+i\tan\delta)$) adds
+$\operatorname{Im}F\approx-kd\,\tan\delta(\varepsilon_r-1)/\varepsilon_r^2$,
+negligible for native oxides.  Figure~\ref{fig:S_validity} collects all
+validity conditions of the model in the $(\lambda,h)$ plane.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figD1_validity.pdf}
+\caption{Domain of validity of the QESPM forward model in the plane of
+surface feature wavelength $\lambda$ and ion--surface separation $h$.
+The resolvable band is bounded from below by the MTF cutoff
+$\lambda_{\min}=1.51h$ and from above by the field of view; the
+large-slope breakdown ($kA\gtrsim0.45$ for the $A=100$\,nm amplitude
+shown), the heating-limited regime at small $h$, the Casimir--Polder
+exclusion ($h<100$\,nm) and the ITF peak $\lambda=\pi h$ are indicated.}
+\label{fig:S_validity}
 \end{figure}
 
 % ===================================================================
@@ -544,6 +595,90 @@ interval is correctly calibrated.
 with 95\% coverage interval.}
 \label{fig:mc}
 \end{figure}
+
+\subsection{Type-B justifications, Type-A derivation and correlations}
+
+Each input uncertainty of the main-text budget is documented as follows.
+$u(\sigma)=1.13\times10^{-8}$\,C/m$^2$ is a representative residual
+charge density after UV cleaning, adopted from post-UV surface-potential
+maps~\cite{ziomba2025uv} through the Dirichlet-to-Neumann map
+$\sigma=2\varepsilon_0k\phi_s$: a residual patch potential of $3.2$\,mV
+at the budget wavenumber $k=2\times10^5$\,rad/m corresponds to
+$1.13\times10^{-8}$\,C/m$^2$, adopted as a rectangular distribution of
+half-width $2\times10^{-8}$\,C/m$^2$ (the combined uncertainty scales
+linearly with this prior).  $u(h)=100$\,nm combines laser interferometry
+($50$\,nm, Gaussian) and capacitance measurement ($87$\,nm, rectangular)
+in quadrature; $u(E_{\rm bg})=10$\,V/m is the dc voltage source
+calibration ($10^{-4}$ relative at $10^4$\,V/m);
+$u(\omega_x)=2\pi\times10$\,Hz is the secular-frequency calibration
+uncertainty; $u(m)<10^{-9}m$ reflects the atomic mass uncertainty of
+${}^{40}$Ca$^+$.  The effective degrees of freedom via the
+Welch--Satterthwaite formula exceed 100, justifying the Gaussian coverage
+factor $k=2$ (component-wise table above).  The Type-A entry is the
+quantum-limited frequency-estimation variance
+$u_A(f)=1/(4\pi\tau\sqrt{N_{\rm rep}\langle n\rangle})$: with
+$\tau=T_2/2=5$\,ms, $\langle n\rangle=0.5$ and $N_{\rm rep}=5.6\times10^3$
+($28$\,s), $u_A(f)=0.30$\,Hz, consistent with the $0.7$\,Hz QPN floor.
+Input correlations enter through
+$u_c^2(z)=\sum_ic_i^2u^2(x_i)+2\sum_{i<j}c_ic_ju(x_i)u(x_j)r_{ij}$;
+the largest correlation is $r(h,E_{\rm bg})<0$, but even perfect
+anticorrelation contributes $0.40$\,nm$^2$ --- below $0.001\%$ of the
+combined variance $u_c^2(z)\approx(319\,\textup{nm})^2$ --- so all
+correlations are neglected with error below $0.001\%$ of the variance.
+
+\subsection{Falsifiable experimental predictions}
+
+The framework yields five specific, falsifiable predictions, each testable
+with existing trapped-ion infrastructure:
+(i)~the scaling-law test: for a certified grating ($A=50$\,nm,
+$\lambda=20$\,\textmu m), $\log(|\Delta\omega_x|h^2)$ vs.\ $h$
+($10$--$100$\,\textmu m) must be a straight line of slope $-2\pi/\lambda$;
+(ii)~the band-pass spectral signature:
+$S_{\Delta\omega}(k)\propto k^4e^{-2kh}S_z(k)$ must peak at
+$k=(4-\beta)/(2h)$ for a power-law roughness spectrum
+$S_z(k)\propto k^{-\beta}$;
+(iii)~the patch-potential correlation length $\ell_c$, extracted from the
+spatial autocorrelation of $\Delta\omega_x(x,y)$ over a homogeneous
+conductor;
+(iv)~the charge-elimination cross-check: pre/post UV-cleaning maps isolate
+the removable charge contribution, and a post-cleaning residual
+correlating with AFM topography ($r\ge0.5$) validates the two-parameter
+forward model; and
+(v)~the quantum projection noise floor: the Allan deviation follows
+$1/\sqrt{\tau}$ down to the ${\sim}0.7$\,Hz plateau.
+
+\subsection{Sensitivity comparison on native observables}
+
+Table~\ref{tab:S_sensitivity} compares the native sensitivities and
+standoffs of the competing field-sensing channels on a common axis.
+
+\begin{table}[htb]
+\centering
+\caption{Quantitative sensitivity comparison on each method's native
+observable.  Order-of-magnitude literature values: KPFM potential
+resolution ${\sim}$mV (two-pass mechanical topography)~\cite{glatzel2022kelvin};
+single-spin NV
+electrometry $\approx1.4\times10^{4}$\,V/m/$\sqrt{\rm Hz}$ at ${\sim}10$\,nm
+standoff~\cite{dolde2011nv}; single-ion electrometry
+$10$\,mV/m/$\sqrt{\rm Hz}$ at $50$--$100$\,\textmu m
+standoff~\cite{keller2015electrometry}; QESPM curvature sensitivity
+$(2m\omega_x/e)\,\delta\omega$ in rad/s from this work, evaluated at the
+$0.7$\,Hz (QPN) and $5$\,Hz floors (the quoted range spans the two).}
+\label{tab:S_sensitivity}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lclc@{}}
+\hline
+Method & Native observable & Sensitivity (order) & Standoff \\
+\hline
+KPFM (two-pass) & contact potential & ${\sim}$mV (dc) & $<$100\,nm \\
+EFM & force gradient & ${\sim}$mV potential~\cite{serry2000efm} & $<$100\,nm \\
+NV (single spin) & $E$-field & $1.4\times10^{4}$\,V/m/$\sqrt{\rm Hz}$ & ${\sim}10$\,nm \\
+Ion electrometry & $E$-field & $10$\,mV/m/$\sqrt{\rm Hz}$ & $50$--$100$\,\textmu m \\
+\textbf{QESPM (this work)} & $E$-field curvature & $23$--$160$\,V/m$^2$/$\sqrt{\rm Hz}$ & $40$\,\textmu m \\
+\hline
+\end{tabular}
+\end{table}
 
 % ===================================================================
 \section{Analytical benchmark: step-edge response}
@@ -740,6 +875,19 @@ values $\nu_i$ are judgement-based, but the conclusion
 $\nu_{\rm eff}\gg100$ is insensitive to them: it holds for any
 $\nu_i\ge5$.
 
+Figure~\ref{fig:S_traceability} shows the closed traceability chain from
+the SI metre, second and volt through the five calibration steps to the
+reconstructed measurand $z_s(x,y)$.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figT1_traceability.pdf}
+\caption{Measurement traceability chain of QESPM: from the SI metre and the
+SI second through the calibration steps of this section to the
+reconstructed measurand $z_s(x,y)$.}
+\label{fig:S_traceability}
+\end{figure}
+
 % ===================================================================
 \section{Symbols and constants}
 % ===================================================================
@@ -922,6 +1070,158 @@ Hankel series yields the closed local form of the self-image lemma in the
 main text.
 
 % ===================================================================
+\subsection{Higher-order corrections and convergence}
+% ===================================================================
+
+The exact boundary condition $\Phi(x,y,z_s(x,y))=0$ generates the
+recursion
+$\Phi^{(n)}(x,y,0)=-\sum_{m=1}^{n-1}\frac{z_s^{n-m}}{(n-m)!}\,\partial_z^{n-m}\Phi^{(m)}|_{z=0}$,
+and the second-order boundary potential is the spectral convolution
+\begin{equation}
+\tilde{\Phi}^{(2)}(\mathbf{k},z) = e^{-kz}\,E_{\rm bg}
+    \int \tilde z_s(\mathbf{k}')\,|\mathbf{k}-\mathbf{k}'|\,
+    \tilde z_s(\mathbf{k}-\mathbf{k}')\,\frac{d^2\mathbf{k}'}{(2\pi)^2},
+\end{equation}
+generating sum- and difference-frequency harmonics; the second-order
+secular shift is $\Delta\tilde\omega_x^{(2)}=-(e/2m\omega_x)k_x^2
+\tilde\Phi^{(2)}(\mathbf{k},h)$, with the $2k_s$ harmonic of a sinusoid
+at relative amplitude $2(k_sA)e^{-k_sh}$ (verified against the exact
+Rayleigh solution to better than $0.3\%$ for $k_sA\le0.1$; the
+$\mathcal{O}((k_sA)^2)$ correction to the fundamental enters only at
+third order).  For a single sinusoid the perturbation series coincides
+term by term with the Rayleigh expansion and converges in the domain
+$kA\lesssim0.448$\,\cite{maystre1971rayleigh,millar1973rayleigh}.  For
+general profiles with Fourier support in $|\mathbf{k}|\le k_{\max}$ and
+$z_{\max}k_{\max}<\ln2$, the recursion is dominated by a geometric
+majorant $\|\Phi^{(n)}(\cdot,0)\|_{L^\infty}\le C(z_{\max}k_{\max}/\ln2)^n$
+(generating function $A(x)=a_1x/(2-e^{z_{\max}k_{\max}x})$, convergence
+radius $(\ln2)/(z_{\max}k_{\max})$), so the expansion converges uniformly
+in $z\ge0$ --- consistent with, and weaker than, the sharp Rayleigh
+criterion.
+
+\textbf{Equilibrium-position shift.}  The surface field gradient displaces
+the ion equilibrium by
+$\Delta\mathbf{r}=-(e/m\omega_{\rm sec}^2)\nabla\Phi^{(1)}$, and the
+frequency shift acquires the factor
+$[1+\mathcal{O}(k|\Delta\mathbf{r}|)]$: for the nominal grating
+($A=100$\,nm, $\lambda=30$\,\textmu m, $h=40$\,\textmu m)
+$k|\Delta\mathbf{r}|\approx6\times10^{-4}$, while for the strongest test
+signal (the Gaussian plateau) it reaches $\mathcal{O}(10^{-1})$ and must
+be included as a bounded Type-B systematic wherever the $0.1\%$ level
+matters.
+
+\textbf{Self-image (ion-induced) correction.}  For an ion at height $h$
+above a corrugated surface, the first-order ion-induced potential at the
+ion is, in Fourier space,
+\begin{equation}
+\tilde{\Phi}^{(1)}_{\rm im}(k) = -\frac{e}{16\pi\varepsilon_0}\,
+    k^2\,K_2(kh)\,\tilde{z}_s(k),
+\end{equation}
+where $K_2$ is a modified Bessel function (adiabatic limit
+$-(e/8\pi\varepsilon_0h^2)\tilde z_s$ as $kh\to0$; verified against direct
+quadrature to $10^{-15}$ and against the spectral chain to within $3\%$
+across $kh\in[0.5,8]$).  The complete ITF is
+$H_x^{\rm(tot)}=H_x[1-\eta(k,h)]$ with
+$\eta=e\,k^2K_2(kh)e^{+kh}/(16\pi\varepsilon_0E_{\rm bg})$:
+$\eta=1.7\times10^{-4}$ at $k_{\rm opt}=2/h$, $8.0\times10^{-4}$ at
+$kh=8$ and $1.5\times10^{-3}$ at the $kh=13$ band edge at
+$h=40$\,\textmu m ($\le0.2\%$ across the accessible band), rising to
+$1.1\%$ at $k_{\rm opt}$ and $9.7\%$ at $kh=13$ at $h=5$\,\textmu m,
+where the full two-term ITF is used in the numerics.  Because $\eta$
+depends only on $(k,h)$, the topography--charge theorem is unaffected.
+
+% ===================================================================
+\subsection{Asymptotic analysis and sensitivity coefficients}
+% ===================================================================
+
+For the 1D cross-section $f(k)=Ck^2e^{-kh}$: the low-$k$ expansion is
+$f(k)=Ck^2[1-kh+\tfrac12k^2h^2+\mathcal{O}(k^3h^3)]$; as $kh\to\infty$,
+$f$ decays faster than any polynomial with logarithmic asymptotics
+$\ln f=\ln C+2\ln k-kh$.  Two-sided bounds $Ck^2(1-kh)\le f(k)\le Ck^2$
+($kh<1$) and $f(k)\le4Ce^{-2}/h^2$ follow from $1-x\le e^{-x}\le1$; the
+low-$k$ series through $\tfrac12k^2h^2$ reproduces $f$ to better than
+$3\%$ for $kh\le0.5$.  The naive additive composite
+$f_{\rm comp}=Ck^2e^{-kh}+Ck^2(1-e^{-kh})(1-\tfrac12kh)$ is not
+uniformly valid --- it overshoots by up to ${\sim}9\times10^5\%$ at
+$kh=8$ (Fig.~\ref{fig:S_composite}) --- so uniformity is achieved by the
+exact closed form, not matched asymptotics.  The passband quality factor
+is $Q=2/(x_{\rm hi}-x_{\rm lo})=0.589$ with $x_{\rm lo}=0.7613$,
+$x_{\rm hi}=4.1559$ the roots of $x^2e^{-x}=2e^{-2}$ (bisection;
+$\Delta k_{\rm FWHM}=3.3946/h$; the Gaussian peak approximation gives
+$Q_{\rm Gauss}=0.60$).  The derivatives
+$f'(k)=Cke^{-kh}(2-kh)$, $f''(k)=Ce^{-kh}(2-4kh+k^2h^2)$ give the
+inflection points $kh=2\pm\sqrt2$ ($0.586$ and $3.414$), which bracket
+the FWHM band, and the peak curvature $f''(k_{\rm opt})=-2Ce^{-2}<0$.
+For a sinusoid the reconstruction $A=\Delta\omega_x e^{+kh}/(Ck^2)$ has
+logarithmic sensitivity coefficients
+$\partial\ln A/\partial\ln h=-kh$,
+$\partial\ln A/\partial\ln E_{\rm bg}=-1$,
+$\partial\ln A/\partial\ln\delta\omega=+1$: the local condition number of
+the ITF is $\kappa(k;h)=kh$ ($\kappa=2$ at the peak, $4.16$ at the band
+edge), and the inverse amplification factor is $e^{+kh}/(Ck^2)$ --- the
+first-principles basis of the uncertainty-budget coefficients
+$c_h=kz$ and $c_{E_{\rm bg}}=z/E_{\rm bg}$.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figA1_composite.pdf}
+\caption{Asymptotic analysis of the 1D ITF cross-section.
+(a) Exact $f(k)=Ck^2e^{-kh}$ and the naive additive composite
+$f_{\rm comp}$, showing the overshoot in the transition region.
+(b) Relative error of the composite --- up to ${\sim}9\times10^5\%$ at
+$kh=8$.}
+\label{fig:S_composite}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figO3_singular.pdf}
+\caption{Leading singular functions of the discretised forward operator
+(2D, $h=40$\,\textmu m): the operator is exactly diagonal in the DFT
+basis, so the singular functions are the Fourier modes shown, ordered by
+$\sigma_n/\sigma_1$.  The continuous (aperiodic) analogue has
+prolate-spheroidal-type singular functions (Slepian) with the same
+concentration structure: at the noise-limited bandlimit $k_{\rm hi}=13.4/h$
+($L=64$\,\textmu m) the leading eigenvalues concentrate the first five
+Fourier modes to better than $1\%$ and the sixth to $8\%$, matching the
+effective rank $r_{\rm eff}=6$ (Fig.~\ref{fig:S_singular}).}
+\label{fig:S_singular}
+\end{figure}
+
+% ===================================================================
+\subsection{Minimum detectable amplitude and the reconstructable band}
+% ===================================================================
+
+The minimum detectable amplitude
+$A_{\min}(k,h)=(2m\omega_x/eE_{\rm bg})\,\delta\omega\,e^{+kh}/k^2$
+($\delta\omega/2\pi=5$\,Hz) and the reconstructable wavelength band
+$A_{\min}(k;h)<A$ are mapped in Fig.~\ref{fig:S_amin} for
+$h=5$--$100$\,\textmu m and $A=1$--$1000$\,nm.  At the nominal point
+($h=40$\,\textmu m, $k=2\times10^5$\,rad/m)
+$A_{\min}\approx1.2$\,nm (SNR$\approx80$ at the $5$\,Hz floor); at the
+QPN limit $A_{\min}\sim7\times10^{-3}$\,nm at $k_{\rm opt}=2/h$.  The
+noise-limited short-wavelength cutoff is
+$\lambda_{\min}^{\rm(noise)}=2\pi h/x_{\rm hi}$ with $x_{\rm hi}$ the
+large root of
+$x^2e^{-x}=(2m\omega_x/eE_{\rm bg})\,\delta\omega\,h^2/A$, which inverts
+to $x_{\rm hi}=\ln\Theta+2\ln\ln\Theta+\mathcal{O}(1)$: the cutoff
+depends on the noise floor only logarithmically (per-row values $18.7$,
+$16.0$, $14.4$ and $13.7$\,\textmu m at $5$\,Hz, $0.7$\,Hz, $0.16$\,Hz
+and $0.07$\,Hz), in contrast to the purely geometric $1.51h$ MTF cutoff.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{fig3_amin.pdf}
+\caption{Minimum detectable amplitude $A_{\min}(k;h)$ and reconstructable
+wavelength band.  (a) Detection threshold $A_{\min}(k)$ for ion heights
+$h = 5$--$100$\,\textmu m.  (b) Reconstructable wavelength band as a function
+of ion height for surface amplitudes $A = 1$--$1000$\,nm.
+For $h = 40$\,\textmu m and $A = 100$\,nm, the accessible band is
+$\lambda \in [19,\;64]$\,\textmu m.}
+\label{fig:S_amin}
+\end{figure}
+
+% ===================================================================
 \section{Quantum resource allocation and wave-packet smearing}
 % ===================================================================
 
@@ -963,6 +1263,31 @@ $\mathcal F_A^{\rm(eff)}(k)=\mathcal F_A(k)\,e^{-k^2\sigma_x^2}$, i.e.~the
 quoted $0.7\%$ and $4\%$ attenuations reduce the QFI by $1.4\%$ and
 $8\%$, respectively --- a temperature-dependent correction that enters the
 quantum-enhancement claims verbatim.
+
+\subsection{Multiparameter quantum Cram\'er--Rao bound and optimal measurement}
+
+For the vector of surface Fourier coefficients $\mathbf{z}=\{z_k\}$, the
+Gaussian (coherent-state) channel with
+$d_k=H_x(k)z_k+\xi_k$ (noise variance $\delta^2/2$ per quadrature) has the
+quantum Fisher information matrix
+$\mathcal{F}_{kk'}=\delta_{kk'}|H_x(k)|^2\mathcal{F}_{\rm ion}$, with
+$\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ (or its squeezed/NOON
+analogue).  The symmetric logarithmic derivatives of different modes
+commute, so the multiparameter quantum Cram\'er--Rao bound is achievable
+mode by mode~\cite{pezze2018quantum}; the RLD bound is infinite for these
+pure states and the Holevo bound coincides with the SLD bound.  The
+per-mode quantum-limited uncertainty is
+$\delta z_k\ge1/\sqrt{\nu\mathcal{F}_{kk}}
+=1/(|H_x(k)|\sqrt{\nu\mathcal{F}_{\rm ion}})$,
+which diverges as $e^{+kh}/k^2$ regardless of $\mathcal{F}_{\rm ion}$:
+squeezing or Heisenberg scaling multiplies every mode equally and cannot
+compensate the exponential attenuation of $H_x$.  This bound is attained
+by projective Fock-basis readout (resolved-sideband shelving) and by the
+parity measurement for the NOON state; under dephasing the channel QFI
+decays as $e^{-2\gamma\tau}$ and the information per unit time is
+maximised at $\tau_{\rm opt}=1/(2\gamma)=T_2/2=5$\,ms, giving a fixed
+penalty of $\sqrt{e}\approx1.65$ per pixel and the repetition scaling
+$\delta A_{\min}\propto1/\sqrt{N_{\rm rep}}$.
 
 % ===================================================================
 \section{Stability and operating regime}
@@ -1090,6 +1415,24 @@ exhaustive 400-point scan ($0.043$).}
 \label{fig:S_adaptive}
 \end{figure}
 
+\subsection{Sampling theorem for the measurement grid}
+
+Because $\Delta\omega_x(x,y)$ is effectively band-limited to
+$k\lesssim k_u(h)$ (the 50\% MTF cutoff $k_u\approx4.156/h$, or the
+noise-floor cutoff of the main text), the Nyquist condition for the
+measurement grid is $\Delta x_{\rm pix}\le\pi/k_u
+=\lambda_{\min}^{\rm(MTF)}/2\approx0.76h$, and the number of independent
+samples in an $L$-point scan is the Shannon number
+$N_{\rm Sh}=(L/\pi h)\ln(|H|_{\max}/\lambda_{\rm DP})$.  At
+$h=40$\,\textmu m with $L=64$\,\textmu m: $\Delta x_{\rm pix}\le30$\,\textmu m
+and $N_{\rm Sh}\approx5.3$ --- the $128$-point numerical grid is
+over-sampled by $\sim24\times$ relative to the 1D information content.
+The scan time follows $T_{\rm scan}=N_{\rm Sh}\tau_{\rm pix}$ with
+$\tau_{\rm pix}=N_{\rm rep}\tau$; the throughput improves quadratically
+with $h$ but only logarithmically with the noise floor.  The two-pass
+strategy of this section is an information-efficient implementation of
+the sampling theorem, near-optimal under the stated model.
+
 % ===================================================================
 \section{Johnson--Nyquist noise: derivation details}
 % ===================================================================
@@ -1142,5 +1485,216 @@ by $2\varepsilon|H(k)|$ and are indistinguishable from noise when
 $\varepsilon\le\delta/|H(k)|$, while the source constraint requires
 $\varepsilon(1+k^2)^{s/2}\le E$; balancing at
 $k\approx h^{-1}\ln(1/\delta)$ gives the lower bound.
+
+% ===================================================================
+\subsection{Operator-theoretic details and effective-rank asymptotics}
+% ===================================================================
+
+On $L^2(\mathbb{R}^2)$ the forward map is the convolution operator
+$(\mathcal{H}_h z_s)(\mathbf{r})=\int K_h(\mathbf{r}-\mathbf{r}')\,z_s(\mathbf{r}')\,d^2\mathbf{r}'$
+with $K_h=\mathcal{F}^{-1}[H_x]$, i.e.~a bounded Fourier multiplier with
+symbol $H_x=-C k_x^2 e^{-kh}$, $C=eE_{\rm bg}/2m\omega_x$.  Its spectrum
+is $\sigma(\mathcal{H}_h)=\overline{\operatorname{ran}H_x}=[-M,0]$ with
+$M=(4C/h^2)e^{-2}$ attained at $k_{\rm opt}=2/h$; it has no $L^2$
+eigenfunctions, its range is non-closed, and the Moore--Penrose inverse
+is densely defined but unbounded.  A translation-invariant operator with
+non-vanishing symbol is not compact on the infinite plane; the severe
+ill-conditioning follows from the inverse multiplier
+$H_x^{-1}\propto e^{+kh}/k_x^2$.  Compactness and the discrete singular
+spectrum are recovered on the finite periodic lattices, where
+$\mathcal{H}_h$ is exactly diagonal in the DFT basis: its singular
+functions are the Fourier modes and its singular values are the sorted
+values of $|H_x(k_j;h)|$.
+
+\textbf{Weyl asymptotics (1D cross-section).}  Level-set counting fixes
+the $n$-th singular value by $\#\{k_j:|H(k_j)|>\sigma_n\}=n$: the
+high-$k$ root of $x^2e^{-x}=\sigma h^2/C$ is
+$x_{\rm hi}=\ln(C/\sigma h^2)(1+o(1))$ while the low-$k$ root is
+sub-logarithmic, giving
+\begin{equation}
+\ln\!\left(\frac{C}{\sigma_n h^2}\right)
+ = \frac{\pi h}{L}\,n\,\bigl(1+o(1)\bigr),
+\qquad
+\sigma_n \;\asymp\; \frac{C}{h^2}\,e^{-(\pi h/L)\,n},
+\end{equation}
+exponential decay linear in $n$ with scale $h/L$.  On the present lattice
+($N=128$, $L=64$\,\textmu m, $h=40$\,\textmu m) the fitted slope of
+$\ln(C/\sigma_n h^2)$ is $1.88$, within $4\%$ of $\pi h/L=1.96$.  The
+two-dimensional analogue, from the level set
+$\{Ck_x^2e^{-kh}>\sigma\}$, is
+$\ln(C/\sigma_n h^2)=2\sqrt{\pi}\,(h/L)\sqrt n\,(1+o(1))$; the fitted
+leading slope is $2.21$ against $2\sqrt\pi h/L=2.22$, reproducing the 2D
+effective rank $r_{\rm eff}=26$.  The closed-form information capacity
+follows from the same counting,
+\begin{equation}
+I(h) \;=\; \frac12\,\frac{L}{2\pi}
+    \int \ln\!\left(1+\frac{|H|^2}{\lambda^2}\right)dk
+    \;\asymp\; \frac{L}{2\pi h}\,
+    \left[\ln\!\left(\frac{C}{\lambda h^2}\right)\right]^2
+    \bigl(1+o(1)\bigr),
+\end{equation}
+for $\lambda\ll|H|_{\max}$ --- the information-theoretic ceiling of the
+measurement, attained mode by mode by the QCRB-optimal estimator.
+
+\textbf{Joint two-channel operator.}  On the zero-mean subspace the joint
+operator $\mathcal{H}_x\oplus\mathcal{H}_y$ is injective (proof of
+Proposition~1 of the main text): a profile supported on $k_x=0$ is
+annihilated by $\mathcal{H}_x$ but detected by $\mathcal{H}_y$, and
+$\{H_x=0\}\cap\{H_y=0\}$ is the constant mode (verified to machine
+precision).  The vector symbol has magnitude
+$s(k,\theta)=k^2e^{-kh}\sqrt{\cos^4\theta+\sin^4\theta}$, with
+$|H_x(k)|\le s(k)\le\sqrt2\,|H_x(k)|$ pointwise; level-set counting gives
+the same 2D Weyl law with the anisotropy entering only the additive
+constant (fitted slope $2.04$ against $2.22$), reproducing the joint
+effective rank $r_{\rm eff}=36$ against $26$ for the single channel.  The
+conditional-stability and minimax rates extend to the joint operator with
+the same logarithmic severity: the anisotropy enters only the
+multiplicative constants, not the $(\ln(1/\delta))^{-s}$ factor
+(Fig.~\ref{fig:S_joint}).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV10_joint_channel.pdf}
+\caption{Two-channel joint inversion.
+(a) Normalised singular spectra of the single ($H_x$) and joint
+($H_x\oplus H_y$) operators at $h=40$\,\textmu m.
+(b) Effective rank vs.\ ion height for the single and joint operators.
+(c) Joint reconstruction of the topography-only test surface
+($r=0.969$ joint vs.\ $r=0.939$ single $x$-channel).}
+\label{fig:S_joint}
+\end{figure}
+
+\textbf{Picard condition and parameter selection.}  The noise-free
+equation $\mathbf{H}\mathbf{z}=\mathbf{d}$ has a square-integrable
+solution iff $\mathbf{d}\in\mathcal{N}(\mathbf{H}^T)^\perp$ and
+$\sum_i|\langle\mathbf{d},\mathbf{v}_i\rangle|^2/\sigma_i^2<\infty$
+(discrete Picard condition); for noisy data the condition
+$|\langle\mathbf{d}^\delta,\mathbf{v}_i\rangle|>\tau\delta$ holds for
+$i\le r_{\rm eff}$ and is violated beyond, where noise dominates.  On the
+2D test surface at $h=40$\,\textmu m with the $5$\,Hz floor, the Morozov
+discrepancy principle gives
+$\lambda_{\rm DP}\approx9.0\times10^{-3}\max|H_x|$, the L-curve corner
+lies at $\lambda_{\rm L}\approx5.1\times10^{-5}\max|H_x|$, and GCV
+minimises at $\lambda_{\rm GCV}\approx9.3\times10^{-4}\max|H_x|$; the
+empirical $\lambda=10^{-4}\max|H_x|$ lies between the L-curve and GCV
+values (Fig.~\ref{fig:S_picard}).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figI3_picard.pdf}
+\caption{Regularisation-parameter selection on the 2D test surface
+($h=40$\,\textmu m, $5$\,Hz noise floor).
+(a) Discrete Picard plot: the noise-free coefficients decay monotonically
+while the noisy coefficients saturate, delimiting the effective rank.
+(b) L-curve with the maximum-curvature corner marked.
+(c) GCV function with its minimum marked.}
+\label{fig:S_picard}
+\end{figure}
+
+\textbf{Backus--Gilbert resolution--variance trade-off.}  The averaging
+kernel at $\mathbf{r}_0$ is
+$A(\mathbf{r},\mathbf{r}_0)=\sum_i R_{ii}u_i(\mathbf{r})u_i^*(\mathbf{r}_0)$
+with $R_{ii}=\sigma_i^2/(\sigma_i^2+\lambda^2)$; the normalised spread
+$\Delta x_{\rm res}^2=\int|\mathbf{r}-\mathbf{r}_0|^2A^2\,d^2\mathbf{r}/\int A^2\,d^2\mathbf{r}$
+quantifies spatial resolution and
+$\sigma_z^2=\delta^2\sum_i\sigma_i^2/(\sigma_i^2+\lambda^2)^2$ height
+uncertainty.  A 2D computation on a $L=1024$\,\textmu m domain (so the
+passband $k_{\rm opt}=2/h$ is resolved), $h=40$\,\textmu m,
+$\delta/2\pi=5$\,Hz, gives: $\sigma_z=1$\,nm corresponds to
+$\Delta x_{\rm res}\approx32$\,\textmu m, and the spread is bounded
+between ${\approx}25$\,\textmu m (noise-free kernel width, set by the PSF
+scale ${\sim}h$) and ${\approx}34$\,\textmu m (heavy regularisation)
+(Fig.~\ref{fig:S_backus}).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figI7_backus_gilbert.pdf}
+\caption{Backus--Gilbert resolution analysis (2D, $h=40$\,\textmu m,
+$5$\,Hz floor).  (a) Averaging kernels along a cut through the kernel
+centre for three regularisation strengths.  (b) Resolution--variance
+trade-off: $\sigma_z=1$\,nm corresponds to
+$\Delta x_{\rm res}\approx32$\,\textmu m (spread confined to the band
+$25$--$34$\,\textmu m).}
+\label{fig:S_backus}
+\end{figure}
+
+\textbf{Bayesian GP-prior inversion and the joint posterior.}  With a
+squared-exponential GP prior
+$\Sigma(k)=\sigma_z^2\,2\pi\ell^2 e^{-k^2\ell^2/2}$ the posterior mean is
+Tikhonov with $\lambda^2(k)=\sigma_{\rm pix}^2\Delta x^2/\Sigma(k)$
+($r=0.933$ on the test surface; scalar Tikhonov $r=0.939$;
+Fig.~\ref{fig:S_bayesian}).  For the topography--charge pair the per-mode
+posterior precision is rank-1 in the data term and the marginal
+topography variance obeys
+$\operatorname{Var}(z_k|d)=\frac{H^2p_\varphi/(\sigma^2E_{\rm bg}^2)+1}{H^2/\sigma^2+H^2p_\varphi/(\sigma^2E_{\rm bg}^2p_z)+1/p_z}$,
+with limits $p_z$ (weak data) and
+$p_zp_\varphi/(p_zE_{\rm bg}^2+p_\varphi)$ (strong data) --- the charge
+floor $p_\varphi/E_{\rm bg}^2=319$\,nm under the GUM charge prior
+(Fig.~\ref{fig:S_joint_bayes}).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV11_bayesian.pdf}
+\caption{Bayesian GP-prior inversion.
+(a) Scalar-Tikhonov reconstruction ($r=0.939$).
+(b) GP-prior reconstruction ($r=0.933$).
+(c) Cross-section through the plateau centre.
+(d) The prior-induced frequency-dependent $\lambda(k)$ vs.\ the scalar
+$\lambda$ and the ITF magnitude.}
+\label{fig:S_bayesian}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figI9_joint_bayes.pdf}
+\caption{Joint Bayesian identifiability analysis at
+$k=2\times10^5$\,rad/m.  (a) Marginal posterior standard deviation of the
+topography mode vs.\ data strength: it saturates at the charge-prior
+floor $319$\,nm however strong the data.  (b) Eigen-directions of the
+posterior precision matrix.}
+\label{fig:S_joint_bayes}
+\end{figure}
+
+\textbf{Joint topography--charge inversion (synthetic demonstration).}
+For a 1D surface combining a Gaussian plateau and a localised charge patch
+(charge-equivalent height $319$\,nm) at $h=40$\,\textmu m with the
+$5$\,Hz floor, the single-channel inversion ignoring charge reaches
+$r=0.784$ (RMSE $184$\,nm); the joint MAP inversion with smooth and
+compactness priors recovers the charge field with $r=0.926$ and improves
+the topography to $r=0.791$ (RMSE $172.6$\,nm), the modest topography gain
+reflecting the residual prior overlap (Fig.~\ref{fig:S_joint_tc}).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV13_joint_tc.pdf}
+\caption{Joint topography--charge inversion (1D synthetic demonstration,
+$h=40$\,\textmu m, $5$\,Hz floor).  (a) True topography and the
+charge-equivalent height ($319$\,nm peak).  (b) Single-channel inversion
+ignoring charge ($r=0.784$).  (c) Joint MAP inversion: topography
+$r=0.791$ and recovered charge $r=0.926$.}
+\label{fig:S_joint_tc}
+\end{figure}
+
+\textbf{Nonlinear inversion beyond the linear regime.}  When the
+perturbation expansion fails ($Ak\gtrsim0.1$), the exact
+(complete-basis Rayleigh) forward map gives a linear-inversion bias of
+$-31\%$ at $Ak=0.50$ and $-69\%$ at $Ak=1.01$ for a
+$\lambda=50$\,\textmu m surface at $h=10$\,\textmu m.  Nonlinear
+Landweber iteration
+$A_{n+1}=A_n+a\,\langle d-F(A_n),\,\partial F/\partial A\rangle$ with
+$a=\|\partial F/\partial A\|^{-2}$ reduces the bias to $0.05\%$ in $10$
+iterations and to machine precision in $20$.  Local convergence is
+protected by the tangential-cone theorem with constant $c\approx0.29$ on
+the ball $|A-A^\dagger|\le0.25A^\dagger$; on the Rayleigh domain
+($kA\lesssim0.448$) the forward map is strictly monotone and the
+amplitude inversion is unique.
+
+% ==================================================================
+% Bibliography
+% ==================================================================
+\clearpage
+\bibliographystyle{unsrt}
+\bibliography{references}
+% ===================================================================
 
 \end{document}
