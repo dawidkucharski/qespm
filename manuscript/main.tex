@@ -695,13 +695,19 @@ K_h(\mathbf{r}) = \mathcal{F}^{-1}[H_x].
 \label{eq:conv_op}
 \end{equation}
 Its symbol is real, continuous and exponentially decaying, so
-$\mathcal{H}_h$ is Hilbert--Schmidt, compact and infinitely smoothing:
-the spectrum is $\sigma(\mathcal{H}_h) = \overline{\operatorname{ran}H_x}
+$\mathcal{H}_h$ is a bounded Fourier multiplier on $L^2(\mathbb{R}^2)$
+whose spectrum is $\sigma(\mathcal{H}_h) = \overline{\operatorname{ran}H_x}
 = [-M,0]$ with
 $M=(eE_{\rm bg}/2m\omega_x)(4/h^2)e^{-2}$ attained at
 $k_{\rm opt}=2/h$, it has no $L^2$ eigenfunctions, its range is
 non-closed, and the Moore--Penrose inverse is densely defined but
 unbounded --- the functional-analytic statement of severe ill-posedness.
+A translation-invariant operator with non-vanishing symbol is not
+compact on the infinite plane; the exponential ill-conditioning follows
+instead from the inverse multiplier $H_x^{-1}\propto e^{+kh}/k_x^2$,
+which amplifies high-$k$ errors exponentially.  Compactness --- and the
+discrete singular spectrum analysed below --- are recovered on the finite
+periodic lattices used for all numerical work.
 The kernel of the single $x$-channel consists exactly of the profiles
 whose Fourier transform is supported on $k_x=0$; the joint operator
 $\mathcal{H}_x\oplus\mathcal{H}_y$ is injective on the zero-mean
@@ -909,7 +915,7 @@ resolution--heating trade-off invoked throughout this work.
 For the nominal $h = 40$\,\textmu m, a realistic frequency resolution is
 $\delta\omega/2\pi \approx 1$--$5$\,Hz, limited by rf stability rather
 than quantum projection noise (which is ${\sim}7\times$ lower at ${\sim}0.7$\,Hz).  At closer approach ($h < 10$\,\textmu m),
-heating dominates and the resolution degrades as $h^{-4}$ (Fig.~\ref{fig:noise_budget}).  In this work SNR
+heating dominates and the achievable frequency resolution degrades as $h^{-4}$ (Fig.~\ref{fig:noise_budget}).  In this work SNR
 values are quoted using $\delta\omega/2\pi = 5$\,Hz unless otherwise
 noted.  This floor is a stated engineering assumption, not a measured
 value: it deliberately exceeds by orders of magnitude the stability of the
@@ -1059,8 +1065,8 @@ where $S_{\rm patch}$ is the local fluctuation spectral density of the
 surface dipole layer at the secular frequency.  The kernel has total
 weight $\int(h^2+\rho^2)^{-3}\,d^2\rho=\pi/(2h^4)$ --- recovering the
 $\dot{\bar n}\propto h^{-4}$ law for short-range-correlated patches --- and
-half-width $0.51\,h$, so the heating channel's lateral resolution is
-$\sim h$, matching the electrostatic channel.  Under the fluctuating-patch
+half-width $0.51\,h$, so the heating channel has the same lateral
+localisation scale $\sim h$ as the electrostatic channel.  Under the fluctuating-patch
 model $S_{\rm patch}\propto|\sigma(\mathbf{r})|^2$ (charge-variance
 weighted), the heating channel is a quadratic functional of the
 charge field: it is not annihilated by the linear rank-1 degeneracy of
@@ -1340,8 +1346,9 @@ With the forward model demonstrated numerically, the mathematical
 structure of the inverse problem is now analysed to establish the fundamental
 limits on what can be recovered from a single $\Delta\omega_x$ scan.
 
-The forward operator $\mathbf{H}$ mapping $z_s \to \Delta\omega_x$ is a
-linear compact operator.  Its singular value decomposition (SVD) reveals the
+The forward operator $\mathbf{H}$ mapping $z_s \to \Delta\omega_x$ on the
+finite periodic lattice below is a finite-dimensional linear map --- hence
+compact --- whose singular value decomposition (SVD) reveals the
 intrinsic information content of the measurement.  The analysis is performed
 on the 1D cross-section $k_y=0$ --- the setting of the stability, convergence,
 and minimax theorems below --- discretised on the $N = 128$ lattice with
@@ -1379,7 +1386,7 @@ set at the $10^{-3}\sigma_1$ rank-defining threshold, $I(h)$ and $r_{\rm eff}$
 become definitionally coupled; the discrepancy-principle $\lambda$ avoids
 this circularity.)
 This \textbf{quantifies the
-fundamental resolution limit} of the ion probe: on the analysed 1D
+fundamental effective-rank limit} of the ion probe: on the analysed 1D
 single-channel cross-section at $h = 40$\,\textmu m, only six Fourier-mode
 coefficients lie above the stated rank threshold.  The information content drops by a
 factor of $\approx15$ from $h = 5$\,\textmu m to $h = 80$\,\textmu m, directly
@@ -1628,7 +1635,8 @@ Equation~(\ref{eq:scaling_kopt}) shows that the probe is most sensitive to
 surface wavelengths $\lambda \approx \pi h$ --- approximately three times
 the ion height.  Equation~(\ref{eq:scaling_peak}) reveals the $h^{-2}$
 degradation of peak sensitivity with increasing standoff distance.
-Improving lateral resolution (reducing $h$) improves vertical resolution
+Improving lateral resolution (reducing $h$) improves the minimum
+detectable height amplitude
 quadratically ($\propto h^{-2}$ from Eq.~\ref{eq:scaling_peak}), but at
 the cost of exponentially increasing motional heating (Sec.~\ref{sec:noise}).
 
@@ -2339,8 +2347,8 @@ height for the topography-only case at $h = 40$\,\textmu m.
 (d) Cross-section through the centre.  The Pearson correlation is $r = 0.981$;
 the dominant spatial features --- Gaussian plateau and linear ramp --- are
 faithfully recovered.  The residual is dominated by the fine grating
-(period $4$\,\textmu m), which lies below the resolution limit
-$\lambda_{\min} \approx 60$\,\textmu m and is not resolvable.}
+(period $4$\,\textmu m), which lies below the 50\% MTF short-wavelength
+cutoff $\lambda_{\min} \approx 60$\,\textmu m and is not resolvable.}
 \label{fig:inversion}
 \end{figure}
 
@@ -2714,7 +2722,8 @@ inversion is analytically exact.  At $h = 40$\,\textmu m, the
 Tikhonov-regularised reconstruction achieves $r = 0.981$ for the resolvable
 features (grating and plateau, $\lambda > \lambda_{\min}$), with the
 residual dominated by the fine grating ($\lambda = 4$\,\textmu m) that
-lies below the resolution limit.  The corresponding reconstruction and
+lies below the 50\% MTF short-wavelength cutoff
+$\lambda_{\min}\approx60$\,\textmu m.  The corresponding reconstruction and
 residual are shown in Fig.~\ref{fig:inversion} (Sec.~\ref{sec:recon}).
 This self-consistency check confirms that the
 FFT-based forward/inverse chain is numerically correct; it does not
@@ -2770,7 +2779,7 @@ at this height, the heating rate reaches $\dot{\bar{n}} \sim 5 \times
 10^6$\,quanta/s ($T_2^{\rm(heat)} \sim 0.2\,\mu\textup{s}$), making
 frequency measurements impossible with the stated protocol.  It is included
 to illustrate the asymptotic behaviour of the ITF and the ultimate
-resolution limit of the technique under idealised (zero-heating)
+spatial-information limit of the technique under idealised (zero-heating)
 conditions.
 
 The power spectral density (Fig.~\ref{fig:real_afm}c) confirms that the
@@ -2788,8 +2797,8 @@ overlaps with the ITF passband.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figV9_real_afm_benchmark.pdf}
-\caption{Validation against published AFM data of stainless
-steel~\cite{camargo2019afm}.  (a) Ground truth: Bruker NanoScope AFM,
+\caption{Numerical evaluation using published AFM topography data of
+stainless steel~\cite{camargo2019afm}.  (a) Ground truth: Bruker NanoScope AFM,
 $20 \times 20$\,\textmu m.  (b) Reconstruction quality $r$ vs.\ ion height
 $h$, showing monotonic improvement as $h$ decreases.  (c) Surface PSD with
 ITF resolution cutoffs at each height.  (d) QESPM reconstruction at
@@ -3065,10 +3074,11 @@ distances of $1$--$100$\,\textmu m --- orders of magnitude larger than AFM or
 STM --- while operating natively in the UHV environment of the ion trap.  The
 realistic topographic reconstruction uncertainty, by contrast, is
 charge-limited at ${\sim}319$\,nm
-(Table~\ref{tab:uncertainty}).  No existing surface metrology method
-combines micrometre-standoff non-contact operation, cryogenic UHV
-compatibility, and projected quantum-limited detection sensitivity; none
-is free of the electrostatic identifiability limit either.
+(Table~\ref{tab:uncertainty}).  To our knowledge, no experimentally
+demonstrated surface-metrology method currently combines micrometre-standoff
+non-contact operation, cryogenic UHV compatibility and projected
+quantum-limited detection sensitivity; none is free of the electrostatic
+identifiability limit either.
 
 \subsection{Operating envelope}
 
@@ -3263,7 +3273,8 @@ uncertainty quantification beyond the frequentist GUM framework
 joint posterior is deferred to future work.  Sequential measurement
 strategies (coarse scan at large $h$, fine scan at small $h$, with
 D-optimal point selection protected by the $(1-e^{-1})\approx0.63$
-submodularity guarantee) improve throughput: a 1D demonstration reduces
+submodularity guarantee) are information-efficient under the stated
+model and acquisition assumptions: a 1D demonstration reduces
 the amplitude error from $0.071$ (uniform 30-point) to $0.028$
 (adaptive) at a quarter of the exhaustive-scan time.  The full
 adaptive-scanning analysis is given in the Supplementary Material
