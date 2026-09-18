@@ -16,6 +16,16 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 
+% ---- Float placement (integrate figures with the text) ----
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.7}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{4}
+\setcounter{totalnumber}{8}
+\extrafloats{100}
+
 % ---- Manual definitions ----
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
@@ -2298,9 +2308,9 @@ quantifies height uncertainty.  Figure~\ref{fig:backus} shows the
 averaging kernels and the trade-off curve (2D computation,
 $h = 40\,\mu\textup{m}$, $5\,\textup{Hz}$ noise floor): varying $\lambda$,
 $\sigma_z = 1\,\textup{nm}$ implies $\Delta x_{\rm res} \approx
-38\,\mu\textup{m}$, and the spread is bounded between ${\approx}28$\,\textmu m
+32\,\mu\textup{m}$, and the spread is bounded between ${\approx}25$\,\textmu m
 (the noise-free kernel width, set by the PSF scale ${\sim}h$) and
-${\approx}40$\,\textmu m (heavy regularisation, FOV-limited) --- the lateral
+${\approx}34$\,\textmu m (heavy regularisation) --- the lateral
 resolution is $\mathcal{O}(h)$ for every practical height-resolution
 target, the Backus--Gilbert form of the $\lambda_{\min}\approx1.5h$ cutoff.
 This trade-off is fundamental and cannot be circumvented by improved
@@ -2314,8 +2324,8 @@ $5$\,Hz floor).
 (a) Averaging kernels $A(x,y_0)$ along a cut through the kernel centre for
 three regularisation strengths.
 (b) Resolution--variance trade-off curve: $\sigma_z = 1$\,nm corresponds to
-$\Delta x_{\rm res} \approx 38$\,\textmu m; the spread is confined to the
-band $28$--$40$\,\textmu m, i.e. the lateral resolution is $\mathcal{O}(h)$
+$\Delta x_{\rm res} \approx 32$\,\textmu m; the spread is confined to the
+band $25$--$34$\,\textmu m, i.e. the lateral resolution is $\mathcal{O}(h)$
 for every practical height-resolution target.}
 \label{fig:backus}
 \end{figure}
@@ -3368,6 +3378,7 @@ acceptance.
 % ==================================================================
 % Bibliography
 % ==================================================================
+\clearpage
 \bibliographystyle{unsrt}
 \bibliography{references}
 % ===================================================================

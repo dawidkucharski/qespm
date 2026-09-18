@@ -28,7 +28,8 @@ SIG_CHARGE = 1.13e-8               # C/m2 budget prior
 K_BUDGET = 2e5                     # rad/m evaluation point
 
 def amin(k, dw, h=H_NOM):
-    return (2 * M * W / (E * EBG)) * dw * np.exp(k * h) / k**2
+    with np.errstate(over='ignore'):
+        return (2 * M * W / (E * EBG)) * dw * np.exp(k * h) / k**2
 
 # ------------------------------------------------------------------
 # fig1a_itf.pdf
@@ -60,12 +61,18 @@ plt.close()
 # fig6_qfi.pdf
 # ------------------------------------------------------------------
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(10.4, 4.4))
-k = np.logspace(0, 2, 300) * 1e6      # 1 .. 100 rad/um
+k = np.logspace(-2, 0, 300) * 1e6      # 0.01 .. 1 rad/um (h=40 um passband)
 floors = [('coherent (QPN, 0.7 Hz)', 2 * np.pi * 0.7, '#1f77b4'),
           ('squeezed ($r=1.5$, $\\times 4.5$)', 2 * np.pi * 0.7 / 4.5, '#d62728'),
           ('NOON ($N=100$, $\\times 10$)', 2 * np.pi * 0.7 / 10, '#2ca02c')]
 for lab, dw, col in floors:
     a1.plot(k / 1e6, amin(k, dw) * 1e9, lw=2.0, color=col, label=lab)
+k_opt = 2 / H_NOM / 1e6               # 2/h = 0.05 rad/um
+a1.axvline(k_opt, color='k', ls='--', lw=1.2)
+a1.text(k_opt * 1.02, 3e-3,
+        '$k_{\\rm opt}=2/h=0.05$ rad/$\\mu$m\n($\\delta A_{\\min}^{\\rm coh}'
+        '\\approx 7\\times10^{-3}$ nm)',
+        fontsize=8, va='bottom')
 a1.set_xscale('log'); a1.set_yscale('log')
 a1.set_xlabel('spatial frequency $k$ [rad/$\\mu$m]', fontsize=10)
 a1.set_ylabel('$\\delta A_{\\min}$ [nm]', fontsize=10)
@@ -133,43 +140,58 @@ plt.close()
 # ------------------------------------------------------------------
 # figI7_backus_gilbert.pdf
 # ------------------------------------------------------------------
-N, L = 128, 64e-6
+# 2D computation on a well-resolved domain (L = 1024 um) so the
+# passband (k_opt = 2/h = 0.05 rad/um) is sampled; spread and variance
+# follow Eqs. (bg_spread) and (bg_variance) of the main text.
+N, L = 512, 1024e-6
 dx = L / N
-kx = 2 * np.pi * np.fft.fftfreq(N, d=dx)
-H = C * kx**2 * np.exp(-np.abs(kx) * H_NOM)
-H2 = H**2
+k = 2 * np.pi * np.fft.fftfreq(N, d=dx)
+KX, KY = np.meshgrid(k, k)
+KR = np.sqrt(KX**2 + KY**2)
+H = C * KX**2 * np.exp(-KR * H_NOM)
+Hmax = np.max(np.abs(H))
+delta = 2 * np.pi * 5.0
+x = np.arange(N) * dx - L / 2
+X, Y = np.meshgrid(x, x)
+R2 = X**2 + Y**2
+
+def bg_kernel(lam):
+    R = H**2 / (H**2 + lam**2)
+    A = np.fft.fftshift(np.real(np.fft.ifft2(np.fft.ifftshift(R))))
+    return A / (np.sum(A) * dx * dx)
+
 fig, (c1, c2) = plt.subplots(1, 2, figsize=(10.4, 4.4))
-for lam in [1e-5, 1e-6, 1e-7]:
-    R = H2 / (H2 + lam**2)
-    A = np.fft.fftshift(np.fft.ifft(np.fft.ifftshift(R))).real
-    A /= np.trapz(A, dx=dx) if np.trapz(A, dx=dx) != 0 else 1
-    x = (np.arange(N) - N / 2) * dx * 1e6
-    c1.plot(x, A, lw=1.6, label=f'$\\lambda$={lam:.0e}')
-c1.set_xlim(-60, 60)
+for lamr in [0.02, 0.1, 0.5]:
+    A = bg_kernel(lamr * Hmax)
+    row = A[N // 2]
+    row = row / np.max(np.abs(row))
+    c1.plot(x * 1e6, row, lw=1.6,
+            label=f'$\\lambda={lamr:g}\\,H_{{\\rm max}}$')
+c1.set_xlim(-150, 150)
 c1.set_xlabel('$x - x_0$ [$\\mu$m]', fontsize=10)
-c1.set_ylabel('averaging kernel $A(x,y_0)$ [$\\mu$m$^{-1}$]', fontsize=10)
-c1.set_title('(a) Averaging kernels along $y=y_0$', fontsize=10)
+c1.set_ylabel('normalised averaging kernel $A(x,0)$', fontsize=10)
+c1.set_title('(a) Averaging kernels (cut through centre)', fontsize=10)
 c1.legend(fontsize=8)
 c1.grid(True, alpha=0.3)
 
-lams = np.logspace(-9, -3, 80)
+lams = Hmax * np.logspace(-4, 0, 200)
 spreads, varsz = [], []
-delta = 2 * np.pi * 5.0 * dx      # per-pixel frequency noise (5 Hz floor)
 for lam in lams:
-    R = H2 / (H2 + lam**2)
-    A = np.fft.fftshift(np.fft.ifft(np.fft.ifftshift(R))).real
-    A /= np.trapz(A, dx=dx)
-    x = (np.arange(N) - N / 2) * dx
-    spreads.append(np.sqrt(np.trapz(x**2 * A**2, dx=dx) / np.trapz(A**2, dx=dx)))
-    varsz.append(delta**2 * np.sum(H2 / (H2 + lam**2)**2) * dx / (2 * np.pi))
+    var = delta**2 * np.sum(H**2 / (H**2 + lam**2)**2)
+    varsz.append(var)
+    A = bg_kernel(lam)
+    spreads.append(np.sqrt(np.sum(R2 * A**2) / np.sum(A**2)) * 1e6)
 spreads = np.array(spreads); varsz = np.array(varsz)
 sz = np.sqrt(varsz) * 1e9
-c2.plot(sz, spreads * 1e6, 'o-', lw=1.8, color='#1f77b4')
+c2.plot(sz, spreads, 'o-', lw=1.8, color='#1f77b4')
 i1 = np.argmin(np.abs(sz - 1.0))
-c2.plot(sz[i1], spreads[i1] * 1e6, 's', color='#d62728', ms=9)
-c2.text(sz[i1], spreads[i1] * 1e6 + 2,
-        f'$\\sigma_z=1$ nm $\\leftrightarrow\\Delta x_{{res}}\\approx{spreads[i1]*1e6:.0f}$ $\\mu$m',
-        fontsize=9, ha='center')
+c2.plot(sz[i1], spreads[i1], 's', color='#d62728', ms=9)
+c2.annotate(
+    f'$\\sigma_z={sz[i1]:.1f}$ nm $\\leftrightarrow\\Delta x_{{\\rm res}}'
+    f'\\approx{spreads[i1]:.0f}$ $\\mu$m',
+    xy=(sz[i1], spreads[i1]), xytext=(0.42, 0.28),
+    textcoords='axes fraction', fontsize=9,
+    arrowprops=dict(arrowstyle='->', color='#d62728'))
 c2.set_xscale('log')
 c2.set_xlabel('height uncertainty $\\sigma_z$ [nm]', fontsize=10)
 c2.set_ylabel('resolution spread $\\Delta x_{\\rm res}$ [$\\mu$m]', fontsize=10)
@@ -183,7 +205,7 @@ plt.close()
 # fig3_amin.pdf
 # ------------------------------------------------------------------
 fig, (d1, d2) = plt.subplots(1, 2, figsize=(10.4, 4.6))
-k = np.logspace(0.3, 3.4, 400) * 1e6        # 2 rad/m .. 2.5e3 rad/um
+k = np.logspace(-2, 0, 300) * 1e6        # 0.01 .. 1 rad/um (passband window)
 for h_um in [5, 10, 20, 40, 80, 100]:
     h = h_um * 1e-6
     d1.plot(k / 1e6, amin(k, 2 * np.pi * 5, h) * 1e9, lw=1.6,

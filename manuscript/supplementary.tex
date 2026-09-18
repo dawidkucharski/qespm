@@ -12,6 +12,17 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[margin=2.5cm]{geometry}
+
+% ---- Float placement (integrate figures with the text) ----
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.7}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{4}
+\setcounter{totalnumber}{8}
+\extrafloats{100}
+
 \renewcommand{\thesection}{S\arabic{section}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
