@@ -263,7 +263,12 @@ e1.plot(k, uc * 1e9, lw=2.6, color='k', label='combined $u_c(z)$')
 e1.axvline(K_BUDGET, color='grey', ls='--', lw=1.2)
 e1.text(K_BUDGET, 0.02, '  $k=2\\times10^5$ rad/m\n  $u_c(z)=319$ nm', fontsize=9)
 e1.set_xscale('log'); e1.set_yscale('log')
-e1.set_ylim(1e-4, 2e3)
+# Show the physically informative band: from the long-wavelength edge of the
+# scan to the noise-limited short-wavelength cutoff of the reconstructable
+# band (lambda in [19, 64] um at h=40 um), so that every contribution curve
+# remains fully visible.
+e1.set_xlim(1e4, 4e5)
+e1.set_ylim(1e-4, 1e4)
 e1.set_xlabel('spatial frequency $k$ [rad/m]', fontsize=11)
 e1.set_ylabel('uncertainty contribution [nm]', fontsize=11)
 e1.set_title('GUM-based uncertainty budget vs spatial frequency ($z=100$ nm, $h=40$ $\\mu$m)',
