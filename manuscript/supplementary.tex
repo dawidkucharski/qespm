@@ -1162,6 +1162,19 @@ edge), and the inverse amplification factor is $e^{+kh}/(Ck^2)$ --- the
 first-principles basis of the uncertainty-budget coefficients
 $c_h=kz$ and $c_{E_{\rm bg}}=z/E_{\rm bg}$.
 
+\subsection{Zero-phase property of the ITF}
+
+$H_x=-(eE_{\rm bg}/2m\omega_x)\,k_x^2\,e^{-kh}$ is real and negative for
+all $k_x\neq0$ (all factors other than the leading minus sign are real
+and positive), so the phase of the ITF is $\phi_H(k_x,k_y)=\pi$
+(constant) for $k_x\neq0$, the group delay
+$\tau_g=-\partial\phi_H/\partial k_x=0$ vanishes identically, and the ITF
+is a zero-phase (up to sign) band-pass filter: the reconstruction is
+phase-preserving --- surface features are not spatially shifted by the
+measurement, only band-pass filtered.  This distinguishes QESPM from
+phase-distorting band-pass instruments, whose phase response must be
+calibrated before inversion.
+
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figA1_composite.pdf}
@@ -1457,6 +1470,32 @@ $S_{\partial E_x/\partial x}(\omega;d)=\int(k\,dk/2\pi)(k^2/2)S_E(k)
 =3k_BT\rho/(8\pi d^5)$, giving the frequency-shift noise
 $\delta\omega_J/2\pi=(e/4\pi m\omega_x)\sqrt{3k_BT\rho/(8\pi d^5\tau)}$
 for a measurement of bandwidth $1/\tau$.
+
+\subsection{Heating-channel spatial kernel}
+
+The heating rate is a quantitative second channel only if its spatial
+kernel is known.  From the Turchette relation
+$\dot{\bar n}=(e^2/4m\hbar\omega_x)S_E(\omega_x)$ and the near-field law
+$S_E\propto d^{-4}$ for a fluctuating surface dipole layer, a unit
+fluctuation source at lateral distance $\rho$ contributes
+$\propto(h^2+\rho^2)^{-3}$ (the squared field of a dipole at distance
+$d=\sqrt{h^2+\rho^2}$), so the heating map is the convolution
+\begin{equation}
+\dot{\bar n}(x,y) \propto \iint S_{\rm patch}(x',y')\,
+    \bigl[h^2+(x-x')^2+(y-y')^2\bigr]^{-3}\,dx'dy',
+\end{equation}
+where $S_{\rm patch}$ is the local fluctuation spectral density of the
+surface dipole layer at the secular frequency.  The kernel has total
+weight $\int(h^2+\rho^2)^{-3}\,d^2\rho=\pi/(2h^4)$ --- recovering the
+$\dot{\bar n}\propto h^{-4}$ law for short-range-correlated patches ---
+and half-width $0.51\,h$, so the heating channel has the same lateral
+localisation scale $\sim h$ as the electrostatic channel.  Under the
+fluctuating-patch model $S_{\rm patch}\propto|\sigma(\mathbf{r})|^2$
+(charge-variance weighted), the heating channel is a quadratic
+functional of the charge field: it is not annihilated by the linear
+rank-1 degeneracy of Theorem~1 of the main text, and it therefore
+provides information on the charge-variance field outside the linear
+degeneracy.
 
 % ===================================================================
 \section{Regularisation-theory proofs}

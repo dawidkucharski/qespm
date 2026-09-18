@@ -128,7 +128,9 @@ Despite these advances, the quantitative inverse problem --- reconstructing
 surface topography $z_s(x,y)$ from ion motional observables with a defined
 instrument transfer function, regularised inversion and an uncertainty
 budget --- has not, to the present knowledge, been formulated.  This work
-addresses that gap.  The contribution is a theoretical framework:
+addresses that gap.  The proposed technique is named the \textbf{Q}uantum
+\textbf{E}lectrostatic \textbf{S}canning \textbf{P}robe
+\textbf{M}icroscopy (QESPM).  The contribution is a theoretical framework:
 analytically derived, numerically benchmarked against exact
 electrostatic solvers, evaluated on experimentally measured surface
 topography, and equipped with a GUM-based uncertainty budget and a defined
@@ -775,7 +777,7 @@ enhancement provides a further factor of $\sim 10$--$50$.}
 \small
 \begin{tabular}{@{}lccccc@{}}
 \hline
-Regime & $\delta\omega/2\pi$ & Charge & $\delta A_{\min}$ [nm] & $\lambda_{\min}$ [$\mu$m] & $r_{\rm eff}$ \\
+Regime & $\delta\omega/2\pi$ & Charge & $\delta A_{\min}$ [nm] & noise-limited $\lambda_{\min}$ [$\mu$m] & $r_{\rm eff}$ \\
 \hline
 Technical, charge-present            & 5\,Hz   & present & 320$^{*}$  & 18.7 & 6 \\
 Technical, charge-free               & 5\,Hz   & absent  & 1.2  & 18.7 & 6 \\
@@ -1002,7 +1004,8 @@ NanoScope scan ($512\times512$ pixels, $20\times20$\,\textmu m) with
 ${\sim}500$\,nm peak-to-valley and $R_a\approx103$\,nm.  The central
 result (Fig.~\ref{fig:real_afm}): the Pearson correlation between the AFM
 ground truth and the QESPM reconstruction improves monotonically from
-$r=0.62$ at $h=40$\,\textmu m to $r=0.78$ at $h=2$\,\textmu m,
+$r=0.62$ at $h=40$\,\textmu m ($r=0.69$ at $h=20$\,\textmu m) to
+$r=0.78$ at $h=2$\,\textmu m,
 verifying the predicted height-dependent reconstruction behaviour using
 independently measured surface topography as input; at
 $h=5$\,\textmu m --- the lowest height currently feasible given heating
