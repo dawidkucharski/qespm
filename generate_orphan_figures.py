@@ -269,6 +269,12 @@ e1.set_xscale('log'); e1.set_yscale('log')
 # remains fully visible.
 e1.set_xlim(1e4, 4e5)
 e1.set_ylim(1e-4, 1e4)
+e1.set_xticks([1e4, 2e4, 5e4, 1e5, 2e5, 4e5])
+e1.set_xticklabels(['$10^4$', '$2\\times10^4$', '$5\\times10^4$',
+                    '$10^5$', '$2\\times10^5$', '$4\\times10^5$'])
+e1.axvspan(3.3e5, 4e5, color='grey', alpha=0.10)
+e1.text(3.65e5, 2e3, 'beyond reconstructable band', fontsize=8,
+        ha='center', va='top', color='0.25', rotation=90)
 e1.set_xlabel('spatial frequency $k$ [rad/m]', fontsize=11)
 e1.set_ylabel('uncertainty contribution [nm]', fontsize=11)
 e1.set_title('GUM-based uncertainty budget vs spatial frequency ($z=100$ nm, $h=40$ $\\mu$m)',
