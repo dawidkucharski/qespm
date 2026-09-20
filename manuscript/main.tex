@@ -841,8 +841,9 @@ variance saturates at the charge-prior floor
 \qquad\text{(strong data)},
 \label{eq:joint_post_var}
 \end{equation}
-regardless of measurement quality: with the GUM charge prior
-$u(\sigma)=1.13\times10^{-8}$\,C/m$^2$ the floor is
+regardless of measurement quality: under the GUM charge prior
+$u(\sigma)=1.13\times10^{-8}$\,C/m$^2$, the charge-prior-limited
+baseline uncertainty is
 $\sqrt{p_\varphi}/E_{\rm bg}=319$\,nm --- exactly the dominant charge row
 of Table~\ref{tab:uncertainty}.  The Bayesian posterior and the GUM
 budget are two views of the same degeneracy; distinct priors separate the
@@ -1048,7 +1049,9 @@ the $5$\,Hz floor at $h=100$\,\textmu m
 \centering
 \includegraphics[width=\textwidth]{figV4_published_comparison.pdf}
 \caption{Comparison with published experimental data.
-(a) ITF scaling prediction for Maiwald et al.~(2009) configuration.
+(a) Order-of-magnitude comparison with a published ion-probe
+configuration (Maiwald et al., 2009); the absolute signal prediction
+depends on the effective background field at the ion.
 (b) Predicted $h$-dependence for S{\"a}gesser et al.~(2026) 3D scanning platform.
 (c) Detection sensitivity--standoff landscape.}
 \label{fig:published}
@@ -1084,8 +1087,9 @@ standard uncertainty $\approx300$\,nm at the grating crest (GUM
 single-point value $319$\,nm) --- and a coverage check over
 $2\times10^4$ realisations places $95.1\%$ of true heights inside the
 propagated $95\%$ interval ($\pm1.96\,u_c$, $u_c=319$\,nm) with an
-estimate bias of $0.7$\,nm: the interval is correctly calibrated under
-the stated priors (details: Supplementary Sec.~S5).
+estimate bias of $0.7$\,nm: the nominal 95\% interval achieves 95.1\%
+empirical coverage in this simulation under the stated input
+distributions (details: Supplementary Sec.~S5).
 
 % ===================================================================
 \section{Operating envelope, limitations and experimental implementation}
@@ -1106,7 +1110,8 @@ The regime combines non-contact measurement, micrometre-scale standoff
 ($\delta z<1$\,nm).  Figure~\ref{fig:landscape} positions QESPM in the
 detection sensitivity--standoff plane: it provides sub-nanometre vertical
 detection sensitivity (picometre with motional squeezing at the QPN
-limit) at standoff distances of $1$--$100$\,\textmu m --- orders of
+limit) over the modelled micrometre-scale standoff regime
+($h=1$--$100$\,\textmu m as the explored numerical range) --- orders of
 magnitude larger than AFM or STM --- while operating natively in the UHV
 environment of the ion trap; the realistic topographic reconstruction
 uncertainty, by contrast, is charge-limited at ${\sim}319$\,nm
@@ -1119,14 +1124,15 @@ identifiability limit either.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{fig4_landscape.pdf}
-\caption{Detection sensitivity--standoff landscape for QESPM relative to
-established surface metrology methods; the
-vertical axis is the intrinsic vertical detection sensitivity of
-each technique, and QESPM targets the long-standoff, non-contact sector
-of the plane.  The QESPM marker is the quantum-projection-noise detection
-sensitivity (${\sim}7\times10^{-3}$\,nm at $k_{\rm opt}=2/h$) at the
-nominal standoff $h=40$\,\textmu m.  The charge-limited topographic
-reconstruction uncertainty
+\caption{Projected intrinsic detection sensitivity--standoff landscape for
+QESPM relative to established surface metrology methods.  The vertical
+axis is the intrinsic vertical detection sensitivity of each technique.
+The QESPM marker is a theoretical/projected value --- the
+quantum-projection-noise detection sensitivity
+(${\sim}7\times10^{-3}$\,nm at $k_{\rm opt}=2/h$) at the
+nominal standoff $h=40$\,\textmu m --- whereas the other techniques
+represent established experimental capabilities.
+The charge-limited topographic reconstruction uncertainty
 of Table~\ref{tab:uncertainty} ($319$\,nm) is shown separately (open
 symbol connected to the QESPM marker at the same standoff) and is not
 part of the sensitivity scale.}
@@ -1207,7 +1213,7 @@ STM & electronic, topographic & tunnelling & \AA & ${\sim}0.1$\,nm & ${\sim}0.01
 Optical & geometry & optical & mm & ${\sim}0.5$\,\textmu m & ${\sim}1$\,nm & broad & dif\-frac\-tion-limited \\
 SEM & electron contrast & electron beam & nm & ${\sim}1$\,nm & ${\sim}1$\,nm & vacuum & beam--\allowbreak sample interaction \\
 KPFM/EFM & potential + topography & electrostatic & nm--\allowbreak\textmu m & nm--\allowbreak\textmu m & ${\sim}$mV (potential) & broad & potential--\allowbreak topography cross-talk \\
-\textbf{QESPM} & electrostatic geometry & electrostatic & $1$--\allowbreak$100$\,\textmu m & ${\sim}1.5h$ (MTF) & ${\sim}10^{-2}$\,nm (det.);\newline $319$\,nm (charge-limited) & UHV--\allowbreak cryo native & topography--\allowbreak charge identifiability \\
+\textbf{QESPM} & electrostatic geometry & electrostatic & $1$--$100$\,\textmu m~(modelled) & ${\sim}1.5h$ (MTF) & ${\sim}10^{-2}$\,nm (det.);\newline $319$\,nm (charge-limited) & UHV--\allowbreak cryo native & topography--\allowbreak charge identifiability \\
 \hline
 \end{tabular}
 \end{table}
@@ -1364,7 +1370,7 @@ acceptance.
 % ==================================================================
 % Bibliography
 % ==================================================================
-\clearpage
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 % ===================================================================

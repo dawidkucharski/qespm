@@ -48,7 +48,8 @@ for name, m in methods.items():
 ax1.set_xscale('log'); ax1.set_yscale('log')
 ax1.set_xlabel('Standoff distance [nm]', fontsize=11)
 ax1.set_ylabel('Intrinsic vertical detection sensitivity [nm]', fontsize=11)
-ax1.set_title('Detection sensitivity--standoff landscape', fontsize=12, fontweight='bold')
+ax1.set_title('Projected intrinsic detection sensitivity--standoff landscape',
+             fontsize=12, fontweight='bold')
 
 # Wide enough to show all techniques and the reconstruction-uncertainty marker
 ax1.set_xlim(0.08, 3e5)
@@ -58,8 +59,6 @@ ax1.grid(True, alpha=0.25, which='both')
 # Shade QESPM quadrant (1--100 um standoff, per the operating envelope)
 ax1.axvspan(1e3, 1e5, alpha=0.06, color='red')
 ax1.axhspan(0.0003, 0.1, alpha=0.06, color='red')
-ax1.annotate('QESPM\nniche', xy=(2e4, 0.0008), fontsize=10, color='darkred',
-             fontweight='bold', fontstyle='italic')
 
 # Reconstruction uncertainty shown SEPARATELY: it is not part of the
 # sensitivity scale (charge-limited, Table: uncertainty budget, h = 40 um)

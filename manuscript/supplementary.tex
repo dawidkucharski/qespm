@@ -141,10 +141,10 @@ material-contrast channel such as the motional heating rate.}
 \end{figure}
 
 \noindent
-\textbf{Real-data validation chain.}
+\textbf{Numerical evaluation using experimentally measured AFM topography.}
 Figures~\ref{fig:S_afm_input}, \ref{fig:S_afm_signal} and
 \ref{fig:S_afm_recon} document the
-real-data validation of Sec.~6.3 of the main text: the input AFM
+numerical evaluation of Sec.~6.3 of the main text: the input AFM
 topography, the forward-modelled ion signal at the four measurement
 heights, and the Tikhonov reconstructions whose Pearson correlation
 improves from $r = 0.62$ at $h = 40$\,\textmu m to $r = 0.78$ at
@@ -155,7 +155,7 @@ $h = 2$\,\textmu m.
 \centering
 \includegraphics[width=\textwidth]{figV1_afm_input.pdf}
 \caption{\textbf{AFM input topography --- stainless steel.}
-Input surface topography used for the real-data validation
+Input surface topography used for the numerical evaluation
 (Sec.~6.3 of the main text).  The data are from
 Camargo~Jr.\ (2019, Mendeley Data,
 \url{https://doi.org/10.17632/6dzmrjngcg.3},
@@ -583,7 +583,8 @@ coverage check closes the metrological loop: over $2\times10^{4}$ Monte
 Carlo realisations at the crest, the fraction of true heights falling
 inside the propagated $95\%$ interval ($\pm1.96\,u_c$ with
 $u_c=319$\,nm) is $95.1\%$, with an estimate bias of $0.7$\,nm --- the
-interval is correctly calibrated.
+nominal 95\% interval achieves 95.1\% empirical coverage in this
+simulation under the stated input distributions.
 
 \begin{figure}[htb]
 \centering
@@ -1667,8 +1668,9 @@ posterior precision is rank-1 in the data term and the marginal
 topography variance obeys
 $\operatorname{Var}(z_k|d)=\frac{H^2p_\varphi/(\sigma^2E_{\rm bg}^2)+1}{H^2/\sigma^2+H^2p_\varphi/(\sigma^2E_{\rm bg}^2p_z)+1/p_z}$,
 with limits $p_z$ (weak data) and
-$p_zp_\varphi/(p_zE_{\rm bg}^2+p_\varphi)$ (strong data) --- the charge
-floor $p_\varphi/E_{\rm bg}^2=319$\,nm under the GUM charge prior
+$p_zp_\varphi/(p_zE_{\rm bg}^2+p_\varphi)$ (strong data) --- the
+charge-prior-limited baseline uncertainty
+$p_\varphi/E_{\rm bg}^2=319$\,nm under the stated residual-charge prior
 (Fig.~\ref{fig:S_joint_bayes}).
 
 \begin{figure}[htb]
@@ -1688,8 +1690,9 @@ $\lambda$ and the ITF magnitude.}
 \includegraphics[width=\textwidth]{figI9_joint_bayes.pdf}
 \caption{Joint Bayesian identifiability analysis at
 $k=2\times10^5$\,rad/m.  (a) Marginal posterior standard deviation of the
-topography mode vs.\ data strength: it saturates at the charge-prior
-floor $319$\,nm however strong the data.  (b) Eigen-directions of the
+topography mode vs.\ data strength: it saturates at the
+charge-prior-limited baseline of $319$\,nm however strong the data.
+(b) Eigen-directions of the
 posterior precision matrix.}
 \label{fig:S_joint_bayes}
 \end{figure}
