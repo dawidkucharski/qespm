@@ -68,11 +68,12 @@ h_vals = [5e-6, 40e-6]
 fig10, ax10 = plt.subplots(1, 3, figsize=(15, 5))
 sv_s = np.sort(np.abs(Hx).ravel())[::-1]
 sv_j = np.sort(np.sqrt(np.abs(Hx).ravel()**2+np.abs(Hy).ravel()**2))[::-1]
-ax10[0].semilogy(np.arange(1, len(sv_s)+1), sv_s/sv_s[0], color='tab:blue', lw=2,
+ax10[0].semilogy(np.arange(1, 401), sv_s[:400]/sv_s[0], color='tab:blue', lw=2,
                  label='single ($H_x$)')
-ax10[0].semilogy(np.arange(1, len(sv_j)+1), sv_j/sv_j[0], color='tab:red', lw=2,
+ax10[0].semilogy(np.arange(1, 401), sv_j[:400]/sv_j[0], color='tab:red', lw=2,
                  label='joint ($H_x \oplus H_y$)')
 ax10[0].set_xlim(1, 400)
+ax10[0].set_ylim(1e-8, 2)
 ax10[0].set_xlabel('singular value index $n$')
 ax10[0].set_ylabel(r'$\sigma_n/\sigma_1$')
 ax10[0].set_title('(a) Joint vs single singular spectra ($h$=40 \u00b5m)')
