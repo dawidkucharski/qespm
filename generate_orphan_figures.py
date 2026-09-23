@@ -331,14 +331,14 @@ g1.set_xlabel('spatial frequency $k$ [rad/m]', fontsize=11)
 g1.set_ylabel('$\\Delta\\omega_x(h_1)/\\Delta\\omega_x(h_2)$', fontsize=11)
 g1.set_title('Two-height ratio: $e^{-k(h_1-h_2)}$, $h_1=20$ $\\mu$m, $h_2=80$ $\\mu$m',
              fontsize=11)
-g1.text(0.55, 0.18,
+g1.text(0.5, 0.98,
         'The ratio depends only on $k$ and the heights,\n'
         'not on the $(z_s,\\sigma)$ mixture: the two-height\n'
         'forward matrix is rank 1. Resolution strategies:\n'
         'in-situ charge elimination, a known reference scan,\n'
         'or an independent material-contrast channel (heating rate).',
-        transform=g1.transAxes, fontsize=9, va='top',
-        bbox=dict(boxstyle='round', facecolor='#fff9c4', alpha=0.9))
+        transform=g1.transAxes, fontsize=9, va='top', ha='center',
+        bbox=dict(boxstyle='round', facecolor='#fff9c4', alpha=0.92))
 g1.grid(True, which='both', alpha=0.25)
 plt.tight_layout()
 plt.savefig('manuscript/fig9_degeneracy.pdf', dpi=150, bbox_inches='tight')
