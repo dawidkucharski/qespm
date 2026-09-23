@@ -129,6 +129,10 @@ for h_um, ax in zip(heights, axes2.ravel()):
     ax.set_title(f'$h$ = {h_um} µm  ($\sigma_{{\Delta\omega}}/2\pi$ = '
                  f'${mant:.1f}\times10^{{{exp10}}}$ Hz)', fontsize=10)
     ax.set_xlabel('x [µm]', fontsize=8); ax.set_ylabel('y [µm]', fontsize=8)
+    if h_um <= 5:
+        ax.text(0.5, 0.03, 'asymptotic ITF prediction --- outside validity domain',
+                transform=ax.transAxes, ha='center', va='bottom', fontsize=8,
+                color='white', bbox=dict(facecolor='black', alpha=0.6))
     plt.colorbar(im, ax=ax, fraction=0.046)
 
 fig2.suptitle('Simulated ion signal $\\Delta\\omega_x(x,y)$ from AFM topography',

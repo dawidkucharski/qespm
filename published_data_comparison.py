@@ -69,7 +69,7 @@ dw_sag_hz = dw_sag / (2*np.pi)
 # ============================================================
 # Figure V4: Published data comparison
 # ============================================================
-fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+fig, axes = plt.subplots(1, 2, figsize=(11, 5))
 
 # Panel (a): Maiwald - ITF prediction vs height
 axes[0].semilogy(h_range*1e6, dw_range_hz, 'b-', lw=2, label='ITF prediction')
@@ -96,24 +96,6 @@ k_mid = 2 * np.pi / 20e-6
 dw_mid = (e*E_bg)/(2*m_Ca*2*np.pi*1e6)*A_sag*k_mid**2*np.exp(-k_mid*h_mid)
 axes[1].annotate(r'$\propto e^{-kh}$', xy=(50, dw_mid/(2*np.pi)),
                  fontsize=10, color='green')
-
-# Panel (c): Sensitivity comparison — QESPM vs existing techniques
-methods = ['AFM\n(contact)', 'STM', 'Optical\nprofilometry', 'SEM', 'QESPM\n(this work)']
-resolution = [0.1, 0.01, 1.0, 1.0, 0.007]  # nm vertical
-standoff = [0, 0.5, 1e5, 1e4, 4e4]  # nm standoff
-colors = ['gray', 'gray', 'gray', 'gray', 'red']
-
-axes[2].scatter(standoff[:4], resolution[:4], c=colors[:4], s=100, marker='s', zorder=5)
-axes[2].scatter(standoff[4], resolution[4], c=colors[4], s=200, marker='*', zorder=10, edgecolors='darkred')
-for i, (m, r, s) in enumerate(zip(methods, resolution, standoff)):
-    axes[2].annotate(m, (s, r), textcoords="offset points", xytext=(8, 5),
-                     fontsize=8, color=colors[i])
-axes[2].set_xscale('log'); axes[2].set_yscale('log')
-axes[2].set_xlabel('Standoff distance [nm]')
-axes[2].set_ylabel('Vertical resolution [nm]')
-axes[2].set_title('(c) Resolution–standoff landscape')
-axes[2].grid(True, alpha=0.3)
-axes[2].set_xlim(0.3, 5e5); axes[2].set_ylim(0.003, 5)
 
 plt.tight_layout()
 plt.savefig('manuscript/figV4_published_comparison.pdf', dpi=150, bbox_inches='tight')

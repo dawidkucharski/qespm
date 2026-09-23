@@ -439,8 +439,9 @@ the quantitative content of the operating envelope (Fig.~\ref{fig:noise_budget})
 at $h\gtrsim10$\,\textmu m the measurement is technical-limited
 ($5$\,Hz), below $h\sim5$\,\textmu m heating-limited
 ($\propto h^{-4}$), and the heating--SNR optimum
-$h_{\rm opt}=\alpha/k=\alpha\lambda/2\pi$ ($\approx11.8$\,\textmu m for
-the Phase-1 grating) is the intersection of the two dominant branches.
+$h_{\rm opt}=\alpha/k=\alpha\lambda/2\pi$ ($\approx12.7$\,\textmu m for
+the Phase-1 grating, $\alpha=4$, $\lambda=20$\,\textmu m) is the
+intersection of the two dominant branches.
 Throughout this work SNR values are quoted at the conservative
 $\delta\omega/2\pi=5$\,Hz floor --- a stated engineering assumption, not a
 measured value.
@@ -886,9 +887,11 @@ ITF calibration (grating cert.) & $1.0\!\times\!10^{-2}\,A$ & 1 & 1.0 \\
 \end{table}
 
 The \textbf{dominant uncertainty source is uncompensated surface charge},
-contributing 99.99\% of the variance: a residual charge density of
-${\sim}10^{-6}$\,C/m$^2$ (a fraction of a typical patch-potential value)
-produces an equivalent height error of ${\sim}320$\,nm.  All other
+contributing 99.99\% of the variance: the stated residual-charge prior,
+$u(\sigma)=1.13\times10^{-8}$\,C/m$^2$ (a $3.2$\,mV residual patch
+potential at the budget wavenumber $k=2\times10^5$\,rad/m;
+Supplementary Sec.~S5) produces an equivalent height uncertainty of
+${\sim}319$\,nm.  All other
 sources --- including the ion's exquisite frequency sensitivity --- are at
 the sub-nanometre level.  The budget does not represent an intrinsic limit
 of the ion readout: it describes the uncertainty of topographic
@@ -1048,12 +1051,11 @@ the $5$\,Hz floor at $h=100$\,\textmu m
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figV4_published_comparison.pdf}
-\caption{Comparison with published experimental data.
-(a) Order-of-magnitude comparison with a published ion-probe
+\caption{Comparison with published ion-probe data.
+(a) Order-of-magnitude consistency check with a published ion-probe
 configuration (Maiwald et al., 2009); the absolute signal prediction
 depends on the effective background field at the ion.
-(b) Predicted $h$-dependence for S{\"a}gesser et al.~(2026) 3D scanning platform.
-(c) Detection sensitivity--standoff landscape.}
+(b) Predicted $h$-dependence for S{\"a}gesser et al.~(2026) 3D scanning platform.}
 \label{fig:published}
 \end{figure}
 
@@ -1110,10 +1112,11 @@ The regime combines non-contact measurement, micrometre-scale standoff
 ($\delta z<1$\,nm).  Figure~\ref{fig:landscape} positions QESPM in the
 detection sensitivity--standoff plane: it provides sub-nanometre vertical
 detection sensitivity (picometre with motional squeezing at the QPN
-limit) over the modelled micrometre-scale standoff regime
-($h=1$--$100$\,\textmu m as the explored numerical range) --- orders of
-magnitude larger than AFM or STM --- while operating natively in the UHV
-environment of the ion trap; the realistic topographic reconstruction
+limit) over the modelled micrometre-scale standoff range explored in
+this study, corresponding to a projected detection threshold below the
+representative values shown for AFM and STM, while operating natively in
+the UHV environment of the ion trap; the realistic topographic
+reconstruction
 uncertainty, by contrast, is charge-limited at ${\sim}319$\,nm
 (Table~\ref{tab:uncertainty}).  To our knowledge, no experimentally
 demonstrated surface-metrology method currently combines micrometre-standoff
@@ -1175,7 +1178,7 @@ submission to ISO/TC~213.  Per-phase signal levels, coherence times,
 dominant noise branches, risks and mitigations are specified in
 Supplementary Sec.~S9.  Sequential two-pass measurement strategies
 (coarse scan at large $h$, fine scan at small $h$, with D-optimal point
-selection protected by a $(1-e^{-1})\approx0.63$ submodularity guarantee)
+selection)
 are information-efficient under the stated model and acquisition
 assumptions: a 1D demonstration reduces the amplitude error from $0.071$
 (uniform 30-point) to $0.028$ (adaptive) at a quarter of the

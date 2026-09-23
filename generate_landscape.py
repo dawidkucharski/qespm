@@ -56,9 +56,8 @@ ax1.set_xlim(0.08, 3e5)
 ax1.set_ylim(0.0003, 1200)
 ax1.grid(True, alpha=0.25, which='both')
 
-# Shade QESPM quadrant (1--100 um standoff, per the operating envelope)
-ax1.axvspan(1e3, 1e5, alpha=0.06, color='red')
-ax1.axhspan(0.0003, 0.1, alpha=0.06, color='red')
+# No operating-envelope shading is shown, to avoid implying an
+# experimentally demonstrated standoff range.
 
 # Reconstruction uncertainty shown SEPARATELY: it is not part of the
 # sensitivity scale (charge-limited, Table: uncertainty budget, h = 40 um)
