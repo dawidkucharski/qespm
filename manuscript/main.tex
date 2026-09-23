@@ -178,8 +178,8 @@ Table~\ref{tab:quantities}.
 
 \begin{table}[htb]
 \centering
-\caption{Measurand, indication, and influence quantities of the QESPM
-measurement.}
+\caption{Measurand, indication, and influence quantities of the
+quantum electrostatic scanning probe microscopy (QESPM) measurement.}
 \label{tab:quantities}
 \small
 \begin{tabular}{@{}ll@{}}
@@ -451,13 +451,15 @@ measured value.
 \includegraphics[width=\textwidth]{figI10_noise_psd.pdf}
 \caption{Master noise budget.
 (a) Frequency resolution $\delta\omega/2\pi$ of every noise mechanism as a
-function of ion height: technical floor, QPN, rf stability, laser frequency
+function of ion height: technical floor, quantum projection noise (QPN),
+rf stability, laser frequency
 noise ($1$\,kHz and $10$\,Hz linewidths), motional heating
 ($\propto h^{-4}$), and the Johnson gradient term.  At $h\gtrsim10$\,\textmu m
 the measurement is technical-limited; below $h\sim5$\,\textmu m it is
 heating-limited.
 (b) Phase-1 grating ($\lambda=20$\,\textmu m) signal and heating noise vs
-height; the vertical line marks the SNR optimum $h_{\rm opt}=\alpha/k$.
+height; the vertical line marks the signal-to-noise-ratio (SNR) optimum
+$h_{\rm opt}=\alpha/k$.
 }
 \label{fig:noise_budget}
 \end{figure}
@@ -863,7 +865,8 @@ $k=2\times10^5$\,rad/m, $h=40$\,\textmu m.
 
 \begin{table}[htb]
 \centering
-\caption{GUM-based uncertainty budget for QESPM height measurement.
+\caption{Uncertainty budget for QESPM height measurement based on the
+Guide to the Expression of Uncertainty in Measurement (GUM).
          $u(x_i)$: standard uncertainty of input quantity;
          $c_i = |\partial z/\partial x_i|$: absolute sensitivity coefficient;
          $u_i(z)$: uncertainty contribution to $z$.
@@ -916,8 +919,9 @@ at all accessible $k$.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{fig5_uncertainty.pdf}
-\caption{GUM-based uncertainty budget decomposition as a function of
-spatial frequency $k$.  The combined standard uncertainty $u_c(z)$ (solid
+\caption{Uncertainty budget decomposition based on the Guide to the
+Expression of Uncertainty in Measurement (GUM), as a function of spatial
+frequency $k$.  The combined standard uncertainty $u_c(z)$ (solid
 black) is dominated by the surface charge contribution (dashed) across the
 entire accessible $k$ range.  Type~A frequency measurement uncertainty (dotted)
 is $3$--$5$ orders of magnitude smaller.  For $z = 100$\,nm at
@@ -987,7 +991,7 @@ height for the topography-only case at $h = 40$\,\textmu m.
 (d) Cross-section through the centre.  The Pearson correlation is $r = 0.981$;
 the dominant spatial features --- Gaussian plateau and linear ramp --- are
 faithfully recovered.  The residual is dominated by the fine grating
-(period $4$\,\textmu m), which lies below the 50\% MTF short-wavelength
+(period $4$\,\textmu m), which lies below the 50\% modulation-transfer-function (MTF) short-wavelength
 cutoff $\lambda_{\min} \approx 60$\,\textmu m and is not resolvable.}
 \label{fig:inversion}
 \end{figure}
@@ -1023,11 +1027,13 @@ per-height reconstructions are in Supplementary Figs.~S4--S6.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figV9_real_afm_benchmark.pdf}
-\caption{Numerical evaluation using published AFM topography data of
-stainless steel~\cite{camargo2019afm}.  (a) Ground truth: Bruker NanoScope AFM,
-$20 \times 20$\,\textmu m.  (b) Reconstruction quality $r$ vs.\ ion height
-$h$, showing monotonic improvement as $h$ decreases.  (c) Surface PSD with
-ITF resolution cutoffs at each height.  (d) QESPM reconstruction at
+\caption{Numerical evaluation using published atomic force microscopy
+(AFM) topography data of stainless steel~\cite{camargo2019afm}.
+(a) Ground truth: Bruker NanoScope AFM, $20 \times 20$\,\textmu m.
+(b) Reconstruction quality $r$ vs.\ ion height $h$, showing monotonic
+improvement as $h$ decreases.  (c) Surface power spectral density (PSD)
+with instrument-transfer-function (ITF) resolution cutoffs at each height.
+(d) Quantum electrostatic scanning probe microscopy (QESPM) reconstruction at
 $h = 5$\,\textmu m ($r = 0.76$).  (e) Reconstruction at $h = 20$\,\textmu m
 ($r = 0.69$).  (f) Cross-section comparison at $h = 5$\,\textmu m.}
 \label{fig:real_afm}

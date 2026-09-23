@@ -4,7 +4,7 @@
 %  Compile with: pdflatex supplementary
 % ===================================================================
 
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
@@ -28,9 +28,7 @@
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\theequation}{S\arabic{equation}}
 
-\title{Supplementary Material:\\
-       Quantum Limits of Surface Metrology:\\
-       Spatial Information Extraction by a Single Trapped Ion}
+\title{Supplementary Material}
 
 \author{}
 
@@ -191,7 +189,8 @@ emergence of fine spatial features as $h$ decreases.}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figV3_afm_reconstruction.pdf}
-\caption{\textbf{QESPM reconstruction from AFM data.}
+\caption{\textbf{Quantum electrostatic scanning probe microscopy (QESPM)
+reconstruction from atomic force microscopy (AFM) data.}
 Tikhonov-regularised reconstruction of the stainless steel surface from
 the simulated ion signal at $h = 40, 10, 5, 2\,\mu\text{m}$.  (a)--(d) Reconstructed topography.  (e)--(h) Residual
 (reconstruction $-$ true AFM topography).  The Pearson correlation
@@ -430,7 +429,8 @@ truncation at the $10^{-4}$ level.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figV7_rayleigh_validation.pdf}
-\caption{Exact (Rayleigh) validation of the linear ITF.
+\caption{Exact (Rayleigh) validation of the linear instrument transfer
+function (ITF).
 (a) Frequency shift vs.\ surface amplitude: exact (Rayleigh) and ITF (linear).
 (b) Relative error as a function of amplitude, scaling as $(kA)^2$.
 (c) Relative error vs.\ $A/h$ ratio, showing increasing deviation
@@ -443,7 +443,8 @@ at larger amplitudes.}
 \includegraphics[width=\textwidth]{figO6_bem.pdf}
 \caption{Boundary-element cross-check (single-layer collocation with the
 periodic Green's function).  (a) Secular frequency shift at the crest from
-the BEM solution, the linear ITF, and the exact (complete-basis) Rayleigh
+the boundary-element-method (BEM) solution, the linear instrument
+transfer function (ITF), and the exact (complete-basis) Rayleigh
 solution, vs.\ surface amplitude.  (b) Relative errors of the BEM and of
 the linear ITF against the exact solution: the BEM agrees to $\le0.6\%$
 across the amplitude range, independently confirming the ITF at the
@@ -462,7 +463,8 @@ three mutually independent solvers (exact Rayleigh, BEM, FD).
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figI14_fem.pdf}
-\caption{Finite-difference cross-check of the linear ITF.
+\caption{Finite-difference cross-check of the linear instrument transfer
+function (ITF).
 (a) Convergence of the crest frequency shift ($A = 100$\,nm,
 $h = 40$\,\textmu m) with the number of vertical grid points $N_v$
 ($60$--$200$), approaching the ITF prediction (relative error vs.\ ITF).
@@ -479,7 +481,8 @@ Rayleigh result to $\le0.6\%$ without using the ITF.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figB1_bem_panel.pdf}
-\caption{Independent solver cross-checks of the linear ITF
+\caption{Independent solver cross-checks of the linear instrument transfer
+function (ITF)
 ($\lambda = 40$\,\textmu m, $h = 40$\,\textmu m).  Relative error of the
 linear ITF (red circles) against the exact Rayleigh--Floquet solution as a
 function of the perturbation parameter $kA$, following the quadratic law
@@ -547,13 +550,16 @@ validity conditions of the model in the $(\lambda,h)$ plane.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figD1_validity.pdf}
-\caption{Domain of validity of the QESPM forward model in the plane of
+\caption{Domain of validity of the quantum electrostatic scanning probe
+microscopy (QESPM) forward model in the plane of
 surface feature wavelength $\lambda$ and ion--surface separation $h$.
-The resolvable band is bounded from below by the MTF cutoff
+The resolvable band is bounded from below by the modulation-transfer-function
+(MTF) cutoff
 $\lambda_{\min}=1.51h$ and from above by the field of view; the
 large-slope breakdown ($kA\gtrsim0.45$ for the $A=100$\,nm amplitude
 shown), the heating-limited regime at small $h$, the Casimir--Polder
-exclusion ($h<100$\,nm) and the ITF peak $\lambda=\pi h$ are indicated.}
+exclusion ($h<100$\,nm) and the instrument-transfer-function (ITF) peak
+$\lambda=\pi h$ are indicated.}
 \label{fig:S_validity}
 \end{figure}
 
@@ -658,7 +664,8 @@ standoffs of the competing field-sensing channels on a common axis.
 \begin{table}[htb]
 \centering
 \caption{Quantitative sensitivity comparison on each method's native
-observable.  Order-of-magnitude literature values: KPFM potential
+observable.  Order-of-magnitude literature values: Kelvin-probe force
+microscopy (KPFM) potential
 resolution ${\sim}$mV (two-pass mechanical topography)~\cite{glatzel2022kelvin};
 single-spin NV
 electrometry $\approx1.4\times10^{4}$\,V/m/$\sqrt{\rm Hz}$ at ${\sim}10$\,nm
@@ -885,7 +892,8 @@ reconstructed measurand $z_s(x,y)$.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figT1_traceability.pdf}
-\caption{Measurement traceability chain of QESPM: from the SI metre and the
+\caption{Measurement traceability chain of the quantum electrostatic
+scanning probe microscopy (QESPM): from the SI metre and the
 SI second through the calibration steps of this section to the
 reconstructed measurand $z_s(x,y)$.}
 \label{fig:S_traceability}
@@ -1181,7 +1189,8 @@ calibrated before inversion.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figA1_composite.pdf}
-\caption{Asymptotic analysis of the 1D ITF cross-section.
+\caption{Asymptotic analysis of the 1D instrument transfer function (ITF)
+cross-section.
 (a) Exact $f(k)=Ck^2e^{-kh}$ and the naive additive composite
 $f_{\rm comp}$, showing the overshoot in the transition region.
 (b) Relative error of the composite --- up to ${\sim}9\times10^5\%$ at
@@ -1332,7 +1341,8 @@ $A = 100$\,nm) the stability margin exceeds two orders of magnitude.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figR1_stability.pdf}
-\caption{Mathieu stability and QESPM operating regime.
+\caption{Mathieu stability and quantum electrostatic scanning probe
+microscopy (QESPM) operating regime.
 (a) Standard $(a,q)$ stability diagram with three representative trap
 operating points.  (b) Stability boundary in ion height--surface amplitude
 $(h,A)$ space for a sinusoidal surface with $\lambda = 40$\,\textmu m.
@@ -1380,7 +1390,8 @@ statistics.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figR2_roughness_response.pdf}
-\caption{QESPM response to broadband surface roughness.
+\caption{Quantum electrostatic scanning probe microscopy (QESPM) response
+to broadband surface roughness.
 (a) RMS secular frequency shift $\sigma_{\Delta\omega}/2\pi$ as a function
 of $R_a$ for ion heights $h = 5$--$80$\,\textmu m.  The linear scaling
 $\sigma_{\Delta\omega} \propto R_a$ holds for $R_a \ll h$.  (b) Normalised
@@ -1678,7 +1689,7 @@ $p_\varphi/E_{\rm bg}^2=319$\,nm under the stated residual-charge prior
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figV11_bayesian.pdf}
-\caption{Bayesian GP-prior inversion.
+\caption{Bayesian inversion with a Gaussian-process (GP) prior.
 (a) Scalar-Tikhonov reconstruction ($r=0.939$).
 (b) GP-prior reconstruction ($r=0.933$).
 (c) Cross-section through the plateau centre.
