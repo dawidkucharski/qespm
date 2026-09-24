@@ -704,8 +704,7 @@ of the propagated potential yields:
     \frac{2}{\pi}\,\frac{x h}{(x^2 + h^2)^2},
 \label{eq:step_solution}
 \end{equation}
-with extrema at $x = \pm h/\sqrt{3}$ and a full width at half maximum of
-${\approx}0.34h$.
+with extrema at $x = \pm h/\sqrt{3}$.
 
 \textbf{Point spread function.}
 The PSF is the derivative of the edge spread function,
@@ -715,14 +714,12 @@ $\mathrm{PSF}(x) = d\,\mathrm{ESF}/dx$, and follows in closed form:
     \frac{2h}{\pi}\,\frac{h^2 - 3x^2}{(x^2+h^2)^3},
 \label{eq:psf}
 \end{equation}
-with first zero at $x = h/\sqrt{3}$ (the ESF extremum), negative sidelobes
-of relative amplitude ${\approx}0.09$, and asymptotic decay
-$\mathrm{PSF}\sim 3x^{-4}$ --- the direct electrostatic analogue of an
-optical PSF.  These quantities are distinct metrics, not competing definitions of a
-single resolution: the ESF FWHM $0.34h$ is a characteristic width of the
-edge response, the PSF first zero $x_0 = h/\sqrt{3}$ sets the central-lobe
-scale, the Rayleigh-style two-point criterion based on the first zero
-gives $\Delta x_{\rm res}=2h/\sqrt3\approx1.15h$, and the $50\%$ MTF
+with first zero at $x = h/\sqrt{3}$ (the ESF extremum) and asymptotic
+decay $\mathrm{PSF}\sim 3x^{-4}$ --- the direct electrostatic analogue of
+an optical PSF.  These quantities are distinct metrics, not competing
+definitions of a single resolution: the PSF first zero
+$x_0 = h/\sqrt{3}$ sets the central-lobe scale, the central-lobe
+zero-to-zero width gives $2h/\sqrt3\approx1.15h$, and the $50\%$ MTF
 cutoff is $\lambda_{\min}\approx1.51h$; each is reported for the role it
 plays in the main text.  Eq.~(\ref{eq:psf}) was verified against numerical
 differentiation of the ESF to $4\times10^{-5}$ relative accuracy.
@@ -764,7 +761,7 @@ lateral resolution is fundamentally limited to ${\sim}h$.
 \includegraphics[width=\textwidth]{figV8_step_edge.pdf}
 \caption{Analytical step-edge benchmark.
 (a) Full step-edge response: $\Delta\omega_x(x)$ for a 200\,nm step.
-The extrema occur at $x = \pm h/\sqrt{3}$, with FWHM ${\approx}0.34h$.
+The extrema occur at $x = \pm h/\sqrt{3}$.
 (b) Zoom at the edge, with key features annotated.
 (c) Relative error on the masked domain $h/\sqrt3<|x|<3h$; the
 zero-crossing band (shaded) is excluded because the relative metric
@@ -847,7 +844,7 @@ The calibration uncertainty budget at each step is:
 step~(1), $u(E_{\rm bg})/E_{\rm bg} \sim 10^{-3}$ (limited by dc voltage
 source stability); step~(2), $u(h) \sim 100\,\textup{nm}$ (laser interferometry
 + capacitance); step~(3), $u(H_x)/H_x \sim 10^{-2}$ (grating certification
-+ frequency measurement); step~(4), $u(\phi_{\rm charge}) \sim 1\,\textup{mV}$
++ frequency measurement); step~(4), $u(\phi_{\rm patch}) \sim 1\,\textup{mV}$
 (residual after UV cleaning); step~(5), $u(z_{\rm ref}) \sim 1\,\textup{nm}$
 (certified step height).
 The combined calibration uncertainty propagates into the measurement
@@ -1296,8 +1293,10 @@ Gaussian (coherent-state) channel with
 $d_k=H_x(k)z_k+\xi_k$ (noise variance $\delta^2/2$ per quadrature) has the
 quantum Fisher information matrix
 $\mathcal{F}_{kk'}=\delta_{kk'}|H_x(k)|^2\mathcal{F}_{\rm ion}$, with
-$\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ (or its squeezed/NOON
-analogue).  The symmetric logarithmic derivatives of different modes
+$\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ (the NOON analogue scales as
+$N^2$; a quadrature-squeezed probe reduces the relevant quadrature noise
+variance by $e^{-2r}$).  The symmetric logarithmic derivatives of
+different modes
 commute, so the multiparameter quantum Cram\'er--Rao bound is achievable
 mode by mode~\cite{pezze2018quantum}; the RLD bound is infinite for these
 pure states and the Holevo bound coincides with the SLD bound.  The

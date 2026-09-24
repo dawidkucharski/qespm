@@ -57,7 +57,7 @@
 % ===================================================================
 \begin{abstract}
 A new non-contact surface-metrology measurement principle is proposed and
-analysed.  The measurand is the surface height $z_s(x,y)$ of a conducting
+analysed. The measurand is the surface height $z_s(x,y)$ of a conducting
 sample; the sensor is a single trapped atomic ion, whose secular-frequency
 shift $\Delta\omega_x$ at height $h$ encodes the surface electrostatic
 perturbation.  The measurement operator is the instrument transfer
@@ -124,10 +124,11 @@ and recent work by S{\"a}gesser et al.~\cite{sagesser2026scanning} has
 extended it to three-dimensional scanning of an ion probe, confirming the
 experimental maturity of the platform.
 
-Despite these advances, the quantitative inverse problem --- reconstructing
-surface topography $z_s(x,y)$ from ion motional observables with a defined
-instrument transfer function, regularised inversion and an uncertainty
-budget --- has not, to the present knowledge, been formulated.  This work
+Despite these advances, to our knowledge previous trapped-ion
+surface-probing studies have not developed a metrological inverse
+framework combining an explicit topography transfer function,
+spatial-information analysis, topography--electrostatic identifiability
+and uncertainty propagation.  This work
 addresses that gap.  The proposed technique is named the \textbf{Q}uantum
 \textbf{E}lectrostatic \textbf{S}canning \textbf{P}robe
 \textbf{M}icroscopy (QESPM).  The contribution is a theoretical framework:
@@ -166,7 +167,10 @@ through the chain
 z_s \; \longrightarrow \; \Phi \; \longrightarrow \; \Delta\omega_x,
 \end{equation}
 where $\Phi$ is the electrostatic potential produced by the surface at the
-ion position.  In the presence of surface charge $\sigma(x,y)$ the
+ion position.  In the presence of an effective equivalent surface-charge
+density $\sigma(x,y)$ --- representing residual patch-potential sources
+(surface dipoles, adsorbate charge, contact potentials); the inversion
+constrains only the resulting external surface-potential field --- the
 measurement model is the joint operator
 \begin{equation}
 \boxed{\; \Delta\omega_x \;=\; \mathcal{H}[\,z_s,\,\sigma\,] \;}
@@ -191,7 +195,8 @@ $\Delta\omega_x$ & indication \\
 $h$ & influence quantity / operating parameter \\
 $E_{\rm bg}$ & calibration parameter \\
 $\omega_x$ & calibration parameter \\
-$\sigma(x,y)$ & confounding influence quantity \\
+$\sigma(x,y)$ & effective equivalent surface-charge density
+(patch potentials) \\
 charge prior & additional information for identifiability \\
 \hline
 \end{tabular}
@@ -592,25 +597,27 @@ Supplementary Sec.~S16 (Fig.~S23).
 
 Real surfaces carry both topographic and charge contributions.  Writing
 the surface potential as
-$\phi_s(x,y)=E_{\rm bg}z_s(x,y)+\phi_{\rm charge}(x,y)$, a surface charge
-distribution $\sigma(x,y)$ on a grounded perfect conductor produces, in
-Fourier space,
-$\tilde{\phi}_{\rm charge}(k)=\tilde{\sigma}(k)/2\varepsilon_0 k$,
+$\phi_s(x,y)=E_{\rm bg}z_s(x,y)+\phi_{\rm patch}(x,y)$, an effective
+equivalent surface-charge distribution $\sigma(x,y)$ representing
+residual patch-potential sources (surface dipoles, adsorbate charge or
+contact potentials) produces, in Fourier space,
+$\tilde{\phi}_{\rm patch}(k)=\tilde{\sigma}(k)/2\varepsilon_0 k$,
 propagating to the ion via the identical $e^{-kh}$ factor
 (image-charge derivation: Supplementary Sec.~S10).  The two-parameter
 forward model is therefore
 \begin{equation}
 \Delta\tilde{\omega}_x(k_x,k_y) = H_x(k_x,k_y;h)\,
-    \left[\tilde{z}_s(k_x,k_y) + \frac{\tilde{\phi}_{\rm charge}(k_x,k_y)}{E_{\rm bg}}\right],
+    \left[\tilde{z}_s(k_x,k_y) + \frac{\tilde{\phi}_{\rm patch}(k_x,k_y)}{E_{\rm bg}}\right],
 \label{eq:forward_two_param}
 \end{equation}
 and a single-height, single-channel measurement cannot separate $z_s$
-from $\phi_{\rm charge}/E_{\rm bg}$ without additional assumptions.
+from $\phi_{\rm patch}/E_{\rm bg}$ without additional assumptions.
 
 \begin{theorem}[Topography--charge identifiability limit]\label{thm:degeneracy}
 Let $\Delta\omega_x(k;h)$ be the secular frequency shift
 measured at height $h$ for a surface with topographic height $z_s(x)$ and
-surface charge distribution $\sigma(x)$.  In the linear regime, both
+an effective equivalent surface-charge distribution $\sigma(x)$.  In
+the linear regime, both
 contributions propagate to the ion via the identical factor $e^{-kh}$.
 Consequently, measurements at any finite set of heights $\{h_1, \ldots, h_n\}$
 cannot separate $z_s$ from $\sigma$: the $n \times 2$ forward matrix has
@@ -691,17 +698,22 @@ $\partial\Delta\omega_x/\partial A=H_x(k;h)/A$ for a sinusoid.  A
 frequency measurement of duration $\tau$ has fundamental precision set by
 the quantum Cram\'er--Rao bound~\cite{giovannetti2011advances,degen2017quantum},
 saturated by Ramsey interferometry on the motional state.  For coherent,
-squeezed-vacuum ($r=1.5$, $\sim13$\,dB) and NOON ($N=100$) probe states
-the quantum Fisher information per spatial mode factorises as
+quadrature-squeezed ($r=1.5$, $\sim13$\,dB) and NOON ($N=100$) probe
+states the quantum Fisher information per spatial mode factorises as
 \begin{equation}
 \mathcal{F}_A(k;h) = |H_x(k;h)|^2 \, \mathcal{F}_{\rm ion},
 \label{eq:FQ_factorisation}
 \end{equation}
 where $\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ (coherent, the classical
-limit), $e^{2r}\mathcal{F}_{\rm ion}^{\rm coh}$ (squeezed) and
-$N^2\mathcal{F}^{(1)}$ (NOON, Heisenberg limit).  At equal average quanta
-$\langle n\rangle=|\alpha|^2=N=100$ the enhancement factors are
-$\times e^{r}\approx4.5$ (squeezing) and $\times\sqrt{N}=10$ (NOON),
+limit) and $N^2\mathcal{F}^{(1)}$ (NOON, Heisenberg limit).  A
+quadrature-squeezed probe with squeezing parameter $r$ reduces the
+relevant quadrature noise variance by $e^{-2r}$; for the representative
+$r=1.5$ ($\sim13$\,dB) this improves the frequency-estimation precision
+by $e^{r}\approx4.5$ over the QPN-limited coherent value, the precise QFI
+enhancement depending on the probe state and the resource constraint
+(Supplementary Sec.~S11).  At equal average quanta
+$\langle n\rangle=N=100$ the NOON enhancement factor is
+$\times\sqrt{N}=10$,
 independent of the absolute noise floor.  These enhancements are
 \textbf{multiplicative} with the classical sensitivity set by the ITF and
 the noise floor: they amplify precision within the accessible band but do
@@ -726,12 +738,12 @@ the enhancement factors.
 \includegraphics[width=\textwidth]{fig6_qfi.pdf}
 \caption{Quantum-limited surface amplitude sensitivity.
 (a) Minimum detectable amplitude $\delta A_{\min}$ (Cram\'er--Rao bound)
-for coherent, squeezed ($r = 1.5$, $\sim 13$\,dB), and NOON states
-($N = 100$, Heisenberg limit) as a function of spatial frequency $k$.
-(b) Quantum enhancement factor $\delta A_{\rm coh}/\delta A_{\rm q}$.
-Squeezing provides a $\times 4.5$ improvement independent of $k$; the
-Heisenberg limit provides $\times\sqrt{N}=10$ improvement at $N=100$
-equal average quanta.}
+for coherent, quadrature-squeezed ($r = 1.5$, $\sim 13$\,dB), and NOON
+states ($N = 100$, Heisenberg limit) as a function of spatial frequency
+$k$.  (b) Quantum enhancement factor $\delta A_{\rm coh}/\delta A_{\rm q}$.
+Quadrature squeezing (noise-variance reduction $e^{-2r}$) provides a
+$\times 4.5$ improvement independent of $k$; the Heisenberg limit
+provides $\times\sqrt{N}=10$ improvement at $N=100$ equal average quanta.}
 \label{fig:qfi}
 \end{figure}
 
@@ -775,7 +787,10 @@ first row (marked $^{*}$) quotes the charge-limited
 Table~\ref{tab:uncertainty}, not a detection sensitivity: eliminating
 charge replaces it with the detection sensitivity of the second row --- a
 reduction by a factor of ${\sim}2.7\times10^2$ --- whereas quantum
-enhancement provides a further factor of $\sim 10$--$50$.}
+enhancement provides a further factor of $\sim 10$--$50$.  The
+$\delta A_{\min}$ values are evaluated at the uncertainty-budget
+wavenumber $k=2\times10^5$\,rad/m; the minimum QPN sensitivity at the ITF
+optimum $k_{\rm opt}=2/h$ is $7\times10^{-3}$\,nm.}
 \label{tab:regimes}
 \small
 \begin{tabular}{@{}lccccc@{}}
@@ -1047,12 +1062,12 @@ ${\sim}50$\,\textmu m, $h\approx40$\,\textmu m), the ITF predicts
 $|\Delta\omega_x|/2\pi\sim3.5$\,MHz against the observed ${\sim}10$\,kHz
 --- a factor ${\sim}350$ consistent with strong rf-electrode shielding in
 that geometry; this is an order-of-magnitude consistency check, not a
-quantitative validation.  For the S{\"a}gesser et
-al.~\cite{sagesser2026scanning} 3D scanning platform
-(${}^{40}$Ca$^+$, $E_{\rm bg}\sim10^4$\,V/m), the ITF predicts
-$|\Delta\omega_x|/2\pi\sim65$\,kHz at $h=10$\,\textmu m and a signal below
-the $5$\,Hz floor at $h=100$\,\textmu m
-(Fig.~\ref{fig:published}).
+quantitative validation.  For the experimentally demonstrated
+S{\"a}gesser et al.~\cite{sagesser2026scanning} 3D scanning
+geometry, the present model predicts the height dependence shown in
+Fig.~\ref{fig:published}(b); the plotted values use the QESPM parameter
+set stated in Sec.~\ref{sec:forward} ($|\Delta\omega_x|/2\pi\sim65$\,kHz
+at $h=10$\,\textmu m, below the $5$\,Hz floor at $h=100$\,\textmu m).
 
 \begin{figure}[htb]
 \centering
@@ -1061,7 +1076,9 @@ the $5$\,Hz floor at $h=100$\,\textmu m
 (a) Order-of-magnitude consistency check with a published ion-probe
 configuration (Maiwald et al., 2009); the absolute signal prediction
 depends on the effective background field at the ion.
-(b) Predicted $h$-dependence for S{\"a}gesser et al.~(2026) 3D scanning platform.}
+(b) Predicted $h$-dependence for the experimentally demonstrated
+S{\"a}gesser et al.~(2026) 3D scanning geometry, computed with the
+QESPM model parameters (${}^{40}$Ca$^+$).}
 \label{fig:published}
 \end{figure}
 
@@ -1071,16 +1088,17 @@ An implementation-free analytical benchmark computes the step-edge
 response in closed form from the Poisson integral: for a
 $\Delta z=200$\,nm step, the edge spread function
 $\Delta\omega_x(x)=-(eE_{\rm bg}\Delta z/2m\omega_x)(2/\pi)\,xh/(x^2+h^2)^2$
-has extrema at $x=\pm h/\sqrt{3}$ and FWHM ${\approx}0.34h$; the FFT
+has extrema at $x=\pm h/\sqrt{3}$; the FFT
 implementation agrees to relative RMS error $2.3\times10^{-3}$ (maximum
 $3.9\times10^{-3}$) over the masked edge region.  Three distinct lateral
 metrics follow from this single edge response and are used consistently
-throughout: the PSF first zero $x_0=h/\sqrt{3}$ (central-lobe scale), the
-Rayleigh-style two-point criterion $\Delta x_{\rm res}=2h/\sqrt3
-\approx1.15h$, and the 50\% MTF cutoff
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$ --- an ESF shape parameter, a
-two-point separation criterion and a spatial-frequency cutoff, each
-scaling linearly with $h$ (derivations and the 3D Gaussian-bump
+throughout: the PSF first zero $x_0=h/\sqrt{3}$ sets the central-lobe
+scale, the central-lobe zero-to-zero width is
+$2h/\sqrt3\approx1.15h$, and the 50\% MTF cutoff is
+$\lambda_{\min}^{\rm(MTF)}\approx1.51h$ --- a spatial-response width and
+a spatial-frequency cutoff, each
+scaling linearly with $h$; these metrics are not used interchangeably as
+a single definition of resolution (derivations and the 3D Gaussian-bump
 benchmark: Supplementary Sec.~S6).
 
 Robustness to model violation is quantified in Supplementary Sec.~S4: a
@@ -1152,8 +1170,8 @@ part of the sensitivity scale.}
 
 The principal limitations of QESPM are: (i) lateral resolution set by the
 50\% MTF short-wavelength cutoff
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$, with the Rayleigh-style
-two-point criterion $\approx1.15h$ as a separate two-point metric,
+$\lambda_{\min}^{\rm(MTF)}\approx1.51h$, with the central-lobe width
+$\approx1.15h$ as a separate spatial-response metric,
 restricting nanometre-scale lateral feature detection unless the ion is
 brought to sub-micrometre heights (where Casimir--Polder forces and
 heating become problematic); (ii) the UHV requirement restricts sample
@@ -1177,10 +1195,13 @@ A four-phase roadmap is specified in Supplementary Sec.~S9:
 (ITF predicts $122$\,Hz at $h=30$\,\textmu m, $2.8$\,kHz at
 $h=20$\,\textmu m, $65$\,kHz at $h=10$\,\textmu m; confirming the
 $k^2e^{-kh}$ height scaling to $\sim10\%$ would constitute the first
-experimental test of the framework, requiring no component not already
-demonstrated in the S{\"a}gesser platform); (2) 1D scanning; (3) 2D
+experimental test of the framework); (2) 1D scanning; (3) 2D
 scanning with full inversion; and (4) inter-laboratory comparison and
-submission to ISO/TC~213.  Per-phase signal levels, coherence times,
+submission to ISO/TC~213.  The roadmap builds on experimentally
+demonstrated trapped-ion positioning, cryogenic/UHV operation and
+surface-proximal sensing, while the integration of these capabilities
+into a quantitative QESPM measurement chain remains to be demonstrated.
+Per-phase signal levels, coherence times,
 dominant noise branches, risks and mitigations are specified in
 Supplementary Sec.~S9.  Sequential two-pass measurement strategies
 (coarse scan at large $h$, fine scan at small $h$, with D-optimal point
@@ -1326,10 +1347,13 @@ Three key results support this conclusion:
           improves only logarithmically --- quantum enhancement improves
           sensitivity but not spatial information.
     \item \textbf{The topography--charge identifiability limit}
-          (Theorem~\ref{thm:degeneracy}) shows that multi-height scanning
-          alone can never separate geometric from electrostatic surface
-          features --- a fundamental limitation shared by all non-contact
-          electrostatic probes.
+          (Theorem~\ref{thm:degeneracy}) shows that, within the linear
+          QESPM model, multi-height electrostatic measurements alone
+          cannot separate geometric from patch-potential surface
+          contributions.  Related topography--electrostatic cross-talk
+          occurs in other electrostatic scanning-probe techniques,
+          although those techniques can employ independent topography or
+          potential measurements to resolve it.
 \end{enumerate}
 
 The practical path forward is clear: motional squeezing ($\times4.5$)

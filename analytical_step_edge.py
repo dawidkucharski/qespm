@@ -107,12 +107,7 @@ x_peak_theory = h / np.sqrt(3)  # extrema of x h/(x^2+h^2)^2
 axes[1].axvline(x_peak_theory*1e6, color='green', ls='--', lw=1,
                 label=f'$x_{{\\rm peak}}=h/\\sqrt{{3}}$={x_peak_theory*1e6:.0f} µm')
 axes[1].axvline(-x_peak_theory*1e6, color='green', ls='--', lw=1)
-# FWHM of |dw|: half-max at u = +-0.172 -> FWHM = 0.344 h
-from scipy.optimize import brentq
-fwhm = 2 * brentq(lambda u: abs(u)/(1+u**2)**2 - 0.5*abs(1/np.sqrt(3))/(1+1/3)**2,
-                  0, 1) * h
-axes[1].axhline(dw_max/(2*np.pi*2), color='purple', ls=':', lw=1,
-                label=f'FWHM $\\approx {fwhm/h:.2f}h$')
+
 axes[1].set_xlabel('$x$ [µm]')
 axes[1].set_ylabel('$\\Delta\\omega_x/2\\pi$ [Hz]')
 axes[1].set_title(f'(b) Edge spread function (ESF)')
@@ -148,9 +143,6 @@ plt.close()
 print('Saved: figV8_step_edge.pdf')
 
 # Print key results
-from scipy.optimize import brentq
-fwhm = 2 * brentq(lambda u: abs(u)/(1+u**2)**2 - 0.5*abs(1/np.sqrt(3))/(1+1/3)**2,
-                  0, 1) * h
 mask_away = (np.abs(x_fft) > h / np.sqrt(3)) & (np.abs(x_fft) < 3 * h)
 rms_away = np.sqrt(np.mean((np.abs(dw_analytic[mask_away] - dw_numerical[mask_away])
                              / (np.abs(dw_analytic[mask_away]) + 1e-30))**2))
@@ -160,11 +152,9 @@ print(f"\nStep-edge analytical benchmark:")
 print(f"  Step height: {Delta_z*1e9:.0f} nm")
 print(f"  |dw|_max = {np.max(np.abs(dw_analytic))/(2*np.pi):.1f} Hz")
 print(f"  Peak at x = ±h/√3 = ±{h/np.sqrt(3)*1e6:.0f} µm")
-print(f"  FWHM ≈ {fwhm/h:.2f}h = {fwhm*1e6:.0f} µm")
 print(f"  Relative RMS error (h/√3 < |x| < 3h): {rms_away:.2e}")
 print(f"  Relative max error (h/√3 < |x| < 3h): {max_away:.2e}")
 
 # Also generate a figure showing the convergence of ITF to the exact solution
 # for different grid resolutions
-print("\nEdge spread function: extrema at ±h/√3, FWHM ≈ 0.34h: "
-      "lateral resolution is fundamentally h-limited.")
+print("\nEdge spread function: extrema at ±h/√3; lateral resolution is fundamentally h-limited.")
