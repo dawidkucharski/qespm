@@ -3,7 +3,7 @@
 Dawid Kucharski\
 Poznan University of Technology\
 Poznań, Poland\
-dawid.kucharski@put.poznan.pl · 23 September 2026
+dawid.kucharski@put.poznan.pl · 24 September 2026
 
 ---
 
@@ -29,6 +29,8 @@ I am pleased to submit the manuscript entitled **"Quantum Limits of Surface Metr
 3. Per Christian Hansen, Technical University of Denmark — discrete inverse problems and regularisation.
 4. Otmar Scherzer, University of Vienna — regularisation theory for ill-posed problems.
 5. John Bollinger, NIST — quantum-enhanced sensing with trapped-ion crystals.
+6. Richard Leach, University of Nottingham — areal surface metrology and ISO 25178 standardisation.
+7. Han Haitjema, KU Leuven — surface texture measurement, calibration and ISO standardisation.
 
 I would be glad to address any questions and thank you for considering this work for *Surface Topography: Metrology and Properties*.
 

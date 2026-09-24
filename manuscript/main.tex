@@ -91,10 +91,14 @@ uncertainty
 % ===================================================================
 
 Surface metrology underpins manufacturing, materials science, and device
-fabrication.  The dominant techniques --- atomic force microscopy (AFM),
+fabrication~\cite{leach2011optical,townsend2016surface}.  The dominant
+techniques --- atomic force microscopy (AFM),
 scanning tunnelling microscopy (STM), optical profilometry, and scanning
 electron microscopy (SEM) --- each occupy a well-defined niche in the
-resolution--environment parameter space~\cite{iso25178}.  A persistent and
+resolution--environment parameter space~\cite{iso25178}; QESPM is
+proposed as an additional non-contact measurement principle within this
+instrument taxonomy, complementing rather than replacing established
+methods.  A persistent and
 growing need exists, however, for non-contact surface characterisation at
 micrometre standoff in ultra-high vacuum (UHV) and at cryogenic
 temperatures, driven by the quantum-device community: superconducting
@@ -221,7 +225,12 @@ plane).  The lateral translation leaves the local forward model unchanged
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figS2_scan.pdf}
-\caption{Measurement geometry.  The ion is held stationary in a planar
+\caption{Measurement geometry.  The measurand is the surface height
+$z_s(x,y)$ of the sample; the indication is the secular frequency shift
+$\Delta\omega_x(x,y)$ of the trapped ion, related to $z_s$ by the
+instrument transfer function $H_x(k;h)\propto k_x^2e^{-kh}$
+(Sec.~\ref{sec:forward}).
+The ion is held stationary in a planar
 trap while the sample is translated laterally beneath it; the secular
 frequency shift $\Delta\omega_x(x,y)$ is recorded at each position and
 the ion--surface separation $h$ is maintained by the trap-electrode
@@ -1218,6 +1227,11 @@ exhaustive-scan time (analysis: Supplementary Sec.~S14).
 
 \subsection{Positioning relative to existing techniques}
 
+QESPM is not proposed as a replacement for AFM, optical profilometry or
+scanning-probe methods: it is complementary, occupying the
+micrometre-standoff, UHV/cryogenic corner of the
+resolution--environment parameter space where established techniques
+either cannot operate or lose their contact/optical advantage.
 Table~\ref{tab:comparison} compares QESPM with established surface
 metrology methods and quantum sensing platforms.
 
@@ -1324,11 +1338,17 @@ experimental demonstration.
 \label{sec:conclusions}
 % ===================================================================
 
-This paper has addressed a fundamental question in quantum surface
+This paper delivers a complete, uncertainty-budgeted measurement
+framework for non-contact surface metrology with a single trapped ion: a
+defined measurand, an explicit instrument transfer function
+$H_x(k;h)\propto k_x^2 e^{-kh}$, regularised inversion, an SI-traceable
+GUM-based uncertainty budget, five quantitative falsifiable predictions,
+and a costed four-phase roadmap whose first phase runs on existing
+trapped-ion hardware.  Within this framework the paper addresses a
+fundamental question in quantum surface
 metrology: how much spatial information about a conducting surface can be
-extracted by a single quantum probe?  The answer, established through the
-complete theoretical framework developed above, is that the instrument
-transfer function $H_x(k;h)\propto k_x^2 e^{-kh}$ imposes an irreducible
+extracted by a single quantum probe?  The answer is that the transfer
+function imposes an irreducible
 spatial-information cutoff at $\lambda\sim h$ --- and that no amount of
 quantum enhancement can recover spatial frequencies already attenuated by
 the $e^{-kh}$ physical filter.
