@@ -351,9 +351,11 @@ k_{\rm opt} = \frac{2}{h}, \qquad
     \lambda_{\rm opt} = \pi h,
 \label{eq:scaling_kopt}
 \end{equation}
-with peak value $f_{\rm max}=4Ce^{-2}/h^2$.  The 50\% MTF cutoffs, from
+with peak value $f_{\rm max}=4Ce^{-2}/h^2$.  The normalised ITF
+$\mathrm{NITF}(k)=|H_x(k)|/|H_x|_{\max}$ is a band-pass function with
+$\mathrm{NITF}(0)=0$; its 50\%-of-peak cutoffs, from
 $k^2e^{-kh}=2e^{-2}/h^2$, are
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$ (short-wavelength) with the
+$\lambda_{\min}^{\rm(ITF)}\approx1.51h$ (short-wavelength) with the
 long-wavelength cutoff set in practice by the scan range; the passband
 quality factor is $Q=2/(x_{\rm hi}-x_{\rm lo})=0.589$ with
 $x_{\rm lo}=0.7613$, $x_{\rm hi}=4.1559$ --- a deliberately broad
@@ -373,7 +375,7 @@ frequency for ion heights $h=5$--$100$\,\textmu m.
 $h = 5$--$100\,\mu\textup{m}$.  The band-pass character arises from the product of
 a high-pass factor $k^2$ and a low-pass factor $e^{-kh}$.  The peak response
 occurs at $k_{\rm opt} = 2/h$ ($\lambda_{\rm opt}=\pi h$).  For $h = 40\,\mu\textup{m}$,
-the 50\% MTF short-wavelength cutoff is $\lambda_{\min}\approx 60\,\mu\textup{m}$;
+the 50\%-of-peak ITF short-wavelength cutoff is $\lambda_{\min}\approx 60\,\mu\textup{m}$;
 the accessible band extends to the scan-range limit of $64\,\mu\textup{m}$.}
 \label{fig:itf}
 \end{figure}
@@ -546,7 +548,7 @@ $10^{-3}\sigma_1$ (a conventional but non-unique threshold):
 \begin{center}
 \begin{tabular}{@{}c|c|c@{}}
 \hline
-$h$ [\textmu m] & Effective rank $r_{\rm eff}$ & Shannon information $I$ [nats] \\
+$h$ [\textmu m] & Effective rank $r_{\rm eff}$ & Spectral information index $I$ [nats] \\
 \hline
 5   & 50 & 425.4 \\
 10  & 24 & 208.4 \\
@@ -558,13 +560,14 @@ $h$ [\textmu m] & Effective rank $r_{\rm eff}$ & Shannon information $I$ [nats] 
 \par\smallskip{\footnotesize $1\,\textup{nat} = \log_2 e\,\textup{bits}$}
 \end{center}
 
-The effective rank scales as $r_{\rm eff}\propto1/h$, and the Shannon
-information content
-$I(h)=\tfrac12\sum_i\log(1+\sigma_i^2/\lambda^2)$, computed with the
-discrepancy-principle $\lambda$, follows $I(h)\propto h^{-1.0}$ ---
+The effective rank scales as $r_{\rm eff}\propto1/h$, and the spectral
+information index
+$I(h)=\tfrac12\sum_i\log(1+\sigma_i^2/\lambda^2)$, a noise-weighted modal
+information index defined with the
+discrepancy-principle regularisation parameter $\lambda$, follows $I(h)\propto h^{-1.0}$ ---
 independent diagnostics of the same information loss.  At
 $h=40$\,\textmu m only six Fourier-mode coefficients lie above the rank
-threshold; the information content drops by a factor of $\approx15$ from
+threshold; the index drops by a factor of $\approx15$ from
 $h=5$\,\textmu m to $h=80$\,\textmu m, directly reflecting the $e^{-kh}$
 low-pass filtering.  This quantifies the fundamental effective-rank
 (mode-count) limit of the ion probe: reducing $h$ shifts the entire
@@ -581,7 +584,7 @@ $\mathbf{H}$ (1D cross-section $k_y=0$, $N=128$, $L=64$\,\textmu m).
 (a) Normalised singular value spectrum for ion heights
 $h = 5$--$80$\,\textmu m.  The effective rank (singular values above
 $10^{-3}\sigma_1$) drops from 50 at $h = 5$\,\textmu m to 4 at
-$h = 80$\,\textmu m.  (b) Shannon information content $I(h)$ and effective
+$h = 80$\,\textmu m.  (b) Spectral information index $I(h)$ and effective
 rank as a function of ion height, showing $I(h) \propto h^{-1.0}$ scaling.}
 \label{fig:svd}
 \end{figure}
@@ -625,13 +628,19 @@ from $\phi_{\rm patch}/E_{\rm bg}$ without additional assumptions.
 \begin{theorem}[Topography--charge identifiability limit]\label{thm:degeneracy}
 Let $\Delta\omega_x(k;h)$ be the secular frequency shift
 measured at height $h$ for a surface with topographic height $z_s(x)$ and
-an effective equivalent surface-charge distribution $\sigma(x)$.  In
+an effective equivalent surface-charge distribution $\sigma(x)$, under a
+height-independent, calibrated background field $E_{\rm bg}$.  In
 the linear regime, both
 contributions propagate to the ion via the identical factor $e^{-kh}$.
 Consequently, measurements at any finite set of heights $\{h_1, \ldots, h_n\}$
 cannot separate $z_s$ from $\sigma$: the $n \times 2$ forward matrix has
 rank~1, and its condition number is formally infinite.
 \end{theorem}
+
+If the controlled variation of the background field is independently
+calibrated and sufficiently non-degenerate, a height-dependent
+$E_{\rm bg}(h)$ would provide an additional identifiability channel;
+that possibility lies outside the present fixed-$E_{\rm bg}$ theorem.
 
 \textit{Proof sketch.}  The forward model at height $h_j$ is
 $\Delta\tilde{\omega}_x(k;h_j)=Ck^2e^{-kh_j}[\tilde{z}_s+\tilde{\sigma}/2\varepsilon_0 k E_{\rm bg}]$,
@@ -680,8 +689,11 @@ probes (Kelvin probe, EFM).
 \subsection{Stability and the broadband roughness response}
 
 The surface-induced force gradient must remain below the trapping
-potential: the stability criterion is $|\Delta\omega_x|<\omega_x/2$, with
-critical amplitude growing rapidly with height
+potential: the conservative operating criterion
+$|\Delta\omega_x|<\omega_x/2$ is imposed to remain well within the
+perturbative and stable regime (the actual Mathieu stability boundary is
+computed in Supplementary Sec.~S12), with the corresponding critical
+amplitude growing rapidly with height
 ($A_{\rm crit}(h)\propto e^{+2\pi h/\lambda}$ at fixed $\lambda$); the
 linear ITF applies over the nominal regime
 $h\approx5$--$200$\,\textmu m, and at the nominal point
@@ -706,53 +718,51 @@ the surface amplitude $A$ is encoded in $\Delta\omega_x$ through the ITF,
 $\partial\Delta\omega_x/\partial A=H_x(k;h)/A$ for a sinusoid.  A
 frequency measurement of duration $\tau$ has fundamental precision set by
 the quantum Cram\'er--Rao bound~\cite{giovannetti2011advances,degen2017quantum},
-saturated by Ramsey interferometry on the motional state.  For coherent,
-quadrature-squeezed ($r=1.5$, $\sim13$\,dB) and NOON ($N=100$) probe
-states the quantum Fisher information per spatial mode factorises as
+saturated by Ramsey interferometry on the motional state.  For a
+coherent-state probe the quantum Fisher information per spatial mode
+factorises as
 \begin{equation}
 \mathcal{F}_A(k;h) = |H_x(k;h)|^2 \, \mathcal{F}_{\rm ion},
 \label{eq:FQ_factorisation}
 \end{equation}
-where $\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ (coherent, the classical
-limit) and $N^2\mathcal{F}^{(1)}$ (NOON, Heisenberg limit).  A
-quadrature-squeezed probe with squeezing parameter $r$ reduces the
-relevant quadrature noise variance by $e^{-2r}$; for the representative
-$r=1.5$ ($\sim13$\,dB) this improves the frequency-estimation precision
-by $e^{r}\approx4.5$ over the QPN-limited coherent value, the precise QFI
-enhancement depending on the probe state and the resource constraint
-(Supplementary Sec.~S11).  At equal average quanta
-$\langle n\rangle=N=100$ the NOON enhancement factor is
-$\times\sqrt{N}=10$,
-independent of the absolute noise floor.  These enhancements are
-\textbf{multiplicative} with the classical sensitivity set by the ITF and
-the noise floor: they amplify precision within the accessible band but do
-not extend the band itself.  This is a central result of the paper:
+where $\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ is the classical
+limit.  Because the factorisation holds for any single-mode probe state,
+the transfer function and the probe state enter multiplicatively:
+quantum-state engineering can improve the precision with which an
+already transmitted signal is estimated, but it does not alter the
+spatial transfer function.  This is a central result of the paper:
 \textbf{quantum enhancement can maximise the precision with which an
-available signal is measured, but it cannot recover spatial information
-that has already been exponentially attenuated by the physical transfer
-function.}  At the QPN limit
+available signal is measured, but it cannot recover spatial
+information that has already been exponentially attenuated by the
+physical transfer function.}  Phase-sensitive motional squeezing is
+expected to improve frequency-estimation precision further; the
+quantitative gain depends on the chosen squeezed state, the resource
+constraint and the readout strategy, and is therefore not asserted as a
+universal enhancement factor here (discussion: Supplementary
+Sec.~S11).  At the QPN limit
 ($\delta\omega_{\rm QPN}/2\pi\approx0.7$\,Hz), the coherent-state
 sensitivity reaches $\delta A_{\min}^{\rm coh}\sim7\times10^{-3}$\,nm at
-$k_{\rm opt}=2/h$, improving by ${\sim}4.5$ (squeezed) and ${\sim}10$
-(NOON); under the conservative $5$\,Hz floor the values are ${\sim}7\times$
-larger.  Under dephasing, NOON states lose their advantage when
-$N\gamma$ approaches $1/\tau_{\rm opt}$; the coherent-state protocol with
-$\tau\sim T_2/2$ is the robust near-term target (multiparameter QCRB,
-optimal measurement and resource allocation: Supplementary Sec.~S11).
+$k_{\rm opt}=2/h$; under the conservative $5$\,Hz floor the values are
+${\sim}7\times$ larger.  The coherent-state protocol with
+$\tau\sim T_2/2$ is the robust near-term target (multiparameter QCRB and
+optimal measurement: Supplementary Sec.~S11).
 Figure~\ref{fig:qfi} shows the quantum-limited amplitude sensitivity and
-the enhancement factors.
+the factorisation structure.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{fig6_qfi.pdf}
 \caption{Quantum-limited surface amplitude sensitivity.
 (a) Minimum detectable amplitude $\delta A_{\min}$ (Cram\'er--Rao bound)
-for coherent, quadrature-squeezed ($r = 1.5$, $\sim 13$\,dB), and NOON
-states ($N = 100$, Heisenberg limit) as a function of spatial frequency
-$k$.  (b) Quantum enhancement factor $\delta A_{\rm coh}/\delta A_{\rm q}$.
-Quadrature squeezing (noise-variance reduction $e^{-2r}$) provides a
-$\times 4.5$ improvement independent of $k$; the Heisenberg limit
-provides $\times\sqrt{N}=10$ improvement at $N=100$ equal average quanta.}
+for a coherent-state probe as a function of spatial frequency $k$, with
+an illustrative phase-quadrature-squeezed model curve ($r=1.5$); the
+quantitative squeezing gain depends on the state, resource constraint
+and readout strategy.
+(b) Quantum enhancement factor $\delta A_{\rm coh}/\delta A_{\rm q}$ for
+the squeezed model.  The factorisation
+$\mathcal{F}_A=|H_x|^2\mathcal{F}_{\rm ion}$
+(Eq.~\ref{eq:FQ_factorisation}) shows that no probe-state enhancement
+can recover spatial modes already attenuated by $e^{-kh}$.}
 \label{fig:qfi}
 \end{figure}
 
@@ -766,37 +776,36 @@ quantum enhancement;
 combined standard uncertainty of a reconstructed height value, dominated
 by systematic effects (surface charge) that quantum enhancement cannot
 reduce; and
-(iii)~\textbf{lateral spatial resolution} --- quantified by the 50\% MTF
-short-wavelength cutoff $\lambda_{\min}^{\rm(MTF)}\approx1.51h$, governed
+(iii)~\textbf{lateral spatial resolution} --- quantified by the 50\%-of-peak
+ITF short-wavelength cutoff $\lambda_{\min}^{\rm(ITF)}\approx1.51h$, governed
 by the $e^{-kh}$ decay of the ITF.  Confusing these overstates the
 instrument: the picometre-scale detection figures are sensitivity figures,
 while the $319$\,nm budget below is an identifiability figure.
 
-Table~\ref{tab:regimes} compares the four measurement regimes at the
-nominal ion height, showing that quantum enhancement improves
-$\delta A_{\min}$ linearly with $\delta\omega$, while the effective rank
-and the geometric MTF cutoff are \textbf{identical} across all charge-free
-regimes and the noise-limited cutoff improves only logarithmically:
-quantum enhancement buys sensitivity, not spatial information.  At the
-same time, \textbf{charge elimination provides a ${\sim}2.7\times10^2\times$
-improvement} --- far larger than any quantum enhancement --- establishing
-the central practical conclusion that the dominant bottleneck is
-electrostatic identifiability, not measurement precision.
+Table~\ref{tab:regimes} compares the three measurement regimes at the
+nominal ion height.  The effective rank and the 50\%-of-peak ITF cutoff
+are \textbf{identical} across the charge-free regimes, and the
+noise-limited cutoff improves only logarithmically: improving the probe
+precision buys sensitivity, not spatial information.  The charge-present
+case is dominated by the prior-induced reconstruction uncertainty
+$u_c(z)=319$\,nm, whereas the charge-free case is limited by frequency
+sensitivity ($1.2$\,nm); these are different metrological quantities and
+are not compared as a numerical improvement factor.  The central
+practical conclusion is that the dominant bottleneck is electrostatic
+identifiability, not measurement precision.
 
 \begin{table}[htb]
 \centering
-\caption{Four-regime comparison: detection sensitivity, reconstruction
-uncertainty, and spatial resolution.  Quantum enhancement improves
-$\delta A_{\min}$ linearly with $\delta\omega$, while $r_{\rm eff}$ and
-the geometric MTF cutoff $\lambda_{\min}^{\rm(MTF)}=1.51h$ are governed
+\caption{Three-regime comparison: detection sensitivity, reconstruction
+uncertainty, and spatial resolution.  $r_{\rm eff}$ and
+the 50\%-of-peak ITF cutoff $\lambda_{\min}^{\rm(ITF)}=1.51h$ are governed
 solely by the $e^{-kh}$ physical transfer function and the noise-limited
 cutoff improves only logarithmically.  The
-first row (marked $^{*}$) quotes the charge-limited
+first row (marked $^{*}$) quotes the charge-prior-limited
 \emph{reconstruction uncertainty} $u_c(z)=319$\,nm of
-Table~\ref{tab:uncertainty}, not a detection sensitivity: eliminating
-charge replaces it with the detection sensitivity of the second row --- a
-reduction by a factor of ${\sim}2.7\times10^2$ --- whereas quantum
-enhancement provides a further factor of $\sim 10$--$50$.  The
+Table~\ref{tab:uncertainty}, not a detection sensitivity; the
+charge-free rows quote detection sensitivities and are not numerically
+comparable to $u_c(z)$.  The
 $\delta A_{\min}$ values are evaluated at the uncertainty-budget
 wavenumber $k=2\times10^5$\,rad/m; the minimum QPN sensitivity at the ITF
 optimum $k_{\rm opt}=2/h$ is $7\times10^{-3}$\,nm.}
@@ -810,8 +819,6 @@ Regime & $\delta\omega/2\pi$ & Charge & $\delta A_{\min}$ [nm] & noise-lim.\ $\l
 Technical, charge-present            & 5\,Hz   & present & 320$^{*}$  & 18.7 & 6 \\
 Technical, charge-free               & 5\,Hz   & absent  & 1.2  & 18.7 & 6 \\
 QPN (coherent), charge-free          & 0.7\,Hz & absent  & 0.17 & 16.0 & 6 \\
-Squeezed ($\times 4.5$), charge-free & 0.16\,Hz& absent  & 0.04 & 14.4 & 6 \\
-Heisenberg ($\times 10$), charge-free& 0.07\,Hz& absent  & 0.02 & 13.7 & 6 \\
 \hline
 \end{tabular}
 \end{table}
@@ -895,7 +902,7 @@ Guide to the Expression of Uncertainty in Measurement (GUM).
          $u(x_i)$: standard uncertainty of input quantity;
          $c_i = |\partial z/\partial x_i|$: absolute sensitivity coefficient;
          $u_i(z)$: uncertainty contribution to $z$.
-         $u_c(z) = 319$\,nm; $U = 638$\,nm ($k = 2$, 95\% confidence).}
+         $u_c(z) = 319$\,nm; $U = 638$\,nm ($k = 2$, approximately 95\% coverage probability).}
 \label{tab:uncertainty}
 \small
 \setlength{\tabcolsep}{4pt}
@@ -1000,7 +1007,7 @@ simple sinusoids for which the inversion is analytically exact --- the
 Tikhonov-regularised reconstruction at $h=40$\,\textmu m achieves
 $r=0.981$ for the resolvable features (grating and plateau,
 $\lambda>\lambda_{\min}$), with the residual dominated by the fine
-grating ($\lambda=4$\,\textmu m) below the 50\% MTF cutoff
+grating ($\lambda=4$\,\textmu m) below the 50\%-of-peak ITF cutoff
 $\lambda_{\min}\approx60$\,\textmu m (Fig.~\ref{fig:inversion}).  This
 self-consistency check confirms that the FFT forward/inverse chain is
 numerically correct; it does not constitute an independent validation.
@@ -1016,7 +1023,7 @@ height for the topography-only case at $h = 40$\,\textmu m.
 (d) Cross-section through the centre.  The Pearson correlation is $r = 0.981$;
 the dominant spatial features --- Gaussian plateau and linear ramp --- are
 faithfully recovered.  The residual is dominated by the fine grating
-(period $4$\,\textmu m), which lies below the 50\% modulation-transfer-function (MTF) short-wavelength
+(period $4$\,\textmu m), which lies below the 50\%-of-peak normalised instrument-transfer-function (ITF) short-wavelength
 cutoff $\lambda_{\min} \approx 60$\,\textmu m and is not resolvable.}
 \label{fig:inversion}
 \end{figure}
@@ -1104,8 +1111,8 @@ $3.9\times10^{-3}$) over the masked edge region.  Three distinct lateral
 metrics follow from this single edge response and are used consistently
 throughout: the PSF first zero $x_0=h/\sqrt{3}$ sets the central-lobe
 scale, the central-lobe zero-to-zero width is
-$2h/\sqrt3\approx1.15h$, and the 50\% MTF cutoff is
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$ --- a spatial-response width and
+$2h/\sqrt3\approx1.15h$, and the 50\%-of-peak ITF cutoff is
+$\lambda_{\min}^{\rm(ITF)}\approx1.51h$ --- a spatial-response width and
 a spatial-frequency cutoff, each
 scaling linearly with $h$; these metrics are not used interchangeably as
 a single definition of resolution (derivations and the 3D Gaussian-bump
@@ -1136,8 +1143,8 @@ distributions (details: Supplementary Sec.~S5).
 
 The QESPM operating envelope is defined in the three-dimensional space
 $(h,\lambda,A)$ of ion height, surface wavelength and amplitude, bounded
-by (i) the 50\% MTF short-wavelength cutoff
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$; (ii) the FOV-limited
+by (i) the 50\%-of-peak ITF short-wavelength cutoff
+$\lambda_{\min}^{\rm(ITF)}\approx1.51h$; (ii) the FOV-limited
 long-wavelength cutoff $\lambda_{\max}=L_{\rm scan}$; (iii) the minimum
 detectable amplitude $A_{\min}(k,h)$ of Eq.~(\ref{eq:scaling_amin}); and
 (iv) the stability boundary $A_{\rm crit}(h)$ (Supplementary Sec.~S12).
@@ -1149,9 +1156,9 @@ detection sensitivity (picometre with motional squeezing at the QPN
 limit) over the modelled micrometre-scale standoff range explored in
 this study, corresponding to a projected detection threshold below the
 representative values shown for AFM and STM, while operating natively in
-the UHV environment of the ion trap; the realistic topographic
+the UHV environment of the ion trap; the charge-prior-limited topographic
 reconstruction
-uncertainty, by contrast, is charge-limited at ${\sim}319$\,nm
+uncertainty, by contrast, reaches ${\sim}319$\,nm
 (Table~\ref{tab:uncertainty}).  To the author's knowledge, no experimentally
 demonstrated surface-metrology method currently combines micrometre-standoff
 non-contact operation, cryogenic UHV compatibility and projected
@@ -1179,8 +1186,8 @@ part of the sensitivity scale.}
 \subsection{Limitations}
 
 The principal limitations of QESPM are: (i) lateral resolution set by the
-50\% MTF short-wavelength cutoff
-$\lambda_{\min}^{\rm(MTF)}\approx1.51h$, with the central-lobe width
+50\%-of-peak ITF short-wavelength cutoff
+$\lambda_{\min}^{\rm(ITF)}\approx1.51h$, with the central-lobe width
 $\approx1.15h$ as a separate spatial-response metric,
 restricting nanometre-scale lateral feature detection unless the ion is
 brought to sub-micrometre heights (where Casimir--Polder forces and
@@ -1241,7 +1248,7 @@ metrology methods and quantum sensing platforms.
 \caption{Comparison of surface metrology methods and quantum sensing
 platforms.  For QESPM the quoted vertical value is the
 quantum-projection-noise detection sensitivity at $k_{\rm opt}=2/h$
-in the charge-free regime; the realistic combined standard uncertainty is
+in the charge-free regime; the charge-prior-limited combined standard uncertainty is
 $319$\,nm (Table~\ref{tab:uncertainty}), reflecting the identifiability
 limitation rather than the sensor sensitivity.  Non-QESPM entries are
 order-of-magnitude values representative of commercial instruments and
@@ -1258,7 +1265,7 @@ STM & electronic, topographic & tunnelling & \AA & ${\sim}0.1$\,nm & ${\sim}0.01
 Optical & geometry & optical & mm & ${\sim}0.5$\,\textmu m & ${\sim}1$\,nm & broad & dif\-frac\-tion-limited \\
 SEM & electron contrast & electron beam & nm & ${\sim}1$\,nm & ${\sim}1$\,nm & vacuum & beam--\allowbreak sample interaction \\
 KPFM/EFM & potential + topography & electrostatic & nm--\allowbreak\textmu m & nm--\allowbreak\textmu m & ${\sim}$mV (potential) & broad & potential--\allowbreak topography cross-\allowbreak talk \\
-\textbf{QESPM} & electrostatic geometry & electrostatic & $1$--$100$\,\textmu m \allowbreak(modelled) & ${\sim}1.5h$ (MTF) & ${\sim}10^{-2}$\,nm (det.);\newline $319$\,nm (charge-limited) & UHV--\allowbreak cryo native & topo\-graphy--\allowbreak charge identi\-fiability \\
+\textbf{QESPM} & electrostatic geometry & electrostatic & $1$--$100$\,\textmu m \allowbreak(modelled) & ${\sim}1.5h$ (ITF) & ${\sim}10^{-2}$\,nm (det.);\newline $319$\,nm (charge-limited) & UHV--\allowbreak cryo native & topo\-graphy--\allowbreak charge identi\-fiability \\
 \hline
 \end{tabular}
 \end{table}
@@ -1287,7 +1294,14 @@ and electrostatic force microscopy (EFM)~\cite{serry2000efm} suffer the
 same cross-talk, conventionally resolved by two-pass scanning (mechanical
 topography in the first pass, potential measurement at a lift height in
 the second); the purely non-contact ion probe precludes mechanical
-contact, demanding a different strategy.  The relationship is stated
+contact, demanding a different strategy.  Previous trapped-ion work has
+demonstrated inverse localisation of \emph{parameterised} stray-charge
+distributions from secular-frequency shifts measured at multiple ion
+positions~\cite{jung2023stray}.  The present identifiability result
+addresses a different inverse problem: simultaneous recovery of an
+unconstrained surface-topography field and an effective electrostatic
+surface-potential field entering through the same linear boundary
+potential.  The relationship is stated
 precisely.  \emph{Similarity:} all three techniques sense electrostatic
 surface information and face topography--potential cross-talk.
 \emph{Fundamental difference:} QESPM is a stationary quantum probe with
@@ -1362,11 +1376,11 @@ Three key results support this conclusion:
           transfer limit: as $kh\to\infty$, $\mathcal{F}_A\to0$ regardless
           of $\mathcal{F}_{\rm ion}$.
     \item \textbf{The regime comparison} (Table~\ref{tab:regimes})
-          demonstrates that the effective rank and the geometric MTF
-          cutoff are identical across classical, QPN, squeezed and
-          Heisenberg-limited measurement, while the noise-limited cutoff
-          improves only logarithmically --- quantum enhancement improves
-          sensitivity but not spatial information.
+          demonstrates that the effective rank and the 50\%-of-peak ITF
+          cutoff are independent of the probe-noise level, while the
+          noise-limited cutoff improves only logarithmically --- improving
+          probe precision increases sensitivity but not spatial
+          information.
     \item \textbf{The topography--charge identifiability limit}
           (Theorem~\ref{thm:degeneracy}) shows that, within the linear
           QESPM model, multi-height electrostatic measurements alone
@@ -1385,12 +1399,13 @@ reconstruction uncertainty, but the resulting performance remains to be
 established experimentally.
 
 Beyond its immediate application as a surface metrology tool, QESPM
-establishes a broader principle: \textbf{quantum sensors are ultimately
-limited not by measurement noise but by the physical transfer function
-that couples the object of interest to the quantum probe.}  This principle
-applies equally to NV-centre magnetometry, trapped-ion electrometry, and
-emerging quantum imaging platforms, and merits systematic investigation
-across the quantum sensing landscape.
+illustrates a broader principle: \textbf{once a physical transfer
+function suppresses a spatial mode, improving probe-state precision
+cannot recover that lost information.}  This principle applies to any
+sensing modality whose probe is coupled to the object of interest
+through a spatial transfer function --- including NV-centre magnetometry,
+trapped-ion electrometry and emerging quantum imaging platforms --- and
+merits systematic investigation across the quantum sensing landscape.
 
 % ===================================================================
 \section*{Data Availability}

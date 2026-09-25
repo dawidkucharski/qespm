@@ -63,8 +63,7 @@ plt.close()
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(10.4, 4.4))
 k = np.logspace(-2, 0, 300) * 1e6      # 0.01 .. 1 rad/um (h=40 um passband)
 floors = [('coherent (QPN, 0.7 Hz)', 2 * np.pi * 0.7, '#1f77b4'),
-          ('squeezed ($r=1.5$, $\\times 4.5$)', 2 * np.pi * 0.7 / 4.5, '#d62728'),
-          ('NOON ($N=100$, $\\times 10$)', 2 * np.pi * 0.7 / 10, '#2ca02c')]
+          ('squeezed ($r=1.5$, quadrature model)', 2 * np.pi * 0.7 / 4.5, '#d62728')]
 for lab, dw, col in floors:
     a1.plot(k / 1e6, amin(k, dw) * 1e9, lw=2.0, color=col, label=lab)
 k_opt = 2 / H_NOM / 1e6               # 2/h = 0.05 rad/um
@@ -82,9 +81,7 @@ a1.legend(fontsize=8)
 a1.grid(True, which='both', alpha=0.25)
 
 a2.plot(k / 1e6, np.full_like(k, 4.5), lw=2.0, color='#d62728',
-        label='squeezing ($\\times 4.5$)')
-a2.plot(k / 1e6, np.full_like(k, 10.0), lw=2.0, color='#2ca02c',
-        label='Heisenberg ($\\times\\sqrt{N}=10$)')
+        label='squeezed quadrature model ($\\times 4.5$)')
 a2.set_xscale('log')
 a2.set_xlabel('spatial frequency $k$ [rad/$\\mu$m]', fontsize=10)
 a2.set_ylabel('$\\delta A_{\\rm coh}/\\delta A_{\\rm q}$', fontsize=10)
@@ -337,7 +334,9 @@ g1.text(0.5, 0.98,
         'not on the $(z_s,\\sigma)$ mixture: the two-height\n'
         'forward matrix is rank 1. Resolution strategies:\n'
         'in-situ charge elimination, a known reference scan,\n'
-        'or an independent material-contrast channel (heating rate).',
+        'or a heating-rate channel --- whether the latter\n'
+        'restores practical joint identifiability remains\n'
+        'an open question.',
         transform=g1.transAxes, fontsize=9, va='top', ha='center',
         bbox=dict(boxstyle='round', facecolor='#fff9c4', alpha=0.92))
 g1.grid(True, which='both', alpha=0.25)

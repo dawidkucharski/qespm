@@ -133,8 +133,12 @@ identically as $e^{-kh}$.  The two-height forward matrix is therefore
 rank~1, and \textbf{no finite number of heights}, without independent
 information, can separate the two contributions (Theorem in the main
 text).  Resolution strategies are indicated:
-in-situ charge elimination, a known reference scan, or an independent
-material-contrast channel such as the motional heating rate.}
+in-situ charge elimination or a known reference scan.  The motional
+heating rate provides an independent observable sensitive to
+surface-field fluctuations and may therefore supply complementary
+information; whether this suffices for practical joint
+topography--patch-potential recovery requires a dedicated coupled
+inverse analysis.}
 \label{fig:S_degeneracy}
 \end{figure}
 
@@ -553,8 +557,8 @@ validity conditions of the model in the $(\lambda,h)$ plane.
 \caption{Domain of validity of the quantum electrostatic scanning probe
 microscopy (QESPM) forward model in the plane of
 surface feature wavelength $\lambda$ and ion--surface separation $h$.
-The resolvable band is bounded from below by the modulation-transfer-function
-(MTF) cutoff
+The resolvable band is bounded from below by the 50\%-of-peak
+normalised-ITF (ITF) cutoff
 $\lambda_{\min}=1.51h$ and from above by the field of view; the
 large-slope breakdown ($kA\gtrsim0.45$ for the $A=100$\,nm amplitude
 shown), the heating-limited regime at small $h$, the Casimir--Polder
@@ -719,7 +723,7 @@ decay $\mathrm{PSF}\sim 3x^{-4}$ --- the direct electrostatic analogue of
 an optical PSF.  These quantities are distinct metrics, not competing
 definitions of a single resolution: the PSF first zero
 $x_0 = h/\sqrt{3}$ sets the central-lobe scale, the central-lobe
-zero-to-zero width gives $2h/\sqrt3\approx1.15h$, and the $50\%$ MTF
+zero-to-zero width gives $2h/\sqrt3\approx1.15h$, and the $50\%$-of-peak ITF
 cutoff is $\lambda_{\min}\approx1.51h$; each is reported for the role it
 plays in the main text.  Eq.~(\ref{eq:psf}) was verified against numerical
 differentiation of the ESF to $4\times10^{-5}$ relative accuracy.
@@ -919,7 +923,7 @@ $H_x(k_x,k_y;h)$ & instrument transfer function & $-Ck_x^2e^{-kh}$ \\
 $\eta(k,h)$ & self-image correction & $\le0.15\%$ at $h=40\,\mu\textup{m}$ \\
 $F(k)$ & dielectric-film factor & $1+kd(\varepsilon_r-1)/\varepsilon_r$ \\
 $k_{\rm opt},\lambda_{\rm opt}$ & ITF peak & $2/h,\;\pi h$ \\
-$\lambda_{\min}^{\rm(MTF)}$ & 50\% MTF short-wavelength cutoff & $1.51h$ \\
+$\lambda_{\min}^{\rm(ITF)}$ & 50\%-of-peak ITF short-wavelength cutoff & $1.51h$ \\
 $\Delta k_{\rm FWHM}$ & ITF bandwidth & $3.395/h$ \\
 $Q$ & passband quality factor & $0.589$ \\
 $\delta\omega/2\pi$ & frequency noise floor & $5$\,Hz (conservative) \\
@@ -1227,9 +1231,9 @@ $\lambda_{\min}^{\rm(noise)}=2\pi h/x_{\rm hi}$ with $x_{\rm hi}$ the
 large root of
 $x^2e^{-x}=(2m\omega_x/eE_{\rm bg})\,\delta\omega\,h^2/A$, which inverts
 to $x_{\rm hi}=\ln\Theta+2\ln\ln\Theta+\mathcal{O}(1)$: the cutoff
-depends on the noise floor only logarithmically (per-row values $18.7$,
-$16.0$, $14.4$ and $13.7$\,\textmu m at $5$\,Hz, $0.7$\,Hz, $0.16$\,Hz
-and $0.07$\,Hz), in contrast to the purely geometric $1.51h$ MTF cutoff.
+depends on the noise floor only logarithmically (per-row values $18.7$
+and $16.0$\,\textmu m at $5$\,Hz and $0.7$\,Hz), in contrast to the
+purely geometric $1.51h$ ITF cutoff.
 
 \begin{figure}[htb]
 \centering
@@ -1293,9 +1297,10 @@ Gaussian (coherent-state) channel with
 $d_k=H_x(k)z_k+\xi_k$ (noise variance $\delta^2/2$ per quadrature) has the
 quantum Fisher information matrix
 $\mathcal{F}_{kk'}=\delta_{kk'}|H_x(k)|^2\mathcal{F}_{\rm ion}$, with
-$\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ (the NOON analogue scales as
-$N^2$; a quadrature-squeezed probe reduces the relevant quadrature noise
-variance by $e^{-2r}$).  The symmetric logarithmic derivatives of
+$\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ (a quadrature-squeezed probe
+reduces the relevant quadrature noise variance by $e^{-2r}$, and the
+corresponding precision gain depends on the state, resource constraint
+and readout).  The symmetric logarithmic derivatives of
 different modes
 commute, so the multiparameter quantum Cram\'er--Rao bound is achievable
 mode by mode~\cite{pezze2018quantum}; the RLD bound is infinite for these
@@ -1304,10 +1309,10 @@ per-mode quantum-limited uncertainty is
 $\delta z_k\ge1/\sqrt{\nu\mathcal{F}_{kk}}
 =1/(|H_x(k)|\sqrt{\nu\mathcal{F}_{\rm ion}})$,
 which diverges as $e^{+kh}/k^2$ regardless of $\mathcal{F}_{\rm ion}$:
-squeezing or Heisenberg scaling multiplies every mode equally and cannot
-compensate the exponential attenuation of $H_x$.  This bound is attained
-by projective Fock-basis readout (resolved-sideband shelving) and by the
-parity measurement for the NOON state; under dephasing the channel QFI
+state-dependent enhancements multiply every mode equally and cannot
+compensate the exponential attenuation of $H_x$.  The bound is
+approached by phase-sensitive (homodyne) readout of the optimal
+quadrature; under dephasing the channel QFI
 decays as $e^{-2\gamma\tau}$ and the information per unit time is
 maximised at $\tau_{\rm opt}=1/(2\gamma)=T_2/2=5$\,ms, giving a fixed
 penalty of $\sqrt{e}\approx1.65$ per pixel and the repetition scaling
@@ -1444,11 +1449,11 @@ exhaustive 400-point scan ($0.043$).}
 \subsection{Sampling theorem for the measurement grid}
 
 Because $\Delta\omega_x(x,y)$ is effectively band-limited to
-$k\lesssim k_u(h)$ (the 50\% MTF cutoff $k_u\approx4.156/h$, or the
+$k\lesssim k_u(h)$ (the 50\%-of-peak ITF cutoff $k_u\approx4.156/h$, or the
 noise-floor cutoff of the main text), the Nyquist condition for the
 measurement grid is $\Delta x_{\rm pix}\le\pi/k_u
-=\lambda_{\min}^{\rm(MTF)}/2\approx0.76h$, and the number of independent
-samples in an $L$-point scan is the Shannon number
+=\lambda_{\min}^{\rm(ITF)}/2\approx0.76h$, and the number of independent
+samples in an $L$-point scan is the space--bandwidth product
 $N_{\rm Sh}=(L/\pi h)\ln(|H|_{\max}/\lambda_{\rm DP})$.  At
 $h=40$\,\textmu m with $L=64$\,\textmu m: $\Delta x_{\rm pix}\le30$\,\textmu m
 and $N_{\rm Sh}\approx5.3$ --- the $128$-point numerical grid is
@@ -1576,8 +1581,8 @@ two-dimensional analogue, from the level set
 $\{Ck_x^2e^{-kh}>\sigma\}$, is
 $\ln(C/\sigma_n h^2)=2\sqrt{\pi}\,(h/L)\sqrt n\,(1+o(1))$; the fitted
 leading slope is $2.21$ against $2\sqrt\pi h/L=2.22$, reproducing the 2D
-effective rank $r_{\rm eff}=26$.  The closed-form information capacity
-follows from the same counting,
+effective rank $r_{\rm eff}=26$.  The closed-form spectral information
+index follows from the same counting,
 \begin{equation}
 I(h) \;=\; \frac12\,\frac{L}{2\pi}
     \int \ln\!\left(1+\frac{|H|^2}{\lambda^2}\right)dk
