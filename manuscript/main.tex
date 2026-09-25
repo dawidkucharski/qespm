@@ -31,6 +31,11 @@
 \setcounter{totalnumber}{8}
 \extrafloats{100}
 
+% ---- Compact float spacing ----
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+
 % ---- Manual definitions ----
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
@@ -224,7 +229,7 @@ plane).  The lateral translation leaves the local forward model unchanged
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{figS2_scan.pdf}
+\includegraphics[width=0.92\textwidth]{figS2_scan.pdf}
 \caption{Measurement geometry.  The measurand is the surface height
 $z_s(x,y)$ of the sample; the indication is the secular frequency shift
 $\Delta\omega_x(x,y)$ of the trapped ion, related to $z_s$ by the
@@ -245,22 +250,19 @@ The model rests on assumptions, each with an explicit validity condition
 (full analysis and the validity diagram in Supplementary Sec.~S4):
 (i)~small surface roughness and slope, $|z_s|\ll h$ and $|\nabla z_s|\ll1$
 (for a sinusoid $z_s=A\sin(kx)$: $Ak\ll1$); (ii)~uniform background field
-across the field of view; (iii)~perfect conductor (a thin dielectric film
-$d$ with permittivity $\varepsilon_r$ modifies the surface-potential
-channel by the exact three-layer factor
-$F(k)=\varepsilon_r e^{kd}/[\varepsilon_r\cosh(kd)+\sinh(kd)]$, which is
-$F-1=+3\times10^{-4}$ for a native oxide at the budget wavenumber and
-reaches $+19\%$ for a $2$\,\textmu m polymer overlayer; $F$ is identical
-for the topographic and charge channels, so the identifiability theorem
-of Sec.~\ref{sec:info} is unaffected);
+across the field of view; (iii)~perfect conductor (a thin dielectric film with permittivity
+$\varepsilon_r$ modifies the surface-potential channel by the
+three-layer factor $F(k)$, with $F-1=+3\times10^{-4}$ for a native
+oxide and $+19\%$ for a $2$\,\textmu m polymer overlayer; $F$ is
+identical for the topographic and charge channels, so the
+identifiability theorem is unaffected);
 (iv)~static surface charge over the scan duration (frozen at $T=4$\,K);
 (v)~Lamb--Dicke regime ($\Delta x_{\rm ion}\approx13$\,nm $\ll
 \lambda_{\rm feature}$);
 (vi)~perturbative frequency shift, $|\Delta\omega_x|\ll\omega_x$;
 (vii)~negligible Casimir--Polder force ($h\gtrsim100$\,nm; the crossover
-at which the C--P signal would equal the electrostatic signal lies at
-$h^*\approx30$\,nm for features with $\lambda\approx h$, so the $100$\,nm
-exclusion is conservative); and (viii)~micromotion compensated to
+lies at $h^*\approx30$\,nm, so the exclusion is conservative); and
+(viii)~micromotion compensated to
 $\beta<10^{-4}$ via rf--photon correlation~\cite{berkeland1998}.
 
 % ===================================================================
@@ -309,13 +311,11 @@ $x$-direction is~\cite{leibfried2003review}
     \left.\frac{\partial^2\Phi^{(1)}}{\partial x^2}\right|_{(x,y,h)},
 \label{eq:dw}
 \end{equation}
-valid in the perturbative and Lamb--Dicke regimes.  The ion's own charge
-induces a self-image correction that modifies the ITF by a factor
-$[1-\eta(k,h)]$ with $\eta\le0.2\%$ across the accessible band at
-$h=40$\,\textmu m (reaching $9.7\%$ at the $kh=13$ band edge at
-$h=5$\,\textmu m, where the full two-term ITF is used in the numerics);
-$\eta$ depends only on $(k,h)$, so it does not affect the
-topography--charge degeneracy (derivation: Supplementary Sec.~S10).
+valid in the perturbative and Lamb--Dicke regimes.  The ion-induced self-image correction
+modifies the ITF by a factor $[1-\eta(k,h)]$ with $\eta\le0.2\%$
+across the accessible band at $h=40$\,\textmu m; $\eta$ depends only on
+$(k,h)$ and leaves the topography--charge degeneracy unaffected
+(derivation: Supplementary Sec.~S10).
 
 \subsection{The instrument transfer function}
 
@@ -370,7 +370,7 @@ frequency for ion heights $h=5$--$100$\,\textmu m.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{fig1a_itf.pdf}
+\includegraphics[width=0.92\textwidth]{fig1a_itf.pdf}
 \caption{Instrument transfer function magnitude $|H_x(k;h)|$ for ion heights
 $h = 5$--$100\,\mu\textup{m}$.  The band-pass character arises from the product of
 a high-pass factor $k^2$ and a low-pass factor $e^{-kh}$.  The peak response
@@ -412,7 +412,7 @@ Figure~\ref{fig:forward} shows the complete forward-model chain.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{fig1b_spatial.pdf}
+\includegraphics[width=0.92\textwidth]{fig1b_spatial.pdf}
 \caption{Complete forward-model chain for the topography-only test case.
 (a) Surface height $z_s(x,y)$ with Gaussian plateau (200\,nm), linear ramp,
 and fine grating.  (b) Electrostatic potential $\Phi(x,y,h)$ at ion height.
@@ -464,7 +464,7 @@ measured value.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{figI10_noise_psd.pdf}
+\includegraphics[width=0.92\textwidth]{figI10_noise_psd.pdf}
 \caption{Master noise budget.
 (a) Frequency resolution $\delta\omega/2\pi$ of every noise mechanism as a
 function of ion height: technical floor, quantum projection noise (QPN),
@@ -573,21 +573,8 @@ low-pass filtering.  This quantifies the fundamental effective-rank
 (mode-count) limit of the ion probe: reducing $h$ shifts the entire
 singular-value spectrum, whereas reducing the noise floor improves only
 the logarithmically dependent noise-limited cutoff (Supplementary
-Sec.~S10).  Figure~\ref{fig:svd} shows the singular spectrum and the
-information scaling.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=\textwidth]{fig7_svd.pdf}
-\caption{Singular value decomposition of the discretised forward operator
-$\mathbf{H}$ (1D cross-section $k_y=0$, $N=128$, $L=64$\,\textmu m).
-(a) Normalised singular value spectrum for ion heights
-$h = 5$--$80$\,\textmu m.  The effective rank (singular values above
-$10^{-3}\sigma_1$) drops from 50 at $h = 5$\,\textmu m to 4 at
-$h = 80$\,\textmu m.  (b) Spectral information index $I(h)$ and effective
-rank as a function of ion height, showing $I(h) \propto h^{-1.0}$ scaling.}
-\label{fig:svd}
-\end{figure}
+Sec.~S10).  The singular spectrum and its scaling are shown in
+Supplementary Sec.~S16.
 
 \subsection{Two-channel joint operator}
 
@@ -751,7 +738,7 @@ the factorisation structure.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{fig6_qfi.pdf}
+\includegraphics[width=0.92\textwidth]{fig6_qfi.pdf}
 \caption{Quantum-limited surface amplitude sensitivity.
 (a) Minimum detectable amplitude $\delta A_{\min}$ (Cram\'er--Rao bound)
 for a coherent-state probe as a function of spatial frequency $k$, with
@@ -950,7 +937,7 @@ at all accessible $k$.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{fig5_uncertainty.pdf}
+\includegraphics[width=0.92\textwidth]{fig5_uncertainty.pdf}
 \caption{Uncertainty budget decomposition based on the Guide to the
 Expression of Uncertainty in Measurement (GUM), as a function of spatial
 frequency $k$.  The combined standard uncertainty $u_c(z)$ (solid
@@ -1016,7 +1003,7 @@ improving to $r=0.992$ at $h=80$\,\textmu m.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{fig2_inversion.pdf}
+\includegraphics[width=0.92\textwidth]{fig2_inversion.pdf}
 \caption{Tikhonov-regularised inversion of $\Delta\omega_x \to \Phi$ at ion
 height for the topography-only case at $h = 40$\,\textmu m.
 (a) True potential.  (b) Tikhonov reconstruction.  (c) Residual.
@@ -1058,7 +1045,7 @@ per-height reconstructions are in Supplementary Figs.~S4--S6.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{figV9_real_afm_benchmark.pdf}
+\includegraphics[width=0.92\textwidth]{figV9_real_afm_benchmark.pdf}
 \caption{Numerical evaluation using published atomic force microscopy
 (AFM) topography data of stainless steel~\cite{camargo2019afm}.
 (a) Ground truth: Bruker NanoScope AFM, $20 \times 20$\,\textmu m.
@@ -1073,31 +1060,13 @@ $h = 5$\,\textmu m ($r = 0.76$).  (e) Reconstruction at $h = 20$\,\textmu m
 
 \subsection{Comparison with published ion-probe data}
 
-For the Maiwald et al.~\cite{maiwald2009stylus} stylus-trap configuration
-(Mg$^+$, $\omega_x/2\pi\approx1.5$\,MHz, electrode features
-${\sim}50$\,\textmu m, $h\approx40$\,\textmu m), the ITF predicts
-$|\Delta\omega_x|/2\pi\sim3.5$\,MHz against the observed ${\sim}10$\,kHz
---- a factor ${\sim}350$ consistent with strong rf-electrode shielding in
-that geometry; this is an order-of-magnitude consistency check, not a
-quantitative validation.  For the experimentally demonstrated
-S{\"a}gesser et al.~\cite{sagesser2026scanning} 3D scanning
-geometry, the present model predicts the height dependence shown in
-Fig.~\ref{fig:published}(b); the plotted values use the QESPM parameter
-set stated in Sec.~\ref{sec:forward} ($|\Delta\omega_x|/2\pi\sim65$\,kHz
-at $h=10$\,\textmu m, below the $5$\,Hz floor at $h=100$\,\textmu m).
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=\textwidth]{figV4_published_comparison.pdf}
-\caption{Comparison with published ion-probe data.
-(a) Order-of-magnitude consistency check with a published ion-probe
-configuration (Maiwald et al., 2009); the absolute signal prediction
-depends on the effective background field at the ion.
-(b) Predicted $h$-dependence for the experimentally demonstrated
-S{\"a}gesser et al.~(2026) 3D scanning geometry, computed with the
-QESPM model parameters (${}^{40}$Ca$^+$).}
-\label{fig:published}
-\end{figure}
+The ITF predictions are also compared with published ion-probe
+demonstrations (Maiwald et al.~\cite{maiwald2009stylus};
+S{\"a}gesser et al.~\cite{sagesser2026scanning}) in Supplementary
+Sec.~S1: an order-of-magnitude consistency check against the Maiwald
+observation, and the predicted height dependence for the experimentally
+demonstrated S{\"a}gesser scanning geometry, computed with the QESPM
+parameter set.
 
 \subsection{Analytical benchmarks, robustness and Monte Carlo checks}
 
@@ -1112,11 +1081,9 @@ metrics follow from this single edge response and are used consistently
 throughout: the PSF first zero $x_0=h/\sqrt{3}$ sets the central-lobe
 scale, the central-lobe zero-to-zero width is
 $2h/\sqrt3\approx1.15h$, and the 50\%-of-peak ITF cutoff is
-$\lambda_{\min}^{\rm(ITF)}\approx1.51h$ --- a spatial-response width and
-a spatial-frequency cutoff, each
-scaling linearly with $h$; these metrics are not used interchangeably as
-a single definition of resolution (derivations and the 3D Gaussian-bump
-benchmark: Supplementary Sec.~S6).
+$\lambda_{\min}^{\rm(ITF)}\approx1.51h$; these distinct metrics are not
+used interchangeably as a single definition of resolution (derivations:
+Supplementary Sec.~S6).
 
 Robustness to model violation is quantified in Supplementary Sec.~S4: a
 $d=2$\,\textmu m dielectric overlayer ($\varepsilon_r=2$--$10$) enhances
@@ -1148,37 +1115,26 @@ $\lambda_{\min}^{\rm(ITF)}\approx1.51h$; (ii) the FOV-limited
 long-wavelength cutoff $\lambda_{\max}=L_{\rm scan}$; (iii) the minimum
 detectable amplitude $A_{\min}(k,h)$ of Eq.~(\ref{eq:scaling_amin}); and
 (iv) the stability boundary $A_{\rm crit}(h)$ (Supplementary Sec.~S12).
-The regime combines non-contact measurement, micrometre-scale standoff
-($h>1$\,\textmu m) and high intrinsic displacement sensitivity
-($\delta z<1$\,nm).  Figure~\ref{fig:landscape} positions QESPM in the
-detection sensitivity--standoff plane: it provides sub-nanometre vertical
-detection sensitivity (picometre with motional squeezing at the QPN
-limit) over the modelled micrometre-scale standoff range explored in
-this study, corresponding to a projected detection threshold below the
-representative values shown for AFM and STM, while operating natively in
-the UHV environment of the ion trap; the charge-prior-limited topographic
-reconstruction
-uncertainty, by contrast, reaches ${\sim}319$\,nm
-(Table~\ref{tab:uncertainty}).  To the author's knowledge, no experimentally
-demonstrated surface-metrology method currently combines micrometre-standoff
-non-contact operation, cryogenic UHV compatibility and projected
-quantum-limited detection sensitivity; none is free of the electrostatic
-identifiability limit either.
+The regime combines non-contact operation, micrometre-scale standoff and
+sub-nanometre intrinsic displacement sensitivity.
+Figure~\ref{fig:landscape} positions QESPM in the detection
+sensitivity--standoff plane: sub-nanometre vertical detection sensitivity
+at micrometre standoff, operating natively in the UHV environment of the
+ion trap, whereas the charge-prior-limited reconstruction uncertainty
+reaches ${\sim}319$\,nm (Table~\ref{tab:uncertainty}).  To the author's
+knowledge, no demonstrated surface-metrology method currently combines
+micrometre-standoff non-contact operation, cryogenic UHV compatibility
+and projected quantum-limited detection sensitivity.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=\textwidth]{fig4_landscape.pdf}
-\caption{Projected intrinsic detection sensitivity--standoff landscape for
-QESPM relative to established surface metrology methods.  The vertical
-axis is the intrinsic vertical detection sensitivity of each technique.
-The QESPM marker is a theoretical/projected value --- the
-quantum-projection-noise detection sensitivity
-(${\sim}7\times10^{-3}$\,nm at $k_{\rm opt}=2/h$) at the
-nominal standoff $h=40$\,\textmu m --- whereas the other techniques
-represent established experimental capabilities.
-The charge-limited topographic reconstruction uncertainty
-of Table~\ref{tab:uncertainty} ($319$\,nm) is shown separately (open
-symbol connected to the QESPM marker at the same standoff) and is not
+\includegraphics[width=0.92\textwidth]{fig4_landscape.pdf}
+\caption{Projected intrinsic detection sensitivity--standoff landscape:
+QESPM (theoretical/projected marker at the QPN sensitivity
+${\sim}7\times10^{-3}$\,nm, $k_{\rm opt}=2/h$, $h=40$\,\textmu m)
+relative to established experimental capabilities.  The
+charge-limited reconstruction uncertainty of
+Table~\ref{tab:uncertainty} ($319$\,nm) is shown separately and is not
 part of the sensitivity scale.}
 \label{fig:landscape}
 \end{figure}
@@ -1207,26 +1163,20 @@ real-time topography--charge separation.
 
 \subsection{Experimental roadmap}
 
-A four-phase roadmap is specified in Supplementary Sec.~S9:
-(1) static demonstration at $h\le30$\,\textmu m above a certified grating
-(ITF predicts $122$\,Hz at $h=30$\,\textmu m, $2.8$\,kHz at
-$h=20$\,\textmu m, $65$\,kHz at $h=10$\,\textmu m; confirming the
-$k^2e^{-kh}$ height scaling to $\sim10\%$ would constitute the first
-experimental test of the framework); (2) 1D scanning; (3) 2D
-scanning with full inversion; and (4) inter-laboratory comparison and
-submission to ISO/TC~213.  The roadmap builds on experimentally
-demonstrated trapped-ion positioning, cryogenic/UHV operation and
-surface-proximal sensing, while the integration of these capabilities
-into a quantitative QESPM measurement chain remains to be demonstrated.
-Per-phase signal levels, coherence times,
-dominant noise branches, risks and mitigations are specified in
-Supplementary Sec.~S9.  Sequential two-pass measurement strategies
-(coarse scan at large $h$, fine scan at small $h$, with D-optimal point
-selection)
-are information-efficient under the stated model and acquisition
-assumptions: a 1D demonstration reduces the amplitude error from $0.071$
-(uniform 30-point) to $0.028$ (adaptive) at a quarter of the
-exhaustive-scan time (analysis: Supplementary Sec.~S14).
+A four-phase roadmap --- static demonstration above a certified
+grating, 1D scanning, 2D scanning with full inversion, and
+inter-laboratory comparison --- is specified in Supplementary Sec.~S9
+together with per-phase signal levels, coherence times, risks and
+mitigations.  The roadmap builds on experimentally demonstrated
+trapped-ion positioning, cryogenic/UHV operation and surface-proximal
+sensing; the integration of these capabilities into a quantitative
+QESPM measurement chain remains to be demonstrated.  Sequential
+two-pass measurement strategies (coarse scan at large $h$, fine scan at
+small $h$, with D-optimal point selection) are information-efficient
+under the stated model and acquisition assumptions: a 1D demonstration
+reduces the amplitude error from $0.071$ (uniform 30-point) to $0.028$
+(adaptive) at a quarter of the exhaustive-scan time (analysis:
+Supplementary Sec.~S14).
 
 % ===================================================================
 \section{Discussion}
@@ -1297,22 +1247,18 @@ the second); the purely non-contact ion probe precludes mechanical
 contact, demanding a different strategy.  Previous trapped-ion work has
 demonstrated inverse localisation of \emph{parameterised} stray-charge
 distributions from secular-frequency shifts measured at multiple ion
-positions~\cite{jung2023stray}.  The present identifiability result
-addresses a different inverse problem: simultaneous recovery of an
-unconstrained surface-topography field and an effective electrostatic
-surface-potential field entering through the same linear boundary
-potential.  The relationship is stated
-precisely.  \emph{Similarity:} all three techniques sense electrostatic
-surface information and face topography--potential cross-talk.
+positions~\cite{jung2023stray}; the present result addresses a different
+inverse problem --- simultaneous recovery of an unconstrained topography
+field and an effective electrostatic surface-potential field entering
+through the same linear boundary potential.  \emph{Similarity:} all
+three techniques face topography--potential cross-talk.
 \emph{Fundamental difference:} QESPM is a stationary quantum probe with
-no cantilever and no mechanical interaction, operating at micrometre
-standoff through a frequency measurement of a quantum oscillator,
-natively compatible with UHV and cryogenic environments, with a spatial
-response governed by the analytic transfer function $k_x^2e^{-kh}$ ---
-none of which applies to KPFM/EFM.  \emph{Shared limitation:} all three
-inherit an identifiability (cross-talk) problem between geometric and
-electrostatic contrast, so the mitigation strategies of
-Sec.~\ref{sec:info} apply beyond QESPM.
+no cantilever, operating at micrometre standoff through a frequency
+measurement of a quantum oscillator and natively compatible with UHV and
+cryogenic environments, with a spatial response governed by the analytic
+transfer function $k_x^2e^{-kh}$.  \emph{Shared limitation:} the
+identifiability problem between geometric and electrostatic contrast, so
+the mitigation strategies of Sec.~\ref{sec:info} apply beyond QESPM.
 
 \subsection{Connection to anomalous heating in ion traps}
 
@@ -1412,14 +1358,12 @@ merits systematic investigation across the quantum sensing landscape.
 
 The AFM topography data used for the numerical evaluation are from
 Camargo~Jr. (2019), available at Mendeley Data under CC~BY~4.0
-(\url{https://doi.org/10.17632/6dzmrjngcg.3}).
-The Surface-Topography Challenge dataset is available at Zenodo
+(\url{https://doi.org/10.17632/6dzmrjngcg.3}); the Surface-Topography
+Challenge dataset is available at Zenodo
 (\url{https://doi.org/10.5281/zenodo.15341939}).
-All Python code used to generate the figures and perform the numerical
-analyses, together with a synthetic benchmark dataset (reference surfaces,
-simulated ion-signal maps and reference reconstructions), is openly
-available in a public GitHub repository
-(\url{https://github.com/dawidkucharski/qespm}) and is archived in a
+All Python code and a synthetic benchmark dataset are openly available in
+a public GitHub repository
+(\url{https://github.com/dawidkucharski/qespm}) and archived in a
 permanent Zenodo deposit (\url{https://doi.org/10.5281/zenodo.22721000}).
 
 % ===================================================================
@@ -1437,7 +1381,7 @@ published article.
 % ==================================================================
 
 \bibliographystyle{unsrt}
-\bibliography{references}
+{\footnotesize \bibliography{references}}
 % ===================================================================
 
 \end{document}

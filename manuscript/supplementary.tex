@@ -204,6 +204,34 @@ reconstruction quality.}
 \label{fig:S_afm_recon}
 \end{figure}
 
+\subsection{Comparison with published ion-probe data}
+
+For the Maiwald et al.~\cite{maiwald2009stylus} stylus-trap configuration
+(Mg$^+$, $\omega_x/2\pi\approx1.5$\,MHz, electrode features
+${\sim}50$\,\textmu m, $h\approx40$\,\textmu m), the ITF predicts
+$|\Delta\omega_x|/2\pi\sim3.5$\,MHz against the observed ${\sim}10$\,kHz
+--- a factor ${\sim}350$ consistent with strong rf-electrode shielding in
+that geometry; this is an order-of-magnitude consistency check, not a
+quantitative validation.  For the experimentally demonstrated
+S{\"a}gesser et al.~\cite{sagesser2026scanning} 3D scanning geometry,
+the present model predicts the height dependence shown in
+Fig.~\ref{fig:S_published}(b); the plotted values use the QESPM parameter
+set of Sec.~3 of the main text ($|\Delta\omega_x|/2\pi\sim65$\,kHz
+at $h=10$\,\textmu m, below the $5$\,Hz floor at $h=100$\,\textmu m).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figV4_published_comparison.pdf}
+\caption{Comparison with published ion-probe data.
+(a) Order-of-magnitude consistency check with a published ion-probe
+configuration (Maiwald et al., 2009); the absolute signal prediction
+depends on the effective background field at the ion.
+(b) Predicted $h$-dependence for the experimentally demonstrated
+S{\"a}gesser et al.~(2026) 3D scanning geometry, computed with the
+QESPM model parameters (${}^{40}$Ca$^+$).}
+\label{fig:S_published}
+\end{figure}
+
 % ===================================================================
 \section{Floquet analysis: beyond the pseudopotential approximation}
 % ===================================================================
@@ -1581,7 +1609,22 @@ two-dimensional analogue, from the level set
 $\{Ck_x^2e^{-kh}>\sigma\}$, is
 $\ln(C/\sigma_n h^2)=2\sqrt{\pi}\,(h/L)\sqrt n\,(1+o(1))$; the fitted
 leading slope is $2.21$ against $2\sqrt\pi h/L=2.22$, reproducing the 2D
-effective rank $r_{\rm eff}=26$.  The closed-form spectral information
+effective rank $r_{\rm eff}=26$.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{fig7_svd.pdf}
+\caption{Singular value decomposition of the discretised forward operator
+$\mathbf{H}$ (1D cross-section $k_y=0$, $N=128$, $L=64$\,\textmu m).
+(a) Normalised singular value spectrum for ion heights
+$h = 5$--$80$\,\textmu m.  The effective rank (singular values above
+$10^{-3}\sigma_1$) drops from 50 at $h = 5$\,\textmu m to 4 at
+$h = 80$\,\textmu m.  (b) Spectral information index $I(h)$ and effective
+rank as a function of ion height, showing $I(h) \propto h^{-1.0}$ scaling.}
+\label{fig:S_svd}
+\end{figure}
+
+The closed-form spectral information
 index follows from the same counting,
 \begin{equation}
 I(h) \;=\; \frac12\,\frac{L}{2\pi}
