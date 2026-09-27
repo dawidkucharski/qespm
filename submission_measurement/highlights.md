@@ -1,7 +1,7 @@
 # Highlights
 
-- A trapped ion becomes a quantitative, non-contact surface topography probe
-- Instrument transfer function k^2e^(-kh) sets an irreducible spatial limit
+- Quantum electrostatic scanning probe microscopy: trapped-ion surface metrology
+- Transfer function k^2e^(-kh) sets an irreducible spatial-information limit
 - Topography and patch potentials are confounded; GUM budget yields 319 nm
-- Quantum enhancement boosts precision but cannot restore lost spatial information
+- Quantum enhancement cannot restore spatial modes suppressed by the transfer function
 - Framework cross-checked by exact, boundary-element and finite-difference solvers
