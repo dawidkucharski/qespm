@@ -1,9 +1,8 @@
-# Quantum Limits of Surface Metrology: Spatial Information Extraction by a Single Trapped Ion
+# Quantum Electrostatic Scanning Probe Microscopy: Spatial Information Limits, Identifiability, and Metrological Uncertainty
 
 Repository accompanying the manuscript
 
-> **Quantum Limits of Surface Metrology: Spatial Information Extraction by a
-> Single Trapped Ion**
+> **Quantum Electrostatic Scanning Probe Microscopy: Spatial Information Limits, Identifiability, and Metrological Uncertainty**
 > D. Kucharski, Poznan University of Technology
 > (submitted to *Surface Topography: Metrology and Properties*, IOP)
 

@@ -13,7 +13,7 @@ IOP Publishing
 
 Dear Editor,
 
-I am pleased to submit the manuscript entitled **"Quantum Limits of Surface Metrology: Spatial Information Extraction by a Single Trapped Ion"** for consideration as a research paper in *Surface Topography: Metrology and Properties*.
+I am pleased to submit the manuscript entitled **"Quantum Electrostatic Scanning Probe Microscopy: Spatial Information Limits, Identifiability, and Metrological Uncertainty"** for consideration as a research paper in *Surface Topography: Metrology and Properties*.
 
 **Fit to the journal's scope.** STMP publishes cross-disciplinary research on the characterisation of functional surfaces and the structure–function relationship between surface properties and applications. This manuscript develops, from first principles, the complete theoretical framework for a new non-contact surface-characterisation modality in which a single trapped ion — already present in surface-electrode ion traps — acts as an electrostatic probe of the surface beneath it. The paper addresses core surface-metrology questions: the instrument transfer function and its resolution limits, the recoverable spatial bandwidth (effective rank), the fundamental inability of multi-height scanning to separate topography from surface charge, a GUM-compliant measurement uncertainty budget, an SI traceability chain, and a pathway toward classification within the ISO 25178 framework.
 

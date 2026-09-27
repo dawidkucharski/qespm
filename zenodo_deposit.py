@@ -36,8 +36,9 @@ metadata = {
         "publication_type": "other",
         "description": (
             "Reference implementation, LaTeX sources and synthetic benchmark "
-            "dataset for the manuscript 'Quantum Limits of Surface Metrology: "
-            "Spatial Information Extraction by a Single Trapped Ion'. "
+            "dataset for the manuscript 'Quantum Electrostatic Scanning Probe "
+            "Microscopy: Spatial Information Limits, Identifiability, and "
+            "Metrological Uncertainty'. "
             "Contents: the forward/inverse modelling chain, figure-generation "
             "scripts, the unit-and-factor audit, and benchmark/qespm_benchmark_"
             "data.npz (reference surfaces, simulated ion-signal maps and "

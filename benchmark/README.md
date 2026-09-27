@@ -1,8 +1,8 @@
 # QESPM Synthetic Benchmark Dataset
 
 Reference data for reproducing the QESPM forward/inverse chain of the
-manuscript *"Quantum Limits of Surface Metrology: Spatial Information
-Extraction by a Single Trapped Ion"*.
+manuscript *"Quantum Electrostatic Scanning Probe Microscopy: Spatial
+Information Limits, Identifiability, and Metrological Uncertainty"*.
 
 ## Contents
 
