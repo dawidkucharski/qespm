@@ -602,7 +602,7 @@ $\lambda=\pi h$ are indicated.}
 The GUM-based budget of the main text is a single-point
 evaluation.  Here, a full Monte Carlo propagation (JCGM 101:2008,
 Supplement~1) is performed: $N_{\rm MC} = 5 \times 10^3$ realisations
-of the forward + inversion chain are computed, sampling all six input
+of the forward + inversion chain are computed, sampling all seven input
 quantities from their uncertainty distributions.
 Figure~\ref{fig:mc}(a) shows the reconstructed cross-section with the
 95\% coverage interval for a sinusoidal grating
@@ -1352,10 +1352,10 @@ $\delta A_{\min}\propto1/\sqrt{N_{\rm rep}}$.
 
 As the surface approaches the ion or the roughness amplitude increases, the
 surface-induced force gradient eventually overcomes the trapping potential.
-The stability criterion is $|\Delta\omega_x| < \omega_x/2$: beyond this
-threshold, the secular frequency shift exceeds half the unperturbed value;
-the secular motion then becomes unstable and the ion is ejected from
-the trap.  Figure~\ref{fig:S_stability} maps the
+The conservative criterion $|\Delta\omega_x| < \omega_x/2$ is imposed to
+remain within the perturbative and stable operating margin.  The actual
+stability boundary is determined from the Mathieu stability diagram of
+Fig.~\ref{fig:S_stability}, which maps the
 stable and unstable regions in $(h, A)$ space for a sinusoidal surface with
 $\lambda = 40$\,\textmu m.  The critical amplitude scales as
 $A_{\rm crit}(h) \propto e^{+2\pi h/\lambda}$ for a surface with fixed

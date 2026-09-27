@@ -49,7 +49,7 @@ ax.set_title('Instrument transfer function magnitude $|H_x(k;h)| = C\\,k^2 e^{-k
 ax.axvline(2 / 40, color='k', ls='--', lw=1.2)
 ax.text(2 / 40, 3e8, '  $k_{\\rm opt}=2/h$', fontsize=9, va='top')
 ax.text(1.51 / 40 * 1e-2, 2e7,
-        '$\\lambda_{\\min}^{\\rm(MTF)}\\approx1.51h=60$ $\\mu$m ($h=40$ $\\mu$m)',
+        '$\\lambda_{\\min}^{\\rm(ITF)}\\approx1.51h=60$ $\\mu$m ($h=40$ $\\mu$m)',
         fontsize=9, rotation=0)
 ax.legend(fontsize=9, ncol=2)
 ax.grid(True, which='both', alpha=0.25)
@@ -81,7 +81,7 @@ a1.legend(fontsize=8)
 a1.grid(True, which='both', alpha=0.25)
 
 a2.plot(k / 1e6, np.full_like(k, 4.5), lw=2.0, color='#d62728',
-        label='squeezed quadrature model ($\\times 4.5$)')
+        label='illustrative phase-quadrature model ($r=1.5$)')
 a2.set_xscale('log')
 a2.set_xlabel('spatial frequency $k$ [rad/$\\mu$m]', fontsize=10)
 a2.set_ylabel('$\\delta A_{\\rm coh}/\\delta A_{\\rm q}$', fontsize=10)

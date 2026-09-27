@@ -75,7 +75,7 @@ def svd_1d():
     axr.set_ylabel("$I$ [nats]", color="C1")
     axr.tick_params(axis="y", labelcolor="C1")
     axr.set_yscale("log")
-    ax[1].set_title("(b) effective rank and Shannon information")
+    ax[1].set_title("(b) effective rank and spectral information index")
     # scaling exponents
     p_r = np.polyfit(np.log(hs), np.log(r), 1)[0]
     p_I = np.polyfit(np.log(hs), np.log(I), 1)[0]
@@ -601,7 +601,7 @@ def waterfilling():
 
 
 def info_closed_1d():
-    """Closed-form 1D Shannon capacity (used in the revised eq:info_closed)."""
+    """Closed-form 1D spectral information index (used in the revised eq:info_closed)."""
     hs = [5e-6, 10e-6, 20e-6, 40e-6, 80e-6]
     k = 2 * np.pi * fftfreq(N_GRID, DX)
     print("=" * 60)

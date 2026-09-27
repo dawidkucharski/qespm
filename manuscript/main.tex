@@ -72,9 +72,11 @@ imposes an irreversible spatial-information cutoff: quantum enhancement
 can maximise the precision of available signals but cannot recover what
 the physical filter has destroyed, and the recoverable mode rank scales as
 $r_{\rm eff} \propto 1/h$ on the analysed 1D cross-section.  A theorem
-establishes the topography--charge identifiability limit: multi-height
-scanning alone cannot separate surface topography from surface charge,
-which share the identical $e^{-kh}$ scaling, so surface charge is an
+establishes the topography--charge identifiability limit: within the
+linear model and for a height-independent calibrated background field,
+multi-height scanning alone cannot separate surface topography from
+effective patch-potential contributions, which share the identical
+$e^{-kh}$ scaling, so surface charge is an
 influence quantity structurally confounded with the measurand.
 The analytical transfer function is independently cross-checked against
 exact Rayleigh/Floquet, boundary-element and finite-difference
@@ -635,8 +637,8 @@ so each row of the $n\times2$ forward matrix is proportional to
 $[1,\,1/2\varepsilon_0 k E_{\rm bg}]$, independent of $h_j$; all rows are
 collinear, $\operatorname{rank}=1$ (full proof: Supplementary Sec.~S16).
 
-\begin{corollary}[All electrostatic observables: one scalar field]\label{cor:electrostatic}
-Every linear electrostatic observable of the ion--surface system --- the
+\begin{corollary}[All linear electrostatic observables under fixed $E_{\rm bg}$]\label{cor:electrostatic}
+Every linear electrostatic observable --- the
 $x$-, $y$- and $z$-secular channels and the micromotion channel --- is a
 linear functional of the single scalar surface field
 $\varphi_s(k)=\tilde{z}_s(k)+\tilde{\sigma}(k)/2\varepsilon_0 k E_{\rm bg}$
@@ -746,7 +748,7 @@ an illustrative phase-quadrature-squeezed model curve ($r=1.5$); the
 quantitative squeezing gain depends on the state, resource constraint
 and readout strategy.
 (b) Quantum enhancement factor $\delta A_{\rm coh}/\delta A_{\rm q}$ for
-the squeezed model.  The factorisation
+the illustrative model.  The factorisation
 $\mathcal{F}_A=|H_x|^2\mathcal{F}_{\rm ion}$
 (Eq.~\ref{eq:FQ_factorisation}) shows that no probe-state enhancement
 can recover spatial modes already attenuated by $e^{-kh}$.}
@@ -846,8 +848,8 @@ additive constant in the exponent; practical gains come primarily from
 reducing $h$.
 
 The Tikhonov filter is the posterior mean of a Bayesian model with a
-Gaussian-process prior over surfaces; the prior supplies the
-frequency-dependent regulariser with no free parameter,
+Gaussian-process prior over surfaces; once the GP hyperparameters are
+specified, the prior supplies the frequency-dependent regulariser,
 \begin{equation}
 \hat z_k = \frac{H_x(k)^*\,d_k}{|H_x(k)|^2 + \sigma_{\rm pix}^2
 \Delta x^2/\Sigma(k)},
@@ -902,7 +904,7 @@ Ion height $h$ & 100\,nm & $2.0\!\times\!10^{-2}$ & 2.0 \\
 Background field $E_{\rm bg}$ & 10\,V/m & $1.0\!\times\!10^{-11}$\,m$^2$/V & 0.10 \\
 Type A (freq.\ meas.) & $2\pi\!\times\!0.3$\,Hz & $3.9\!\times\!10^{-11}$\,m$\cdot$s & 0.07 \\
 Secular frequency $\omega_x$ & $2\pi\!\times\!10$\,Hz & $1.6\!\times\!10^{-14}$\,m$\cdot$s & $<10^{-3}$ \\
-Ion mass $m$ & $<10^{-9}\,m$ & $1.5\!\times\!10^{18}$\,m/kg & $<10^{-6}$ \\
+Ion mass $m$ & $u(m)/m<10^{-9}$ & $1.5\!\times\!10^{18}$\,m/kg & $<10^{-6}$ \\
 ITF calibration (grating cert.) & $1.0\!\times\!10^{-2}\,A$ & 1 & 1.0 \\
 \hline
 \end{tabular}
@@ -1154,8 +1156,9 @@ field on a $128\times128$ grid at $1$\,s/pixel, versus
 ${\sim}10^{4}$\,\textmu m$^2$/s for commercial optical profilometry, an
 illustrative comparison rather than a universal benchmark; and (iv) a
 conducting surface (or thin dielectric on a conductor) is required.
-Future directions include quantum-enhanced sensitivity via squeezed or
-Fock-state interferometry, exploitation of the Casimir--Polder force at
+Future directions include quantum-enhanced sensitivity through
+phase-sensitive nonclassical motional states, exploitation of the
+Casimir--Polder force at
 $h<100$\,nm as an independent short-range channel, integration as an
 in-situ diagnostic in surface-electrode trap quantum
 processors~\cite{kumph2016operation}, and physics-informed inversion for
@@ -1267,7 +1270,8 @@ heating near surfaces has been debated for two decades (reviewed by
 Brownnutt et al.~\cite{brownnutt2015review}); the noise-source
 distribution has not, to date, been spatially resolved experimentally,
 because heating-rate measurements integrate over the entire electrode
-area.  QESPM offers a direct solution: the heating rate
+area.  QESPM provides a potential route to spatially mapping the
+heating-rate observable: the heating rate
 $\dot{\bar n}(x,y)$ can be mapped simultaneously with
 $\Delta\omega_x(x,y)$, and its spatial autocorrelation yields the
 patch-potential correlation length $\ell_c$ --- a parameter appearing in
@@ -1337,9 +1341,10 @@ Three key results support this conclusion:
           potential measurements to resolve it.
 \end{enumerate}
 
-The practical path forward is clear: motional squeezing ($\times4.5$)
-provides the most robust near-term quantum enhancement, while in-situ
-charge elimination addresses the dominant systematic uncertainty.  Charge
+Phase-sensitive motional squeezing provides a potential route to
+further quantum-enhanced sensitivity, subject to the chosen probe state,
+resource constraint and readout strategy, while in-situ charge
+elimination addresses the dominant systematic uncertainty.  Charge
 mitigation could substantially reduce the present charge-limited
 reconstruction uncertainty, but the resulting performance remains to be
 established experimentally.
