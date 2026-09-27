@@ -3,7 +3,7 @@
 Dawid Kucharski\
 Poznan University of Technology\
 Poznań, Poland\
-dawid.kucharski@put.poznan.pl · 5 September 2026
+dawid.kucharski@put.poznan.pl · 27 September 2026
 
 ---
 
