@@ -42,3 +42,6 @@ theory_only_strategy.tex
 manuscript_audit_referee_*.md
 cover_letter_physrevapplied.md
 Deep Research Response.rtf
+
+# Third-party Elsevier CAS template files (not part of the manuscript source)
+manuscript/els-cas-templates/

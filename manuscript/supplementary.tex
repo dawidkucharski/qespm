@@ -652,8 +652,8 @@ linearly with this prior).  $u(h)=100$\,nm combines laser interferometry
 in quadrature; $u(E_{\rm bg})=10$\,V/m is the dc voltage source
 calibration ($10^{-4}$ relative at $10^4$\,V/m);
 $u(\omega_x)=2\pi\times10$\,Hz is the secular-frequency calibration
-uncertainty; $u(m)<10^{-9}m$ reflects the atomic mass uncertainty of
-${}^{40}$Ca$^+$.  The effective degrees of freedom via the
+uncertainty; the relative atomic-mass uncertainty $u(m)/m<10^{-9}$ is
+negligible in the present budget.  The effective degrees of freedom via the
 Welch--Satterthwaite formula exceed 100, justifying the Gaussian coverage
 factor $k=2$ (component-wise table above).  The Type-A entry is the
 quantum-limited frequency-estimation variance
@@ -667,10 +667,10 @@ anticorrelation contributes $0.40$\,nm$^2$ --- below $0.001\%$ of the
 combined variance $u_c^2(z)\approx(319\,\textup{nm})^2$ --- so all
 correlations are neglected with error below $0.001\%$ of the variance.
 
-\subsection{Falsifiable experimental predictions}
+\subsection{Experimentally testable predictions and checks}
 
-The framework yields five specific, falsifiable predictions, each testable
-with existing trapped-ion infrastructure:
+The framework yields five experimentally testable predictions and checks,
+each implementable with existing trapped-ion infrastructure:
 (i)~the scaling-law test: for a certified grating ($A=50$\,nm,
 $\lambda=20$\,\textmu m), $\log(|\Delta\omega_x|h^2)$ vs.\ $h$
 ($10$--$100$\,\textmu m) must be a straight line of slope $-2\pi/\lambda$;
@@ -683,8 +683,8 @@ spatial autocorrelation of $\Delta\omega_x(x,y)$ over a homogeneous
 conductor;
 (iv)~the charge-elimination cross-check: pre/post UV-cleaning maps isolate
 the removable charge contribution, and a post-cleaning residual
-correlating with AFM topography ($r\ge0.5$) validates the two-parameter
-forward model; and
+correlation with independently measured AFM topography would provide an
+experimental consistency check of the two-component forward model; and
 (v)~the quantum projection noise floor: the Allan deviation follows
 $1/\sqrt{\tau}$ down to the ${\sim}0.7$\,Hz plateau.
 
@@ -842,7 +842,7 @@ exact Rayleigh result to ${\leq}0.6\%$ across the amplitude range
 \section{Calibration and traceability considerations}
 % ===================================================================
 
-A five-step calibration procedure establishes SI traceability:
+A five-step calibration procedure defines the proposed SI-traceability chain:
 (1)~trap field characterisation by measuring secular frequencies versus
 applied dc voltages to extract $E_{\rm bg}$;
 (2)~height calibration via electrical capacitance measurement and stage
@@ -1016,8 +1016,9 @@ the consistent noise model of Sec.~3.6 of the main text:
 \item \textbf{Phase~4 --- Inter-laboratory comparison (36--60 months):}
       Two independent laboratories repeat the measurement on the same
       certified test surface.  Compare reconstructed $z_s(x,y)$ maps
-      and uncertainty budgets.  Submit results to ISO/TC~213 as the
-      basis for a new ISO~25178-6 subclass.  \textit{Key risk:}
+      and uncertainty budgets.  Use the inter-laboratory results to
+      inform future standardisation discussions within ISO/TC~213.
+      \textit{Key risk:}
       reproducibility of surface charge conditions; \textit{mitigation:}
       standardised UV-cleaning protocol before each measurement.
 \end{enumerate}
@@ -1233,9 +1234,7 @@ $kh=8$.}
 \caption{Leading singular functions of the discretised forward operator
 (2D, $h=40$\,\textmu m): the operator is exactly diagonal in the DFT
 basis, so the singular functions are the Fourier modes shown, ordered by
-$\sigma_n/\sigma_1$.  The continuous (aperiodic) analogue has
-prolate-spheroidal-type singular functions (Slepian) with the same
-concentration structure: at the noise-limited bandlimit $k_{\rm hi}=13.4/h$
+$\sigma_n/\sigma_1$.  At the noise-limited bandlimit $k_{\rm hi}=13.4/h$
 ($L=64$\,\textmu m) the leading eigenvalues concentrate the first five
 Fourier modes to better than $1\%$ and the sixth to $8\%$, matching the
 effective rank $r_{\rm eff}=6$ (Fig.~\ref{fig:S_singular}).}
@@ -1278,25 +1277,6 @@ $\lambda \in [19,\;64]$\,\textmu m.}
 % ===================================================================
 \section{Quantum resource allocation and wave-packet smearing}
 % ===================================================================
-
-\subsection{Water-filling across modes}
-Because the per-mode bound
-$\delta z_k = 1/(|H_x(k)|\sqrt{\nu\mathcal{F}_{\rm ion}})$ varies by orders
-of magnitude across the passband, a fixed quantum resource budget should
-be allocated where it buys the most information.  With a total squeezing
-budget $\sum_k r_k \le R_{\rm tot}$ and per-mode variance
-$v_k e^{-2r_k}$ ($v_k \propto 1/|H_x(k)|^2$), the constrained minimisation
-$\min_{r_k}\sum_k w_k v_k e^{-2r_k}$ is solved by the water-filling
-prescription $r_k = \tfrac14\bigl[\ln v_k - \ln\mu\bigr]_+$ with the
-Lagrange multiplier $\mu$ fixed by $\sum_k r_k = R_{\rm tot}$ --- the
-quantum analogue of the classical channel water-filling of the information
-capacity in the main text.  On the $h=40$\,\textmu m passband
-(eight modes above the discrepancy-principle $\lambda$), a budget
-$R_{\rm tot}=1.5$ ($13$\,dB) spent uniformly gives an average mode
-variance $0.25$ (normalised units); the water-filling allocation
-concentrates it on the two highest-$|H_x|$ modes and reduces the average
-variance to $0.056$ --- a $\times 4.5$ information gain at equal
-resources, verified numerically.
 
 \subsection{Wave-packet smearing of the ITF}
 The finite extent of the ion's wave packet convolves the measurement:
@@ -1376,10 +1356,13 @@ $A = 100$\,nm) the stability margin exceeds two orders of magnitude.
 \caption{Mathieu stability and quantum electrostatic scanning probe
 microscopy (QESPM) operating regime.
 (a) Standard $(a,q)$ stability diagram with three representative trap
-operating points.  (b) Stability boundary in ion height--surface amplitude
+operating points.  (b) Stability in ion height--surface amplitude
 $(h,A)$ space for a sinusoidal surface with $\lambda = 40$\,\textmu m.
-The red curve marks $|\Delta\omega_x| = \omega_x/2$; the green and red
-shaded regions indicate stable and unstable operation, respectively.}
+The solid black curve shows the actual Mathieu stability boundary; the
+dashed red curve denotes the conservative operating criterion
+$|\Delta\omega_x| = \omega_x/2$, adopted to remain within the
+perturbative regime.  The green and red shaded regions indicate stable
+and unstable operation, respectively.}
 \label{fig:S_stability}
 \end{figure}
 
@@ -1633,8 +1616,9 @@ I(h) \;=\; \frac12\,\frac{L}{2\pi}
     \left[\ln\!\left(\frac{C}{\lambda h^2}\right)\right]^2
     \bigl(1+o(1)\bigr),
 \end{equation}
-for $\lambda\ll|H|_{\max}$ --- the information-theoretic ceiling of the
-measurement, attained mode by mode by the QCRB-optimal estimator.
+for $\lambda\ll|H|_{\max}$ --- a noise-weighted spectral log-index
+quantifying the aggregate modal information available under the stated
+regularisation/noise scale.
 
 \textbf{Joint two-channel operator.}  On the zero-mean subspace the joint
 operator $\mathcal{H}_x\oplus\mathcal{H}_y$ is injective (proof of

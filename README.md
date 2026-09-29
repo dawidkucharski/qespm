@@ -16,12 +16,12 @@ probe of the conducting surface beneath it:
 
 - derives the instrument transfer function H_x(k; h) ∝ k_x² e^(−kh) from
   boundary-perturbation theory, and analyses its band-pass structure;
-- establishes the irreversible spatial-information cutoff imposed by e^(−kh),
+- quantifies the effective, noise-dependent spatial-information limit imposed by e^(−kh),
   the effective-rank scaling r_eff ∝ 1/h, and the theorem that multi-height
   scanning alone cannot separate surface topography from surface charge;
 - builds the complete metrological framework: GUM-compliant uncertainty
   budget, SI-traceable calibration chain, ISO 25178 classification pathway,
-  Bayesian and adaptive scanning strategies, and five quantitative falsifiable
+  Bayesian and adaptive scanning strategies, and five experimentally testable
   experimental predictions;
 - validates the framework against an exact Rayleigh–Floquet solver, independent
   boundary-element and finite-difference solvers, Monte Carlo uncertainty

@@ -301,11 +301,16 @@ if __name__ == "__main__":
     ax1b.contourf(HH * 1e6, AA * 1e9, stab_map,
                    levels=[0.5, 1.5], colors=["lightcoral", "lightgreen"],
                    alpha=0.4)
-    # Stability boundary contour — manual label to avoid overlap
+    # Actual Mathieu stability boundary (solid black) and the conservative
+    # operating criterion |dwx| = wx/2 (dashed red, da = a0)
     ax1b.contour(HH * 1e6, AA * 1e9, stab_map,
-                  levels=[0.5], colors=["red"], linewidths=2)
-    ax1b.text(50, 200, "Stability limit", fontsize=9, color="red",
+                  levels=[0.5], colors=["black"], linewidths=2)
+    ax1b.text(50, 200, "Mathieu stability boundary", fontsize=9, color="black",
               fontweight="bold", rotation=-30, alpha=0.9)
+    da_per_A = surface_perturbation_delta_a(1.0, k_s, h_stab, omega_rf, R_rf)
+    A_cons = np.where(da_per_A > 0, a0_nom / da_per_A, np.nan)
+    ax1b.plot(h_stab * 1e6, A_cons * 1e9, "r--", lw=2,
+              label="conservative $|\\Delta\\omega_x|=\\omega_x/2$ criterion")
 
     # Region labels — placed away from contour
     ax1b.text(15, 2000, "UNSTABLE", fontsize=11, color="darkred",
@@ -322,6 +327,8 @@ if __name__ == "__main__":
         marker = "o" if stable else "x"
         color = "green" if stable else "red"
         ax1b.plot(h_op, 100, marker, color=color, ms=10, mec="white", mew=1)
+
+    ax1b.legend(fontsize=9, loc="lower right")
 
     ax1b.set_xscale("log")
     ax1b.set_yscale("log")

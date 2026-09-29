@@ -60,12 +60,10 @@ plt.close()
 # ------------------------------------------------------------------
 # fig6_qfi.pdf
 # ------------------------------------------------------------------
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(10.4, 4.4))
+fig, a1 = plt.subplots(figsize=(5.6, 4.4))
 k = np.logspace(-2, 0, 300) * 1e6      # 0.01 .. 1 rad/um (h=40 um passband)
-floors = [('coherent (QPN, 0.7 Hz)', 2 * np.pi * 0.7, '#1f77b4'),
-          ('squeezed ($r=1.5$, quadrature model)', 2 * np.pi * 0.7 / 4.5, '#d62728')]
-for lab, dw, col in floors:
-    a1.plot(k / 1e6, amin(k, dw) * 1e9, lw=2.0, color=col, label=lab)
+a1.plot(k / 1e6, amin(k, 2 * np.pi * 0.7) * 1e9, lw=2.0, color='#1f77b4',
+        label='coherent (QPN, 0.7 Hz)')
 k_opt = 2 / H_NOM / 1e6               # 2/h = 0.05 rad/um
 a1.axvline(k_opt, color='k', ls='--', lw=1.2)
 a1.text(k_opt * 1.02, 3e-3,
@@ -75,19 +73,10 @@ a1.text(k_opt * 1.02, 3e-3,
 a1.set_xscale('log'); a1.set_yscale('log')
 a1.set_xlabel('spatial frequency $k$ [rad/$\\mu$m]', fontsize=10)
 a1.set_ylabel('$\\delta A_{\\min}$ [nm]', fontsize=10)
-a1.set_title('(a) Quantum-limited surface\namplitude sensitivity ($h=40$ $\\mu$m)',
+a1.set_title('Quantum-limited surface amplitude\\nsensitivity ($h=40$ $\\mu$m)',
              fontsize=10)
 a1.legend(fontsize=8)
 a1.grid(True, which='both', alpha=0.25)
-
-a2.plot(k / 1e6, np.full_like(k, 4.5), lw=2.0, color='#d62728',
-        label='illustrative phase-quadrature model ($r=1.5$)')
-a2.set_xscale('log')
-a2.set_xlabel('spatial frequency $k$ [rad/$\\mu$m]', fontsize=10)
-a2.set_ylabel('$\\delta A_{\\rm coh}/\\delta A_{\\rm q}$', fontsize=10)
-a2.set_title('(b) Quantum enhancement factor', fontsize=10)
-a2.legend(fontsize=8)
-a2.grid(True, which='both', alpha=0.25)
 plt.tight_layout()
 plt.savefig('manuscript/fig6_qfi.pdf', dpi=150, bbox_inches='tight')
 plt.close()

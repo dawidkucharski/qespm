@@ -67,10 +67,12 @@ shift $\Delta\omega_x$ at height $h$ encodes the surface electrostatic
 perturbation.  The measurement operator is the instrument transfer
 function $H_x(k;h) \propto k_x^2 e^{-kh}$ --- a distinctive
 height-tunable band-pass spatial transfer function.  The $e^{-kh}$ factor
-imposes an irreversible spatial-information cutoff: quantum enhancement
-can maximise the precision of available signals but cannot recover what
-the physical filter has destroyed, and the recoverable mode rank scales as
-$r_{\rm eff} \propto 1/h$ on the analysed 1D cross-section.  A theorem
+produces an effective, noise-dependent spatial-information limit:
+quantum enhancement can improve the precision with which transmitted
+modes are estimated, but cannot undo the transfer-function attenuation;
+the effective mode rank scales as
+$r_{\rm eff} \propto 1/h$ under the stated finite-noise threshold on the
+analysed 1D cross-section.  A theorem
 establishes the topography--charge identifiability limit: within the
 linear model and for a height-independent calibrated background field,
 multi-height scanning alone cannot separate surface topography from
@@ -255,8 +257,9 @@ across the field of view; (iii)~perfect conductor (a thin dielectric film with p
 $\varepsilon_r$ modifies the surface-potential channel by the
 three-layer factor $F(k)$, with $F-1=+3\times10^{-4}$ for a native
 oxide and $+19\%$ for a $2$\,\textmu m polymer overlayer; $F$ is
-identical for the topographic and charge channels, so the
-identifiability theorem is unaffected);
+identical for the topographic and charge channels within the effective
+boundary-potential representation adopted here, so the identifiability
+theorem is unaffected);
 (iv)~static surface charge over the scan duration (frozen at $T=4$\,K);
 (v)~Lamb--Dicke regime ($\Delta x_{\rm ion}\approx13$\,nm $\ll
 \lambda_{\rm feature}$);
@@ -739,15 +742,12 @@ the factorisation structure.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{fig6_qfi.pdf}
-\caption{Quantum-limited surface amplitude sensitivity.
-(a) Minimum detectable amplitude $\delta A_{\min}$ (Cram\'er--Rao bound)
-for a coherent-state probe as a function of spatial frequency $k$, with
-an illustrative phase-quadrature-squeezed model curve ($r=1.5$); the
-quantitative squeezing gain depends on the state, resource constraint
-and readout strategy.
-(b) Quantum enhancement factor $\delta A_{\rm coh}/\delta A_{\rm q}$ for
-the illustrative model.  The factorisation
+\includegraphics[width=0.48\textwidth]{fig6_qfi.pdf}
+\caption{Quantum-limited surface amplitude sensitivity for a
+coherent-state probe (Cram\'er--Rao bound): minimum detectable
+amplitude $\delta A_{\min}$ as a function of spatial frequency $k$ at
+$h=40$\,\textmu m, with the optimum $k_{\rm opt}=2/h$ marked.  The
+factorisation
 $\mathcal{F}_A=|H_x|^2\mathcal{F}_{\rm ion}$
 (Eq.~\ref{eq:FQ_factorisation}) shows that no probe-state enhancement
 can recover spatial modes already attenuated by $e^{-kh}$.}
@@ -927,10 +927,10 @@ sensitivity.  The quoted $319$\,nm value is therefore the conservative
 not the achievable topographic accuracy after charge mitigation and not an
 experimentally demonstrated value.  Mitigation strategies --- in-situ
 cleaning, auxiliary heating-rate contrast, Bayesian joint inversion ---
-could reduce the charge contribution by an estimated factor of 10--100,
-giving ${\approx}32$\,nm or ${\approx}3.2$\,nm: these charge-controlled
-scenarios are estimates, not demonstrated capability, and require
-experimental verification.  The component-wise justifications, the Type-A
+could substantially reduce the charge contribution; the achievable
+reduction depends on the residual charge distribution and the
+effectiveness of the adopted mitigation strategy and remains to be
+established experimentally.  The component-wise justifications, the Type-A
 derivation, correlation analysis and the Monte Carlo cross-check are in
 Supplementary Sec.~S5; Fig.~\ref{fig:uncertainty} decomposes the budget as
 a function of spatial frequency, confirming that surface charge dominates
@@ -949,7 +949,7 @@ $k = 2 \times 10^5$\,rad/m, $u_c(z) = 319$\,nm, $U = 638$\,nm ($k=2$).}
 \label{fig:uncertainty}
 \end{figure}
 
-Traceability is established through a five-step calibration procedure ---
+The proposed SI-traceability chain is defined through a five-step calibration procedure ---
 background-field characterisation, height calibration, ITF calibration
 against a certified grating, charge-background characterisation, and
 verification against a certified step-height standard --- linking the
@@ -1034,7 +1034,7 @@ result (Fig.~\ref{fig:real_afm}): the Pearson correlation between the AFM
 ground truth and the QESPM reconstruction improves monotonically from
 $r=0.62$ at $h=40$\,\textmu m ($r=0.69$ at $h=20$\,\textmu m) to
 $r=0.78$ at $h=2$\,\textmu m,
-verifying the predicted height-dependent reconstruction behaviour using
+illustrating the predicted height-dependent reconstruction behaviour using
 independently measured surface topography as input; at
 $h=5$\,\textmu m --- the lowest height currently feasible given heating
 constraints --- $r=0.76$ is achieved and the dominant features are
@@ -1231,8 +1231,9 @@ $10$\,dB level~\cite{gilmore2021quantum}.  QESPM differs categorically:
 through the secular frequency, so its observable carries
 spatial-frequency selectivity (the ITF) absent from a point field probe;
 (ii) it reconstructs a map through regularised inversion of a severely
-ill-posed operator; and (iii) its metrological deliverable is
-SI-traceable surface texture, not field strength.  The
+ill-posed operator; and (iii) its intended metrological deliverable is
+quantitatively reconstructed surface texture rather than field strength.
+The
 sensitivity comparison on each method's native observable is given in
 Supplementary Sec.~S5 (Table~S2).  Scanning ion conductance microscopy
 (SICM)~\cite{leitao2021sicm} is complementary: liquid-phase operation,
@@ -1256,8 +1257,9 @@ through the same linear boundary potential.  \emph{Similarity:} all
 three techniques face topography--potential cross-talk.
 \emph{Fundamental difference:} QESPM is a stationary quantum probe with
 no cantilever, operating at micrometre standoff through a frequency
-measurement of a quantum oscillator and natively compatible with UHV and
-cryogenic environments, with a spatial response governed by the analytic
+measurement of a quantum oscillator and designed for compatibility with
+UHV and cryogenic environments, with a spatial response governed by the
+analytic
 transfer function $k_x^2e^{-kh}$.  \emph{Shared limitation:} the
 identifiability problem between geometric and electrostatic contrast, so
 the mitigation strategies of Sec.~\ref{sec:info} apply beyond QESPM.
@@ -1293,9 +1295,7 @@ quantum state readout), a defined and calibratable ITF
 (Eq.~\ref{eq:itf}), a traceable five-step calibration procedure, and a
 quantified GUM-based uncertainty budget.  Formal classification would
 require experimental validation, calibration studies and
-inter-laboratory comparison --- none of which has yet been performed ---
-projected to become available within 3--4 years of the first
-experimental demonstration.
+inter-laboratory comparison --- none of which has yet been performed.
 
 % ===================================================================
 \section{Conclusions}
@@ -1305,17 +1305,18 @@ experimental demonstration.
 This paper delivers a complete, uncertainty-budgeted measurement
 framework for non-contact surface metrology with a single trapped ion: a
 defined measurand, an explicit instrument transfer function
-$H_x(k;h)\propto k_x^2 e^{-kh}$, regularised inversion, an SI-traceable
-GUM-based uncertainty budget, five quantitative falsifiable predictions,
-and a costed four-phase roadmap whose first phase runs on existing
+$H_x(k;h)\propto k_x^2 e^{-kh}$, regularised inversion, a GUM-based
+uncertainty budget linked to a proposed SI-traceability chain, five
+experimentally testable predictions, and a four-phase experimental
+roadmap whose first phase runs on existing
 trapped-ion hardware.  Within this framework the paper addresses a
 fundamental question in quantum surface
 metrology: how much spatial information about a conducting surface can be
 extracted by a single quantum probe?  The answer is that the transfer
-function imposes an irreducible
-spatial-information cutoff at $\lambda\sim h$ --- and that no amount of
-quantum enhancement can recover spatial frequencies already attenuated by
-the $e^{-kh}$ physical filter.
+function produces an effective, noise-dependent spatial-information
+limit at spatial scales of order $\lambda\sim h$ --- quantum enhancement
+cannot undo the transfer-function attenuation; under finite measurement
+resources, strongly attenuated modes remain noise-limited.
 
 Three key results support this conclusion:
 \begin{enumerate}
@@ -1385,6 +1386,10 @@ published article.
 % ==================================================================
 
 \bibliographystyle{unsrt}
+\makeatletter
+\g@addto@macro\@openbib@code{\setlength{\itemsep}{1pt plus 0.5pt}%
+                            \setlength{\parsep}{0pt}}
+\makeatother
 {\footnotesize \bibliography{references}}
 % ===================================================================
 
