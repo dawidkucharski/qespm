@@ -34,7 +34,7 @@ def itf_shift(A):
 A_itf = np.logspace(np.log10(20e-9), np.log10(4e-6), 8)
 err_itf, kA_list = [], []
 for A in A_itf:
-    dw_ex = rayleigh_map(A, k_s, h, N=28)
+    dw_ex = rayleigh_map(A, k_s, h, N=60)
     dw_lin = itf_shift(A)
     err_itf.append(abs(dw_lin - dw_ex) / abs(dw_ex))
     kA_list.append(k_s * A)
@@ -74,7 +74,7 @@ for A in A_bem:
     d2G = -kp ** 2 / (4 * np.pi) * (csh * cs - 1.0) / D ** 2
     d2Phi = np.sum(sigma * d2G) * ds
     dw_b = (E_CHARGE / (2 * M_CA40 * OMEGA_X)) * d2Phi
-    dw_ex = rayleigh_map(A, k_s, h, N=28)
+    dw_ex = rayleigh_map(A, k_s, h, N=60)
     err_bem.append(abs(dw_b - dw_ex) / abs(dw_ex))
     kA_bem.append(k_s * A)
 err_bem = np.array(err_bem)

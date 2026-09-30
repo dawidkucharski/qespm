@@ -35,6 +35,8 @@
 \date{\today}
 
 \begin{document}
+\tolerance=9999
+\emergencystretch=1.5em
 \maketitle
 
 \noindent
@@ -204,31 +206,37 @@ reconstruction quality.}
 \label{fig:S_afm_recon}
 \end{figure}
 
-\subsection{Comparison with published ion-probe data}
+\subsection{Relation to published ion-probe demonstrations}
 
 For the Maiwald et al.~\cite{maiwald2009stylus} stylus-trap configuration
 (Mg$^+$, $\omega_x/2\pi\approx1.5$\,MHz, electrode features
-${\sim}50$\,\textmu m, $h\approx40$\,\textmu m), the ITF predicts
-$|\Delta\omega_x|/2\pi\sim3.5$\,MHz against the observed ${\sim}10$\,kHz
---- a factor ${\sim}350$ consistent with strong rf-electrode shielding in
-that geometry; this is an order-of-magnitude consistency check, not a
-quantitative validation.  For the experimentally demonstrated
-S{\"a}gesser et al.~\cite{sagesser2026scanning} 3D scanning geometry,
-the present model predicts the height dependence shown in
-Fig.~\ref{fig:S_published}(b); the plotted values use the QESPM parameter
-set of Sec.~3 of the main text ($|\Delta\omega_x|/2\pi\sim65$\,kHz
-at $h=10$\,\textmu m, below the $5$\,Hz floor at $h=100$\,\textmu m).
+${\sim}50$\,\textmu m, $h\approx40$\,\textmu m), the half-space ITF
+predicts $|\Delta\omega_x|/2\pi\sim3.5$\,MHz against the observed
+${\sim}10$\,kHz --- a factor ${\sim}350$ discrepancy, attributed to
+rf-electrode shielding in that geometry.  The shielding factor is not
+quantified in the present work, so this point is reported as an
+unresolved discrepancy outside the stated half-space validity domain
+rather than as a validation of the model.  For the experimentally
+demonstrated S{\"a}gesser et al.~\cite{sagesser2026scanning} 3D scanning
+geometry, the present model provides a prediction of the height
+dependence shown in Fig.~\ref{fig:S_published}(b); the plotted values
+use the QESPM parameter set of Sec.~3 of the main text
+($|\Delta\omega_x|/2\pi\sim65$\,kHz at $h=10$\,\textmu m, below the
+$5$\,Hz floor at $h=100$\,\textmu m), and no quantitative comparison
+with the published data is attempted.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figV4_published_comparison.pdf}
-\caption{Comparison with published ion-probe data.
-(a) Order-of-magnitude consistency check with a published ion-probe
-configuration (Maiwald et al., 2009); the absolute signal prediction
-depends on the effective background field at the ion.
+\caption{Relation to published ion-probe demonstrations.
+(a) The half-space ITF applied to a published ion-probe configuration
+(Maiwald et al., 2009) over-predicts the observed shift by a factor
+${\sim}350$; the discrepancy is attributed to rf-electrode shielding
+and is unresolved in the present work.
 (b) Predicted $h$-dependence for the experimentally demonstrated
 S{\"a}gesser et al.~(2026) 3D scanning geometry, computed with the
-QESPM model parameters (${}^{40}$Ca$^+$).}
+QESPM model parameters (${}^{40}$Ca$^+$); no quantitative comparison
+with the published data is attempted.}
 \label{fig:S_published}
 \end{figure}
 
@@ -659,7 +667,8 @@ factor $k=2$ (component-wise table above).  The Type-A entry is the
 quantum-limited frequency-estimation variance
 $u_A(f)=1/(4\pi\tau\sqrt{N_{\rm rep}\langle n\rangle})$: with
 $\tau=T_2/2=5$\,ms, $\langle n\rangle=0.5$ and $N_{\rm rep}=5.6\times10^3$
-($28$\,s), $u_A(f)=0.30$\,Hz, consistent with the $0.7$\,Hz QPN floor.
+($28$\,s), $u_A(f)=0.30$\,Hz; the $0.7$\,Hz QPN value quoted in the main
+text corresponds to $N_{\rm rep}\approx1.0\times10^3$ ($\approx5$\,s).
 Input correlations enter through
 $u_c^2(z)=\sum_ic_i^2u^2(x_i)+2\sum_{i<j}c_ic_ju(x_i)u(x_j)r_{ij}$;
 the largest correlation is $r(h,E_{\rm bg})<0$, but even perfect
@@ -1276,7 +1285,8 @@ $\lambda \in [19,\;64]$\,\textmu m.}
 \end{figure}
 
 % ===================================================================
-\section{Quantum resource allocation and wave-packet smearing}
+\section{Quantum resource allocation and wave-packet\\
+smearing}
 % ===================================================================
 
 \subsection{Wave-packet smearing of the ITF}
@@ -1501,6 +1511,52 @@ $S_{\partial E_x/\partial x}(\omega;d)=\int(k\,dk/2\pi)(k^2/2)S_E(k)
 $\delta\omega_J/2\pi=(e/4\pi m\omega_x)\sqrt{3k_BT\rho/(8\pi d^5\tau)}$
 for a measurement of bandwidth $1/\tau$.
 
+\subsection{Derivation of the technical noise floor}
+
+The remaining branches of the master noise budget (main text) are
+derived as follows, with $N_{\rm rep}$ repetitions, mean phonon
+occupation $\langle n\rangle=0.5$ and probe time $\tau=T_2/2=5$\,ms
+unless stated otherwise.
+
+\textbf{Quantum projection noise.}  Ramsey interferometry on the motional
+mode attains the quantum Fisher information
+$\mathcal{F}=4|\alpha|^2\tau^2$ with $|\alpha|^2=\langle n\rangle$, so a
+single shot resolves $\delta\omega=1/(2\tau\sqrt{\langle n\rangle})$ and
+$N_{\rm rep}$ repetitions give
+$\delta\omega_{\rm QPN}/2\pi=1/(4\pi\tau\sqrt{N_{\rm rep}\langle n\rangle})$:
+with $N_{\rm rep}=1.0\times10^3$ ($\approx5$\,s) the floor is
+$0.71$\,Hz, and with $N_{\rm rep}=5.6\times10^3$ ($28$\,s) it is
+$0.30$\,Hz.
+
+\textbf{Motional heating.}  Surface-induced heating dephases the
+oscillator at rate $\gamma(h)=\gamma_0(h_0/h)^{\alpha}$ with
+$\gamma_0=100$\,s$^{-1}$ at $h_0=40$\,\textmu m
+($T_2^{\rm(heat)}=1/\gamma_0=10$\,ms) and $\alpha=4$; the
+heating-limited resolution is
+$\delta\omega_{\rm heat}=\gamma(h)/(2\sqrt{N_{\rm rep}\langle n\rangle})$,
+giving $0.35$\,Hz at $h=40$\,\textmu m and $1.5$\,kHz at
+$h=5$\,\textmu m.
+
+\textbf{rf amplitude fluctuations.}  A relative rf-amplitude stability
+at the $10^{-6}$ level maps to $\delta\omega_{\rm rf}/2\pi\sim1$\,Hz
+(engineering assumption; the roadmap of Sec.~S9 lists rf stability as
+the key Phase-1 risk).
+
+\textbf{Laser frequency noise.}  A laser linewidth $\Delta\nu$ limits the
+Ramsey coherence to $T_{2,\ell}=1/(\pi\Delta\nu)$, giving
+$\delta\omega_{\rm las}=1/(2T_{2,\ell}\sqrt{N_{\rm rep}\langle n\rangle})$:
+$11$\,Hz for $\Delta\nu=1$\,kHz and $0.11$\,Hz for the $10$\,Hz
+cavity-stabilised branch.  The $5$\,Hz technical floor of the main text
+implicitly assumes this cavity-stabilised branch and is stated as an
+engineering assumption, not a measured value.
+
+\textbf{Johnson--Nyquist gradient noise.}  From the preceding
+subsection,
+$\delta\omega_J/2\pi=(e/4\pi m\omega_x)\sqrt{3k_BT\rho/(8\pi d^5\tau)}$,
+which evaluates to $6.8\times10^{-9}$\,Hz at $h=40$\,\textmu m,
+$T=4$\,K, $\rho=3\times10^{-11}$\,$\Omega$\,m, $\tau=1$\,s ---
+negligible across the envelope.
+
 \subsection{Heating-channel spatial kernel}
 
 The heating rate is a quantitative second channel only if its spatial
@@ -1619,7 +1675,11 @@ I(h) \;=\; \frac12\,\frac{L}{2\pi}
 \end{equation}
 for $\lambda\ll|H|_{\max}$ --- a noise-weighted spectral log-index
 quantifying the aggregate modal information available under the stated
-regularisation/noise scale.
+regularisation/noise scale.  The effective-rank asymptotics are
+insensitive to the threshold choice: replacing $10^{-3}$ by $10^{-2}$ or
+$10^{-4}$ changes only the multiplicative constant in
+$r_{\rm eff}\propto1/h$, because the threshold enters the Weyl counting
+law only through its logarithm.
 
 \textbf{Joint two-channel operator.}  On the zero-mean subspace the joint
 operator $\mathcal{H}_x\oplus\mathcal{H}_y$ is injective (proof of

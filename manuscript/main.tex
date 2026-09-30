@@ -32,9 +32,9 @@
 \extrafloats{100}
 
 % ---- Compact float spacing ----
-\setlength{\floatsep}{6pt plus 2pt minus 2pt}
-\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
-\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\floatsep}{3pt plus 1pt minus 1pt}
+\setlength{\textfloatsep}{5pt plus 1pt minus 1pt}
+\setlength{\intextsep}{3pt plus 1pt minus 1pt}
 
 % ---- Manual definitions ----
 \newcommand{\abs}[1]{\left|#1\right|}
@@ -73,19 +73,19 @@ modes are estimated, but cannot undo the transfer-function attenuation;
 the effective mode rank scales as
 $r_{\rm eff} \propto 1/h$ under the stated finite-noise threshold on the
 analysed 1D cross-section.  A theorem
-establishes the topography--charge identifiability limit: within the
-linear model and for a height-independent calibrated background field,
-multi-height scanning alone cannot separate surface topography from
-effective patch-potential contributions, which share the identical
-$e^{-kh}$ scaling, so surface charge is an
-influence quantity structurally confounded with the measurand.
+establishes the topography--charge identifiability limit: under a
+height-independent calibrated background field, multi-height scanning
+alone cannot separate surface topography from effective patch-potential
+contributions, which share the identical $e^{-kh}$ scaling, so surface
+charge is an influence quantity structurally confounded with the
+measurand.
 The analytical transfer function is independently cross-checked against
 exact Rayleigh/Floquet, boundary-element and finite-difference
 electrostatic solvers, and evaluated using published atomic-force-microscopy
 topography data; the experimental demonstration remains future work.
 Measurement sensitivity is distinguished from reconstruction uncertainty:
-the latter is charge-limited (combined standard uncertainty $319$\,nm under
-the stated residual-charge baseline), whereas the former reaches nanometre
+the latter is charge-limited (combined standard uncertainty $319$\,nm),
+whereas the former reaches nanometre
 and, at the quantum projection noise limit, picometre scale.
 \end{abstract}
 
@@ -117,8 +117,7 @@ and STM already operate in situ in UHV and at cryogenic temperatures, they
 probe the surface in mechanical contact or tunnelling proximity and can
 perturb the very surface fields that matter for qubit performance; a
 technique that reads the surface electrostatically from micrometre
-standoff, without mechanical contact and natively inside the trap, would
-close this gap.
+standoff, without mechanical contact, would close this gap.
 
 Trapped atomic ions are among the most sensitive detectors of electric
 fields realised to date~\cite{keller2015electrometry}.  A single ion
@@ -232,7 +231,7 @@ plane).  The lateral translation leaves the local forward model unchanged
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{figS2_scan.pdf}
+\includegraphics[width=0.78\textwidth]{figS2_scan.pdf}
 \caption{Measurement geometry.  The measurand is the surface height
 $z_s(x,y)$ of the sample; the indication is the secular frequency shift
 $\Delta\omega_x(x,y)$ of the trapped ion, related to $z_s$ by the
@@ -257,9 +256,9 @@ across the field of view; (iii)~perfect conductor (a thin dielectric film with p
 $\varepsilon_r$ modifies the surface-potential channel by the
 three-layer factor $F(k)$, with $F-1=+3\times10^{-4}$ for a native
 oxide and $+19\%$ for a $2$\,\textmu m polymer overlayer; $F$ is
-identical for the topographic and charge channels within the effective
-boundary-potential representation adopted here, so the identifiability
-theorem is unaffected);
+identical for both channels within the effective boundary-potential
+representation adopted here, so the identifiability theorem is
+unaffected);
 (iv)~static surface charge over the scan duration (frozen at $T=4$\,K);
 (v)~Lamb--Dicke regime ($\Delta x_{\rm ion}\approx13$\,nm $\ll
 \lambda_{\rm feature}$);
@@ -374,7 +373,7 @@ frequency for ion heights $h=5$--$100$\,\textmu m.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{fig1a_itf.pdf}
+\includegraphics[width=0.80\textwidth]{fig1a_itf.pdf}
 \caption{Instrument transfer function magnitude $|H_x(k;h)|$ for ion heights
 $h = 5$--$100\,\mu\textup{m}$.  The band-pass character arises from the product of
 a high-pass factor $k^2$ and a low-pass factor $e^{-kh}$.  The peak response
@@ -416,7 +415,7 @@ Figure~\ref{fig:forward} shows the complete forward-model chain.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{fig1b_spatial.pdf}
+\includegraphics[width=0.80\textwidth]{fig1b_spatial.pdf}
 \caption{Complete forward-model chain for the topography-only test case.
 (a) Surface height $z_s(x,y)$ with Gaussian plateau (200\,nm), linear ramp,
 and fine grating.  (b) Electrostatic potential $\Phi(x,y,h)$ at ion height.
@@ -439,21 +438,23 @@ Sec.~\ref{sec:info}.
 \subsection{Measurement noise model}
 
 The achievable frequency resolution is limited by three mechanisms
-(complete budget and microscopic derivations: Supplementary Secs.~S2 and S15):
+(complete budget and microscopic derivations: Supplementary Secs.~S5 and S15):
 (i)~\textbf{quantum projection noise},
 $\delta\omega_{\rm QPN}=1/(4\pi\tau\sqrt{N_{\rm rep}\langle n\rangle})$,
-which for the optimal probe time $\tau=T_2/2=5$\,ms and
+which for the optimal probe time $\tau=T_2/2=5$\,ms,
+$N_{\rm rep}\approx1.0\times10^3$ ($\approx5$\,s) and
 $\langle n\rangle\approx0.5$ gives $\delta\omega_{\rm QPN}/2\pi
 \approx0.7$\,Hz --- about $7\times$ below the conservative technical
 floor; (ii)~\textbf{motional heating}, $\dot{\bar n}\propto h^{-\alpha}$
 with $\alpha\approx3.5$--$4$, giving $\dot{\bar n}\sim10^2$\,quanta/s and
-$T_2^{\rm(heat)}\sim10$\,ms at $h=40$\,\textmu m, but $\sim0.8$\,kHz
-heating-limited frequency resolution at $h=5$\,\textmu m; and
+$T_2^{\rm(heat)}\sim10$\,ms at $h=40$\,\textmu m, and a heating-limited
+resolution reaching ${\sim}1.5$\,kHz at $h=5$\,\textmu m
+(derivation: Supplementary Sec.~S15); and
 (iii)~\textbf{rf amplitude fluctuations} contributing
 $\delta\omega_{\rm rf}/2\pi\sim1$\,Hz.  Laser frequency noise
 contributes ${\sim}11$\,Hz for a $1$\,kHz-linewidth laser (falling to
 ${\sim}0.1$\,Hz for a $10$\,Hz cavity-stabilised system), and the
-Johnson--Nyquist gradient noise is $4\times10^{-8}$\,Hz at $h=40$\,\textmu m,
+Johnson--Nyquist gradient noise is $7\times10^{-9}$\,Hz at $h=40$\,\textmu m,
 $T=4$\,K --- negligible across the envelope.  The crossover structure is
 the quantitative content of the operating envelope (Fig.~\ref{fig:noise_budget}):
 at $h\gtrsim10$\,\textmu m the measurement is technical-limited
@@ -464,11 +465,13 @@ the Phase-1 grating, $\alpha=4$, $\lambda=20$\,\textmu m) is the
 intersection of the two dominant branches.
 Throughout this work SNR values are quoted at the conservative
 $\delta\omega/2\pi=5$\,Hz floor --- a stated engineering assumption, not a
-measured value.
+measured value --- and the $5$\,Hz floor implicitly assumes the
+$10$\,Hz-linewidth cavity-stabilised laser branch, for which the laser
+contribution (${\sim}0.1$\,Hz) is negligible.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{figI10_noise_psd.pdf}
+\includegraphics[width=0.78\textwidth]{figI10_noise_psd.pdf}
 \caption{Master noise budget.
 (a) Frequency resolution $\delta\omega/2\pi$ of every noise mechanism as a
 function of ion height: technical floor, quantum projection noise (QPN),
@@ -547,7 +550,9 @@ exponentially, following the Weyl counting law
 $\ln(C/\sigma_n h^2)=(\pi h/L)n\,(1+o(1))$
 (derivation: Supplementary Sec.~S16), and define the \textbf{effective
 rank} $r_{\rm eff}$ --- the number of singular values above
-$10^{-3}\sigma_1$ (a conventional but non-unique threshold):
+$10^{-3}\sigma_1$ (a conventional but non-unique threshold; different
+thresholds change only the proportionality constant of the Weyl
+asymptotics --- Supplementary Sec.~S16):
 
 \begin{center}
 \begin{tabular}{@{}c|c|c@{}}
@@ -577,7 +582,11 @@ low-pass filtering.  This quantifies the fundamental effective-rank
 (mode-count) limit of the ion probe: reducing $h$ shifts the entire
 singular-value spectrum, whereas reducing the noise floor improves only
 the logarithmically dependent noise-limited cutoff (Supplementary
-Sec.~S10).  The singular spectrum and its scaling are shown in
+Sec.~S10).  The effective-rank and spectral-index diagnostics are the
+electrostatic analogue of the classical degrees-of-freedom analysis of
+imaging systems~\cite{toraldodifrancia1969degrees,cox1986information},
+here derived from the singular spectrum of the explicit transfer
+function $H_x(k;h)$.  The singular spectrum and its scaling are shown in
 Supplementary Sec.~S16.
 
 \subsection{Two-channel joint operator}
@@ -625,7 +634,7 @@ the linear regime, both
 contributions propagate to the ion via the identical factor $e^{-kh}$.
 Consequently, measurements at any finite set of heights $\{h_1, \ldots, h_n\}$
 cannot separate $z_s$ from $\sigma$: the $n \times 2$ forward matrix has
-rank~1, and its condition number is formally infinite.
+rank~1, and the Moore--Penrose condition number diverges.
 \end{theorem}
 
 If the controlled variation of the background field is independently
@@ -727,12 +736,16 @@ spatial transfer function.  This is a central result of the paper:
 \textbf{quantum enhancement can maximise the precision with which an
 available signal is measured, but it cannot recover spatial
 information that has already been exponentially attenuated by the
-physical transfer function.}  Phase-sensitive motional squeezing is
-expected to improve frequency-estimation precision further; the
-quantitative gain depends on the chosen squeezed state, the resource
-constraint and the readout strategy, and is therefore not asserted as a
-universal enhancement factor here (discussion: Supplementary
-Sec.~S11).  At the QPN limit
+physical transfer function} --- the electrostatic analogue of
+established quantum limits on optical
+resolution~\cite{kolobov2000quantum}.  The designation \emph{quantum}
+reflects the single trapped-ion probe with a readout bounded by quantum
+projection noise; the nominal coherent-state protocol is its classical
+limit.
+Phase-sensitive motional squeezing is
+expected to improve frequency-estimation precision further; the gain
+depends on the squeezed state, resource constraint and readout strategy
+and is not asserted as a universal factor (Supplementary Sec.~S11).  At the QPN limit
 ($\delta\omega_{\rm QPN}/2\pi\approx0.7$\,Hz), the coherent-state
 sensitivity reaches $\delta A_{\min}^{\rm coh}\sim7\times10^{-3}$\,nm at
 $k_{\rm opt}=2/h$; under the conservative $5$\,Hz floor the values are
@@ -807,6 +820,7 @@ optimum $k_{\rm opt}=2/h$ is $7\times10^{-3}$\,nm.}
 Regime & $\delta\omega/2\pi$ & Charge & $\delta A_{\min}$ [nm] & noise-lim.\ $\lambda_{\min}$ [$\mu$m] & $r_{\rm eff}$ \\
 \hline
 Technical, charge-present            & 5\,Hz   & present & 320$^{*}$  & 18.7 & 6 \\
+\hline
 Technical, charge-free               & 5\,Hz   & absent  & 1.2  & 18.7 & 6 \\
 QPN (coherent), charge-free          & 0.7\,Hz & absent  & 0.17 & 16.0 & 6 \\
 \hline
@@ -827,7 +841,8 @@ with the height recovered via
 $\tilde{z}_s=\tilde{\Phi}_\lambda e^{+kh}/E_{\rm bg}$.  The discrete
 Picard condition (the Fourier coefficients of the noise-free data must
 decay faster than the singular values) connects the effective rank of
-Sec.~\ref{sec:info} directly to the regularisation theory: for noisy data
+Sec.~\ref{sec:info} directly to the regularisation
+theory~\cite{bertero1998introduction}: for noisy data
 the condition is violated beyond $r_{\rm eff}$, where noise dominates.
 The empirical regularisation parameter $\lambda=10^{-4}\max|H_x|$ lies
 between the L-curve and generalised cross-validation choices; the
@@ -856,7 +871,7 @@ specified, the prior supplies the frequency-dependent regulariser,
 \Delta x^2/\Sigma(k)},
 \label{eq:bayesian_post}
 \end{equation}
-achieving $r=0.933$ on the test surface (statistically equivalent to the
+achieving $r=0.933$ on the test surface (comparable to the
 hand-tuned scalar Tikhonov, $r=0.939$) while providing the full posterior
 covariance.  For the topography--charge pair, the per-mode posterior
 precision is rank-1 in the data term, and the marginal topography
@@ -940,7 +955,7 @@ at all accessible $k$.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{fig5_uncertainty.pdf}
+\includegraphics[width=0.78\textwidth]{fig5_uncertainty.pdf}
 \caption{Uncertainty budget decomposition based on the Guide to the
 Expression of Uncertainty in Measurement (GUM), as a function of spatial
 frequency $k$.  The combined standard uncertainty $u_c(z)$ (solid
@@ -1002,11 +1017,17 @@ $\lambda_{\min}\approx60$\,\textmu m (Fig.~\ref{fig:inversion}).  This
 self-consistency check confirms that the FFT forward/inverse chain is
 numerically correct; it does not constitute an independent validation.
 The reconstruction quality follows $r=0.838$ at $h=5$\,\textmu m
-improving to $r=0.992$ at $h=80$\,\textmu m.
+improving to $r=0.992$ at $h=80$\,\textmu m: the correlation is
+evaluated over the full field of view including the fine grating, which
+lies below the 50\%-of-peak ITF cutoff at every height studied, and
+whose noise-amplified mis-reconstruction is largest at small $h$, where
+the ITF transmits it most --- the opposite of the AFM-based study of
+Sec.~\ref{sec:validation}, whose dominant surface power lies above the
+cutoff at small $h$.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{fig2_inversion.pdf}
+\includegraphics[width=0.84\textwidth]{fig2_inversion.pdf}
 \caption{Tikhonov-regularised inversion of $\Delta\omega_x \to \Phi$ at ion
 height for the topography-only case at $h = 40$\,\textmu m.
 (a) True potential.  (b) Tikhonov reconstruction.  (c) Residual.
@@ -1040,7 +1061,10 @@ illustrating the predicted height-dependent reconstruction behaviour using
 independently measured surface topography as input; at
 $h=5$\,\textmu m --- the lowest height currently feasible given heating
 constraints --- $r=0.76$ is achieved and the dominant features are
-visually recovered.  The $h=2$\,\textmu m point is a theoretical
+visually recovered.  All quoted $r$ values are means over $50$
+noise realisations; the cross-realisation standard deviation is below
+$10^{-4}$, because the residual is bias-dominated rather than
+noise-dominated.  The $h=2$\,\textmu m point is a theoretical
 extrapolation beyond current feasibility (heating
 $\dot{\bar n}\sim5\times10^6$\,quanta/s), included to illustrate the
 asymptotic ITF behaviour.  The full input data, ion-signal maps and
@@ -1048,7 +1072,7 @@ per-height reconstructions are in Supplementary Figs.~S4--S6.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{figV9_real_afm_benchmark.pdf}
+\includegraphics[width=0.78\textwidth]{figV9_real_afm_benchmark.pdf}
 \caption{Numerical evaluation using published atomic force microscopy
 (AFM) topography data of stainless steel~\cite{camargo2019afm}.
 (a) Ground truth: Bruker NanoScope AFM, $20 \times 20$\,\textmu m.
@@ -1061,15 +1085,20 @@ $h = 5$\,\textmu m ($r = 0.76$).  (e) Reconstruction at $h = 20$\,\textmu m
 \label{fig:real_afm}
 \end{figure}
 
-\subsection{Comparison with published ion-probe data}
+\subsection{Relation to published ion-probe demonstrations}
 
-The ITF predictions are also compared with published ion-probe
+Supplementary Sec.~S1 relates the model to published ion-probe
 demonstrations (Maiwald et al.~\cite{maiwald2009stylus};
-S{\"a}gesser et al.~\cite{sagesser2026scanning}) in Supplementary
-Sec.~S1: an order-of-magnitude consistency check against the Maiwald
-observation, and the predicted height dependence for the experimentally
-demonstrated S{\"a}gesser scanning geometry, computed with the QESPM
-parameter set.
+S{\"a}gesser et al.~\cite{sagesser2026scanning}), with two outcomes
+reported honestly.  For the Maiwald stylus-trap geometry the half-space
+ITF predicts $|\Delta\omega_x|/2\pi\sim3.5$\,MHz against the observed
+$\sim10$\,kHz --- a factor $\sim350$ discrepancy attributed to
+rf-electrode shielding, which the half-space model does not include and
+which is not quantified here; the point is an unresolved discrepancy
+outside the stated validity domain, not a validation.  For the
+S{\"a}gesser 3D scanning geometry the model provides a \emph{prediction}
+of the height dependence computed with the QESPM parameter set; no
+quantitative comparison with the published data is attempted.
 
 \subsection{Analytical benchmarks, robustness and Monte Carlo checks}
 
@@ -1131,11 +1160,13 @@ and projected quantum-limited detection sensitivity.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.92\textwidth]{fig4_landscape.pdf}
+\includegraphics[width=0.80\textwidth]{fig4_landscape.pdf}
 \caption{Projected intrinsic detection sensitivity--standoff landscape:
 QESPM (theoretical/projected marker at the QPN sensitivity
 ${\sim}7\times10^{-3}$\,nm, $k_{\rm opt}=2/h$, $h=40$\,\textmu m)
-relative to established experimental capabilities.  The
+relative to established experimental capabilities.  The QESPM marker
+denotes a theoretical projection; no demonstrated QESPM operating point
+yet exists.  The
 charge-limited reconstruction uncertainty of
 Table~\ref{tab:uncertainty} ($319$\,nm) is shown separately and is not
 part of the sensitivity scale.}
@@ -1228,7 +1259,10 @@ The closest physical predecessors are single-ion electric-field sensors:
 rf-photon-correlation electrometry reaches field sensitivities near
 $10$\,mV/m/$\sqrt{\rm Hz}$~\cite{keller2015electrometry}, and 2D
 ion-crystal platforms demonstrate quantum-enhanced field sensing at the
-$10$\,dB level~\cite{gilmore2021quantum}.  QESPM differs categorically:
+$10$\,dB level~\cite{gilmore2021quantum}.  Single-spin nitrogen-vacancy
+probes provide scanning magnetometry and electrometry at nanometre
+standoff~\cite{rondin2014magnetometry}, the opposite corner of the
+standoff--environment plane.  QESPM differs categorically:
 (i) it senses the field gradient (second derivative of the potential)
 through the secular frequency, so its observable carries
 spatial-frequency selectivity (the ITF) absent from a point field probe;
@@ -1239,7 +1273,7 @@ The
 sensitivity comparison on each method's native observable is given in
 Supplementary Sec.~S5 (Table~S2).  Scanning ion conductance microscopy
 (SICM)~\cite{leitao2021sicm} is complementary: liquid-phase operation,
-resolution set by the pipette aperture rather than $e^{-kh}$ filtering.
+pipette-aperture-limited rather than $e^{-kh}$ filtered.
 
 \subsection{The topography--charge identifiability limit in context}
 
@@ -1352,10 +1386,11 @@ reconstruction uncertainty, but the resulting performance remains to be
 established experimentally.
 
 Beyond its immediate application as a surface metrology tool, QESPM
-illustrates a broader principle: \textbf{once a physical transfer
-function suppresses a spatial mode, improving probe-state precision
-cannot recover that lost information.}  This principle applies to any
-sensing modality whose probe is coupled to the object of interest
+illustrates a broader principle --- the spatial analogue of quantum
+limits on optical resolution~\cite{kolobov2000quantum}: once a physical
+transfer function suppresses a spatial mode, improving probe-state
+precision cannot recover that lost information.  This principle applies
+to any sensing modality whose probe is coupled to the object of interest
 through a spatial transfer function --- including NV-centre magnetometry,
 trapped-ion electrometry and emerging quantum imaging platforms --- and
 merits systematic investigation across the quantum sensing landscape.
@@ -1369,9 +1404,10 @@ Camargo~Jr. (2019), available at Mendeley Data under CC~BY~4.0
 Challenge dataset is available at Zenodo
 (\url{https://doi.org/10.5281/zenodo.15341939}).
 All Python code and a synthetic benchmark dataset are openly available in
-a public GitHub repository
-(\url{https://github.com/dawidkucharski/qespm}) and archived in a
-permanent Zenodo deposit (\url{https://doi.org/10.5281/zenodo.22721000}).
+a public GitHub repository and archived in a permanent Zenodo deposit;
+the persistent identifiers are withheld here for double-anonymous review
+and will be inserted in the camera-ready version.  Solver settings and
+figure-generation parameters are contained in the deposited scripts.
 
 % ===================================================================
 \section*{Declaration of generative AI and AI-assisted technologies in the
@@ -1389,10 +1425,10 @@ published article.
 
 \bibliographystyle{unsrt}
 \makeatletter
-\g@addto@macro\@openbib@code{\setlength{\itemsep}{1pt plus 0.5pt}%
+\g@addto@macro\@openbib@code{\setlength{\itemsep}{0pt}%
                             \setlength{\parsep}{0pt}}
 \makeatother
-{\footnotesize \bibliography{references}}
+{\footnotesize\fontsize{10}{10.5}\selectfont \bibliography{references}}
 % ===================================================================
 
 \end{document}

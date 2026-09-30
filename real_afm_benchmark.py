@@ -83,20 +83,28 @@ def corr_resolved(zt, zr, kc):
 # ============================================================
 h_um = np.array([2, 5, 10, 20, 40])
 h_list = h_um*1e-6
-r_full = np.zeros(len(h_list)); r_res = np.zeros(len(h_list))
+rng = np.random.default_rng(20260930)
+N_MC = 50   # noise realisations for the r-spread
+a1_f = np.zeros((N_MC, len(h_list)))
+a1_r = np.zeros((N_MC, len(h_list)))
 # 50% MTF cutoff: solve (kh/2)^2 exp(2-kh) = 0.5  ->  kh_50 ~ 4.156
 from scipy.optimize import brentq
 kh_50 = brentq(lambda x: (x/2)**2*np.exp(2-x) - 0.5, 2, 6)
 kc = kh_50/h_list
 
-print(f"\n{'h [um]':>8} {'lam_min [um]':>12} {'r_full':>8} {'r_res':>8}")
-print("-"*42)
+print(f"\n{'h [um]':>8} {'lam_min [um]':>12} {'r_full':>12} {'r_res':>12}")
+print("-"*46)
 for i, hv in enumerate(h_list):
-    dw = forward(z_afm, hv) + np.random.normal(0, delta_omega, (N,N))
-    zr = invert(dw, hv)
-    r_full[i] = np.corrcoef(z_afm.ravel(), zr.ravel())[0,1]
-    r_res[i] = corr_resolved(z_afm, zr, kc[i])
-    print(f"{hv*1e6:8.0f} {2*np.pi/kc[i]*1e6:12.1f} {r_full[i]:8.4f} {r_res[i]:8.4f}")
+    for mc in range(N_MC):
+        dw = forward(z_afm, hv) + rng.normal(0, delta_omega, (N, N))
+        zr = invert(dw, hv)
+        a1_f[mc, i] = np.corrcoef(z_afm.ravel(), zr.ravel())[0, 1]
+        a1_r[mc, i] = corr_resolved(z_afm, zr, kc[i])
+r_full = a1_f.mean(axis=0); r_full_sd = a1_f.std(axis=0)
+r_res = a1_r.mean(axis=0); r_res_sd = a1_r.std(axis=0)
+for i, hv in enumerate(h_list):
+    print(f"{hv*1e6:8.0f} {2*np.pi/kc[i]*1e6:12.1f} "
+          f"{r_full[i]:8.4f}±{r_full_sd[i]:.4f} {r_res[i]:8.4f}±{r_res_sd[i]:.4f}")
 
 # ============================================================
 # Figure
@@ -108,8 +116,8 @@ vlim = np.percentile(np.abs(z_afm), 99)
 axes[0,0].imshow(z_afm, extent=[0,scan_um,0,scan_um], cmap='terrain', origin='lower', aspect='equal', vmin=-vlim, vmax=vlim)
 axes[0,0].set_title('(a) AFM -- stainless steel [nm]')
 
-axes[0,1].plot(h_um, r_full, 'ko-', ms=10, lw=2, label='Full bandwidth')
-axes[0,1].plot(h_um, r_res, 'bs--', ms=10, lw=2, label=r'Resolved ($k<k_{\rm cutoff}$)')
+axes[0,1].errorbar(h_um, r_full, yerr=r_full_sd, fmt='ko-', ms=8, lw=2, capsize=4, label='Full bandwidth')
+axes[0,1].errorbar(h_um, r_res, yerr=r_res_sd, fmt='bs--', ms=8, lw=2, capsize=4, label=r'Resolved ($k<k_{\rm cutoff}$)')
 axes[0,1].set_xlabel('Ion height $h$ [um]'); axes[0,1].set_ylabel('Pearson $r$')
 axes[0,1].set_title('(b) Reconstruction quality vs $h$')
 axes[0,1].legend(fontsize=9); axes[0,1].grid(True, alpha=0.3); axes[0,1].set_ylim(0, 1.05)

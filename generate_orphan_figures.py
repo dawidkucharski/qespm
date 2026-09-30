@@ -69,13 +69,13 @@ a1.axvline(k_opt, color='k', ls='--', lw=1.2)
 a1.text(k_opt * 1.02, 3e-3,
         '$k_{\\rm opt}=2/h=0.05$ rad/$\\mu$m\n($\\delta A_{\\min}^{\\rm coh}'
         '\\approx 7\\times10^{-3}$ nm)',
-        fontsize=8, va='bottom')
+        fontsize=9, va='bottom')
 a1.set_xscale('log'); a1.set_yscale('log')
-a1.set_xlabel('spatial frequency $k$ [rad/$\\mu$m]', fontsize=10)
-a1.set_ylabel('$\\delta A_{\\min}$ [nm]', fontsize=10)
-a1.set_title('Quantum-limited surface amplitude\\nsensitivity ($h=40$ $\\mu$m)',
-             fontsize=10)
-a1.legend(fontsize=8)
+a1.set_xlabel('spatial frequency $k$ [rad/$\mu$m]', fontsize=11)
+a1.set_ylabel('$\delta A_{\min}$ [nm]', fontsize=11)
+a1.set_title('Quantum-limited surface amplitude\nsensitivity ($h=40$ $\mu$m)',
+             fontsize=11)
+a1.legend(fontsize=9)
 a1.grid(True, which='both', alpha=0.25)
 plt.tight_layout()
 plt.savefig('manuscript/fig6_qfi.pdf', dpi=150, bbox_inches='tight')

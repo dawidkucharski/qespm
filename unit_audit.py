@@ -64,7 +64,7 @@ check("QESPM curvature sensitivity at 5 Hz [V/m^2/sqrt(Hz)]", 5.21 * 2 * np.pi *
 # dephasing penalty at tau = T2/2
 check("sqrt(e) penalty", np.sqrt(np.e), 1.65, 0.02)
 
-# Rayleigh ITF error law 0.14 (kA)^2 at A=2um, lambda=40um
+# Rayleigh ITF error law 0.14 (kA)^2 at A=2um, lambda=40um (complete sin+cos basis)
 check("ITF rel error at A=2um, lam=40um [%]", 0.1397 * (2 * np.pi * 2e-6 / 40e-6) ** 2 * 100, 1.4, 0.15)
 
 print("\nALL PASS" if all(ok) else "\nSOME CHECKS FAILED")

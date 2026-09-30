@@ -40,26 +40,34 @@ h_nom = 40e-6             # ion height
 
 
 def rayleigh_coeffs(A, N=60):
-    """Solve the Rayleigh system for the exact corrugated-boundary solution."""
+    """Solve the Rayleigh system in the COMPLETE sin+cos basis (2N harmonics),
+    required because the second-order boundary datum generates cos(2kx) terms."""
     u = np.linspace(0, 2 * np.pi, 8000, endpoint=False)
-    M = np.zeros((N, N))
-    rhs = np.zeros(N)
+    M = np.zeros((2 * N, 2 * N))
+    rhs = np.zeros(2 * N)
     for m in range(N):
         sin_m = np.sin((m + 1) * u)
+        cos_m = np.cos((m + 1) * u)
         rhs[m] = E_BG * A * np.mean(sin_m * np.sin(u)) * 2.0
+        rhs[N + m] = E_BG * A * np.mean(cos_m * np.sin(u)) * 2.0
         for n in range(N):
-            f = np.sin((n + 1) * u) * sin_m * np.exp(-(n + 1) * k_s * A * np.sin(u))
-            M[m, n] = np.mean(f) * 2.0
+            env = np.exp(-(n + 1) * k_s * A * np.sin(u))
+            M[m, n] = np.mean(sin_m * np.sin((n + 1) * u) * env) * 2.0
+            M[m, N + n] = np.mean(sin_m * np.cos((n + 1) * u) * env) * 2.0
+            M[N + m, n] = np.mean(cos_m * np.sin((n + 1) * u) * env) * 2.0
+            M[N + m, N + n] = np.mean(cos_m * np.cos((n + 1) * u) * env) * 2.0
     return np.linalg.solve(M, rhs)
 
 
 def exact_dw(A, N=60):
     """Exact secular frequency shift at the crest (x = lambda/4)."""
-    c = rayleigh_coeffs(A, N)
+    sol = rayleigh_coeffs(A, N)
+    c, d = sol[:N], sol[N:]
     dw = 0.0
-    for n in range(0, N, 2):  # odd harmonics survive at x = lambda/4
+    for n in range(N):
         nn = n + 1
-        dw += -(E_CHARGE / (2 * M_CA40 * OMEGA_X)) * c[n] * (nn * k_s)**2 \
+        sgn = c[n] * np.sin(nn * np.pi / 2) + d[n] * np.cos(nn * np.pi / 2)
+        dw += -(E_CHARGE / (2 * M_CA40 * OMEGA_X)) * sgn * (nn * k_s) ** 2 \
             * np.exp(-nn * k_s * h_nom)
     return dw
 
@@ -86,8 +94,9 @@ dw_exact = np.array(dw_exact)
 dw_itf = np.array(dw_itf)
 rel_err = np.abs(dw_exact - dw_itf) / np.abs(dw_exact)
 
-# fit leading quadratic coefficient: rel_err ~ alpha * (kA)^2
-alpha_fit = np.mean(rel_err / (k_s * A_list)**2)
+# fit leading quadratic coefficient over the quadratic-dominated regime (kA > 0.15)
+mask = k_s * A_list > 0.15
+alpha_fit = np.mean(rel_err[mask] / (k_s * A_list[mask]) ** 2)
 
 # ============================================================
 # Figure V7: exact validation
