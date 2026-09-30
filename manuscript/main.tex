@@ -552,7 +552,8 @@ $10^{-3}\sigma_1$ (a conventional but non-unique threshold):
 \begin{center}
 \begin{tabular}{@{}c|c|c@{}}
 \hline
-$h$ [\textmu m] & Effective rank $r_{\rm eff}$ & Spectral information index $I$ [nats] \\
+$h$ [\textmu m] & Effective rank $r_{\rm eff}$ & \shortstack{Spectral
+log-information\\index $I$ (dimensionless)} \\
 \hline
 5   & 50 & 425.4 \\
 10  & 24 & 208.4 \\
@@ -561,7 +562,6 @@ $h$ [\textmu m] & Effective rank $r_{\rm eff}$ & Spectral information index $I$ 
 80  & 4  & 28.7 \\
 \hline
 \end{tabular}
-\par\smallskip{\footnotesize $1\,\textup{nat} = \log_2 e\,\textup{bits}$}
 \end{center}
 
 The effective rank scales as $r_{\rm eff}\propto1/h$, and the spectral
@@ -694,8 +694,10 @@ roughness characterised by the ISO~25178 parameter $R_a$, the RMS secular
 shift is \textbf{linear in $R_a$} for $R_a\ll h$ --- a Parseval identity
 makes the linear scaling exact for stationary Gaussian surfaces --- with a
 roughness sensitivity of $68$\,Hz/nm at $h=40$\,\textmu m rising to
-$4.3\times10^3$\,Hz/nm at $h=5$\,\textmu m: QESPM acts as a calibratable
-non-contact roughness gauge (full analysis: Supplementary Sec.~S13).
+$4.3\times10^3$\,Hz/nm at $h=5$\,\textmu m: in the charge-controlled
+case, the linear model provides a calibration route between the measured
+RMS frequency shift and standardised roughness parameters (full analysis:
+Supplementary Sec.~S13).
 
 % ===================================================================
 \section{Quantum precision and metrological uncertainty}
@@ -716,8 +718,8 @@ factorises as
 \mathcal{F}_A(k;h) = |H_x(k;h)|^2 \, \mathcal{F}_{\rm ion},
 \label{eq:FQ_factorisation}
 \end{equation}
-where $\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ is the classical
-limit.  Because the factorisation holds for any single-mode probe state,
+where $\mathcal{F}_{\rm ion}=4|\alpha|^2\tau^2$ is the coherent-state
+value.  Because the factorisation holds for any single-mode probe state,
 the transfer function and the probe state enter multiplicatively:
 quantum-state engineering can improve the precision with which an
 already transmitted signal is estimated, but it does not alter the

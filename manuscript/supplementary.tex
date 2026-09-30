@@ -45,7 +45,7 @@ supporting the main manuscript.
 
 Sections S2--S16 contain the full derivations and validation details that
 support the main manuscript; all material is cross-referenced therein as
-Fig.~S1--S16 and Tables~S1--S2.
+Figs.~S1--S30 and Tables~S1--S4.
 
 % ===================================================================
 \section{Supplementary Figures}
@@ -295,9 +295,9 @@ difference reaches $\approx 11\%$.  Table~\ref{tab:floquet} summarises the
 correction, computed from the Mathieu characteristic exponent via the Hill
 determinant (equivalently, the monodromy matrix of the Mathieu equation
 over one rf period, $\beta=(1/\pi)\arccos(\operatorname{tr} M/2)$).  The
-pseudopotential formula of the main text is therefore accurate to better
-than $11\%$ for all practical trap configurations, and the exact Floquet
-result can be substituted when higher precision is required.  Throughout
+pseudopotential formula of the main text: for $q\le0.5$, the correction
+is $\le 11\%$; at larger $q$, the exact Floquet result should be used
+when higher accuracy is required.  Throughout
 the main text, the pseudopotential expressions are used with the
 understanding that the $\mathcal{O}(q^2)$ correction is a known systematic
 that can be calibrated out.
@@ -847,8 +847,8 @@ A five-step calibration procedure defines the proposed SI-traceability chain:
 applied dc voltages to extract $E_{\rm bg}$;
 (2)~height calibration via electrical capacitance measurement and stage
 interferometry;
-(3)~ITF calibration using a PTB/NIST-certified sinusoidal grating with known
-$A_{\rm ref}$, $\lambda_{\rm ref}$, fitting the measured $|\Delta\omega_x|$
+(3)~ITF calibration using a certified sinusoidal reference grating with
+known $A_{\rm ref}$ and $\lambda_{\rm ref}$, fitting the measured $|\Delta\omega_x|$
 to the ITF of the main text;
 (4)~charge background characterisation by scanning a certified flat
 reference region at the measurement height (known topography
@@ -856,10 +856,11 @@ $\approx0$), or by differencing maps taken before and after in-situ UV
 cleaning, which isolates the charge channel without relying on height
 separation;
 and (5)~verification against a certified step-height standard.
-Traceability is to the SI metre (calibrated grating), SI second
-(GPS-disciplined clock), and SI volt (Josephson voltage standard).
+The proposed calibration chain is referenced to the SI metre, second and
+volt through the stated calibration standards (calibrated grating,
+GPS-disciplined clock, Josephson voltage standard).
 
-The traceability chain is:
+The proposed calibration chain is:
 \[
 \textup{SI metre} \to \textup{laser interferometer} \to \textup{certified grating}
 \to \textup{ITF calibration} \to z_s(x,y),
@@ -914,16 +915,16 @@ values $\nu_i$ are judgement-based, but the conclusion
 $\nu_{\rm eff}\gg100$ is insensitive to them: it holds for any
 $\nu_i\ge5$.
 
-Figure~\ref{fig:S_traceability} shows the closed traceability chain from
-the SI metre, second and volt through the five calibration steps to the
+Figure~\ref{fig:S_traceability} illustrates the proposed traceability chain
+from the SI metre, second and volt through the five calibration steps to the
 reconstructed measurand $z_s(x,y)$.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figT1_traceability.pdf}
-\caption{Measurement traceability chain of the quantum electrostatic
-scanning probe microscopy (QESPM): from the SI metre and the
-SI second through the calibration steps of this section to the
+\caption{Proposed measurement traceability chain of the quantum
+electrostatic scanning probe microscopy (QESPM): from the SI metre and
+the SI second through the calibration steps of this section to the
 reconstructed measurand $z_s(x,y)$.}
 \label{fig:S_traceability}
 \end{figure}
@@ -1379,9 +1380,9 @@ and the RMS frequency shift $\sigma_{\Delta\omega}$ is computed
 
 The response is \textbf{linear in $R_a$} for $R_a \ll h$, with a
 roughness sensitivity of $68$\,Hz/nm at $h = 40$\,\textmu m rising to
-$4.3\times10^3$\,Hz/nm at $h = 5$\,\textmu m: QESPM acts as a
-\textbf{calibratable non-contact roughness gauge} linking the measured
-shift to standardised texture parameters.  Linearity breaks down as
+$4.3\times10^3$\,Hz/nm at $h = 5$\,\textmu m: in the charge-controlled
+case, the linear model provides a calibration route between the measured
+RMS frequency shift and standardised roughness parameters.  Linearity breaks down as
 $R_a$ approaches $h/10$, where the boundary perturbation expansion fails.
 
 \textbf{Exact linearity for stationary Gaussian surfaces.}
