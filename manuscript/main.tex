@@ -135,12 +135,12 @@ and recent work by S{\"a}gesser et al.~\cite{sagesser2026scanning} has
 extended it to three-dimensional scanning of an ion probe, confirming the
 experimental maturity of the platform.
 
-Despite these advances, to the author's knowledge previous trapped-ion
-surface-probing studies have not developed a metrological inverse
-framework combining an explicit topography transfer function,
-spatial-information analysis, topography--electrostatic identifiability
-and uncertainty propagation.  This work
-addresses that gap.  The proposed technique is named the \textbf{Q}uantum
+To the best of the author's knowledge, the existing trapped-ion
+surface-probing literature has not yet established a metrological inverse
+framework that jointly quantifies the spatial transfer function,
+spatial-information loss, topography--electrostatic identifiability, and
+propagated measurement uncertainty for surface-topography reconstruction.
+This work addresses that gap.  The proposed technique is named the \textbf{Q}uantum
 \textbf{E}lectrostatic \textbf{S}canning \textbf{P}robe
 \textbf{M}icroscopy (QESPM).  The contribution is a theoretical framework:
 analytically derived, numerically benchmarked against exact
@@ -592,9 +592,10 @@ Supplementary Sec.~S16.
 \subsection{Two-channel joint operator}
 
 \begin{proposition}[Injectivity of the joint operator]\label{prop:joint}
-On the subspace of zero-mean functions, the joint operator
-$\mathcal{H} = \mathcal{H}_x \oplus \mathcal{H}_y$ is injective: its null
-space consists exactly of the constant functions.
+On a finite periodic domain, the null space of the joint operator
+$\mathcal{H} = \mathcal{H}_x \oplus \mathcal{H}_y$ consists only of the
+constant mode; hence $\mathcal{H}$ is injective on the zero-mean
+subspace.
 \end{proposition}
 
 The joint inversion uses the stacked Tikhonov filter; on the
@@ -699,7 +700,8 @@ linear ITF applies over the nominal regime
 $h\approx5$--$200$\,\textmu m, and at the nominal point
 ($h=40$\,\textmu m, $A=100$\,nm) the stability margin exceeds two orders
 of magnitude (stability diagram: Supplementary Sec.~S12).  For broadband
-roughness characterised by the ISO~25178 parameter $R_a$, the RMS secular
+roughness with a fixed spectral shape, characterised by the ISO~25178
+parameter $R_a$, the RMS secular
 shift is \textbf{linear in $R_a$} for $R_a\ll h$ --- a Parseval identity
 makes the linear scaling exact for stationary Gaussian surfaces --- with a
 roughness sensitivity of $68$\,Hz/nm at $h=40$\,\textmu m rising to
@@ -1359,8 +1361,8 @@ Three key results support this conclusion:
     \item \textbf{The factorisation $\mathcal{F}_A(k;h)=|H_x|^2\,
           \mathcal{F}_{\rm ion}$} (Eq.~\ref{eq:FQ_factorisation}) cleanly
           separates quantum-metrological enhancement from the electrostatic
-          transfer limit: as $kh\to\infty$, $\mathcal{F}_A\to0$ regardless
-          of $\mathcal{F}_{\rm ion}$.
+          transfer limit: for finite $\mathcal{F}_{\rm ion}$,
+          $\mathcal{F}_A\to0$ as $kh\to\infty$.
     \item \textbf{The regime comparison} (Table~\ref{tab:regimes})
           demonstrates that the effective rank and the 50\%-of-peak ITF
           cutoff are independent of the probe-noise level, while the

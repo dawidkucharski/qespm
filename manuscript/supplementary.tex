@@ -1322,12 +1322,11 @@ corresponding precision gain depends on the state, resource constraint
 and readout).  The symmetric logarithmic derivatives of
 different modes
 commute, so the multiparameter quantum Cram\'er--Rao bound is achievable
-mode by mode~\cite{pezze2018quantum}; the RLD bound is infinite for these
-pure states and the Holevo bound coincides with the SLD bound.  The
+mode by mode~\cite{pezze2018quantum}.  The
 per-mode quantum-limited uncertainty is
 $\delta z_k\ge1/\sqrt{\nu\mathcal{F}_{kk}}
 =1/(|H_x(k)|\sqrt{\nu\mathcal{F}_{\rm ion}})$,
-which diverges as $e^{+kh}/k^2$ regardless of $\mathcal{F}_{\rm ion}$:
+which diverges as $e^{+kh}/k^2$ for finite $\mathcal{F}_{\rm ion}$:
 state-dependent enhancements multiply every mode equally and cannot
 compensate the exponential attenuation of $H_x$.  The bound is
 approached by phase-sensitive (homodyne) readout of the optimal
@@ -1388,7 +1387,8 @@ $\ell_c = 5$\,\textmu m, $\beta = 1.5$) are propagated through the ITF
 and the RMS frequency shift $\sigma_{\Delta\omega}$ is computed
 (Fig.~\ref{fig:S_roughness}).
 
-The response is \textbf{linear in $R_a$} for $R_a \ll h$, with a
+The response is \textbf{linear in $R_a$} for $R_a \ll h$ at a fixed
+spectral shape, with a
 roughness sensitivity of $68$\,Hz/nm at $h = 40$\,\textmu m rising to
 $4.3\times10^3$\,Hz/nm at $h = 5$\,\textmu m: in the charge-controlled
 case, the linear model provides a calibration route between the measured
